@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using KudaGo.Client.Events.Data;
 
-namespace KudaGo.Client.Events
+namespace KudaGo.Core.Events
 {
     public interface IEventDetailsResponse : IEventListResult
     {

@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using KudaGo.Client.Events.Data;
+using KudaGo.Core.Events.Data;
 
-namespace KudaGo.Client.Events
+namespace KudaGo.Core.Events
 {
     public interface IEventsOfTheDayResponse : IResponse
     {

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using KudaGo.Client.Events.Data;
+using KudaGo.Core.Events.Data;
 
-namespace KudaGo.Client.Events
+namespace KudaGo.Core.Events
 {
     public interface IEventListResponse : IResponse
     {
