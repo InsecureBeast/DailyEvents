@@ -61,5 +61,48 @@ namespace UnitTestProject1
             var nextRes = await nextRequest.ExecuteAsync();
             Assert.IsNotNull(nextRes);
         }
+
+        [TestMethod]
+        public async Task should_search_events()
+        {
+            var request = new SearchRequest();
+            request.Lang = "ru";
+            request.Expand = SearchRequest.ExpandFields.DATES;
+            request.CType = CType.Event;
+            request.Q = "event";
+
+            var res = await request.ExecuteAsync();
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Results.First().Place);
+        }
+
+        [TestMethod]
+        public async Task should_search_place()
+        {
+            var request = new SearchRequest();
+            request.Lang = "ru";
+            request.Expand = SearchRequest.ExpandFields.DATES;
+            request.CType = CType.Place;
+            request.Q = "place";
+
+            var res = await request.ExecuteAsync();
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Results.First().Address);
+            Assert.IsNotNull(res.Results.First().Coords);
+        }
+
+        [TestMethod]
+        public async Task should_search_list()
+        {
+            var request = new SearchRequest();
+            request.Lang = "ru";
+            request.Expand = SearchRequest.ExpandFields.DATES;
+            request.CType = CType.List;
+            request.Q = "list";
+
+            var res = await request.ExecuteAsync();
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Results.First());
+        }
     }
 }

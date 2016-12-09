@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using KudaGo.Core.Events.Data;
 
 namespace KudaGo.Core
 {
@@ -26,6 +27,11 @@ namespace KudaGo.Core
         string Title { get; }
         string Description { get; }
         CType CType { get; }
+        IPlace Place { get; }
+        string Address { get; }
+        ICoordinates Coords { get; }
+        bool Is_Closed { get; }
+        bool Is_Stub { get; }
     }
 
     class SearchResponse : ISearchResponse
@@ -51,12 +57,21 @@ namespace KudaGo.Core
         public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        
+        public string Address { get; set; }
+        public bool Is_Closed { get; set; }
+        public bool Is_Stub { get; set; }
+
         public string ctype { get; set; }
         public CType CType
         {
             get { return ctype.GetCType(); }
         }
+
+        public Place place { get; set; }
+        public IPlace Place { get { return place; } }
+
+        public Coordinates coords { get; set; }
+        public ICoordinates Coords { get { return coords; } }
     }
 
     class Result : IResult
