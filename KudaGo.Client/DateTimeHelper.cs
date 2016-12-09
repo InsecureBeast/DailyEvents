@@ -14,5 +14,10 @@ namespace KudaGo.Client
             var date = start.AddSeconds(unixDateTime).ToLocalTime();
             return date;
         }
+
+        public static long ToUnixTimestamp(DateTime dateTime)
+        {
+            return (long)dateTime.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
+        }
     }
 }

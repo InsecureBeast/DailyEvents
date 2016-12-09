@@ -139,5 +139,18 @@ namespace UnitTestProject1
 
             Assert.IsNotNull(actual);
         }
+
+        [TestMethod]
+        public async Task should_get_events_of_the_day()
+        {
+            var request = new EventsOfTheDayRequest();
+            request.Lang = "ru";
+            request.Location = Location.Spb;
+
+            //then
+            var res = await request.ExecuteAsync();
+            var first = res.Results.First();
+            Assert.IsNotNull(first);
+        }
     }
 }

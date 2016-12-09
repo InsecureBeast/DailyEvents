@@ -39,6 +39,7 @@
     <Compile Include="ClientServiceRequest.cs" />
     <Compile Include="DateTimeHelper.cs" />
     <Compile Include="Events\Data\IDate.cs" />
+    <Compile Include="Events\Data\IEvent.cs" />
     <Compile Include="Events\Data\IParticipant.cs" />
     <Compile Include="Events\Data\IImage.cs" />
     <Compile Include="Events\Data\ILocation.cs" />
@@ -48,6 +49,8 @@
     <Compile Include="Events\EventDetailsRequest.cs" />
     <Compile Include="Events\EventListRequest.cs" />
     <Compile Include="Events\EventListResponse.cs" />
+    <Compile Include="Events\EventsOfTheDayRequest.cs" />
+    <Compile Include="Events\EventsOfTheDayresponse.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchRequest.cs" />

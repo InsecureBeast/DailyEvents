@@ -48,6 +48,13 @@ namespace KudaGo.Client.Events
         }
     }
 
+    public enum TextFormatEnum
+    {
+        Html,// - текст с тэгами
+        Plain, // - текст без тегов, ссылки <a href=a_href>a_title</a> преобразуются в вид: a_title a_href
+        Text// - текст без тегов, от ссылок остается только название
+    }
+
     public class EventListRequest : BaseRequest<IEventListResponse>
     {
         public string Fields { get; set; }
@@ -92,10 +99,10 @@ namespace KudaGo.Client.Events
                 _builder.Append("&ids=" + Ids);
 
             if (ActualSince != null)
-                _builder.Append("&actual_since=" + ToUnixTimestamp(ActualSince.Value));
+                _builder.Append("&actual_since=" + DateTimeHelper.ToUnixTimestamp(ActualSince.Value));
 
             if (ActualUntil != null)
-                _builder.Append("&actual_until=" + ToUnixTimestamp(ActualUntil.Value));
+                _builder.Append("&actual_until=" + DateTimeHelper.ToUnixTimestamp(ActualUntil.Value));
 
             if (PlaceId != null)
                 _builder.Append("&place_id=" + PlaceId.Value);
@@ -143,18 +150,6 @@ namespace KudaGo.Client.Events
             Favorites_count,
             Comments_count,
             Short_title
-        }
-
-        public enum TextFormatEnum
-        {
-            Html,// - текст с тэгами
-            Plain, // - текст без тегов, ссылки <a href=a_href>a_title</a> преобразуются в вид: a_title a_href
-            Text// - текст без тегов, от ссылок остается только название
-        }
-
-        private long ToUnixTimestamp(DateTime dateTime)
-        {
-            return (long)dateTime.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
         }
     }
 }
