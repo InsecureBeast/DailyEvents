@@ -52,7 +52,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\KudaGo.Client\KudaGo.Core.csproj">
+    <ProjectReference Include="..\KudaGo.Core\KudaGo.Core.csproj">
       <Project>{2a26290d-d6a5-44fb-a829-45a6b8e5fa12}</Project>
       <Name>KudaGo.Core</Name>
     </ProjectReference>
