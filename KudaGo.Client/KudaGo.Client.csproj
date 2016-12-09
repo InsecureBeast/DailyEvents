@@ -37,6 +37,7 @@
     <Compile Include="ApiService.cs" />
     <Compile Include="BaseRequest.cs" />
     <Compile Include="ClientServiceRequest.cs" />
+    <Compile Include="DateTimeHelper.cs" />
     <Compile Include="Events\Data\IDate.cs" />
     <Compile Include="Events\Data\IParticipant.cs" />
     <Compile Include="Events\Data\IImage.cs" />
