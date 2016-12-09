@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KudaGo.Client", "KudaGo.Client\KudaGo.Client.csproj", "{2A26290D-D6A5-44FB-A829-45A6B8E5FA12}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KudaGo.Tests", "KudaGo.Tests\KudaGo.Tests.csproj", "{3BE988F8-3182-460E-8D68-FECD5EDA99E4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|ARM = Debug|ARM
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|ARM = Release|ARM
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2A26290D-D6A5-44FB-A829-45A6B8E5FA12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A26290D-D6A5-44FB-A829-45A6B8E5FA12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A26290D-D6A5-44FB-A829-45A6B8E5FA12}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{2A26290D-D6A5-44FB-A829-45A6B8E5FA12}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{2A26290D-D6A5-44FB-A829-45A6B8E5FA12}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2A26290D-D6A5-44FB-A829-45A6B8E5FA12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A26290D-D6A5-44FB-A829-45A6B8E5FA12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A26290D-D6A5-44FB-A829-45A6B8E5FA12}.Release|ARM.ActiveCfg = Release|Any CPU
+		{2A26290D-D6A5-44FB-A829-45A6B8E5FA12}.Release|x64.ActiveCfg = Release|Any CPU
+		{2A26290D-D6A5-44FB-A829-45A6B8E5FA12}.Release|x86.ActiveCfg = Release|Any CPU
+		{3BE988F8-3182-460E-8D68-FECD5EDA99E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BE988F8-3182-460E-8D68-FECD5EDA99E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BE988F8-3182-460E-8D68-FECD5EDA99E4}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{3BE988F8-3182-460E-8D68-FECD5EDA99E4}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{3BE988F8-3182-460E-8D68-FECD5EDA99E4}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3BE988F8-3182-460E-8D68-FECD5EDA99E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BE988F8-3182-460E-8D68-FECD5EDA99E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BE988F8-3182-460E-8D68-FECD5EDA99E4}.Release|ARM.ActiveCfg = Release|Any CPU
+		{3BE988F8-3182-460E-8D68-FECD5EDA99E4}.Release|x64.ActiveCfg = Release|Any CPU
+		{3BE988F8-3182-460E-8D68-FECD5EDA99E4}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,6 @@
+syntax: glob
+KudaGo.Client/bin/*
+KudaGo.Client/obj/*
+KudaGo.Tests/bin/*
+KudaGo.Tests/obj/*
+packages/*
