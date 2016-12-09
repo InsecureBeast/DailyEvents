@@ -21,17 +21,27 @@
 
     class ImageImpl : IImage
     {
+        private Thumbnail _thumbnails;
+        private string _image;
+
         public ImageImpl()
         {
-            thumbnails = new Thumbnail();
             source = new ImageSource();
         }
 
-        public string Image { get; set; }
-        public Thumbnail thumbnails { get; set; }
+        public string Image
+        {
+            get { return _image; }
+            set
+            {
+                _image = value;
+                _thumbnails = new Thumbnail(_image);
+            }
+        }
+
         public IThumbnail Thumbnails
         {
-            get { return thumbnails; }
+            get { return _thumbnails; }
         }
         public ImageSource source { get; set; }
         public IImageSource Source
@@ -42,8 +52,16 @@
 
     class Thumbnail : IThumbnail
     {
-        public string _640x384 { get; set; }
-        public string _144x96 { get; set; }
+        public Thumbnail(string imageUrl)
+        {
+            if (string.IsNullOrEmpty(imageUrl))
+                return;
+
+            _144x96 = imageUrl.Replace("media/images", "media/thumbs/144x96/images");
+            _640x384 = imageUrl.Replace("media/images", "media/thumbs/640x384/images");
+        }
+        public string _640x384 { get; private set; }
+        public string _144x96 { get; private set; }
     }
 
     class ImageSource : IImageSource
