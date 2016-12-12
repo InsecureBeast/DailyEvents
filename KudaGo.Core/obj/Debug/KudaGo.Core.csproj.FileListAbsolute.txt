@@ -11,3 +11,4 @@ D:\Programming\KudaGo\KudaGo.Core\bin\Debug\Newtonsoft.Json.dll
 D:\Programming\KudaGo\KudaGo.Core\bin\Debug\Newtonsoft.Json.xml
 D:\Programming\KudaGo\KudaGo.Core\obj\Debug\KudaGo.Core.dll
 D:\Programming\KudaGo\KudaGo.Core\obj\Debug\KudaGo.Core.pdb
+D:\Programming\KudaGo\KudaGo.Core\obj\Debug\KudaGo.Core.csprojResolveAssemblyReference.cache

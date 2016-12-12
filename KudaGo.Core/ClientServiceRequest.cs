@@ -29,7 +29,7 @@ namespace KudaGo.Core
         private TResponse ParseResponse(string response)
         {
             var deserializeObject = JsonConvert.DeserializeObject<TResponse>(response);
-            //var deserializeObject = JsonConvert.DeserializeObject<object>(response);
+            var deserializeObject1 = JsonConvert.DeserializeObject<object>(response);
             return (TResponse)deserializeObject;
         }
 

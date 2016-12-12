@@ -1,11 +1,9 @@
 ﻿<Window x:Class="KudaGo.Client.Test.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:system="clr-namespace:System;assembly=mscorlib"
-        Title="MainWindow" Height="700" Width="650"
+        Title="MainWindow" Height="700" Width="400"
         WindowStartupLocation="CenterScreen">
     <Window.Resources>
-        <system:Double x:Key="DefaultTabItemWidth">160</system:Double>
 
         <DataTemplate x:Key="ItemDataTemplate" DataType="{x:Type ListViewItem}">
             <Border BorderThickness="1"
@@ -19,26 +17,32 @@
                     <Image Source="{Binding Image}"
                            Name="Image"/>
 
-                    <TextBlock Text="{Binding Name, Mode=OneWay}"/>
+                    <TextBlock Text="{Binding Name}"
+                               Margin="0,12,0,0"/>
+                    <TextBlock Text="{Binding Place}"
+                               Margin="0,12,0,0"/>
                 </StackPanel>
             </Border>
         </DataTemplate>
 
-        <DataTemplate x:Key="TabItemTemplate">
-            <ItemsControl ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, Path=Items}"
-                          ItemTemplate="{DynamicResource ItemDataTemplate}">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel />
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-            </ItemsControl>
-        </DataTemplate>
     </Window.Resources>
     <Grid>
+        
         <ScrollViewer HorizontalScrollBarVisibility="Disabled"
                       VerticalScrollBarVisibility="Auto">
-            <ContentPresenter ContentTemplate="{DynamicResource TabItemTemplate}" />
+            <StackPanel Orientation="Vertical">
+                <ContentPresenter ContentTemplate="{StaticResource ItemDataTemplate}"
+                                  Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, Path=EventOfTheDay}"/>
+                
+                <ItemsControl ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, Path=Items}"
+                              ItemTemplate="{DynamicResource ItemDataTemplate}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </StackPanel>
         </ScrollViewer>
     </Grid>
 </Window>
