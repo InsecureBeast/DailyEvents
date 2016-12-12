@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
+using KudaGo.Core.Data.JResponse;
 
-namespace KudaGo.Core
+namespace KudaGo.Core.Search
 {
     public enum Location
     {
@@ -67,10 +68,10 @@ namespace KudaGo.Core
 
         public override async Task<ISearchResponse> ExecuteAsync()
         {
-            var request = new ClientServiceRequest<SearchResponse>();
+            var request = new ClientServiceRequest<JSearchResponse>();
             var url = Build();
             var result = await request.ExecuteAsync(url);
-            return result;
+            return new SearchResponse(result);
         }
 
         public string Log()

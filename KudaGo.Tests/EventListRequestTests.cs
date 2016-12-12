@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using KudaGo.Core;
 using KudaGo.Core.Events;
+using KudaGo.Core.Search;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTestProject1
@@ -44,8 +44,8 @@ namespace UnitTestProject1
             Assert.IsTrue(res.Results.Any());
 
             var first = res.Results.First();
-            Assert.IsNotNull(first.Age_Restriction);
-            Assert.IsNotNull(first.Is_Free);
+            Assert.IsNotNull(first.AgeRestriction);
+            Assert.IsNotNull(first.IsFree);
         }
 
         [TestMethod]
@@ -91,7 +91,7 @@ namespace UnitTestProject1
             Assert.IsTrue(res.Results.Any());
 
             var first = res.Results.First();
-            Assert.IsNotNull(first.Body_Text);
+            Assert.IsNotNull(first.BodyText);
             Assert.IsNotNull(first.CommentsCount);
         }
 

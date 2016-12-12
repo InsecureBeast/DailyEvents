@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Threading.Tasks;
+using KudaGo.Core.Data.JResponse;
 
 namespace KudaGo.Core.Events
 {
     public interface IEventDetailsResponse : IEventListResult
     {
-        bool Disable_Comments { get; }
+        bool DisableComments { get; }
     }
 
     public class EventDetailsRequest : BaseRequest<IEventDetailsResponse>
@@ -16,10 +17,10 @@ namespace KudaGo.Core.Events
         
         public override async Task<IEventDetailsResponse> ExecuteAsync()
         {
-            var request = new ClientServiceRequest<EventDetailsResponse>();
+            var request = new ClientServiceRequest<JEventDetailsResponse>();
             var url = Build();
             var result = await request.ExecuteAsync(url);
-            return result;
+            return new EventDetailsResponse(result);
         }
 
         protected override string GetRelativePath()
@@ -47,6 +48,14 @@ namespace KudaGo.Core.Events
 
     internal class EventDetailsResponse : EventListResult, IEventDetailsResponse
     {
-        public bool Disable_Comments { get; set; }
+        public EventDetailsResponse(JEventDetailsResponse jResult) : base(jResult)
+        {
+            if (jResult == null)
+                return;
+
+            DisableComments = jResult.Disable_Comments;
+        }
+
+        public bool DisableComments { get; private set; }
     }
 }

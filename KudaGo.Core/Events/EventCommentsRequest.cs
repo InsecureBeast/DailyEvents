@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
-using KudaGo.Core.Events.Data;
+using KudaGo.Core.Data;
+using KudaGo.Core.Data.JData;
+using KudaGo.Core.Data.JResponse;
+using KudaGo.Core.Search;
 
 namespace KudaGo.Core.Events
 {
@@ -16,10 +20,10 @@ namespace KudaGo.Core.Events
         DateTime? DatePosted { get; }
         string Text { get; }
         IUser User { get; }
-        bool Is_Deleted { get; }
-        long Replies_Count { get; }
+        bool IsDeleted { get; }
+        long RepliesCount { get; }
         string Thread { get; }
-        string Reply_To { get; }
+        string ReplyTo { get; }
     }
 
     public class EventCommentsRequest : BaseRequest<IEventCommentsResponse>
@@ -32,10 +36,10 @@ namespace KudaGo.Core.Events
 
         public override async Task<IEventCommentsResponse> ExecuteAsync()
         {
-            var request = new ClientServiceRequest<EventCommentsResponse>();
+            var request = new ClientServiceRequest<JEventCommentsResponse>();
             var url = Build();
             var result = await request.ExecuteAsync(url);
-            return result;
+            return new EventCommentsResponse(result);
         }
 
         protected override string GetRelativePath()
@@ -90,42 +94,53 @@ namespace KudaGo.Core.Events
 
     internal class EventCommentsResponse : IEventCommentsResponse
     {
-        public int Count { get; set; }
-        public string Next { get; set; }
-        public string Previous { get; set; }
-
-        public IEnumerable<EventCommentResult> results { get; set; }
-        public IEnumerable<IEventCommentResult> Results
+        public EventCommentsResponse(JEventCommentsResponse jResponse)
         {
-            get { return results; }
+            if (jResponse == null)
+            {
+                Results = new IEventCommentResult[0];
+                return;
+            }
+
+            Count = jResponse.Count;
+            Next = jResponse.Next;
+            Previous = jResponse.Previous;
+            Results = jResponse.Results.Select(r => new EventCommentResult(r));
         }
+
+        public int Count { get; private set; }
+        public string Next { get; private set; }
+        public string Previous { get; private set; }
+        public IEnumerable<IEventCommentResult> Results { get; private set; }
     }
 
     internal class EventCommentResult : IEventCommentResult
     {
-        public EventCommentResult()
+        public EventCommentResult(JEventCommentResult jEventCommentResult)
         {
-            user = new User();
-        }
-
-        public string Id { get; set; }
-
-        public long date_posted { get; set; }
-        public DateTime? DatePosted
-        {
-            get 
+            if (jEventCommentResult == null)
             {
-                return DateTimeHelper.GetDateTimeFromUnixTime(date_posted);
+                User = new User(new JUser());
+                return;
             }
+
+            Id = jEventCommentResult.Id;
+            DatePosted = DateTimeHelper.GetDateTimeFromUnixTime(jEventCommentResult.Date_Posted);
+            Text = jEventCommentResult.Text;
+            IsDeleted = jEventCommentResult.Is_Deleted;
+            RepliesCount = jEventCommentResult.Replies_Count;
+            Thread = jEventCommentResult.Thread;
+            ReplyTo = jEventCommentResult.Reply_To;
+            User = new User(jEventCommentResult.User);
         }
 
-        public string Text { get; set; }
-        public bool Is_Deleted { get; set; }
-        public long Replies_Count { get; set; }
-        public string Thread { get; set; }
-        public string Reply_To { get; set; }
-
-        public User user { get; set; }
-        public IUser User { get { return user; } }
+        public string Id { get; private set; }
+        public DateTime? DatePosted { get; private set; }
+        public string Text { get; private set; }
+        public bool IsDeleted { get; private set; }
+        public long RepliesCount { get; private set; }
+        public string Thread { get; private set; }
+        public string ReplyTo { get; private set; }
+        public IUser User { get; private set; }
     }
 }

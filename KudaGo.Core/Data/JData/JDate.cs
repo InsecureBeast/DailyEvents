@@ -1,20 +1,6 @@
-﻿namespace KudaGo.Core.Events.Data
+﻿namespace KudaGo.Core.Data.JData
 {
-    public interface IDate
-    {
-        string Start_Date { get; }
-        string Start_Time { get; }
-        long Start { get; }
-        string End_Date { get; }
-        string End_Time { get; }
-        long End { get; }
-        bool Is_Continuous { get; }
-        bool Is_Endless { get; }
-        bool Is_Startless { get; }
-        bool Use_Place_Schedule { get; }
-    }
-
-    internal class DateImpl : IDate
+    internal class JDate
     {
         public string Start_Date { get; set; }
         public string Start_Time { get; set; }

@@ -4,3 +4,5 @@ KudaGo.Client/obj/*
 KudaGo.Tests/bin/*
 KudaGo.Tests/obj/*
 packages/*
+KudaGo.Client.Test/bin/*
+KudaGo.Client.Test/obj/*

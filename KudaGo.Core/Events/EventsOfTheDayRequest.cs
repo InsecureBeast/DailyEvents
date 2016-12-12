@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using KudaGo.Core.Data.JResponse;
 
 namespace KudaGo.Core.Events
 {
@@ -11,10 +12,10 @@ namespace KudaGo.Core.Events
         
         public override async Task<IEventsOfTheDayResponse> ExecuteAsync()
         {
-            var request = new ClientServiceRequest<EventsOfTheDayResponse>();
+            var request = new ClientServiceRequest<JEventsOfTheDayResponse>();
             var url = Build();
             var result = await request.ExecuteAsync(url);
-            return result;
+            return new EventsOfTheDayResponse(result);
         }
 
         protected override string Build()

@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using KudaGo.Core.Events.Data;
+using System.Linq;
+using KudaGo.Core.Data;
+using KudaGo.Core.Data.JData;
+using KudaGo.Core.Data.JResponse;
 
 namespace KudaGo.Core.Events
 {
@@ -13,36 +16,57 @@ namespace KudaGo.Core.Events
     {
         DateTime Date { get; }
         string Location { get; }
-        IEvent EventDetails { get; }
+        IEvent Event { get; }
     }
 
     internal class EventsOfTheDayResponse : IEventsOfTheDayResponse
     {
-        public int Count { get; set; }
-        public string Next { get; set; }
-        public string Previous { get; set; }
+        public EventsOfTheDayResponse(JEventsOfTheDayResponse jResponse)
+        {
+            if (jResponse == null)
+            {
+                Results = new IEventsOfTheDayResult[0];
+                return;
+            }
 
-        public IEnumerable<EventsOfTheDayResult> results { get; set; }
-        public IEnumerable<IEventsOfTheDayResult> Results { get { return results; } }
+            Count = jResponse.Count;
+            Next = jResponse.Next;
+            Previous = jResponse.Previous;
+            Results = jResponse.Results.Select(r => new EventsOfTheDayResult(r));
+        }
+
+        public int Count { get; private set; }
+        public string Next { get; private set; }
+        public string Previous { get; private set; }
+        public IEnumerable<IEventsOfTheDayResult> Results { get; private set; }
     }
 
     internal class EventsOfTheDayResult : IEventsOfTheDayResult
     {
-        public string date { get; set; }
-        public DateTime Date
+        public EventsOfTheDayResult(JEventsOfTheDayResult jResult)
         {
-            get
+            if (jResult == null)
             {
-                if (string.IsNullOrEmpty(date))
-                    return DateTime.MinValue;
-
-                DateTime datetime;
-                return !DateTime.TryParse(date, out datetime) ? DateTime.MinValue : datetime;
+                Event = new Event(new JEvent());
+                return;
             }
+
+            Date = GetDateTime(jResult.Date);
+            Location = jResult.Location;
+            Event = new Event(jResult.Event);
         }
 
-        public string Location { get; set; }
-        public Event Event { get; set; }
-        public IEvent EventDetails { get { return Event; } }
+        public DateTime Date { get; private set; }
+        public string Location { get; private set; }
+        public IEvent Event { get; private set; }
+
+        private DateTime GetDateTime(string date)
+        {
+            if (string.IsNullOrEmpty(date))
+                return DateTime.MinValue;
+
+            DateTime datetime;
+            return !DateTime.TryParse(date, out datetime) ? DateTime.MinValue : datetime;
+        }
     }
 }

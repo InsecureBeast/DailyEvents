@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using KudaGo.Core;
+using KudaGo.Core.Search;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTestProject1

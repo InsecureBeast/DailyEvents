@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using KudaGo.Core.Events.Data;
+using System.Linq;
+using KudaGo.Core.Data;
+using KudaGo.Core.Data.JData;
+using KudaGo.Core.Data.JResponse;
 
 namespace KudaGo.Core.Events
 {
@@ -15,97 +18,98 @@ namespace KudaGo.Core.Events
         DateTime? PublicationDate { get; }
         IEnumerable<IDate> Dates { get; }
         string Title { get; } 
-        string Short_Title { get; } 
+        string ShortTitle { get; } 
         string Slug { get; } 
         IPlace Place { get; } 
         string Description { get; } 
-        string Body_Text { get; }
+        string BodyText { get; }
         ILocation Location { get; } 
         //string Categories { get; } 
         string Tagline { get; } 
-        string Age_Restriction { get; } 
+        string AgeRestriction { get; } 
         string Price { get; } 
-        string Is_Free { get; } 
+        string IsFree { get; } 
         IEnumerable<IImage> Images { get; } 
-        string Site_Url { get; } 
+        string SiteUrl { get; } 
         IEnumerable<string> Tags { get; } 
         IEnumerable<IParticipant> Participants { get; } 
     }
 
     class EventListResponse : IEventListResponse
     {
-        public EventListResponse()
+        public EventListResponse(JEventListResponse jResponse)
         {
-            results = new EventListResult[0];    
+            if (jResponse == null)
+            {
+                Results = new IEventListResult[0];
+                return;
+            }
+
+            Count = jResponse.Count;
+            Next = jResponse.Next;
+            Previous = jResponse.Previous;
+            Results = jResponse.Results.Select(r => new EventListResult(r));
         }
 
-        public int Count { get; set; }
-        public string Next { get; set; }
-        public string Previous { get; set; }
-
-        public IEnumerable<EventListResult> results { get; set; }
-        public IEnumerable<IEventListResult> Results
-        {
-            get { return results; }
-        }
+        public int Count { get; private set; }
+        public string Next { get; private set; }
+        public string Previous { get; private set; }
+        public IEnumerable<IEventListResult> Results { get; private set; }
+        
     }
 
     internal class EventListResult : Result, IEventListResult
     {
-        public EventListResult()
+        public EventListResult(JEventListResult jResult) : base(jResult)
         {
-            images = new List<ImageImpl>();
-            dates = new DateImpl[0];
-            place = new Place();
-            location = new LocationImpl();
-            participants = new List<Participant>();
-        }
-
-        public string Id { get; set; }
-        public long publication_date { get; set; }
-        public DateTime? PublicationDate
-        {
-            get
+            if (jResult == null)
             {
-                return DateTimeHelper.GetDateTimeFromUnixTime(publication_date);
+                Images = new List<ImageImpl>();
+                Dates = new DateImpl[0];
+                Place = new Place(new JPlace());
+                Location = new LocationImpl(new JLocation());
+                Participants = new List<Participant>();
+                return;
             }
+            Id = jResult.Id;
+            PublicationDate = DateTimeHelper.GetDateTimeFromUnixTime(jResult.Publication_Date);
+            Dates = jResult.Dates.Select(d => new DateImpl(d));
+            Title = jResult.Title;
+            ShortTitle = jResult.Short_Title;
+            Slug = jResult.Slug;
+            Place = new Place(jResult.Place);
+            Description = jResult.Description;
+            BodyText = jResult.Body_Text;
+            Location = new LocationImpl(jResult.Location);
+            //Categories =
+            Tagline = jResult.Tagline;
+            AgeRestriction = jResult.Age_Restriction;
+            Price = jResult.Price;
+            IsFree = jResult.Is_Free;
+            Images = jResult.Images.Select(i => new ImageImpl(i));
+            SiteUrl = jResult.Site_Url;
+            Tags = jResult.Tags;
+            Participants = jResult.Participants.Select(p => new Participant(p));
         }
 
-        public IEnumerable<DateImpl> dates { get; set; }
-        public IEnumerable<IDate> Dates { get { return dates; } }
-
-        public string Title { get; set; }
-        public string Short_Title { get; set; }
-        public string Slug { get; set; }
-        
-        public Place place { get; set; }
-        public IPlace Place { get { return place; } }
-        public string Description { get; set; }
-        public string Body_Text { get; set; }
-
-        public LocationImpl location { get; set; }
-        public ILocation Location
-        {
-            get { return location; }
-        }
-
-        //public string Categories { get; set; }
-        public string Tagline { get; set; }
-
-        public string Age_Restriction { get; set; }
-        public string Price { get; set; }
-        public string Is_Free { get; set; }
-        
-        IEnumerable<ImageImpl> images { get; set; }
-        public IEnumerable<IImage> Images
-        {
-            get { return images; }
-        }
-
-        public string Site_Url { get; set; }
-        public IEnumerable<string> Tags { get; set; }
-
-        public IEnumerable<Participant> participants { get; set; }
-        public IEnumerable<IParticipant> Participants { get { return participants; } }
+        public string Id { get; private set; }
+        public DateTime? PublicationDate { get; private set; }
+        public IEnumerable<IDate> Dates { get; private set; }
+        public string Title { get; private set; }
+        public string ShortTitle { get; private set; }
+        public string Slug { get; private set; }
+        public IPlace Place { get; private set; }
+        public string Description { get; private set; }
+        public string BodyText { get; private set; }
+        public ILocation Location { get; private set; }
+        //public string Categories { get; private set; }
+        public string Tagline { get; private set; }
+        public string AgeRestriction { get; private set; }
+        public string Price { get; private set; }
+        public string IsFree { get; private set; }
+        public IEnumerable<IImage> Images { get; private set; }
+        public string SiteUrl { get; private set; }
+        public IEnumerable<string> Tags { get; private set; }
+        public IEnumerable<IParticipant> Participants { get; private set; }
     }
 }

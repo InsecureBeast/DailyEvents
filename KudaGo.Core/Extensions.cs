@@ -1,4 +1,5 @@
 ﻿using System;
+using KudaGo.Core.Search;
 
 namespace KudaGo.Core
 {
