@@ -37,7 +37,11 @@
     <Compile Include="ApiService.cs" />
     <Compile Include="BaseRequest.cs" />
     <Compile Include="ClientServiceRequest.cs" />
+    <Compile Include="Comments\ICommentsResponse.cs" />
+    <Compile Include="Comments\CommentOrderBy.cs" />
     <Compile Include="Data\IResponse.cs" />
+    <Compile Include="Data\JResponse\JPlaceDetailsResponse.cs" />
+    <Compile Include="Data\JResponse\JPlaceListResponse.cs" />
     <Compile Include="DateTimeHelper.cs" />
     <Compile Include="Data\IDate.cs" />
     <Compile Include="Data\IEvent.cs" />
@@ -54,7 +58,7 @@
     <Compile Include="Data\JData\JPlace.cs" />
     <Compile Include="Data\JData\JResult.cs" />
     <Compile Include="Data\JData\JUser.cs" />
-    <Compile Include="Data\JResponse\JEventCommentsResponse.cs" />
+    <Compile Include="Data\JResponse\JCommentsResponse.cs" />
     <Compile Include="Data\JResponse\JEventDetailsResponse.cs" />
     <Compile Include="Data\JResponse\JEventListResponse.cs" />
     <Compile Include="Data\JResponse\JEventListResult.cs" />
@@ -67,6 +71,12 @@
     <Compile Include="Events\EventsOfTheDayRequest.cs" />
     <Compile Include="Events\EventsOfTheDayResponse.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="FieldsBuilder.cs" />
+    <Compile Include="Places\PlaceCommentsRequest.cs" />
+    <Compile Include="Places\PlaceDetailsRequest.cs" />
+    <Compile Include="Places\PlaceDetailsResponse.cs" />
+    <Compile Include="Places\PlaceListRequest.cs" />
+    <Compile Include="Places\PlaceListResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Search\SearchRequest.cs" />
     <Compile Include="Search\SearchResponse.cs" />

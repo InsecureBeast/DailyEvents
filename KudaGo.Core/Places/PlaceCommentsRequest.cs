@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using KudaGo.Core.Comments;
 using KudaGo.Core.Data;
 using KudaGo.Core.Data.JResponse;
 
-namespace KudaGo.Core.Events
+namespace KudaGo.Core.Places
 {
-    public class EventCommentsRequest : BaseRequest<ICommentsResponse>
+    public class PlaceCommentsRequest : BaseRequest<ICommentsResponse>
     {
-        public string EventId { get; set; }
+        public long PlaceId { get; set; }
         public string Fields { get; set; }
-        public string Expand { get; set; }
         public CommentOrderBy? OrderBy { get; set; }
         public string Ids { get; set; }
-
+        
         public override async Task<ICommentsResponse> ExecuteAsync()
         {
             var request = new ClientServiceRequest<JCommentsResponse>();
@@ -26,22 +26,18 @@ namespace KudaGo.Core.Events
 
         protected override string GetRelativePath()
         {
-            return "/events/";
+            return "/places/";
         }
 
         protected override string Build()
         {
-            if (string.IsNullOrEmpty(EventId))
-                throw new Exception("EventId must be set");
+            if (PlaceId <= 0)
+                throw new Exception("PlaceId must be set");
 
-            if (EventId != null)
-                _builder.Append(EventId + "/comments/?");
+            _builder.Append(PlaceId + "/comments/?");
 
             if (Fields != null)
                 _builder.Append("fields=" + Fields);
-
-            if (Expand != null)
-                _builder.Append("&expand=" + Expand);
 
             if (Ids != null)
                 _builder.Append("&ids=" + Ids);

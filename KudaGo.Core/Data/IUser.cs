@@ -15,7 +15,7 @@ namespace KudaGo.Core.Data
             if (jUser == null)
                 return;
 
-            DisplayName = jUser.Display_Name;
+            DisplayName = jUser.Name;
             Avatar = jUser.Avatar;
         }
         public string DisplayName { get; set; }

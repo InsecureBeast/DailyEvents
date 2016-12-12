@@ -2,7 +2,7 @@
 {
     internal class JUser
     {
-        public string Display_Name { get; set; }
+        public string Name { get; set; }
         public string Avatar { get; set; }
     }
 }

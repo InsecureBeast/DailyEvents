@@ -43,41 +43,13 @@ namespace KudaGo.Core
             }
         }
 
-        public int? Page
-        {
-            get; set;
-        }
-
-        public Location? Location
-        {
-            get; set;
-        }
-
-        public bool? IsFree
-        {
-            get; set;
-        }
-
-        public long? Latitude
-        {
-            get; set;
-        }
-
-        public long? Longitude
-        {
-            get; set;
-        }
-
-        public long? Radius
-        {
-            get; set;
-        }
-
-        public string Next
-        {
-            get; set;
-        }
-
+        public int? Page { get; set; }
+        public Location? Location { get; set; }
+        public bool? IsFree { get; set; }
+        public long? Latitude { get; set; }
+        public long? Longitude { get; set; }
+        public long? Radius { get; set; }
+        public string Next { get; set; }
         public abstract Task<TResponse> ExecuteAsync();
 
         protected virtual string Build()

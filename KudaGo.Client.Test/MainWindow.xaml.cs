@@ -44,17 +44,17 @@ namespace KudaGo.Client.Test
             request.Expand = string.Format("{0},{1}", EventListRequest.ExpandFields.IMAGES, EventListRequest.ExpandFields.PLACE);
 
             var fieldBuilder = new FieldsBuilder();
-            request.Fields = fieldBuilder.WithField(FieldsBuilder.BODY_TEXT)
-                .WithField(FieldsBuilder.COMMENTS_COUNT)
-                .WithField(FieldsBuilder.DESCRIPTION)
-                .WithField(FieldsBuilder.ID)
-                .WithField(FieldsBuilder.IMAGES)
-                .WithField(FieldsBuilder.PLACE)
-                .WithField(FieldsBuilder.PUBLICATION_DATE)
-                .WithField(FieldsBuilder.PRICE)
-                .WithField(FieldsBuilder.TITLE)
-                .WithField(FieldsBuilder.SITE_URL)
-                .WithField(FieldsBuilder.SLUG).Build();
+            request.Fields = fieldBuilder.WithField(EventFields.BODY_TEXT)
+                .WithField(EventFields.COMMENTS_COUNT)
+                .WithField(EventFields.DESCRIPTION)
+                .WithField(EventFields.ID)
+                .WithField(EventFields.IMAGES)
+                .WithField(EventFields.PLACE)
+                .WithField(EventFields.PUBLICATION_DATE)
+                .WithField(EventFields.PRICE)
+                .WithField(EventFields.TITLE)
+                .WithField(EventFields.SITE_URL)
+                .WithField(EventFields.SLUG).Build();
             request.ActualSince = DateTime.Today;
             request.Location = Location.Spb;
 

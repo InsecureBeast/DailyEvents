@@ -3,22 +3,22 @@ using KudaGo.Core.Data.JData;
 
 namespace KudaGo.Core.Data.JResponse
 {
-    internal class JEventCommentsResponse
+    internal class JCommentsResponse
     {
-        public JEventCommentsResponse()
+        public JCommentsResponse()
         {
-            Results = new JEventCommentResult[0];
+            Results = new JCommentResult[0];
         }
 
         public int Count { get; set; }
         public string Next { get; set; }
         public string Previous { get; set; }
-        public IEnumerable<JEventCommentResult> Results { get; set; }
+        public IEnumerable<JCommentResult> Results { get; set; }
     }
 
-    internal class JEventCommentResult
+    internal class JCommentResult
     {
-        public JEventCommentResult()
+        public JCommentResult()
         {
             User = new JUser();
         }

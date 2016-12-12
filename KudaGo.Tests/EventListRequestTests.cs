@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using KudaGo.Core;
 using KudaGo.Core.Events;
 using KudaGo.Core.Search;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -61,25 +62,25 @@ namespace UnitTestProject1
                 EventListRequest.ExpandFields.PARTICIPANTS);
 
             var fieldBuilder = new FieldsBuilder();
-            request.Fields = fieldBuilder.WithField(FieldsBuilder.BODY_TEXT)
-                .WithField(FieldsBuilder.COMMENTS_COUNT)
-                .WithField(FieldsBuilder.CATEGORIES)
-                .WithField(FieldsBuilder.DESCRIPTION)
-                .WithField(FieldsBuilder.DATES)
-                .WithField(FieldsBuilder.FAVORITES_COUNT)
-                .WithField(FieldsBuilder.AGE_RESTRICTION)
-                .WithField(FieldsBuilder.ID)
-                .WithField(FieldsBuilder.IMAGES)
-                .WithField(FieldsBuilder.IS_FREE)
-                .WithField(FieldsBuilder.BODY_TEXT)
-                .WithField(FieldsBuilder.LOCATION)
-                .WithField(FieldsBuilder.PARTICIPANTS)
-                .WithField(FieldsBuilder.PLACE)
-                .WithField(FieldsBuilder.PUBLICATION_DATE)
-                .WithField(FieldsBuilder.PRICE)
-                .WithField(FieldsBuilder.SHORT_TITLE)
-                .WithField(FieldsBuilder.SITE_URL)
-                .WithField(FieldsBuilder.SLUG).Build();
+            request.Fields = fieldBuilder.WithField(EventFields.BODY_TEXT)
+                .WithField(EventFields.COMMENTS_COUNT)
+                .WithField(EventFields.CATEGORIES)
+                .WithField(EventFields.DESCRIPTION)
+                .WithField(EventFields.DATES)
+                .WithField(EventFields.FAVORITES_COUNT)
+                .WithField(EventFields.AGE_RESTRICTION)
+                .WithField(EventFields.ID)
+                .WithField(EventFields.IMAGES)
+                .WithField(EventFields.IS_FREE)
+                .WithField(EventFields.BODY_TEXT)
+                .WithField(EventFields.LOCATION)
+                .WithField(EventFields.PARTICIPANTS)
+                .WithField(EventFields.PLACE)
+                .WithField(EventFields.PUBLICATION_DATE)
+                .WithField(EventFields.PRICE)
+                .WithField(EventFields.SHORT_TITLE)
+                .WithField(EventFields.SITE_URL)
+                .WithField(EventFields.SLUG).Build();
             request.ActualSince = DateTime.Today;
             request.Location = Location.Spb;
 
@@ -102,7 +103,7 @@ namespace UnitTestProject1
             request.Lang = "ru";
 
             var fieldBuilder = new FieldsBuilder();
-            request.Fields = fieldBuilder.WithField(FieldsBuilder.ID).Build();
+            request.Fields = fieldBuilder.WithField(EventFields.ID).Build();
             request.ActualSince = DateTime.Today;
             request.Location = Location.Spb;
 
@@ -124,8 +125,6 @@ namespace UnitTestProject1
             var request = new EventListRequest();
             request.Lang = "ru";
 
-            var fieldBuilder = new FieldsBuilder();
-            request.Fields = fieldBuilder.WithField(FieldsBuilder.ID).Build();
             request.ActualSince = DateTime.Today;
             request.Location = Location.Spb;
 

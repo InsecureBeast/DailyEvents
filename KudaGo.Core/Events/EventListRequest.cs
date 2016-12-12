@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Text;
 using System.Threading.Tasks;
 using KudaGo.Core.Data.JResponse;
 
 namespace KudaGo.Core.Events
 {
-    public class FieldsBuilder
+    public class EventFields
     {
-        private readonly StringBuilder _builder = new StringBuilder();
-
         public const string ID = "id"; //идентификатор
         public const string PUBLICATION_DATE = "publication_date"; // - дата публикации
         public const string DATES = "dates";// - даты проведения
@@ -30,21 +27,6 @@ namespace KudaGo.Core.Events
         public const string SITE_URL = "site_url";//  - адрес события на сайте kudago.com
         public const string TAGS = "tags";//  - тэги события
         public const string PARTICIPANTS = "participants";//  - агенты события
-
-        public FieldsBuilder WithField(string filed)
-        {
-            if (_builder.Length == 0)
-                _builder.Append(filed);
-            else
-                _builder.Append("," + filed);
-
-            return this;
-        }
-
-        public string Build()
-        {
-            return _builder.ToString();
-        }
     }
 
     public enum TextFormatEnum
