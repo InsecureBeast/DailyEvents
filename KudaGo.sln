@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KudaGo.Tests", "KudaGo.Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KudaGo.Core", "KudaGo.Core\KudaGo.Core.csproj", "{2A26290D-D6A5-44FB-A829-45A6B8E5FA12}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KudaGo.Client.Test", "KudaGo.Client.Test\KudaGo.Client.Test.csproj", "{140A67C8-C1EE-4D37-A80D-0743858DB575}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,16 @@ Global
 		{2A26290D-D6A5-44FB-A829-45A6B8E5FA12}.Release|ARM.ActiveCfg = Release|Any CPU
 		{2A26290D-D6A5-44FB-A829-45A6B8E5FA12}.Release|x64.ActiveCfg = Release|Any CPU
 		{2A26290D-D6A5-44FB-A829-45A6B8E5FA12}.Release|x86.ActiveCfg = Release|Any CPU
+		{140A67C8-C1EE-4D37-A80D-0743858DB575}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{140A67C8-C1EE-4D37-A80D-0743858DB575}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{140A67C8-C1EE-4D37-A80D-0743858DB575}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{140A67C8-C1EE-4D37-A80D-0743858DB575}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{140A67C8-C1EE-4D37-A80D-0743858DB575}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{140A67C8-C1EE-4D37-A80D-0743858DB575}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{140A67C8-C1EE-4D37-A80D-0743858DB575}.Release|Any CPU.Build.0 = Release|Any CPU
+		{140A67C8-C1EE-4D37-A80D-0743858DB575}.Release|ARM.ActiveCfg = Release|Any CPU
+		{140A67C8-C1EE-4D37-A80D-0743858DB575}.Release|x64.ActiveCfg = Release|Any CPU
+		{140A67C8-C1EE-4D37-A80D-0743858DB575}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

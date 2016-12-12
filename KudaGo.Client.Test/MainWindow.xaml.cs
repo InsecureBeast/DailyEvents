@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using KudaGo.Core;
 using KudaGo.Core.Events;
+using KudaGo.Core.Search;
 
 namespace KudaGo.Client.Test
 {
@@ -46,7 +47,7 @@ namespace KudaGo.Client.Test
                 .WithField(FieldsBuilder.PLACE)
                 .WithField(FieldsBuilder.PUBLICATION_DATE)
                 .WithField(FieldsBuilder.PRICE)
-                .WithField(FieldsBuilder.SHORT_TITLE)
+                .WithField(FieldsBuilder.TITLE)
                 .WithField(FieldsBuilder.SITE_URL)
                 .WithField(FieldsBuilder.SLUG).Build();
             request.ActualSince = DateTime.Today;
@@ -56,7 +57,7 @@ namespace KudaGo.Client.Test
 
             foreach (var result in res.Results)
             {
-                Items.Add(new IconViewModel(result.Images.First().Thumbnails._640x384, result.Short_Title));
+                Items.Add(new IconViewModel(result.Images.First().Thumbnail.Normal, result.Title));
             }
         }
 
