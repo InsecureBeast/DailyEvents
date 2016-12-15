@@ -44,6 +44,8 @@
     <Compile Include="Data\JResponse\JNewsListResponse.cs" />
     <Compile Include="Data\JResponse\JPlaceDetailsResponse.cs" />
     <Compile Include="Data\JResponse\JPlaceListResponse.cs" />
+    <Compile Include="Data\JResponse\JSelectionDetailsResponse.cs" />
+    <Compile Include="Data\JResponse\JSelectionListResponse.cs" />
     <Compile Include="DateTimeHelper.cs" />
     <Compile Include="Data\IDate.cs" />
     <Compile Include="Data\IEvent.cs" />
@@ -74,6 +76,11 @@
     <Compile Include="Events\EventsOfTheDayResponse.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="FieldsBuilder.cs" />
+    <Compile Include="Selections\SelectionCommentsRequest.cs" />
+    <Compile Include="Selections\SelectionDetailsRequest.cs" />
+    <Compile Include="Selections\SelectionDetailsResponse.cs" />
+    <Compile Include="Selections\SelectionListResponse.cs" />
+    <Compile Include="Selections\SelectionListRequest.cs" />
     <Compile Include="News\NewsDetailsRequest.cs" />
     <Compile Include="News\NewsDetailsResponse.cs" />
     <Compile Include="News\NewsListRequest.cs" />

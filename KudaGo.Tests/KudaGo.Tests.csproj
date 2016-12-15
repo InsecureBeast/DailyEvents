@@ -48,6 +48,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="EventListRequestTests.cs" />
+    <Compile Include="SelectionListRequestTests.cs" />
     <Compile Include="NewsListRequestTests.cs" />
     <Compile Include="PlaceListRequestTests.cs" />
     <Compile Include="SearchRequestTests.cs" />
