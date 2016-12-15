@@ -40,6 +40,8 @@
     <Compile Include="Comments\ICommentsResponse.cs" />
     <Compile Include="Comments\CommentOrderBy.cs" />
     <Compile Include="Data\IResponse.cs" />
+    <Compile Include="Data\JResponse\JNewsDetailsResponse.cs" />
+    <Compile Include="Data\JResponse\JNewsListResponse.cs" />
     <Compile Include="Data\JResponse\JPlaceDetailsResponse.cs" />
     <Compile Include="Data\JResponse\JPlaceListResponse.cs" />
     <Compile Include="DateTimeHelper.cs" />
@@ -72,6 +74,11 @@
     <Compile Include="Events\EventsOfTheDayResponse.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="FieldsBuilder.cs" />
+    <Compile Include="News\NewsDetailsRequest.cs" />
+    <Compile Include="News\NewsDetailsResponse.cs" />
+    <Compile Include="News\NewsListRequest.cs" />
+    <Compile Include="News\NewsListResponse.cs" />
+    <Compile Include="News\NewsCommentsRequest.cs" />
     <Compile Include="Places\PlaceCommentsRequest.cs" />
     <Compile Include="Places\PlaceDetailsRequest.cs" />
     <Compile Include="Places\PlaceDetailsResponse.cs" />
