@@ -14,7 +14,7 @@ namespace KudaGo.Core.Data.JResponse
             Participants = new List<JParticipant>();
         }
 
-        public string Id { get; set; }
+        public long Id { get; set; }
         public long Publication_Date { get; set; }
         public IEnumerable<JDate> Dates { get; set; }
         public string Title { get; set; }

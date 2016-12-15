@@ -14,7 +14,7 @@ namespace KudaGo.Core.Events
 
     public interface IEventListResult : IResult
     {
-        string Id { get; }
+        long Id { get; }
         DateTime? PublicationDate { get; }
         IEnumerable<IDate> Dates { get; }
         string Title { get; } 
@@ -92,7 +92,7 @@ namespace KudaGo.Core.Events
             Participants = jResult.Participants.Select(p => new Participant(p));
         }
 
-        public string Id { get; private set; }
+        public long Id { get; private set; }
         public DateTime? PublicationDate { get; private set; }
         public IEnumerable<IDate> Dates { get; private set; }
         public string Title { get; private set; }

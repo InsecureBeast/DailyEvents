@@ -4,7 +4,7 @@ namespace KudaGo.Core.Data
 {
     public interface IEvent
     {
-        string Id { get; }
+        long Id { get; }
         string Title { get; }
         string Description { get; }
         IImage FirstImage { get; }
@@ -29,7 +29,7 @@ namespace KudaGo.Core.Data
             DateRange = new DateImpl(jEvent.Daterange);
         }
 
-        public string Id { get; private set; }
+        public long Id { get; private set; }
         public string Title { get; private set; }
         public string Description { get; private set; }
         public IImage FirstImage { get; private set; }

@@ -10,7 +10,7 @@ namespace KudaGo.Core.Events
 {
     public class EventCommentsRequest : BaseRequest<ICommentsResponse>
     {
-        public string EventId { get; set; }
+        public long EventId { get; set; }
         public string Fields { get; set; }
         public string Expand { get; set; }
         public CommentOrderBy? OrderBy { get; set; }
@@ -31,11 +31,10 @@ namespace KudaGo.Core.Events
 
         protected override string Build()
         {
-            if (string.IsNullOrEmpty(EventId))
+            if (EventId <= 0)
                 throw new Exception("EventId must be set");
 
-            if (EventId != null)
-                _builder.Append(EventId + "/comments/?");
+            _builder.Append(EventId + "/comments/?");
 
             if (Fields != null)
                 _builder.Append("fields=" + Fields);
