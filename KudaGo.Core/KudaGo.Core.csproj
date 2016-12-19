@@ -40,6 +40,7 @@
     <Compile Include="Comments\ICommentsResponse.cs" />
     <Compile Include="Comments\CommentOrderBy.cs" />
     <Compile Include="Data\IResponse.cs" />
+    <Compile Include="Data\JError.cs" />
     <Compile Include="Data\JResponse\JNewsDetailsResponse.cs" />
     <Compile Include="Data\JResponse\JNewsListResponse.cs" />
     <Compile Include="Data\JResponse\JPlaceDetailsResponse.cs" />

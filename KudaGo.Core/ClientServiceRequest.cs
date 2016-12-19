@@ -2,6 +2,7 @@
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using KudaGo.Core.Data;
 using Newtonsoft.Json;
 
 namespace KudaGo.Core
@@ -20,21 +21,28 @@ namespace KudaGo.Core
                 throw new ArgumentException("URL is not a valid!");
 
             var source = await HttpGetAsync(url);
-            return ParseResponse(source);
+            return await ParseResponse(source);
         }
 
         /// <summary>
         /// Parses the response and deserialize the content into the requested response object.
         /// </summary>
-        private TResponse ParseResponse(string response)
+        private async Task<TResponse> ParseResponse(HttpResponseMessage response)
         {
-            var deserializeObject = JsonConvert.DeserializeObject<TResponse>(response);
-            var deserializeObject1 = JsonConvert.DeserializeObject<object>(response);
-            return (TResponse)deserializeObject;
+            var content = await response.Content.ReadAsStringAsync();
+            if (response.StatusCode == HttpStatusCode.NotFound)
+            {
+                var error = JsonConvert.DeserializeObject<JError>(content);
+                throw new Exception(error.Detail);
+            }
+
+            var deserializeObject = JsonConvert.DeserializeObject<TResponse>(content);
+            var deserializeObject1 = JsonConvert.DeserializeObject<object>(content);
+            return (TResponse) deserializeObject;
         }
 
         /// <exception cref="WebException">An error occurred while downloading the resource. </exception>
-        private static async Task<string> HttpGetAsync(string uri)
+        private static async Task<HttpResponseMessage> HttpGetAsync(string uri)
         {
             const string botUserAgent = "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)";
             var handler = new HttpClientHandler
@@ -45,8 +53,8 @@ namespace KudaGo.Core
             using (var client = new HttpClient(handler))
             {
                 client.DefaultRequestHeaders.Add("User-Agent", botUserAgent);
-                var response = await client.GetAsync(uri);
-                return await response.Content.ReadAsStringAsync();
+                return await client.GetAsync(uri);
+                //return await response.Content.ReadAsStringAsync();
             }
         }
     }

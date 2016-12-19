@@ -151,5 +151,15 @@ namespace UnitTestProject1
             var first = res.Results.First();
             Assert.IsNotNull(first);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(Exception), "Не найдено")]
+        public async Task should_throw_exception()
+        {
+            var detailsRequest = new EventDetailsRequest();
+            detailsRequest.Lang = "ru";
+            detailsRequest.EventId = 10000000000000000;
+            var actual = await detailsRequest.ExecuteAsync();
+        }
     }
 }
