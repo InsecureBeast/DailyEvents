@@ -161,5 +161,24 @@ namespace UnitTestProject1
             detailsRequest.EventId = 10000000000000000;
             var actual = await detailsRequest.ExecuteAsync();
         }
+
+        [TestMethod]
+        public async Task should_get_event_kids()
+        {
+            var request = new EventListRequest();
+            request.Lang = "ru";
+            request.Categories = "kids";
+            request.Location = Location.Spb;
+
+            //then
+            var res = await request.ExecuteAsync();
+            var first = res.Results.First();
+
+            var detailsRequest = new EventCommentsRequest();
+            detailsRequest.EventId = first.Id;
+            var actual = await detailsRequest.ExecuteAsync();
+
+            Assert.IsNotNull(actual);
+        }
     }
 }

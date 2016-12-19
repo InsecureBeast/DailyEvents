@@ -36,11 +36,15 @@
   <ItemGroup>
     <Compile Include="ApiService.cs" />
     <Compile Include="BaseRequest.cs" />
+    <Compile Include="Categories\CategoriesResponse.cs" />
+    <Compile Include="Categories\EventCategoriesRequest.cs" />
+    <Compile Include="Categories\PlaceCategoriesRequest.cs" />
     <Compile Include="ClientServiceRequest.cs" />
     <Compile Include="Comments\ICommentsResponse.cs" />
     <Compile Include="Comments\CommentOrderBy.cs" />
     <Compile Include="Data\IResponse.cs" />
     <Compile Include="Data\JError.cs" />
+    <Compile Include="Data\JResponse\JCategoriesResponse.cs" />
     <Compile Include="Data\JResponse\JNewsDetailsResponse.cs" />
     <Compile Include="Data\JResponse\JNewsListResponse.cs" />
     <Compile Include="Data\JResponse\JPlaceDetailsResponse.cs" />

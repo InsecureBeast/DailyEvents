@@ -54,7 +54,6 @@ namespace KudaGo.Core
             {
                 client.DefaultRequestHeaders.Add("User-Agent", botUserAgent);
                 return await client.GetAsync(uri);
-                //return await response.Content.ReadAsStringAsync();
             }
         }
     }

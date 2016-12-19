@@ -47,6 +47,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="CategoriesRequestTests.cs" />
     <Compile Include="EventListRequestTests.cs" />
     <Compile Include="SelectionListRequestTests.cs" />
     <Compile Include="NewsListRequestTests.cs" />
