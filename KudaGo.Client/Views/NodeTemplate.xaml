@@ -1,0 +1,57 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:KudaGo.Client.Views">
+
+    <DataTemplate x:Key="ItemDataTemplate">
+        <Grid Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}"
+              Margin="0,7,0,7">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            
+            <Image Source="{Binding Image}"
+                   Name="Image"/>
+
+            <StackPanel Orientation="Vertical"
+                        Grid.Row="1"
+                        Padding="15,10,15,10">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <TextBlock Text="{Binding Title}"
+                               Style="{StaticResource SubtitleTextBlockStyle}"
+                               FontWeight="SemiBold"/>
+                    <TextBlock Text="{Binding Age}"
+                               Grid.Column="1"
+                               Margin="5,0,0,0"
+                               Style="{StaticResource SubtitleTextBlockStyle}"
+                               Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
+
+                </Grid>
+                <TextBlock Text="{Binding Description}" 
+                           MaxLines="4"
+                           TextTrimming="CharacterEllipsis"
+                           Style="{StaticResource BodyTextBlockStyle}"
+                           Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}" />
+                
+                <TextBlock Text="{Binding Dates}"
+                           Margin="{StaticResource DefultTextBlockMargin}"
+                           Style="{StaticResource BodyTextBlockStyle}"/>
+
+                <TextBlock Text="{Binding Times}"
+                           Style="{StaticResource BodyTextBlockStyle}"/>
+
+                <TextBlock Text="{Binding Place}"
+                           Margin="{StaticResource DefultTextBlockMargin}"
+                           Style="{StaticResource BodyTextBlockStyle}"/>
+            </StackPanel>
+        </Grid>
+    </DataTemplate>
+    
+</ResourceDictionary>

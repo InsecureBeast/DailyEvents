@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KudaGo.Tests", "KudaGo.Tests\KudaGo.Tests.csproj", "{3BE988F8-3182-460E-8D68-FECD5EDA99E4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KudaGo.Core", "KudaGo.Core\KudaGo.Core.csproj", "{2A26290D-D6A5-44FB-A829-45A6B8E5FA12}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KudaGo.Client.Test", "KudaGo.Client.Test\KudaGo.Client.Test.csproj", "{140A67C8-C1EE-4D37-A80D-0743858DB575}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KudaGo.Client", "KudaGo.Client\KudaGo.Client.csproj", "{614B7F53-AD2A-42FC-AA30-227EE33E5A5C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,26 @@ Global
 		{140A67C8-C1EE-4D37-A80D-0743858DB575}.Release|ARM.ActiveCfg = Release|Any CPU
 		{140A67C8-C1EE-4D37-A80D-0743858DB575}.Release|x64.ActiveCfg = Release|Any CPU
 		{140A67C8-C1EE-4D37-A80D-0743858DB575}.Release|x86.ActiveCfg = Release|Any CPU
+		{614B7F53-AD2A-42FC-AA30-227EE33E5A5C}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{614B7F53-AD2A-42FC-AA30-227EE33E5A5C}.Debug|ARM.ActiveCfg = Debug|ARM
+		{614B7F53-AD2A-42FC-AA30-227EE33E5A5C}.Debug|ARM.Build.0 = Debug|ARM
+		{614B7F53-AD2A-42FC-AA30-227EE33E5A5C}.Debug|ARM.Deploy.0 = Debug|ARM
+		{614B7F53-AD2A-42FC-AA30-227EE33E5A5C}.Debug|x64.ActiveCfg = Debug|x64
+		{614B7F53-AD2A-42FC-AA30-227EE33E5A5C}.Debug|x64.Build.0 = Debug|x64
+		{614B7F53-AD2A-42FC-AA30-227EE33E5A5C}.Debug|x64.Deploy.0 = Debug|x64
+		{614B7F53-AD2A-42FC-AA30-227EE33E5A5C}.Debug|x86.ActiveCfg = Debug|x86
+		{614B7F53-AD2A-42FC-AA30-227EE33E5A5C}.Debug|x86.Build.0 = Debug|x86
+		{614B7F53-AD2A-42FC-AA30-227EE33E5A5C}.Debug|x86.Deploy.0 = Debug|x86
+		{614B7F53-AD2A-42FC-AA30-227EE33E5A5C}.Release|Any CPU.ActiveCfg = Release|x86
+		{614B7F53-AD2A-42FC-AA30-227EE33E5A5C}.Release|ARM.ActiveCfg = Release|ARM
+		{614B7F53-AD2A-42FC-AA30-227EE33E5A5C}.Release|ARM.Build.0 = Release|ARM
+		{614B7F53-AD2A-42FC-AA30-227EE33E5A5C}.Release|ARM.Deploy.0 = Release|ARM
+		{614B7F53-AD2A-42FC-AA30-227EE33E5A5C}.Release|x64.ActiveCfg = Release|x64
+		{614B7F53-AD2A-42FC-AA30-227EE33E5A5C}.Release|x64.Build.0 = Release|x64
+		{614B7F53-AD2A-42FC-AA30-227EE33E5A5C}.Release|x64.Deploy.0 = Release|x64
+		{614B7F53-AD2A-42FC-AA30-227EE33E5A5C}.Release|x86.ActiveCfg = Release|x86
+		{614B7F53-AD2A-42FC-AA30-227EE33E5A5C}.Release|x86.Build.0 = Release|x86
+		{614B7F53-AD2A-42FC-AA30-227EE33E5A5C}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

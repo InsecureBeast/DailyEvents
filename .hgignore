@@ -8,3 +8,6 @@ KudaGo.Client.Test/bin/*
 KudaGo.Client.Test/obj/*
 KudaGo.Core/obj/*
 KudaGo.Core/bin/*
+KudaGo.Client/project.lock.json
+.vs/*
+KudaGo.Client/KudaGo.Client.csproj.user

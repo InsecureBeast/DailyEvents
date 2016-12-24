@@ -83,7 +83,7 @@ namespace KudaGo.Core.Events
             Location = new LocationImpl(jResult.Location);
             //Categories =
             Tagline = jResult.Tagline;
-            AgeRestriction = jResult.Age_Restriction;
+            AgeRestriction = jResult.Age_Restriction == "0" ? "0+" : jResult.Age_Restriction;
             Price = jResult.Price;
             IsFree = jResult.Is_Free;
             Images = jResult.Images.Select(i => new ImageImpl(i));
