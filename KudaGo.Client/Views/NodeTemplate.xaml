@@ -17,7 +17,7 @@
 
             <StackPanel Orientation="Vertical"
                         Grid.Row="1"
-                        Padding="15,10,15,10">
+                        Padding="15,10,15,15">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -39,17 +39,46 @@
                            TextTrimming="CharacterEllipsis"
                            Style="{StaticResource BodyTextBlockStyle}"
                            Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}" />
-                
-                <TextBlock Text="{Binding Dates}"
-                           Margin="{StaticResource DefultTextBlockMargin}"
-                           Style="{StaticResource BodyTextBlockStyle}"/>
 
-                <TextBlock Text="{Binding Times}"
-                           Style="{StaticResource BodyTextBlockStyle}"/>
+                <Grid Margin="{StaticResource DefultTextBlockMargin}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
 
-                <TextBlock Text="{Binding Place}"
-                           Margin="{StaticResource DefultTextBlockMargin}"
-                           Style="{StaticResource BodyTextBlockStyle}"/>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <ContentPresenter ContentTemplate="{StaticResource CalendarIcon}" 
+                                      Margin="0,0,10,0"/>
+                    
+                    <TextBlock Text="{Binding Dates}"
+                               Grid.Column="1"
+                               Grid.Row="0"
+                               Style="{StaticResource BodyTextBlockStyle}"/>
+
+                    <TextBlock Text="{Binding Times}"
+                               Grid.Column="1"
+                               Grid.Row="1"
+                               Style="{StaticResource BodyTextBlockStyle}"/>
+                </Grid>
+
+                <Grid Margin="-2,8,0,0"
+                      Visibility="{Binding Place, Converter={StaticResource StringToVisibilityConverter}}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    
+                    <ContentPresenter ContentTemplate="{StaticResource LocationIcon}" 
+                                      Margin="0,0,10,0"/>
+
+                    <TextBlock Text="{Binding Place}"
+                               Grid.Column="1"
+                               Style="{StaticResource BodyTextBlockStyle}"/>
+                </Grid>
             </StackPanel>
         </Grid>
     </DataTemplate>
