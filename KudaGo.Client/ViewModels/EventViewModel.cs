@@ -27,7 +27,7 @@ namespace KudaGo.Client.ViewModels
             if (result.Place != null)
                 Place = result.Place.Title;
 
-            var dates = result.Dates.FirstOrDefault();
+            var dates = result.Dates.LastOrDefault();
             if (dates == null)
                 return;
 
