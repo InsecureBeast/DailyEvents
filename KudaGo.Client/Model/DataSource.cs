@@ -18,6 +18,7 @@ namespace KudaGo.Client.Model
             request.Lang = "ru";
             request.TextFormat = TextFormatEnum.Plain;
             request.Next = next;
+            request.Categories = "-concert,-theater";
             request.Expand = string.Format("{0},{1}", EventListRequest.ExpandFields.IMAGES, EventListRequest.ExpandFields.PLACE);
 
             var fieldBuilder = new FieldsBuilder();
@@ -30,6 +31,7 @@ namespace KudaGo.Client.Model
                 .WithField(EventFields.PRICE)
                 .WithField(EventFields.TITLE)
                 .WithField(EventFields.DATES)
+                .WithField(EventFields.CATEGORIES)
                 .WithField(EventFields.AGE_RESTRICTION).Build();
             request.ActualSince = DateTime.Today;
             request.Location = Location.Spb;

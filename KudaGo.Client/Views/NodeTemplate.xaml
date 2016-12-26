@@ -8,13 +8,26 @@
               Margin="0,7,0,7">
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            
-            <Image Source="{Binding Image}"
-                   Name="Image"/>
 
+            <Grid>
+            <Image Source="{Binding Image}"
+                   Name="Image"
+                   Stretch="Fill"
+                   />
+                <Border Background="Black"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Margin="10"
+                        Padding="10,2,10,2"
+                        Opacity="0.7">
+                    <TextBlock Text="{Binding Categories}"
+                               Foreground="White"
+                               Opacity="1"/>
+                </Border>
+            </Grid>
             <StackPanel Orientation="Vertical"
                         Grid.Row="1"
                         Padding="15,10,15,15">

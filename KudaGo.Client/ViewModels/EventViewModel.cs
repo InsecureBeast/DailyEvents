@@ -27,6 +27,9 @@ namespace KudaGo.Client.ViewModels
             if (result.Place != null)
                 Place = result.Place.Title;
 
+            //TODO
+            Categories = result.Categories.FirstOrDefault();
+            
             var dates = result.Dates.LastOrDefault();
             if (dates == null)
                 return;
@@ -45,5 +48,6 @@ namespace KudaGo.Client.ViewModels
         public string Age { get; private set; }
         public string Dates { get; private set; }
         public string Times { get; private set; }
+        public string Categories { get; private set; }
     }
 }

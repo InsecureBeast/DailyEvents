@@ -24,7 +24,7 @@ namespace KudaGo.Core.Events
         string Description { get; } 
         string BodyText { get; }
         ILocation Location { get; } 
-        //string Categories { get; } 
+        IEnumerable<string> Categories { get; } 
         string Tagline { get; } 
         string AgeRestriction { get; } 
         string Price { get; } 
@@ -69,6 +69,7 @@ namespace KudaGo.Core.Events
                 Place = new Place(new JPlace());
                 Location = new LocationImpl(new JLocation());
                 Participants = new List<Participant>();
+                Categories = new string[0];
                 return;
             }
             Id = jResult.Id;
@@ -81,7 +82,7 @@ namespace KudaGo.Core.Events
             Description = jResult.Description;
             BodyText = jResult.Body_Text;
             Location = new LocationImpl(jResult.Location);
-            //Categories =
+            Categories = jResult.Categories;
             Tagline = jResult.Tagline;
             AgeRestriction = jResult.Age_Restriction == "0" ? "0+" : jResult.Age_Restriction;
             Price = jResult.Price;
@@ -102,7 +103,7 @@ namespace KudaGo.Core.Events
         public string Description { get; private set; }
         public string BodyText { get; private set; }
         public ILocation Location { get; private set; }
-        //public string Categories { get; private set; }
+        public IEnumerable<string> Categories { get; private set; }
         public string Tagline { get; private set; }
         public string AgeRestriction { get; private set; }
         public string Price { get; private set; }

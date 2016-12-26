@@ -12,6 +12,7 @@ namespace KudaGo.Core.Data.JResponse
             Place = new JPlace();
             Location = new JLocation();
             Participants = new List<JParticipant>();
+            Categories = new string[0];
         }
 
         public long Id { get; set; }
@@ -24,7 +25,7 @@ namespace KudaGo.Core.Data.JResponse
         public string Description { get; set; }
         public string Body_Text { get; set; }
         public JLocation Location { get; set; }
-        //public string Categories { get; set; }
+        public IEnumerable<string> Categories { get; set; }
         public string Tagline { get; set; }
         public string Age_Restriction { get; set; }
         public string Price { get; set; }
