@@ -5,18 +5,18 @@
 
     <DataTemplate x:Key="ItemDataTemplate">
         <Grid Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}"
-              Margin="0,7,0,7">
+              Margin="7,7,7,7"
+              >
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
             <Grid>
             <Image Source="{Binding Image}"
                    Name="Image"
-                   Stretch="Fill"
-                   />
+                   Stretch="UniformToFill"/>
                 <Border Background="Black"
                         VerticalAlignment="Top"
                         HorizontalAlignment="Left"
@@ -39,6 +39,7 @@
                     
                     <TextBlock Text="{Binding Title}"
                                Style="{StaticResource SubtitleTextBlockStyle}"
+                               MaxLines="4"
                                FontWeight="SemiBold"/>
                     <TextBlock Text="{Binding Age}"
                                Grid.Column="1"
@@ -70,11 +71,13 @@
                     <TextBlock Text="{Binding Dates}"
                                Grid.Column="1"
                                Grid.Row="0"
+                               MaxLines="2"
                                Style="{StaticResource BodyTextBlockStyle}"/>
 
                     <TextBlock Text="{Binding Times}"
                                Grid.Column="1"
                                Grid.Row="1"
+                               MaxLines="1"
                                Style="{StaticResource BodyTextBlockStyle}"/>
                 </Grid>
 
@@ -90,6 +93,7 @@
 
                     <TextBlock Text="{Binding Place}"
                                Grid.Column="1"
+                               MaxLines="4"
                                Style="{StaticResource BodyTextBlockStyle}"/>
                 </Grid>
             </StackPanel>

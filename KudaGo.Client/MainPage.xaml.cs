@@ -27,5 +27,17 @@ namespace KudaGo.Client
         {
             this.InitializeComponent();
         }
+
+        private void HamburgerButton_Click(object sender, RoutedEventArgs e)
+        {
+            MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
+        }
+
+        private void GridView_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            var columns = Math.Truncate(e.NewSize.Width / 300);
+            var width = Math.Truncate(e.NewSize.Width / columns);
+            ((ItemsWrapGrid)gridView.ItemsPanelRoot).ItemWidth = width - 1;
+        }
     }
 }

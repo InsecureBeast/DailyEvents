@@ -11,10 +11,11 @@ using KudaGo.Core.Events;
 
 namespace KudaGo.Client.ViewModels
 {
-    internal class MainPageViewModel
+    internal class MainPageViewModel : PropertyChangedBase
     {
         private readonly IncrementalObservableCollection<EventViewModel> _items;
         private readonly DataSource _dataSource;
+        private bool _isBusy;
 
         public MainPageViewModel()
         {
@@ -28,11 +29,19 @@ namespace KudaGo.Client.ViewModels
             get { return _items; }
         }
 
+        public bool IsBusy
+        {
+            get { return _isBusy; }
+            set
+            {
+                _isBusy = value;
+                NotifyOfPropertyChanged(() => IsBusy);
+            }
+        }
+
         private async Task Load()
         {
             await _items.LoadMoreItemsAsync(0);
-            //var res = await _dataSource.GetEvents(string.Empty);
-            //AddData(res);
         }
 
         private void AddData(IResponse response)
@@ -45,10 +54,12 @@ namespace KudaGo.Client.ViewModels
             {
                 Items.Add(new EventViewModel(result));
             }
+            IsBusy = false;
         }
 
         private async Task<IResponse> GetData(string next)
         {
+            IsBusy = true;
             return await _dataSource.GetEvents(next);
         }
     }

@@ -28,6 +28,7 @@
 
 
             <converters:StringToVisibilityConverter x:Key="StringToVisibilityConverter"/>
+            <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
 
 
         </ResourceDictionary>
