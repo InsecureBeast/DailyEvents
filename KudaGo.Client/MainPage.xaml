@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:KudaGo.Client"
     xmlns:vm="using:KudaGo.Client.ViewModels"
+    xmlns:views="using:KudaGo.Client.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -16,63 +17,34 @@
         
     </Page.Resources>
 
-    <SplitView x:Name="MySplitView" 
-               DisplayMode="CompactInline"  
-               IsPaneOpen="False" 
-               CompactPaneLength="50" 
-               OpenPaneLength="150">
-        <SplitView.Pane>
-            <StackPanel Background="Gray">
-                <Button x:Name="HamburgerButton" 
-                        FontFamily="Segoe MDL2 Assets" 
-                        Content="&#xE700;"
-                        Width="50" 
-                        Height="50" 
-                        Background="Transparent" 
-                        Click="HamburgerButton_Click"/>
-                
-                <StackPanel Orientation="Horizontal">
-                    <Button x:Name="MenuButton1" 
-                            FontFamily="Segoe MDL2 Assets" 
-                            Content="&#xE825;"
-                            Width="50" 
-                            Height="50" 
-                            Background="Transparent"/>
-                    <TextBlock Text="Button 1" 
-                               FontSize="18" 
-                               VerticalAlignment="Center" />
-                </StackPanel>
-                
-            </StackPanel>
-        </SplitView.Pane>
-        
-        <SplitView.Content>
-        
-            <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-                 <GridView ItemsSource="{Binding Items}" 
-                          ItemTemplate="{StaticResource ItemDataTemplate}"
-                           SizeChanged="GridView_SizeChanged"
-                           x:Name="gridView">
-                    <GridView.ItemContainerStyle>
-                        <Style TargetType="GridViewItem">
-                            <Setter Property="VerticalContentAlignment" Value="Stretch" />
-                        </Style>
-                    </GridView.ItemContainerStyle>
-                    <GridView.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <ItemsWrapGrid Orientation="Horizontal" />
-                        </ItemsPanelTemplate>
-                    </GridView.ItemsPanel>
-                </GridView>
+    <Grid>
+        <views:NavigationControl>
+            <views:NavigationControl.ViewContent>
+                <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+                    <GridView ItemsSource="{Binding Items}" 
+                              ItemTemplate="{StaticResource ItemDataTemplate}"
+                              SizeChanged="GridView_SizeChanged"
+                              x:Name="gridView">
+                        <GridView.ItemContainerStyle>
+                            <Style TargetType="GridViewItem">
+                                <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                            </Style>
+                        </GridView.ItemContainerStyle>
+                        <GridView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <ItemsWrapGrid Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </GridView.ItemsPanel>
+                    </GridView>
 
-                <ProgressRing IsActive="True" 
-                              Width="50"
-                              Height="50"
-                              Foreground="{StaticResource InkToolbarAccentColorThemeBrush}"
-                              Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                    <ProgressRing IsActive="True" 
+                                  Width="50"
+                                  Height="50"
+                                  Foreground="{StaticResource InkToolbarAccentColorThemeBrush}"
+                                  Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
-            </Grid>
-            
-        </SplitView.Content>
-    </SplitView>
+                </Grid>
+            </views:NavigationControl.ViewContent>
+        </views:NavigationControl>
+    </Grid>
 </Page>

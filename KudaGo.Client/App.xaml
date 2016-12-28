@@ -15,12 +15,14 @@
 
             <ResourceDictionary.ThemeDictionaries>
                 <ResourceDictionary x:Key="Light">
-                    <SolidColorBrush x:Key="ApplicationPageBackgroundThemeBrush" Color="#FFEEEEEE" />
+                    <SolidColorBrush x:Key="ApplicationPageBackgroundThemeBrush" Color="#FFE6E6E6" />
                     <SolidColorBrush x:Key="ApplicationPageBackgroundSecondThemeBrush" Color="#FFFFFFFF" />
+                    <SolidColorBrush x:Key="NavigationBackgroundThemeBrush" Color="#FFF2F2F2" />
                 </ResourceDictionary>
                 <ResourceDictionary x:Key="HighContrast">
                     <SolidColorBrush x:Key="ApplicationPageBackgroundThemeBrush" Color="#FF000000" />
                     <SolidColorBrush x:Key="ApplicationPageBackgroundSecondThemeBrush" Color="#FF303030" />
+                    <SolidColorBrush x:Key="NavigationBackgroundThemeBrush" Color="#FF1F1F1F" />
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
 
