@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:KudaGo.Client.Views">
 
-    <DataTemplate x:Key="ItemDataTemplate">
+    <DataTemplate x:Key="EventItemDataTemplate">
         <Grid Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}"
               Margin="7,7,7,7">
 
@@ -100,5 +100,60 @@
             </StackPanel>
         </Grid>
     </DataTemplate>
-    
+
+    <DataTemplate x:Key="NewsItemDataTemplate">
+        <Grid Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}"
+              Margin="7,7,7,7">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Image Source="{Binding Image}"
+                   Name="Image"
+                   Stretch="UniformToFill"/>
+            
+            <StackPanel Orientation="Vertical"
+                        Grid.Row="1"
+                        Padding="15,10,15,15">
+
+                <TextBlock Text="{Binding Title}"
+                            Style="{StaticResource SubtitleTextBlockStyle}"
+                            MaxLines="3"
+                            TextTrimming="CharacterEllipsis"
+                            FontWeight="SemiBold"/>
+
+                <TextBlock Text="{Binding Description}" 
+                           MaxLines="3"
+                           TextTrimming="CharacterEllipsis"
+                           Style="{StaticResource BodyTextBlockStyle}"
+                           Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}" />
+
+                <TextBlock Text="{Binding Date}"
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            MaxLines="1"
+                            Style="{StaticResource BodyTextBlockStyle}"/>
+
+                <Grid Margin="-2,8,0,0"
+                      Visibility="{Binding Place, Converter={StaticResource StringToVisibilityConverter}}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <ContentPresenter ContentTemplate="{StaticResource LocationIcon}" 
+                                      Margin="0,0,10,0"/>
+
+                    <TextBlock Text="{Binding Place}"
+                               Grid.Column="1"
+                               MaxLines="2"
+                               TextTrimming="CharacterEllipsis"
+                               Style="{StaticResource BodyTextBlockStyle}"/>
+                </Grid>
+            </StackPanel>
+        </Grid>
+    </DataTemplate>
+
 </ResourceDictionary>

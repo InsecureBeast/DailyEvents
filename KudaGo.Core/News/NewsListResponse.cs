@@ -17,6 +17,7 @@ namespace KudaGo.Core.News
         long Id { get; }
         DateTime? PublicationDate { get; }
         string Title { get; }
+        string Description { get; }
         string Slug { get; }
         IPlace Place { get; }
         IEnumerable<IImage> Images { get;}
@@ -58,6 +59,7 @@ namespace KudaGo.Core.News
             Id = jNewsListResult.Id;
             PublicationDate = DateTimeHelper.GetDateTimeFromUnixTime(jNewsListResult.Publication_Date);
             Title = jNewsListResult.Title;
+            Description = jNewsListResult.Description;
             Slug = jNewsListResult.Slug;
             Place = new Place(jNewsListResult.Place);
             Images = jNewsListResult.Images != null
@@ -68,6 +70,7 @@ namespace KudaGo.Core.News
         public long Id { get; private set; }
         public DateTime? PublicationDate { get; private set; }
         public string Title { get; private set; }
+        public string Description { get; private set; }
         public string Slug { get; private set; }
         public IPlace Place { get; private set; }
         public IEnumerable<IImage> Images { get; private set; }

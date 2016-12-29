@@ -10,7 +10,7 @@
     d:DesignWidth="400">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <GridView ItemTemplate="{StaticResource ItemDataTemplate}"
+        <GridView ItemTemplate="{StaticResource EventItemDataTemplate}"
                   SizeChanged="GridView_SizeChanged"
                   x:Name="gridView">
             <GridView.ItemContainerStyle>

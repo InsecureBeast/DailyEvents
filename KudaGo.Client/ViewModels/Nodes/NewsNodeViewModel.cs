@@ -16,7 +16,7 @@ namespace KudaGo.Client.ViewModels.Nodes
                 Image = image.Thumbnail.Normal;
 
             Title = result.Title.GetNormalString();
-            //Description = result.Description;
+            Description = result.Description;
 
             if (result.Place != null)
                 Place = result.Place.Title.GetNormalString();

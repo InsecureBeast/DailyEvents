@@ -22,6 +22,10 @@ namespace KudaGo.Client.Views
         public static readonly DependencyProperty ItemsProperty =
             DependencyProperty.Register("Items", typeof(object), typeof(GridViewControl), new PropertyMetadata(null));
 
+        public static readonly DependencyProperty ItemsDataTemplateProperty =
+            DependencyProperty.Register("ItemsDataTemplate", typeof(DataTemplate), typeof(GridViewControl), new PropertyMetadata(null));
+
+
         public GridViewControl()
         {
             this.InitializeComponent();
@@ -31,12 +35,19 @@ namespace KudaGo.Client.Views
         private void GridViewControl_Loaded(object sender, RoutedEventArgs e)
         {
             gridView.SetBinding(GridView.ItemsSourceProperty, new Binding() { Path = new PropertyPath("Items"), Source = this });
+            gridView.ItemTemplate = ItemsDataTemplate;
         }
 
         public object Items
         {
             get { return GetValue(ItemsProperty); }
             set { SetValue(ItemsProperty, value); }
+        }
+
+        public DataTemplate ItemsDataTemplate
+        {
+            get { return (DataTemplate)GetValue(ItemsDataTemplateProperty); }
+            set { SetValue(ItemsDataTemplateProperty, value); }
         }
 
         private void GridView_SizeChanged(object sender, SizeChangedEventArgs e)

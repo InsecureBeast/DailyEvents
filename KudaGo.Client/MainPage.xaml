@@ -24,12 +24,14 @@
                 <Pivot>
                     <PivotItem Header="Events" x:Uid="eventsItem">
                         <views:GridViewControl Items="{Binding Items}"
-                                               DataContext="{Binding EventsViewModel}"/>
+                                               DataContext="{Binding EventsViewModel}"
+                                               ItemsDataTemplate="{StaticResource EventItemDataTemplate}"/>
                     </PivotItem>
 
                     <PivotItem Header="News" x:Uid="newsItem">
                         <views:GridViewControl Items="{Binding Items}"
-                                               DataContext="{Binding NewsViewModel}"/>
+                                               DataContext="{Binding NewsViewModel}"
+                                               ItemsDataTemplate="{StaticResource NewsItemDataTemplate}"/>
                     </PivotItem>
 
                 </Pivot>

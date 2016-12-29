@@ -24,6 +24,7 @@ namespace KudaGo.Core.Data.JResponse
         public long Id { get; set; }
         public long Publication_Date { get; set; }
         public string Title { get; set; }
+        public string Description { get; set; }
         public string Slug { get; set; }
         public JPlace Place { get; set; }
         public IEnumerable<JImage> Images { get; set; }
