@@ -23,6 +23,10 @@ namespace KudaGo.Client.Views
         public static readonly DependencyProperty ViewContentProperty = 
             DependencyProperty.Register("ViewContent", typeof(object), typeof(NavigationControl), new PropertyMetadata(null));
 
+        public static readonly DependencyProperty TitleProperty =
+            DependencyProperty.Register("Title", typeof(string), typeof(NavigationControl), new PropertyMetadata(null));
+
+
         public NavigationControl()
         {
             InitializeComponent();
@@ -36,12 +40,19 @@ namespace KudaGo.Client.Views
         private void NavigationControl_Loaded(object sender, RoutedEventArgs e)
         {
             contentPresenter.SetBinding(ContentPresenter.ContentProperty, new Binding() { Path = new PropertyPath("ViewContent"), Source = this });
+            title.Text = Title;
         }
 
         public object ViewContent
         {
             get { return GetValue(ViewContentProperty); }
             set { SetValue(ViewContentProperty, value); }
+        }
+
+        public string Title
+        {
+            get { return (string)GetValue(TitleProperty); }
+            set { SetValue(TitleProperty, value); }
         }
 
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)

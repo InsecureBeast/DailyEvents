@@ -5,8 +5,7 @@
 
     <DataTemplate x:Key="ItemDataTemplate">
         <Grid Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}"
-              Margin="7,7,7,7"
-              >
+              Margin="7,7,7,7">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -39,7 +38,8 @@
                     
                     <TextBlock Text="{Binding Title}"
                                Style="{StaticResource SubtitleTextBlockStyle}"
-                               MaxLines="4"
+                               MaxLines="3"
+                               TextTrimming="CharacterEllipsis"
                                FontWeight="SemiBold"/>
                     <TextBlock Text="{Binding Age}"
                                Grid.Column="1"
@@ -49,7 +49,7 @@
 
                 </Grid>
                 <TextBlock Text="{Binding Description}" 
-                           MaxLines="4"
+                           MaxLines="3"
                            TextTrimming="CharacterEllipsis"
                            Style="{StaticResource BodyTextBlockStyle}"
                            Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}" />
@@ -93,7 +93,8 @@
 
                     <TextBlock Text="{Binding Place}"
                                Grid.Column="1"
-                               MaxLines="4"
+                               MaxLines="2"
+                               TextTrimming="CharacterEllipsis"
                                Style="{StaticResource BodyTextBlockStyle}"/>
                 </Grid>
             </StackPanel>

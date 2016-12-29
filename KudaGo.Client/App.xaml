@@ -26,6 +26,8 @@
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
 
+            <SolidColorBrush x:Key="ApplicationAccentBrush" Color="#FFD13438" />
+            
             <Thickness x:Key="DefultTextBlockMargin">0,8,0,0</Thickness>
 
 

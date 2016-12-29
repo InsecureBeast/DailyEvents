@@ -18,12 +18,14 @@
     </Page.Resources>
 
     <Grid>
-        <views:NavigationControl>
+        <views:NavigationControl Title="Today" 
+                                 x:Uid="mainNavControl">
             <views:NavigationControl.ViewContent>
                 <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
                     <GridView ItemsSource="{Binding Items}" 
                               ItemTemplate="{StaticResource ItemDataTemplate}"
                               SizeChanged="GridView_SizeChanged"
+                              ItemClick="gridView_ItemClick" IsActiveView="False"
                               x:Name="gridView">
                         <GridView.ItemContainerStyle>
                             <Style TargetType="GridViewItem">
