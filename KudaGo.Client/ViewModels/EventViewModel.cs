@@ -20,12 +20,12 @@ namespace KudaGo.Client.ViewModels
             if (image != null)
                 Image = image.Thumbnail.Normal;
 
-            Title = result.Title;
+            Title = GetNormalString(result.Title);
             Description = result.Description;
             Age = result.AgeRestriction;
 
             if (result.Place != null)
-                Place = result.Place.Title;
+                Place = GetNormalString(result.Place.Title);
 
             //TODO
             Categories = result.Categories.FirstOrDefault();
@@ -36,9 +36,33 @@ namespace KudaGo.Client.ViewModels
 
             if (dates.Start.HasValue && dates.End.HasValue)
             {
-                Dates = string.Format("{0} - {1}", dates.Start.Value.ToString("D"), dates.End.Value.ToString("D"));
-                Times = string.Format("{0} - {1}", dates.Start.Value.ToString("t"), dates.End.Value.ToString("t"));
+                var start = dates.Start.Value;
+                var end = dates.End.Value;
+                var datesStr = string.Format("{0} - {1}", start.ToString("D"), end.ToString("D"));
+                var times = string.Format("{0} - {1}", start.ToString("t"), end.ToString("t"));
+                if (start == end)
+                {
+                    datesStr = start.ToString("D");
+                    times = start.ToString("t");
+                }
+                Dates = datesStr;
+                Times = times;
             }
+        }
+
+        private string GetNormalString(string title)
+        {
+            if (string.IsNullOrEmpty(title))
+                return title;
+
+            var normalTitle = title.ToCharArray();
+            if (Char.IsLower(title[0]))
+            {
+                normalTitle[0] = Char.ToUpper(title[0]);
+                return new string(normalTitle);
+            }
+
+            return title;
         }
 
         public string Image { get; private set; }
