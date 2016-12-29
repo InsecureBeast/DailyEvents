@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace KudaGo.Client.Extensions
+{
+    static class StringExtensions
+    {
+        public static string GetNormalString(this string @string)
+        {
+            if (string.IsNullOrEmpty(@string))
+                return @string;
+
+            var normalTitle = @string.ToCharArray();
+            if (Char.IsLower(@string[0]))
+            {
+                normalTitle[0] = Char.ToUpper(@string[0]);
+                return new string(normalTitle);
+            }
+
+            return @string;
+        }
+    }
+}

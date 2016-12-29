@@ -1,4 +1,5 @@
-﻿using KudaGo.Core.Data;
+﻿using KudaGo.Client.Extensions;
+using KudaGo.Core.Data;
 using KudaGo.Core.Events;
 using System;
 using System.Collections.Generic;
@@ -7,9 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KudaGo.Client.ViewModels
+namespace KudaGo.Client.ViewModels.Nodes
 {
-    class EventViewModel
+    class EventViewModel : NodeViewModel
     {
         public EventViewModel(IEventListResult result)
         {
@@ -20,12 +21,12 @@ namespace KudaGo.Client.ViewModels
             if (image != null)
                 Image = image.Thumbnail.Normal;
 
-            Title = GetNormalString(result.Title);
+            Title = result.Title.GetNormalString();
             Description = result.Description;
             Age = result.AgeRestriction;
 
             if (result.Place != null)
-                Place = GetNormalString(result.Place.Title);
+                Place = result.Place.Title.GetNormalString();
 
             //TODO
             Categories = result.Categories.FirstOrDefault();
@@ -50,23 +51,8 @@ namespace KudaGo.Client.ViewModels
             }
         }
 
-        private string GetNormalString(string title)
-        {
-            if (string.IsNullOrEmpty(title))
-                return title;
-
-            var normalTitle = title.ToCharArray();
-            if (Char.IsLower(title[0]))
-            {
-                normalTitle[0] = Char.ToUpper(title[0]);
-                return new string(normalTitle);
-            }
-
-            return title;
-        }
-
         public string Image { get; private set; }
-        public string Title { get; private set; }
+        public override string Title { get; protected set; }
         public string Description { get; private set; }
         public string Place { get; private set; }
         public string Age { get; private set; }

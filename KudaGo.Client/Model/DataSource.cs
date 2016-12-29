@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using KudaGo.Core.Data;
+using KudaGo.Core.News;
 
 namespace KudaGo.Client.Model
 {
@@ -34,6 +35,27 @@ namespace KudaGo.Client.Model
                 .WithField(EventFields.CATEGORIES)
                 .WithField(EventFields.AGE_RESTRICTION).Build();
             request.ActualSince = DateTime.Today;
+            request.Location = Location.Spb;
+
+            var res = await request.ExecuteAsync();
+            return res;
+        }
+
+        public async Task<INewsListResponse> GetNews(string next)
+        {
+            var request = new NewsListRequest();
+            request.Lang = "ru";
+            request.TextFormat = TextFormatEnum.Plain;
+            request.Next = next;
+            request.Expand = string.Format("{0},{1}", NewsListRequest.ExpandNames.IMAGES, EventListRequest.ExpandFields.PLACE);
+
+            var fieldBuilder = new FieldsBuilder();
+            request.Fields = fieldBuilder
+                .WithField(NewsListRequest.FieldNames.DESCRIPTION)
+                .WithField(NewsListRequest.FieldNames.ID)
+                .WithField(NewsListRequest.FieldNames.IMAGES)
+                .WithField(NewsListRequest.FieldNames.PLACE)
+                .WithField(NewsListRequest.FieldNames.TITLE).Build();
             request.Location = Location.Spb;
 
             var res = await request.ExecuteAsync();

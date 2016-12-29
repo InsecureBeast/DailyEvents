@@ -15,7 +15,7 @@ namespace KudaGo.Core.News
     public interface INewsListResult
     {
         long Id { get; }
-        long PublicationDate { get; }
+        DateTime? PublicationDate { get; }
         string Title { get; }
         string Slug { get; }
         IPlace Place { get; }
@@ -56,7 +56,7 @@ namespace KudaGo.Core.News
             }
 
             Id = jNewsListResult.Id;
-            PublicationDate = jNewsListResult.Publication_Date;
+            PublicationDate = DateTimeHelper.GetDateTimeFromUnixTime(jNewsListResult.Publication_Date);
             Title = jNewsListResult.Title;
             Slug = jNewsListResult.Slug;
             Place = new Place(jNewsListResult.Place);
@@ -66,7 +66,7 @@ namespace KudaGo.Core.News
         }
 
         public long Id { get; private set; }
-        public long PublicationDate { get; private set; }
+        public DateTime? PublicationDate { get; private set; }
         public string Title { get; private set; }
         public string Slug { get; private set; }
         public IPlace Place { get; private set; }

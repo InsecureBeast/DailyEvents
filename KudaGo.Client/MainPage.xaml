@@ -23,11 +23,13 @@
             <views:NavigationControl.ViewContent>
                 <Pivot>
                     <PivotItem Header="Events" x:Uid="eventsItem">
-                        <views:GridViewControl Items="{Binding Items}"/>
+                        <views:GridViewControl Items="{Binding Items}"
+                                               DataContext="{Binding EventsViewModel}"/>
                     </PivotItem>
 
-                    <PivotItem Header="Sets" x:Uid="setsItem">
-                        <views:GridViewControl Items="{Binding Items}"/>
+                    <PivotItem Header="News" x:Uid="newsItem">
+                        <views:GridViewControl Items="{Binding Items}"
+                                               DataContext="{Binding NewsViewModel}"/>
                     </PivotItem>
 
                 </Pivot>
