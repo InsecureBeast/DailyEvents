@@ -21,7 +21,8 @@
         <views:NavigationControl Title="Today" 
                                  x:Uid="mainNavControl">
             <views:NavigationControl.ViewContent>
-                <Pivot>
+                <Pivot SelectionChanged="Pivot_SelectionChanged"
+                       x:Name="pivot">
                     <PivotItem Header="Events" x:Uid="eventsItem">
                         <views:GridViewControl Items="{Binding Items}"
                                                DataContext="{Binding EventsViewModel}"

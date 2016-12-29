@@ -18,10 +18,8 @@ namespace KudaGo.Client.ViewModels
         public MainPageViewModel()
         {
             _dataSource = new DataSource();
-
             _newsViewModel = new NewsViewModel(_dataSource);
             _eventsViewModel = new EventsViewModel(_dataSource);
-            Load();
         }
 
         public NewsViewModel NewsViewModel
@@ -32,12 +30,6 @@ namespace KudaGo.Client.ViewModels
         public EventsViewModel EventsViewModel
         {
             get { return _eventsViewModel; }
-        }
-
-        private async Task Load()
-        {
-            await _eventsViewModel.Load();
-            await _newsViewModel.Load();
         }
     }
 }

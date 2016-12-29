@@ -61,5 +61,25 @@ namespace KudaGo.Client
                 }
             }
         }
+
+        private async void Pivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var viewModel = DataContext as MainPageViewModel;
+            if (viewModel == null)
+                return;
+            switch (pivot.SelectedIndex)
+            {
+                case 0:
+                    if (!viewModel.EventsViewModel.Items.Any())
+                        await viewModel.EventsViewModel.Load();
+                    break;
+                case 1:
+                    if (!viewModel.NewsViewModel.Items.Any())
+                        await viewModel.NewsViewModel.Load();
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }
