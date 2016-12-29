@@ -61,17 +61,5 @@ namespace KudaGo.Client
                 }
             }
         }
-
-        private void GridView_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            var columns = Math.Truncate(e.NewSize.Width / 300);
-            var width = Math.Truncate(e.NewSize.Width / columns);
-            ((ItemsWrapGrid)gridView.ItemsPanelRoot).ItemWidth = width - 1;
-        }
-
-        private void gridView_ItemClick(object sender, ItemClickEventArgs e)
-        {
-
-        }
     }
 }
