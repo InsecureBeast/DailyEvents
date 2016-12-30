@@ -11,6 +11,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Views\NodeTemplate.xaml" />
                 <ResourceDictionary Source="Views\Icons.xaml" />
+                <ResourceDictionary Source="Themes\GridView.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <ResourceDictionary.ThemeDictionaries>
@@ -30,7 +31,9 @@
             
             <Thickness x:Key="DefultTextBlockMargin">0,8,0,0</Thickness>
             <Thickness x:Key="PivotItemMargin">0,0,0,0</Thickness>
-
+            
+            <x:Double x:Key="GridViewItemSelectedBorderThemeThickness">1</x:Double>
+            <Thickness x:Key="GridViewItemCompactSelectedBorderThemeThickness">1</Thickness>
 
             <converters:StringToVisibilityConverter x:Key="StringToVisibilityConverter"/>
             <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
