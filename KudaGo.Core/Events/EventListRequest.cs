@@ -29,13 +29,6 @@ namespace KudaGo.Core.Events
         public const string PARTICIPANTS = "participants";//  - агенты события
     }
 
-    public enum TextFormatEnum
-    {
-        Html,// - текст с тэгами
-        Plain, // - текст без тегов, ссылки <a href=a_href>a_title</a> преобразуются в вид: a_title a_href
-        Text// - текст без тегов, от ссылок остается только название
-    }
-
     public class EventListRequest : BaseRequest<IEventListResponse>
     {
         public string Fields { get; set; }

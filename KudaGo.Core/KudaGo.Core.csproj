@@ -42,9 +42,11 @@
     <Compile Include="ClientServiceRequest.cs" />
     <Compile Include="Comments\ICommentsResponse.cs" />
     <Compile Include="Comments\CommentOrderBy.cs" />
+    <Compile Include="Data\IPoster.cs" />
     <Compile Include="Data\IResponse.cs" />
     <Compile Include="Data\JError.cs" />
     <Compile Include="Data\JResponse\JCategoriesResponse.cs" />
+    <Compile Include="Data\JResponse\JMovieListResponse.cs" />
     <Compile Include="Data\JResponse\JNewsDetailsResponse.cs" />
     <Compile Include="Data\JResponse\JNewsListResponse.cs" />
     <Compile Include="Data\JResponse\JPlaceDetailsResponse.cs" />
@@ -81,6 +83,8 @@
     <Compile Include="Events\EventsOfTheDayResponse.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="FieldsBuilder.cs" />
+    <Compile Include="Movies\MovieListResponce.cs" />
+    <Compile Include="Movies\MovieListRequest.cs" />
     <Compile Include="Selections\SelectionCommentsRequest.cs" />
     <Compile Include="Selections\SelectionDetailsRequest.cs" />
     <Compile Include="Selections\SelectionDetailsResponse.cs" />
@@ -99,6 +103,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Search\SearchRequest.cs" />
     <Compile Include="Search\SearchResponse.cs" />
+    <Compile Include="TextFormatEnum.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
