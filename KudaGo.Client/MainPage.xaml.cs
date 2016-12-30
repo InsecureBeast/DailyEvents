@@ -81,6 +81,10 @@ namespace KudaGo.Client
                     if (!viewModel.SelectionsViewModel.Items.Any())
                         await viewModel.SelectionsViewModel.Load();
                     break;
+                case 3:
+                    if (!viewModel.MoviesViewModel.Items.Any())
+                        await viewModel.MoviesViewModel.Load();
+                    break;
                 default:
                     break;
             }

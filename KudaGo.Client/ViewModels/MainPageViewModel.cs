@@ -14,6 +14,7 @@ namespace KudaGo.Client.ViewModels
         private readonly NewsViewModel _newsViewModel;
         private readonly EventsViewModel _eventsViewModel;
         private readonly SelectionsViewModel _selectionsViewModel;
+        private readonly MoviesViewModel _moviesViewModel;
 
         public MainPageViewModel()
         {
@@ -21,6 +22,7 @@ namespace KudaGo.Client.ViewModels
             _newsViewModel = new NewsViewModel(dataSource);
             _eventsViewModel = new EventsViewModel(dataSource);
             _selectionsViewModel = new SelectionsViewModel(dataSource);
+            _moviesViewModel = new MoviesViewModel(dataSource);
         }
 
         public NewsViewModel NewsViewModel
@@ -36,6 +38,11 @@ namespace KudaGo.Client.ViewModels
         public SelectionsViewModel SelectionsViewModel
         {
             get { return _selectionsViewModel; }
+        }
+
+        public MoviesViewModel MoviesViewModel
+        {
+            get { return _moviesViewModel; }
         }
     }
 }

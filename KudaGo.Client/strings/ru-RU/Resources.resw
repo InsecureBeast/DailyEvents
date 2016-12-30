@@ -132,4 +132,10 @@
   <data name="selectionsItem.Header" xml:space="preserve">
     <value>Подборки</value>
   </data>
+  <data name="MinutesStringFormat" xml:space="preserve">
+    <value>{0} минут</value>
+  </data>
+  <data name="moviesItem.Header" xml:space="preserve">
+    <value>Кино</value>
+  </data>
 </root>

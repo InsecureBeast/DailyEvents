@@ -54,7 +54,6 @@ namespace KudaGo.Client.Controls
 
             Busy = true;
             var result = await _getData(_next);
-            _hasMoreItems = !string.IsNullOrEmpty(result.Next);
 
             if (_hasMoreItems)
             {
@@ -65,10 +64,11 @@ namespace KudaGo.Client.Controls
                 {
                     _addData(result);
                 });
+                _hasMoreItems = !string.IsNullOrEmpty(result.Next);
             }
             Busy = false;
 
-            return new LoadMoreItemsResult { Count = (uint)this._count }; ;
+            return new LoadMoreItemsResult { Count = (uint)_count }; ;
         }
     }
 }

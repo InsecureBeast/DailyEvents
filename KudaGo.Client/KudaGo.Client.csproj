@@ -109,6 +109,8 @@
     <Compile Include="Model\DataSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\EventsViewModel.cs" />
+    <Compile Include="ViewModels\MoviesViewModel.cs" />
+    <Compile Include="ViewModels\Nodes\MovieNodeViewModel.cs" />
     <Compile Include="ViewModels\Nodes\NewsNodeViewModel.cs" />
     <Compile Include="ViewModels\Nodes\EventViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />

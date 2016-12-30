@@ -179,5 +179,57 @@
 
         </Grid>
     </DataTemplate>
-    
+
+    <DataTemplate x:Key="MovieItemDataTemplate">
+        <Grid Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}"
+              Margin="7,7,7,7">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Image Source="{Binding Poster}"
+                   Name="Image"
+                   Stretch="UniformToFill"/>
+
+            <StackPanel Orientation="Vertical"
+                        Grid.Row="1"
+                        Padding="15,10,15,15">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="{Binding Title}"
+                               Style="{StaticResource SubtitleTextBlockStyle}"
+                               MaxLines="3"
+                               TextTrimming="CharacterEllipsis"
+                               FontWeight="SemiBold"/>
+                    <TextBlock Text="{Binding Age}"
+                               Grid.Column="1"
+                               Margin="5,0,0,0"
+                               Style="{StaticResource SubtitleTextBlockStyle}"
+                               Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
+
+                </Grid>
+
+                <StackPanel Orientation="Horizontal"
+                            Margin="{StaticResource DefultTextBlockMargin}">
+                    <TextBlock Text="{Binding Year}"
+                               Style="{StaticResource BodyTextBlockStyle}"/>
+                    <TextBlock Text="{Binding Country}"
+                               Margin="5,0,0,0"
+                               Style="{StaticResource BodyTextBlockStyle}"/>
+                    <TextBlock Text="{Binding RunningTime}"
+                               Margin="5,0,0,0"
+                               Style="{StaticResource BodyTextBlockStyle}"/>
+                </StackPanel>
+                
+            </StackPanel>
+        </Grid>
+    </DataTemplate>
+
 </ResourceDictionary>

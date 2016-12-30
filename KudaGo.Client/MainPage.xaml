@@ -41,6 +41,12 @@
                                                ItemsDataTemplate="{StaticResource SelectionItemDataTemplate}"/>
                     </PivotItem>
 
+                    <PivotItem Header="Movies" x:Uid="moviesItem">
+                        <views:GridViewControl Items="{Binding Items}"
+                                               DataContext="{Binding MoviesViewModel}"
+                                               ItemsDataTemplate="{StaticResource MovieItemDataTemplate}"/>
+                    </PivotItem>
+
                 </Pivot>
                 
             </views:NavigationControl.ViewContent>

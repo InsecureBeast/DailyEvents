@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using KudaGo.Core.Data;
 using KudaGo.Core.News;
 using KudaGo.Core.Selections;
+using KudaGo.Core.Movies;
 
 namespace KudaGo.Client.Model
 {
@@ -89,6 +90,29 @@ namespace KudaGo.Client.Model
             request.Lang = "ru";
             request.Expand = SelectionListRequest.ExpandNames.IMAGES;
             request.SelectionId = selectionId;
+
+            var res = await request.ExecuteAsync();
+            return res;
+        }
+
+        public async Task<IMovieListResponse> GetMovies(string next)
+        {
+            var request = new MovieListRequest();
+            request.Lang = "ru";
+            request.TextFormat = TextFormatEnum.Plain;
+            request.Next = next;
+            request.Expand = MovieListRequest.ExpandFields.POSTER;
+
+            var fieldBuilder = new FieldsBuilder();
+            request.Fields = fieldBuilder
+                .WithField(MovieListRequest.FieldNames.ID)
+                .WithField(MovieListRequest.FieldNames.POSTER)
+                .WithField(MovieListRequest.FieldNames.AGE_RESTRICTION)
+                .WithField(MovieListRequest.FieldNames.YEAR)
+                .WithField(MovieListRequest.FieldNames.COUNTRY)
+                .WithField(MovieListRequest.FieldNames.RUNNING_TIME)
+                .WithField(MovieListRequest.FieldNames.TITLE).Build();
+            request.Location = Location.Spb;
 
             var res = await request.ExecuteAsync();
             return res;
