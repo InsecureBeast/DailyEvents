@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KudaGo.Core.Data.JData;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,5 +27,6 @@ namespace KudaGo.Core.Data.JResponse
         public string Title { get; set; }
         public string Slug { get; set; }
         public string Site_Url { get; set; }
+        public IEnumerable<JImage> Images { get; set; }
     }
 }

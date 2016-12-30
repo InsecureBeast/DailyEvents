@@ -77,6 +77,10 @@ namespace KudaGo.Client
                     if (!viewModel.NewsViewModel.Items.Any())
                         await viewModel.NewsViewModel.Load();
                     break;
+                case 2:
+                    if (!viewModel.SelectionsViewModel.Items.Any())
+                        await viewModel.SelectionsViewModel.Load();
+                    break;
                 default:
                     break;
             }

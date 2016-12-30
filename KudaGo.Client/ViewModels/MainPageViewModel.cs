@@ -13,13 +13,14 @@ namespace KudaGo.Client.ViewModels
     {
         private readonly NewsViewModel _newsViewModel;
         private readonly EventsViewModel _eventsViewModel;
-        private readonly DataSource _dataSource;
+        private readonly SelectionsViewModel _selectionsViewModel;
 
         public MainPageViewModel()
         {
-            _dataSource = new DataSource();
-            _newsViewModel = new NewsViewModel(_dataSource);
-            _eventsViewModel = new EventsViewModel(_dataSource);
+            var dataSource = new DataSource();
+            _newsViewModel = new NewsViewModel(dataSource);
+            _eventsViewModel = new EventsViewModel(dataSource);
+            _selectionsViewModel = new SelectionsViewModel(dataSource);
         }
 
         public NewsViewModel NewsViewModel
@@ -30,6 +31,11 @@ namespace KudaGo.Client.ViewModels
         public EventsViewModel EventsViewModel
         {
             get { return _eventsViewModel; }
+        }
+
+        public SelectionsViewModel SelectionsViewModel
+        {
+            get { return _selectionsViewModel; }
         }
     }
 }

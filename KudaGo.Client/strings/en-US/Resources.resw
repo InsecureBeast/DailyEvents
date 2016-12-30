@@ -126,4 +126,10 @@
   <data name="newsItem.Header" xml:space="preserve">
     <value>News</value>
   </data>
+  <data name="PublishedAtStringFormat" xml:space="preserve">
+    <value>Published at {0}</value>
+  </data>
+  <data name="selectionsItem.Header" xml:space="preserve">
+    <value>Selections</value>
+  </data>
 </root>

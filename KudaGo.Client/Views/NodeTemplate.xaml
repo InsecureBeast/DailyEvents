@@ -131,10 +131,8 @@
                            Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}" />
 
                 <TextBlock Text="{Binding Date}"
-                            Grid.Column="1"
-                            Grid.Row="1"
-                            MaxLines="1"
-                            Style="{StaticResource BodyTextBlockStyle}"/>
+                           Margin="{StaticResource DefultTextBlockMargin}"
+                           Style="{StaticResource BodyTextBlockStyle}"/>
 
                 <Grid Margin="-2,8,0,0"
                       Visibility="{Binding Place, Converter={StaticResource StringToVisibilityConverter}}">
@@ -156,4 +154,30 @@
         </Grid>
     </DataTemplate>
 
+    <DataTemplate x:Key="SelectionItemDataTemplate">
+        <Grid Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}"
+              Margin="7,7,7,7"
+              Padding="15">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="{Binding Title}"
+                       Style="{StaticResource SubtitleTextBlockStyle}"
+                       Height="80"
+                       TextWrapping="Wrap"
+                       TextTrimming="CharacterEllipsis"
+                       FontWeight="SemiBold"/>
+
+            <TextBlock Text="{Binding Date}"
+                        Grid.Row="1"
+                       MaxLines="1"
+                       Margin="{StaticResource DefultTextBlockMargin}"
+                       Style="{StaticResource BodyTextBlockStyle}"/>
+
+        </Grid>
+    </DataTemplate>
+    
 </ResourceDictionary>

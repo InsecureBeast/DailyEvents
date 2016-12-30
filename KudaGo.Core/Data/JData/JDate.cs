@@ -2,10 +2,10 @@
 {
     internal class JDate
     {
-        public long Start_Date { get; set; }
+        public string Start_Date { get; set; }
         public string Start_Time { get; set; }
         public long Start { get; set; }
-        public long End_Date { get; set; }
+        public string End_Date { get; set; }
         public string End_Time { get; set; }
         public long End { get; set; }
         public bool Is_Continuous { get; set; }

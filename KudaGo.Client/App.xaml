@@ -29,6 +29,7 @@
             <SolidColorBrush x:Key="ApplicationAccentBrush" Color="#FFD13438" />
             
             <Thickness x:Key="DefultTextBlockMargin">0,8,0,0</Thickness>
+            <Thickness x:Key="PivotItemMargin">0,0,0,0</Thickness>
 
 
             <converters:StringToVisibilityConverter x:Key="StringToVisibilityConverter"/>

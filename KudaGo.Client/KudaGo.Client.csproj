@@ -102,6 +102,7 @@
     <Compile Include="Converters\StringToVisibilityConverter.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Helpers\DeviceTypeHelper.cs" />
+    <Compile Include="Helpers\ResourcesHelper.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -113,8 +114,10 @@
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\NewsViewModel.cs" />
     <Compile Include="ViewModels\Nodes\NodeViewModel.cs" />
+    <Compile Include="ViewModels\Nodes\SelectionNodeViewModel.cs" />
     <Compile Include="ViewModels\SectionViewModel.cs" />
     <Compile Include="ViewModels\PropertyChangedBase.cs" />
+    <Compile Include="ViewModels\SelectionsViewModel.cs" />
     <Compile Include="Views\GridViewControl.xaml.cs">
       <DependentUpon>GridViewControl.xaml</DependentUpon>
     </Compile>
@@ -146,6 +149,11 @@
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Theme\Pivot.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
     <Page Include="Views\GridViewControl.xaml">
       <SubType>Designer</SubType>

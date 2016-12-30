@@ -1,4 +1,5 @@
 ﻿using KudaGo.Client.Extensions;
+using KudaGo.Client.Helpers;
 using KudaGo.Core.News;
 using System.Linq;
 
@@ -23,7 +24,8 @@ namespace KudaGo.Client.ViewModels.Nodes
 
             if (result.PublicationDate.HasValue)
             {
-                Date = result.PublicationDate.Value.ToString("g");
+                var format = ResourcesHelper.GetLocalizationString("PublishedAtStringFormat");
+                Date = string.Format(format, result.PublicationDate.Value.ToString("g"));
             }
         }
 

@@ -14,10 +14,11 @@ namespace KudaGo.Core.Selections
     public interface ISelectionListResult
     {
         long Id { get; }
-        long PublicationDate { get; }
+        DateTime? PublicationDate { get; }
         string Title { get; }
         string Slug { get; }
         string SiteUrl { get; }
+        IEnumerable<IImage> Images { get; }
     }
 
     internal class SelectionListResponse : ISelectionListResponse
@@ -47,17 +48,24 @@ namespace KudaGo.Core.Selections
         public SelectionListResult(JSelectionListResult jResult)
         {
             if (jResult == null)
+            {
+                Images = new IImage[0];
                 return;
+            }
 
             Id = jResult.Id;
-            PublicationDate = jResult.Publication_Date;
+            PublicationDate = DateTimeHelper.GetDateTimeFromUnixTime(jResult.Publication_Date);
             Title = jResult.Title;
             Slug = jResult.Slug;
             SiteUrl = jResult.Site_Url;
+            Images = jResult.Images != null
+                ? (IEnumerable<IImage>)jResult.Images.Select(i => new ImageImpl(i))
+                : new IImage[0];
         }
 
         public long Id { get; private set; }
-        public long PublicationDate { get; private set; }
+        public IEnumerable<IImage> Images { get; private set; }
+        public DateTime? PublicationDate { get; private set; }
         public string Title { get; private set; }
         public string Slug { get; private set; }
         public string SiteUrl { get; private set; }

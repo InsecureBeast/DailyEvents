@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using KudaGo.Core.Data;
 using KudaGo.Core.News;
+using KudaGo.Core.Selections;
 
 namespace KudaGo.Client.Model
 {
@@ -55,8 +56,39 @@ namespace KudaGo.Client.Model
                 .WithField(NewsListRequest.FieldNames.ID)
                 .WithField(NewsListRequest.FieldNames.IMAGES)
                 .WithField(NewsListRequest.FieldNames.PLACE)
+                .WithField(NewsListRequest.FieldNames.PUBLICATION_DATE)
                 .WithField(NewsListRequest.FieldNames.TITLE).Build();
             request.Location = Location.Spb;
+
+            var res = await request.ExecuteAsync();
+            return res;
+        }
+
+        public async Task<ISelectionListResponse> GetSelections(string next)
+        {
+            var request = new SelectionListRequest();
+            request.Lang = "ru";
+            request.TextFormat = TextFormatEnum.Plain;
+            request.Next = next;
+            request.Expand = SelectionListRequest.ExpandNames.IMAGES;
+
+            var fieldBuilder = new FieldsBuilder();
+            request.Fields = fieldBuilder
+                .WithField(SelectionListRequest.FieldNames.ID)
+                .WithField(SelectionListRequest.FieldNames.PUBLICATION_DATE)
+                .WithField(SelectionListRequest.FieldNames.TITLE).Build();
+            request.Location = Location.Spb;
+
+            var res = await request.ExecuteAsync();
+            return res;
+        }
+
+        public async Task<ISelectionDetailsResponse> GetSelectionDetails(long selectionId)
+        {
+            var request = new SelectionDetailsRequest();
+            request.Lang = "ru";
+            request.Expand = SelectionListRequest.ExpandNames.IMAGES;
+            request.SelectionId = selectionId;
 
             var res = await request.ExecuteAsync();
             return res;

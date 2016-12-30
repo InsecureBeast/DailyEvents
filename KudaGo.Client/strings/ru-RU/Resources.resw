@@ -126,4 +126,10 @@
   <data name="newsItem.Header" xml:space="preserve">
     <value>Новости</value>
   </data>
+  <data name="PublishedAtStringFormat" xml:space="preserve">
+    <value>Опубликовано {0}</value>
+  </data>
+  <data name="selectionsItem.Header" xml:space="preserve">
+    <value>Подборки</value>
+  </data>
 </root>

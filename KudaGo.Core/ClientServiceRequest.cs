@@ -35,9 +35,9 @@ namespace KudaGo.Core
                 var error = JsonConvert.DeserializeObject<JError>(content);
                 throw new Exception(error.Detail);
             }
-
-            var deserializeObject = JsonConvert.DeserializeObject<TResponse>(content);
+            
             var deserializeObject1 = JsonConvert.DeserializeObject<object>(content);
+            var deserializeObject = JsonConvert.DeserializeObject<TResponse>(content);
             return (TResponse) deserializeObject;
         }
 
