@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using KudaGo.Core;
-using KudaGo.Core.Events;
 using KudaGo.Core.Movies;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

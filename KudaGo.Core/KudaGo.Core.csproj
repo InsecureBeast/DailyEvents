@@ -42,8 +42,10 @@
     <Compile Include="ClientServiceRequest.cs" />
     <Compile Include="Comments\ICommentsResponse.cs" />
     <Compile Include="Comments\CommentOrderBy.cs" />
+    <Compile Include="Data\IGenre.cs" />
     <Compile Include="Data\IPoster.cs" />
     <Compile Include="Data\IResponse.cs" />
+    <Compile Include="Data\JData\JGenre.cs" />
     <Compile Include="Data\JError.cs" />
     <Compile Include="Data\JResponse\JCategoriesResponse.cs" />
     <Compile Include="Data\JResponse\JMovieListResponse.cs" />
