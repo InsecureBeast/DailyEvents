@@ -29,7 +29,7 @@ namespace KudaGo.Core.Data.JResponse
         public string Tagline { get; set; }
         public string Age_Restriction { get; set; }
         public string Price { get; set; }
-        public string Is_Free { get; set; }
+        public bool Is_Free { get; set; }
         public IEnumerable<JImage> Images { get; set; }
         public string Site_Url { get; set; }
         public IEnumerable<string> Tags { get; set; }

@@ -28,7 +28,7 @@ namespace KudaGo.Core.Events
         string Tagline { get; } 
         string AgeRestriction { get; } 
         string Price { get; } 
-        string IsFree { get; } 
+        bool IsFree { get; } 
         IEnumerable<IImage> Images { get; } 
         string SiteUrl { get; } 
         IEnumerable<string> Tags { get; } 
@@ -107,7 +107,7 @@ namespace KudaGo.Core.Events
         public string Tagline { get; private set; }
         public string AgeRestriction { get; private set; }
         public string Price { get; private set; }
-        public string IsFree { get; private set; }
+        public bool IsFree { get; private set; }
         public IEnumerable<IImage> Images { get; private set; }
         public string SiteUrl { get; private set; }
         public IEnumerable<string> Tags { get; private set; }

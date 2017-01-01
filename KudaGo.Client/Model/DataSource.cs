@@ -127,6 +127,7 @@ namespace KudaGo.Client.Model
             request.Lang = "ru";
             request.EventId = eventId;
             request.TextFormat = TextFormatEnum.Text;
+            request.Expand = EventListRequest.ExpandFields.PLACE + "," + EventListRequest.ExpandFields.PLACE;
             
             //var fieldBuilder = new FieldsBuilder();
             //request.Fields = fieldBuilder

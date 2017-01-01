@@ -138,4 +138,13 @@
   <data name="moviesItem.Header" xml:space="preserve">
     <value>Movies</value>
   </data>
+  <data name="free.Text" xml:space="preserve">
+    <value>FREE</value>
+  </data>
+  <data name="price.Text" xml:space="preserve">
+    <value>PRICE</value>
+  </data>
+  <data name="description.Text" xml:space="preserve">
+    <value>DESCRIPTION</value>
+  </data>
 </root>

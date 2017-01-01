@@ -34,13 +34,14 @@
             
             <Thickness x:Key="DefultTextBlockMargin">0,8,0,0</Thickness>
             <Thickness x:Key="PivotItemMargin">0,0,0,0</Thickness>
-            <Thickness x:Key="DoubleTextBlockMargin">0,16,0,0</Thickness>
+            <Thickness x:Key="DoubleTextBlockMargin">0,24,0,0</Thickness>
             
             <x:Double x:Key="GridViewItemSelectedBorderThemeThickness">1</x:Double>
             <Thickness x:Key="GridViewItemCompactSelectedBorderThemeThickness">1</Thickness>
 
             <converters:StringToVisibilityConverter x:Key="StringToVisibilityConverter"/>
             <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+            <converters:BooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConverter" FalseValue="Visible" TrueValue="Collapsed"/>
 
 
         </ResourceDictionary>
