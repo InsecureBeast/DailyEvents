@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KudaGo.Client.Model;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -9,6 +10,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -24,6 +26,8 @@ namespace KudaGo.Client
     /// </summary>
     sealed partial class App : Application
     {
+        private static DataSource _dataSource = new DataSource();
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -38,6 +42,11 @@ namespace KudaGo.Client
             var culture = new CultureInfo(lang);
             CultureInfo.DefaultThreadCurrentCulture = culture;
             CultureInfo.DefaultThreadCurrentUICulture = culture;
+        }
+
+        public static DataSource DataSource
+        {
+            get { return _dataSource; }
         }
 
         /// <summary>
@@ -83,6 +92,32 @@ namespace KudaGo.Client
                 }
                 // Ensure the current window is active
                 Window.Current.Activate();
+            }
+
+            // Register a global back event handler. This can be registered on a per-page-bases if you only have a subset of your pages
+            // that needs to handle back or if you want to do page-specific logic before deciding to navigate back on those pages.
+            SystemNavigationManager.GetForCurrentView().BackRequested += App_BackRequested;
+        }
+
+        /// <summary>
+        /// Invoked when a user issues a global back on the device.
+        /// If the app has no in-app back stack left for the current view/frame the user may be navigated away
+        /// back to the previous app in the system's app back stack or to the start screen.
+        /// In windowed mode on desktop there is no system app back stack and the user will stay in the app even when the in-app back stack is depleted.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void App_BackRequested(object sender, BackRequestedEventArgs e)
+        {
+            Frame rootFrame = Window.Current.Content as Frame;
+            if (rootFrame == null)
+                return;
+
+            // If we can go back and the event has not already been handled, do so.
+            if (rootFrame.CanGoBack && e.Handled == false)
+            {
+                e.Handled = true;
+                rootFrame.GoBack();
             }
         }
 

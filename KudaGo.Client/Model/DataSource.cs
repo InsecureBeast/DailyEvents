@@ -13,7 +13,7 @@ using KudaGo.Core.Movies;
 
 namespace KudaGo.Client.Model
 {
-    class DataSource
+    public class DataSource
     {
         public async Task<IEventListResponse> GetEvents(string next)
         {
@@ -107,6 +107,7 @@ namespace KudaGo.Client.Model
             request.Fields = fieldBuilder
                 .WithField(MovieListRequest.FieldNames.ID)
                 .WithField(MovieListRequest.FieldNames.POSTER)
+                .WithField(MovieListRequest.FieldNames.IMAGES)
                 .WithField(MovieListRequest.FieldNames.AGE_RESTRICTION)
                 .WithField(MovieListRequest.FieldNames.YEAR)
                 .WithField(MovieListRequest.FieldNames.COUNTRY)
@@ -117,5 +118,32 @@ namespace KudaGo.Client.Model
             var res = await request.ExecuteAsync();
             return res;
         }
+
+        #region Details
+
+        public async Task<IEventDetailsResponse> GetEventDetails(long eventId)
+        {
+            var request = new EventDetailsRequest();
+            request.Lang = "ru";
+            request.EventId = eventId;
+            request.TextFormat = TextFormatEnum.Text;
+            
+            //var fieldBuilder = new FieldsBuilder();
+            //request.Fields = fieldBuilder
+            //    .WithField(MovieListRequest.FieldNames.ID)
+            //    .WithField(MovieListRequest.FieldNames.POSTER)
+            //    .WithField(MovieListRequest.FieldNames.IMAGES)
+            //    .WithField(MovieListRequest.FieldNames.AGE_RESTRICTION)
+            //    .WithField(MovieListRequest.FieldNames.YEAR)
+            //    .WithField(MovieListRequest.FieldNames.COUNTRY)
+            //    .WithField(MovieListRequest.FieldNames.RUNNING_TIME)
+            //    .WithField(MovieListRequest.FieldNames.TITLE).Build();
+            //request.Location = Location.Spb;
+
+            var res = await request.ExecuteAsync();
+            return res;
+        }
+
+        #endregion
     }
 }

@@ -11,15 +11,11 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <GridView ItemTemplate="{StaticResource EventItemDataTemplate}"
-                  SizeChanged="GridView_SizeChanged"
+                  SizeChanged="GridView_SizeChanged" 
+                  ItemClick="gridView_ItemClick"
+                  IsItemClickEnabled="True"
                   ItemContainerStyle="{StaticResource GridViewItemExpanded}"
                   x:Name="gridView">
-            <!--<GridView.ItemContainerStyle>
-                <Style TargetType="GridViewItem">
-                    <Setter Property="VerticalContentAlignment" Value="Stretch" />
-                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                </Style>
-            </GridView.ItemContainerStyle>-->
             <GridView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <ItemsWrapGrid Orientation="Horizontal" />

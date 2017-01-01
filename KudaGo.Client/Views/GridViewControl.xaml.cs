@@ -1,4 +1,7 @@
-﻿using System;
+﻿using KudaGo.Client.Helpers;
+using KudaGo.Client.ViewModels;
+using KudaGo.Client.ViewModels.Nodes;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -36,6 +39,9 @@ namespace KudaGo.Client.Views
         {
             gridView.SetBinding(GridView.ItemsSourceProperty, new Binding() { Path = new PropertyPath("Items"), Source = this });
             gridView.ItemTemplate = ItemsDataTemplate;
+
+            if (gridView.SelectedItem != null)
+                gridView.ScrollIntoView(gridView.SelectedItem);
         }
 
         public object Items
@@ -55,6 +61,15 @@ namespace KudaGo.Client.Views
             var columns = Math.Truncate(e.NewSize.Width / 300);
             var width = Math.Truncate(e.NewSize.Width / columns);
             ((ItemsWrapGrid)gridView.ItemsPanelRoot).ItemWidth = width - 1;
+        }
+
+        private void gridView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var parent = VisualHelper.FindParent<Page>(sender as FrameworkElement);
+            if (parent == null)
+                return;
+
+            parent.Frame.Navigate(typeof(DetailsPage), e.ClickedItem);
         }
     }
 }

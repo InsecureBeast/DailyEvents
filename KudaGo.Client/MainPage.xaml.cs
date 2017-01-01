@@ -8,6 +8,7 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Foundation.Metadata;
 using Windows.UI;
+using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -30,6 +31,17 @@ namespace KudaGo.Client
         {
             InitializeComponent();
             InitializeStatusBar();
+
+            // Caching your main page is good practice, this makes it snappy for the user to return to "home" of your app.
+            NavigationCacheMode = NavigationCacheMode.Required;
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            // This page is always at the top of our in-app back stack.
+            // Once it is reached there is no further back so we can always disable the title bar back UI when navigated here.
+            // If you want to you can always to the Frame.CanGoBack check for all your pages and act accordingly.
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
         }
 
         private static void InitializeStatusBar()

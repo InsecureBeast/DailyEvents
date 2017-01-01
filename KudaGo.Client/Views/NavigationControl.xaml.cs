@@ -40,7 +40,9 @@ namespace KudaGo.Client.Views
         private void NavigationControl_Loaded(object sender, RoutedEventArgs e)
         {
             contentPresenter.SetBinding(ContentPresenter.ContentProperty, new Binding() { Path = new PropertyPath("ViewContent"), Source = this });
-            title.Text = Title;
+
+            if (Title != null)
+                title.Text = Title;
         }
 
         public object ViewContent

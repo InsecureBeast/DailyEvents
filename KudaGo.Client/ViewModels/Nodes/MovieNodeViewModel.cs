@@ -16,10 +16,11 @@ namespace KudaGo.Client.ViewModels.Nodes
             if (result == null)
                 return;
 
-            var poster = result.Poster;
+            var poster = result.Images.FirstOrDefault();
             if (poster != null)
                 Poster = poster.Thumbnail.Normal;
 
+            Id = result.Id;
             Title = result.Title.GetNormalString();
             Age = result.AgeRestriction;
             Year = result.Year;
@@ -28,6 +29,8 @@ namespace KudaGo.Client.ViewModels.Nodes
             RunningTime = string.Format(format, result.RunningTime);
         }
 
+
+        public override long Id { get; protected set; }
         public string Poster { get; private set; }
         public override string Title { get; protected set; }
         public string Age { get; private set; }

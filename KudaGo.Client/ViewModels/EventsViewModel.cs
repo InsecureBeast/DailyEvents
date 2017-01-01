@@ -27,7 +27,7 @@ namespace KudaGo.Client.ViewModels
 
             foreach (var result in res.Results)
             {
-                Items.Add(new EventViewModel(result));
+                Items.Add(new EventNodeViewModel(result));
             }
             IsBusy = false;
         }

@@ -16,6 +16,7 @@ namespace KudaGo.Client.ViewModels.Nodes
             if (image != null)
                 Image = image.Thumbnail.Normal;
 
+            Id = result.Id;
             Title = result.Title.GetNormalString();
             Description = result.Description;
 
@@ -30,6 +31,7 @@ namespace KudaGo.Client.ViewModels.Nodes
         }
 
         public string Image { get; private set; }
+        public override long Id { get; protected set; }
         public override string Title { get; protected set; }
         public string Description { get; private set; }
         public string Place { get; private set; }

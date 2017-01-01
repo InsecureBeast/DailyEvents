@@ -5,7 +5,8 @@
 
     <DataTemplate x:Key="EventItemDataTemplate">
         <Grid Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}"
-              Margin="7,7,7,7">
+              Margin="7,7,7,7"
+              Height="450">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -13,9 +14,13 @@
             </Grid.RowDefinitions>
 
             <Grid>
-            <Image Source="{Binding Image}"
-                   Name="Image"
-                   Stretch="UniformToFill"/>
+                <Border Background="{StaticResource ImageBackgroundThemeBrush}">
+                    <Image Source="{Binding Image}"
+                       Name="Image"
+                       MinHeight="200"
+                       MinWidth="250"
+                       Stretch="UniformToFill"/>
+                </Border>
                 <Border Background="Black"
                         VerticalAlignment="Top"
                         HorizontalAlignment="Left"
@@ -103,17 +108,21 @@
 
     <DataTemplate x:Key="NewsItemDataTemplate">
         <Grid Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}"
-              Margin="7,7,7,7">
+              Margin="7,7,7,7"
+              Height="450">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-
-            <Image Source="{Binding Image}"
+            <Border Background="{StaticResource ImageBackgroundThemeBrush}">
+                <Image Source="{Binding Image}"
                    Name="Image"
+                   MinHeight="200"
+                   MinWidth="250"
                    Stretch="UniformToFill"/>
-            
+            </Border>
+
             <StackPanel Orientation="Vertical"
                         Grid.Row="1"
                         Padding="15,10,15,15">
@@ -182,17 +191,22 @@
 
     <DataTemplate x:Key="MovieItemDataTemplate">
         <Grid Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}"
-              Margin="7,7,7,7">
+              Margin="7,7,7,7"
+              Height="300">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <Image Source="{Binding Poster}"
+            <Border Background="{StaticResource ImageBackgroundThemeBrush}">
+                <Image Source="{Binding Poster}"
                    Name="Image"
+                   MinHeight="200"
+                   MinWidth="250"
                    Stretch="UniformToFill"/>
-
+            </Border>
+            
             <StackPanel Orientation="Vertical"
                         Grid.Row="1"
                         Padding="15,10,15,15">

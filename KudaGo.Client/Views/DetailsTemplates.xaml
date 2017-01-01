@@ -1,0 +1,36 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:KudaGo.Client.Views">
+
+
+    <DataTemplate x:Key="EventDetailsDataTemplate">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" >
+            <Grid> 
+                <StackPanel Orientation="Vertical"
+                            Padding="15"
+                            MaxWidth="800">
+                    <TextBlock Text="{Binding Title}" 
+                           Style="{StaticResource TitleTextBlockStyle}"
+                           HorizontalAlignment="Center"
+                           Margin="{StaticResource DefultTextBlockMargin}"/>
+
+                    <TextBlock Text="{Binding Description}" 
+                           Style="{StaticResource SubtitleTextBlockStyle}"
+                           HorizontalAlignment="Stretch"
+                           Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"
+                           Margin="{StaticResource DefultTextBlockMargin}"/>
+                    <Image Source="{Binding Image}"
+                           Stretch="Uniform"
+                       />
+
+                    <TextBlock Text="{Binding BodyText}" 
+                               Style="{StaticResource NormalTextBlockStyle}"
+                               HorizontalAlignment="Stretch"
+                               Margin="{StaticResource DoubleTextBlockMargin}"/>
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+    </DataTemplate>
+    
+</ResourceDictionary>

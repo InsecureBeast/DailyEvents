@@ -18,7 +18,7 @@ namespace KudaGo.Client.ViewModels
 
         public MainPageViewModel()
         {
-            var dataSource = new DataSource();
+            var dataSource = App.DataSource;
             _newsViewModel = new NewsViewModel(dataSource);
             _eventsViewModel = new EventsViewModel(dataSource);
             _selectionsViewModel = new SelectionsViewModel(dataSource);

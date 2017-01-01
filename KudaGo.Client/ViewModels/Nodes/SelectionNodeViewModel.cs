@@ -21,6 +21,7 @@ namespace KudaGo.Client.ViewModels.Nodes
             _dataSource = dataSource;
             //Task.Run(async ()=> await LoadImage(result.Id));
 
+            Id = result.Id;
             Title = result.Title.GetNormalString();
             //Description = result.Description;
 
@@ -43,6 +44,7 @@ namespace KudaGo.Client.ViewModels.Nodes
         }
 
         public string Image { get; private set; }
+        public override long Id { get; protected set; }
         public override string Title { get; protected set; }
         public string Date { get; private set; }
     }

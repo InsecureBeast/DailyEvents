@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace KudaGo.Client.ViewModels.Nodes
 {
-    class EventViewModel : NodeViewModel
+    class EventNodeViewModel : NodeViewModel
     {
-        public EventViewModel(IEventListResult result)
+        public EventNodeViewModel(IEventListResult result)
         {
             if (result == null)
                 return;
@@ -21,6 +21,7 @@ namespace KudaGo.Client.ViewModels.Nodes
             if (image != null)
                 Image = image.Thumbnail.Normal;
 
+            Id = result.Id;
             Title = result.Title.GetNormalString();
             Description = result.Description;
             Age = result.AgeRestriction;
@@ -59,5 +60,6 @@ namespace KudaGo.Client.ViewModels.Nodes
         public string Dates { get; private set; }
         public string Times { get; private set; }
         public string Categories { get; private set; }
+        public override long Id { get; protected set; }
     }
 }

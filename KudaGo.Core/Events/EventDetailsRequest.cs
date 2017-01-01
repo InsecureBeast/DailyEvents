@@ -14,7 +14,8 @@ namespace KudaGo.Core.Events
         public long EventId { get; set; }
         public string Fields { get; set; }
         public string Expand { get; set; }
-        
+        public TextFormatEnum? TextFormat { get; set; }
+
         public override async Task<IEventDetailsResponse> ExecuteAsync()
         {
             var request = new ClientServiceRequest<JEventDetailsResponse>();
@@ -40,6 +41,9 @@ namespace KudaGo.Core.Events
 
             if (Expand != null)
                 _builder.Append("&expand=" + Expand);
+
+            if (TextFormat != null)
+                _builder.Append("&text_format=" + TextFormat.Value.ToString().ToLowerInvariant());
 
             return base.Build();
         }
