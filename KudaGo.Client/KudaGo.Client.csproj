@@ -100,6 +100,7 @@
     <Compile Include="Controls\DetailsContentTemplateSelector.cs" />
     <Compile Include="Controls\IncrementalObservableCollection.cs" />
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Converters\LocationConverter.cs" />
     <Compile Include="Converters\StringToVisibilityConverter.cs" />
     <Compile Include="DetailsPage.xaml.cs">
       <DependentUpon>DetailsPage.xaml</DependentUpon>
@@ -130,6 +131,9 @@
     <Compile Include="ViewModels\SelectionsViewModel.cs" />
     <Compile Include="Views\GridViewControl.xaml.cs">
       <DependentUpon>GridViewControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MapDetailsControl.xaml.cs">
+      <DependentUpon>MapDetailsControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\NavigationControl.xaml.cs">
       <DependentUpon>NavigationControl.xaml</DependentUpon>
@@ -192,6 +196,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Views\MapDetailsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\NavigationControl.xaml">
       <SubType>Designer</SubType>

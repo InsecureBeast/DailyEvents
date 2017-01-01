@@ -1,0 +1,20 @@
+﻿<UserControl
+    x:Class="KudaGo.Client.Views.MapDetailsControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:KudaGo.Client.Views"
+    xmlns:maps="using:Windows.UI.Xaml.Controls.Maps"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <Grid>
+        <maps:MapControl x:Name="map" 
+                         IsEnabled="False"
+                         MapServiceToken="SK6xmPUHHCeExe4OFbbr~AJ9f8FNFQfU9WCGgDgh1Ug~AmtrjFfAAsJxk2qXoOkZBiH4s291xzc_GRqaQ-iDpkgl9lrKnR8cDdTJXGnNy5l0"/>
+        <Border Background="White"
+                Opacity="0.01"/>
+    </Grid>
+</UserControl>

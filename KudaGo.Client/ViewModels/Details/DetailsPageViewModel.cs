@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace KudaGo.Client.ViewModels.Details
 {
-    class DetailsPageViewModel : PropertyChangedBase
+    public class DetailsPageViewModel : PropertyChangedBase
     {
         protected readonly DataSource _dataSource;
         private string _title;

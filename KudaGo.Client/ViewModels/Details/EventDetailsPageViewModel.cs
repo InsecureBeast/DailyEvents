@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using KudaGo.Client.Model;
 using KudaGo.Client.Helpers;
 using KudaGo.Client.Extensions;
+using KudaGo.Core.Data;
 
 namespace KudaGo.Client.ViewModels.Details
 {
-    class EventDetailsPageViewModel : DetailsPageViewModel
+    public class EventDetailsPageViewModel : DetailsPageViewModel
     {
         private string _description;
         private string _image;
@@ -19,6 +20,8 @@ namespace KudaGo.Client.ViewModels.Details
         private string _place;
         private bool _isFree;
         private string _price;
+        private string _metro;
+        private ICoordinates _location;
 
         public EventDetailsPageViewModel(long eventId, DataSource dataSource) : base(eventId, dataSource)
         {
@@ -84,6 +87,16 @@ namespace KudaGo.Client.ViewModels.Details
             }
         }
 
+        public string Metro
+        {
+            get { return _metro; }
+            private set
+            {
+                _metro = value;
+                NotifyOfPropertyChanged(() => Metro);
+            }
+        }
+
         public string Price
         {
             get { return _price; }
@@ -101,6 +114,16 @@ namespace KudaGo.Client.ViewModels.Details
             {
                 _isFree = value;
                 NotifyOfPropertyChanged(() => IsFree);
+            }
+        }
+
+        public ICoordinates Location
+        {
+            get { return _location; }
+            private set
+            {
+                _location = value;
+                NotifyOfPropertyChanged(() => Location);
             }
         }
 
@@ -124,7 +147,11 @@ namespace KudaGo.Client.ViewModels.Details
                     Image = image.Image;
 
                 if (rs.Place != null)
+                {
                     Place = rs.Place.Title.GetNormalString();
+                    Metro = rs.Place.Subway;
+                    Location = rs.Place.Coords;
+                }
 
                 var dates = rs.Dates.LastOrDefault();
                 if (dates == null)
