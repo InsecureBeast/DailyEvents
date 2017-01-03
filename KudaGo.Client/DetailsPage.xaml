@@ -17,7 +17,7 @@
         
     </Page.Resources>
     
-    <views:NavigationControl>
+    <views:NavigationControl Title="{Binding Title}">
         <views:NavigationControl.ViewContent>
             <Grid>
                 <ContentPresenter x:Name="contentPresenter"

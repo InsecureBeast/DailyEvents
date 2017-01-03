@@ -58,7 +58,7 @@
                         </VisualStateManager.VisualStateGroups>
                         <Ellipse x:Name="fillColor"
                                  IsHitTestVisible="False"
-                                 Fill="Gray"
+                                 Fill="#A3A3A3"
                                  />
                     </Grid>
                 </ControlTemplate>

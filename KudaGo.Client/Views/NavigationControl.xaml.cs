@@ -24,8 +24,7 @@ namespace KudaGo.Client.Views
             DependencyProperty.Register("ViewContent", typeof(object), typeof(NavigationControl), new PropertyMetadata(null));
 
         public static readonly DependencyProperty TitleProperty =
-            DependencyProperty.Register("Title", typeof(string), typeof(NavigationControl), new PropertyMetadata(null));
-
+            DependencyProperty.Register("Title", typeof(string), typeof(NavigationControl), new PropertyMetadata(null, TitleChanged));
 
         public NavigationControl()
         {
@@ -60,6 +59,15 @@ namespace KudaGo.Client.Views
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {
             splitView.IsPaneOpen = !splitView.IsPaneOpen;
+        }
+
+        private static void TitleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var control = d as NavigationControl;
+            if (control == null)
+                return;
+
+            control.title.Text = e.NewValue.ToString();
         }
     }
 }

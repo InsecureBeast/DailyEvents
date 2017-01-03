@@ -36,6 +36,8 @@
                        Text="Title"
                        Grid.Column="1"
                        VerticalAlignment="Center"
+                       TextWrapping="NoWrap"
+                       TextTrimming="CharacterEllipsis"
                        Margin="10,0,0,0"
                        Style="{StaticResource BaseTextBlockStyle}"/>
         </Grid>

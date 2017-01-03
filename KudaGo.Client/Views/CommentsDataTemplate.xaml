@@ -4,7 +4,7 @@
     xmlns:local="using:KudaGo.Client.Views">
 
     <DataTemplate x:Key="CommentDataTemplate">
-        <Grid Margin="{StaticResource DefaultControlMargin}">
+        <Grid Margin="{StaticResource DoubleTextBlockMargin}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
