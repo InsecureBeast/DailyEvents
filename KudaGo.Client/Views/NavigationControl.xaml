@@ -33,7 +33,6 @@
                     Click="HamburgerButton_Click"/>
 
             <TextBlock x:Name="title"
-                       Text="Title"
                        Grid.Column="1"
                        VerticalAlignment="Center"
                        TextWrapping="NoWrap"

@@ -123,6 +123,7 @@
     <Compile Include="ViewModels\Comments\EventCommentsViewModel.cs" />
     <Compile Include="ViewModels\Details\DetailsPageViewModel.cs" />
     <Compile Include="ViewModels\Details\EventDetailsPageViewModel.cs" />
+    <Compile Include="ViewModels\Details\NewsDetailsPageViewModel.cs" />
     <Compile Include="ViewModels\EventsViewModel.cs" />
     <Compile Include="ViewModels\MoviesViewModel.cs" />
     <Compile Include="ViewModels\Nodes\CommentNodeViewModel.cs" />
@@ -195,6 +196,11 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
     <Page Include="Themes\Styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="ViewModels\Details\NewsDetailsDataTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

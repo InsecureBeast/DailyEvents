@@ -8,8 +8,6 @@ using KudaGo.Client.Helpers;
 using KudaGo.Client.Extensions;
 using KudaGo.Core.Data;
 using System.Collections.ObjectModel;
-using KudaGo.Client.ViewModels.Nodes;
-using KudaGo.Client.Controls;
 using KudaGo.Client.ViewModels.Comments;
 
 namespace KudaGo.Client.ViewModels.Details

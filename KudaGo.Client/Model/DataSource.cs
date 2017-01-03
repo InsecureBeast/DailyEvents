@@ -134,13 +134,23 @@ namespace KudaGo.Client.Model
             return res;
         }
 
+        public async Task<INewsDetailsResponse> GetNewsDetails(long newsId)
+        {
+            var request = new NewsDetailsRequest();
+            request.Lang = "ru";
+            request.NewsId = newsId;
+            request.TextFormat = TextFormatEnum.Plain;
+            request.Expand = NewsListRequest.ExpandNames.PLACE + "," + NewsListRequest.ExpandNames.PLACE;
+
+            var res = await request.ExecuteAsync();
+            return res;
+        }
+
         public async Task<ICommentsResponse> GetEventComments(long eventId)
         {
             var request = new EventCommentsRequest();
             request.Lang = "ru";
             request.EventId = eventId;
-            //request.TextFormat = TextFormatEnum.Text;
-            //request.Expand = EventListRequest.ExpandFields.PLACE + "," + EventListRequest.ExpandFields.PLACE;
 
             var res = await request.ExecuteAsync();
             return res;

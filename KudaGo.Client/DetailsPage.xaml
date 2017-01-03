@@ -12,6 +12,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Views\DetailsTemplates.xaml" />
+                <ResourceDictionary Source="ViewModels\Details\NewsDetailsDataTemplate.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
         

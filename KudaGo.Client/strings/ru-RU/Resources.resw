@@ -153,4 +153,10 @@
   <data name="noComments.Text" xml:space="preserve">
     <value>Нет комментариев</value>
   </data>
+  <data name="additionalInfo.Text" xml:space="preserve">
+    <value>ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ</value>
+  </data>
+  <data name="source.Text" xml:space="preserve">
+    <value>Источник</value>
+  </data>
 </root>

@@ -12,6 +12,7 @@ namespace KudaGo.Core.News
         public long NewsId { get; set; }
         public string Fields { get; set; }
         public string Expand { get; set; }
+        public TextFormatEnum? TextFormat { get; set; }
 
         public override async Task<INewsDetailsResponse> ExecuteAsync()
         {
@@ -38,6 +39,9 @@ namespace KudaGo.Core.News
 
             if (Expand != null)
                 _builder.Append("&expand=" + Expand);
+
+            if (TextFormat != null)
+                _builder.Append("&text_format=" + TextFormat.Value.ToString().ToLowerInvariant());
 
             return base.Build();
         }
