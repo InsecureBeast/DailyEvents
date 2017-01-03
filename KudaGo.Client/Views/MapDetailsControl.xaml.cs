@@ -61,7 +61,9 @@ namespace KudaGo.Client.Views
             control.map.MapElements.Add(mapIcon1);
 
             // Center the map over the POI.
-            control.map.Center = snPoint;
+            BasicGeoposition centerPosition = new BasicGeoposition() { Latitude = coords.Lat - 0.0001, Longitude = coords.Lon };
+            Geopoint centerPoint = new Geopoint(centerPosition);
+            control.map.Center = centerPoint;
             control.map.ZoomLevel = 16;
         }
     }

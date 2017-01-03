@@ -1,4 +1,5 @@
-﻿using KudaGo.Client.Model;
+﻿using KudaGo.Client.Helpers;
+using KudaGo.Client.Model;
 using KudaGo.Client.ViewModels.Nodes;
 using System;
 using System.Collections.Generic;
@@ -13,16 +14,27 @@ namespace KudaGo.Client.ViewModels.Details
         protected readonly DataSource _dataSource;
         private string _title;
         private string _bodyText;
+        private bool _isBusy;
 
         public DetailsPageViewModel(long id, DataSource dataSource)
         {
             _dataSource = dataSource;
-            Task.Run(async () => await LoadDetails(id));
+            IsBusy = true;
+            Task.Run(async () =>
+            {
+                await LoadDetails(id);
+                LayoutHelper.InvokeFromUiThread(() => IsBusy = false);
+            });
         }
 
-        protected virtual Task LoadDetails(long id)
+        public bool IsBusy
         {
-            return null;
+            get { return _isBusy; }
+            set
+            {
+                _isBusy = value;
+                NotifyOfPropertyChanged(() => IsBusy);
+            }
         }
 
         public string Title
@@ -43,6 +55,11 @@ namespace KudaGo.Client.ViewModels.Details
                 _bodyText = value;
                 NotifyOfPropertyChanged(() => BodyText);
             }
+        }
+
+        protected virtual Task LoadDetails(long id)
+        {
+            return null;
         }
     }
 }

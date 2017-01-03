@@ -19,9 +19,18 @@
     
     <views:NavigationControl>
         <views:NavigationControl.ViewContent>
-            <ContentPresenter x:Name="contentPresenter"
-                              Content="{Binding}" />
-            
+            <Grid>
+                <ContentPresenter x:Name="contentPresenter"
+                                  Content="{Binding}" 
+                                  Visibility="{Binding IsBusy, Converter={StaticResource InverseBooleanToVisibilityConverter}}"/>
+                <ProgressRing IsActive="True" 
+                              Width="50"
+                              Height="50"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              Foreground="{StaticResource InkToolbarAccentColorThemeBrush}"
+                              Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+            </Grid>
         </views:NavigationControl.ViewContent>
     </views:NavigationControl>
 </Page>
