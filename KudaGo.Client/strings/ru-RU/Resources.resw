@@ -147,4 +147,10 @@
   <data name="description.Text" xml:space="preserve">
     <value>ОПИСАНИЕ</value>
   </data>
+  <data name="comments.Text" xml:space="preserve">
+    <value>КОММЕНТАРИИ</value>
+  </data>
+  <data name="noComments.Text" xml:space="preserve">
+    <value>Нет комментариев</value>
+  </data>
 </root>

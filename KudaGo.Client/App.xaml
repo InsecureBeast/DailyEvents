@@ -11,8 +11,10 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Views\NodeTemplate.xaml" />
                 <ResourceDictionary Source="Views\Icons.xaml" />
+                <ResourceDictionary Source="Views\CommentsDataTemplate.xaml" />
                 <ResourceDictionary Source="Themes\GridView.xaml" />
                 <ResourceDictionary Source="Themes\Styles.xaml" />
+                <ResourceDictionary Source="Controls\FlipViewIndicator.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <ResourceDictionary.ThemeDictionaries>
@@ -32,7 +34,7 @@
 
             <SolidColorBrush x:Key="ApplicationAccentBrush" Color="#FFD13438" />
             
-            <Thickness x:Key="DefultTextBlockMargin">0,8,0,0</Thickness>
+            <Thickness x:Key="DefaultControlMargin">0,8,0,0</Thickness>
             <Thickness x:Key="PivotItemMargin">0,0,0,0</Thickness>
             <Thickness x:Key="DoubleTextBlockMargin">0,24,0,0</Thickness>
             

@@ -10,6 +10,7 @@ using KudaGo.Core.Data;
 using KudaGo.Core.News;
 using KudaGo.Core.Selections;
 using KudaGo.Core.Movies;
+using KudaGo.Core.Comments;
 
 namespace KudaGo.Client.Model
 {
@@ -128,18 +129,18 @@ namespace KudaGo.Client.Model
             request.EventId = eventId;
             request.TextFormat = TextFormatEnum.Text;
             request.Expand = EventListRequest.ExpandFields.PLACE + "," + EventListRequest.ExpandFields.PLACE;
-            
-            //var fieldBuilder = new FieldsBuilder();
-            //request.Fields = fieldBuilder
-            //    .WithField(MovieListRequest.FieldNames.ID)
-            //    .WithField(MovieListRequest.FieldNames.POSTER)
-            //    .WithField(MovieListRequest.FieldNames.IMAGES)
-            //    .WithField(MovieListRequest.FieldNames.AGE_RESTRICTION)
-            //    .WithField(MovieListRequest.FieldNames.YEAR)
-            //    .WithField(MovieListRequest.FieldNames.COUNTRY)
-            //    .WithField(MovieListRequest.FieldNames.RUNNING_TIME)
-            //    .WithField(MovieListRequest.FieldNames.TITLE).Build();
-            //request.Location = Location.Spb;
+
+            var res = await request.ExecuteAsync();
+            return res;
+        }
+
+        public async Task<ICommentsResponse> GetEventComments(long eventId)
+        {
+            var request = new EventCommentsRequest();
+            request.Lang = "ru";
+            request.EventId = eventId;
+            //request.TextFormat = TextFormatEnum.Text;
+            //request.Expand = EventListRequest.ExpandFields.PLACE + "," + EventListRequest.ExpandFields.PLACE;
 
             var res = await request.ExecuteAsync();
             return res;

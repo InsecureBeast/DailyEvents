@@ -7,13 +7,17 @@ using KudaGo.Client.Model;
 using KudaGo.Client.Helpers;
 using KudaGo.Client.Extensions;
 using KudaGo.Core.Data;
+using System.Collections.ObjectModel;
+using KudaGo.Client.ViewModels.Nodes;
+using KudaGo.Client.Controls;
+using KudaGo.Client.ViewModels.Comments;
 
 namespace KudaGo.Client.ViewModels.Details
 {
-    public class EventDetailsPageViewModel : DetailsPageViewModel
+    class EventDetailsPageViewModel : DetailsPageViewModel
     {
         private string _description;
-        private string _image;
+        private ObservableCollection<string> _images;
         private string _age;
         private string _dates;
         private string _times;
@@ -22,9 +26,12 @@ namespace KudaGo.Client.ViewModels.Details
         private string _price;
         private string _metro;
         private ICoordinates _location;
+        private readonly EventCommentsViewModel _eventCommentsViewModel;
 
         public EventDetailsPageViewModel(long eventId, DataSource dataSource) : base(eventId, dataSource)
         {
+            _eventCommentsViewModel = new EventCommentsViewModel(eventId, dataSource);
+            _images = new ObservableCollection<string>();
         }
 
         public string Description
@@ -37,14 +44,9 @@ namespace KudaGo.Client.ViewModels.Details
             }
         }
 
-        public string Image
+        public ObservableCollection<string> Images
         {
-            get { return _image; }
-            private set
-            {
-                _image = value;
-                NotifyOfPropertyChanged(() => Image);
-            }
+            get { return _images; }
         }
 
         public string Age
@@ -127,13 +129,18 @@ namespace KudaGo.Client.ViewModels.Details
             }
         }
 
+        public EventCommentsViewModel EventCommentsViewModel
+        {
+            get { return _eventCommentsViewModel; }
+        }
+
         protected override async Task LoadDetails(long id)
         {
             var rs = await _dataSource.GetEventDetails(id);
             if (rs == null)
                 return;
 
-            LayoutHelper.InvokeFromUiThread(() => 
+            LayoutHelper.InvokeFromUiThread(async () => 
             {
                 Title = rs.Title.GetNormalString();
                 Description = rs.Description;
@@ -142,9 +149,10 @@ namespace KudaGo.Client.ViewModels.Details
                 IsFree = rs.IsFree;
                 Price = rs.Price;
 
-                var image = rs.Images.FirstOrDefault();
-                if (image != null)
-                    Image = image.Image;
+                foreach (var image in rs.Images)
+                {
+                    _images.Add(image.Image);
+                }
 
                 if (rs.Place != null)
                 {
@@ -154,25 +162,26 @@ namespace KudaGo.Client.ViewModels.Details
                 }
 
                 var dates = rs.Dates.LastOrDefault();
-                if (dates == null)
-                    return;
-
-                if (dates.Start.HasValue && dates.End.HasValue)
+                if (dates != null)
                 {
-                    var start = dates.Start.Value;
-                    var end = dates.End.Value;
-                    var datesStr = string.Format("{0} - {1}", start.ToString("D"), end.ToString("D"));
-                    var times = string.Format("{0} - {1}", start.ToString("t"), end.ToString("t"));
-                    if (start == end)
+                    if (dates.Start.HasValue && dates.End.HasValue)
                     {
-                        datesStr = start.ToString("D");
-                        times = start.ToString("t");
+                        var start = dates.Start.Value;
+                        var end = dates.End.Value;
+                        var datesStr = string.Format("{0} - {1}", start.ToString("D"), end.ToString("D"));
+                        var times = string.Format("{0} - {1}", start.ToString("t"), end.ToString("t"));
+                        if (start == end)
+                        {
+                            datesStr = start.ToString("D");
+                            times = start.ToString("t");
+                        }
+                        Dates = datesStr;
+                        Times = times;
                     }
-                    Dates = datesStr;
-                    Times = times;
                 }
+
+                await EventCommentsViewModel.Load();
             });
-            
         }
     }
 }
