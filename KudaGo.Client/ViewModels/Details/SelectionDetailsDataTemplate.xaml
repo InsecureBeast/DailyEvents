@@ -6,66 +6,116 @@
     xmlns:converters="using:KudaGo.Client.Converters">
 
     <DataTemplate x:Key="SelectionNodeDetailsDataTemplate" >
-        <Grid Padding="0,10,0,10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+        <UserControl>
+            <Grid Padding="0,10,0,10">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup>
+                        <VisualState x:Name="Small">
+                            <VisualState.StateTriggers>
+                                <AdaptiveTrigger MinWindowWidth="0" />
+                            </VisualState.StateTriggers>
+                            <VisualState.Setters>
+                                <Setter Target="BigPanel.Visibility" Value="Collapsed" />
+                                <Setter Target="SmallPanel.Visibility" Value="Visible" />
+                            </VisualState.Setters>
+                        </VisualState>
 
-            <StackPanel Orientation="Vertical"
-                        Grid.Column="1">
-                <TextBlock Text="{Binding Title}"
-                           Style="{StaticResource BodyTextBlockStyle}"
-                           FontWeight="SemiBold"/>
+                        <VisualState x:Name="Big">
+                            <VisualState.StateTriggers>
+                                <AdaptiveTrigger MinWindowWidth="500" />
+                            </VisualState.StateTriggers>
+                            <VisualState.Setters>
+                                <Setter Target="BigPanel.Visibility" Value="Visible" />
+                                <Setter Target="SmallPanel.Visibility" Value="Collapsed" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-                <Grid Margin="{StaticResource DefaultControlMargin}">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="100"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
+                <StackPanel x:Name="BigPanel"
+                            Orientation="Vertical"
+                            Grid.Column="1">
+                    <TextBlock Text="{Binding Title}"
+                               Style="{StaticResource BodyTextBlockStyle}"
+                               FontWeight="SemiBold"/>
 
-                    <Image Source="{Binding Image}"
-                           Visibility="{Binding Image, Converter={StaticResource StringToVisibilityConverter}}"
-                           VerticalAlignment="Top"
-                           HorizontalAlignment="Left"
-                           Margin="0,4,10,0"
-                           Stretch="UniformToFill"
-                           Width="144"
-                           Height="96"/>
+                    <Grid Margin="{StaticResource DefaultControlMargin}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Source="{Binding Image}"
+                               Visibility="{Binding Image, Converter={StaticResource StringToVisibilityConverter}}"
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Left"
+                               Margin="0,4,10,0"
+                               Stretch="UniformToFill"
+                               Width="144"
+                               Height="96"/>
                     
-                    <RichTextBlock Name="richTextBlock"
-                                   Margin="0,0,0,0"
-                                   Grid.Column="1"
-                                   TextAlignment="Justify"
-                                   TextTrimming="WordEllipsis" 
-                                   TextWrapping="WrapWholeWords"
-                                   OverflowContentTarget="{Binding ElementName=FirstOverflowArea}"
+                        <RichTextBlock Name="richTextBlock"
+                                       Margin="0,0,0,0"
+                                       Grid.Column="1"
+                                       TextAlignment="Justify"
+                                       TextTrimming="WordEllipsis" 
+                                       TextWrapping="WrapWholeWords"
+                                       OverflowContentTarget="{Binding ElementName=FirstOverflowArea}"
+                                       Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}">
+                            <Paragraph>
+                                <Run Text="{Binding Description}" />
+                            </Paragraph>
+                        </RichTextBlock>
+                    
+                        <RichTextBlockOverflow Grid.Column="0"
+                                               Grid.ColumnSpan="2"
+                                               Grid.Row="1"
+                                               x:Name="FirstOverflowArea" 
+                                               Margin="0"/>
+
+                    </Grid>
+                </StackPanel>
+
+                <StackPanel x:Name="SmallPanel"
+                            Visibility="Collapsed"
+                            Orientation="Vertical"
+                            Grid.Column="1">
+                    <TextBlock Text="{Binding Title}"
+                               Style="{StaticResource BodyTextBlockStyle}"
+                               FontWeight="SemiBold"/>
+
+                    <Image Source="{Binding NormalImage}"
+                            Visibility="{Binding NormalImage, Converter={StaticResource StringToVisibilityConverter}}"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Left"
+                            Stretch="UniformToFill"/>
+
+                    <RichTextBlock TextAlignment="Justify"
                                    Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}">
                         <Paragraph>
                             <Run Text="{Binding Description}" />
                         </Paragraph>
-                    </RichTextBlock>
-                    
-                    <RichTextBlockOverflow Grid.Column="0"
-                                           Grid.ColumnSpan="2"
-                                           Grid.Row="1"
-                                           x:Name="FirstOverflowArea" 
-                                           Margin="0"/>
 
-                </Grid>
-            </StackPanel>
-        </Grid>
+                    </RichTextBlock>
+                </StackPanel>
+            </Grid>
+        </UserControl>
     </DataTemplate>
-    
+
     <DataTemplate x:Key="SelectionDetailsDataTemplate" >
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
                 <Grid MaxWidth="800"
                       Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}">
+                    
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
@@ -80,6 +130,7 @@
                                     Padding="15">
 
                             <TextBlock Text="{Binding Title}"
+                                       x:Name="title"
                                        Margin="{StaticResource DefaultControlMargin}"
                                        Style="{StaticResource TitleTextBlockStyle}"
                                        FontWeight="SemiBold"/>
@@ -105,8 +156,11 @@
                                        Style="{StaticResource BodyTextBlockStyle}"/>-->
 
                             <ItemsControl ItemsSource="{Binding Selections}"
+                                          x:Name="selectionItemsControl"
                                           Margin="{StaticResource DefaultControlMargin}"
-                                          ItemTemplate="{StaticResource SelectionNodeDetailsDataTemplate}"/>
+                                          ItemTemplate="{StaticResource SelectionNodeDetailsDataTemplate}">
+                                
+                            </ItemsControl>
 
                         </StackPanel>
                     </StackPanel>
