@@ -4,31 +4,6 @@ using KudaGo.Core.Data.JResponse;
 
 namespace KudaGo.Core.Events
 {
-    public class EventFields
-    {
-        public const string ID = "id"; //идентификатор
-        public const string PUBLICATION_DATE = "publication_date"; // - дата публикации
-        public const string DATES = "dates";// - даты проведения
-        public const string TITLE = "title";//  - название
-        public const string SHORT_TITLE = "short_title";//  - короткое название
-        public const string SLUG = "slug";// - слаг
-        public const string PLACE = "place";//  - место проведения
-        public const string DESCRIPTION = "description";//  - описание
-        public const string BODY_TEXT = "body_text";//  - полное описание
-        public const string LOCATION = "location";//  - город проведения
-        public const string CATEGORIES = "categories";//  - список категорий
-        public const string TAGLINE = "tagline";//  - тэглайн
-        public const string AGE_RESTRICTION = "age_restriction";//  - возрастное ограничение
-        public const string PRICE = "price";//  - стоимость
-        public const string IS_FREE = "is_free";//  - бесплатное ли событие
-        public const string IMAGES = "images";//  - картинки
-        public const string FAVORITES_COUNT = "favorites_count";//  - сколько пользователей добавило событие в избранное
-        public const string COMMENTS_COUNT = "comments_count";//  - число комментариев к событию
-        public const string SITE_URL = "site_url";//  - адрес события на сайте kudago.com
-        public const string TAGS = "tags";//  - тэги события
-        public const string PARTICIPANTS = "participants";//  - агенты события
-    }
-
     public class EventListRequest : BaseRequest<IEventListResponse>
     {
         public string Fields { get; set; }
@@ -98,7 +73,7 @@ namespace KudaGo.Core.Events
             return "/events/?";
         }
 
-        public class ExpandFields
+        public class ExpandNames
         {
             public const string IMAGES = "images";
             public const string PLACE = "place";
@@ -124,6 +99,31 @@ namespace KudaGo.Core.Events
             Favorites_count,
             Comments_count,
             Short_title
+        }
+
+        public class FieldNames
+        {
+            public const string ID = "id"; //идентификатор
+            public const string PUBLICATION_DATE = "publication_date"; // - дата публикации
+            public const string DATES = "dates";// - даты проведения
+            public const string TITLE = "title";//  - название
+            public const string SHORT_TITLE = "short_title";//  - короткое название
+            public const string SLUG = "slug";// - слаг
+            public const string PLACE = "place";//  - место проведения
+            public const string DESCRIPTION = "description";//  - описание
+            public const string BODY_TEXT = "body_text";//  - полное описание
+            public const string LOCATION = "location";//  - город проведения
+            public const string CATEGORIES = "categories";//  - список категорий
+            public const string TAGLINE = "tagline";//  - тэглайн
+            public const string AGE_RESTRICTION = "age_restriction";//  - возрастное ограничение
+            public const string PRICE = "price";//  - стоимость
+            public const string IS_FREE = "is_free";//  - бесплатное ли событие
+            public const string IMAGES = "images";//  - картинки
+            public const string FAVORITES_COUNT = "favorites_count";//  - сколько пользователей добавило событие в избранное
+            public const string COMMENTS_COUNT = "comments_count";//  - число комментариев к событию
+            public const string SITE_URL = "site_url";//  - адрес события на сайте kudago.com
+            public const string TAGS = "tags";//  - тэги события
+            public const string PARTICIPANTS = "participants";//  - агенты события
         }
     }
 }

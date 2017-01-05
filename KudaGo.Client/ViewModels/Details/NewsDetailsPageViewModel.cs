@@ -13,23 +13,12 @@ namespace KudaGo.Client.ViewModels.Details
     class NewsDetailsPageViewModel : DetailsPageViewModel
     {
         private string _description;
-        private ObservableCollection<string> _images;
         private Uri _source;
         private string _date;
 
         public NewsDetailsPageViewModel(long id, DataSource dataSource) : base(id, dataSource)
         {
-            _images = new ObservableCollection<string>();
-        }
-
-        public string Description
-        {
-            get { return _description; }
-            private set
-            {
-                _description = value;
-                NotifyOfPropertyChanged(() => Description);
-            }
+            
         }
 
         public Uri Source
@@ -50,11 +39,6 @@ namespace KudaGo.Client.ViewModels.Details
                 _date = value;
                 NotifyOfPropertyChanged(() => Date);
             }
-        }
-
-        public ObservableCollection<string> Images
-        {
-            get { return _images; }
         }
 
         protected override async Task LoadDetails(long id)

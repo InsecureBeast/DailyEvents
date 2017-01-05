@@ -110,6 +110,7 @@
       <DependentUpon>DetailsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Extensions\WebViewExtensions.cs" />
     <Compile Include="Helpers\DeviceTypeHelper.cs" />
     <Compile Include="Helpers\LayoutHelper.cs" />
     <Compile Include="Helpers\ResourcesHelper.cs" />
@@ -124,6 +125,8 @@
     <Compile Include="ViewModels\Details\DetailsPageViewModel.cs" />
     <Compile Include="ViewModels\Details\EventDetailsPageViewModel.cs" />
     <Compile Include="ViewModels\Details\NewsDetailsPageViewModel.cs" />
+    <Compile Include="ViewModels\Details\SelectionDetailsNodeViewModel.cs" />
+    <Compile Include="ViewModels\Details\SelectionDetailsPageViewModel.cs" />
     <Compile Include="ViewModels\EventsViewModel.cs" />
     <Compile Include="ViewModels\MoviesViewModel.cs" />
     <Compile Include="ViewModels\Nodes\CommentNodeViewModel.cs" />
@@ -201,6 +204,11 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
     <Page Include="ViewModels\Details\NewsDetailsDataTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="ViewModels\Details\SelectionDetailsDataTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

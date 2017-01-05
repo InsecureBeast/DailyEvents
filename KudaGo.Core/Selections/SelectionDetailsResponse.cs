@@ -30,6 +30,7 @@ namespace KudaGo.Core.Selections
         string CType { get; }
         IPlace Place { get; }
         IDate Daterange { get; }
+        IImage FirstImage { get; }
     }
 
     class SelectionDetailsResponse : ISelectionDetailsResponse
@@ -74,7 +75,12 @@ namespace KudaGo.Core.Selections
         public SelectionItem(JSelectionItem jSelectionItem)
         {
             if (jSelectionItem == null)
+            {
+                Place = new Place(null);
+                Daterange = new DateImpl(null);
+                FirstImage = new ImageImpl(null);
                 return;
+            }
 
             Id = jSelectionItem.Id;
             Title = jSelectionItem.Title;
@@ -82,6 +88,7 @@ namespace KudaGo.Core.Selections
             CType = jSelectionItem.CType;
             Place = new Place(jSelectionItem.Place);
             Daterange = new DateImpl(jSelectionItem.Daterange);
+            FirstImage = new ImageImpl(jSelectionItem.first_image);
         }
 
         public long Id { get; private set; }
@@ -90,5 +97,6 @@ namespace KudaGo.Core.Selections
         public string CType { get; private set; }
         public IPlace Place { get; private set; }
         public IDate Daterange { get; private set; }
+        public IImage FirstImage { get; private set; }
     }
 }

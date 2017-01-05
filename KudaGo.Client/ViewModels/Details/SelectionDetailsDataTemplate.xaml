@@ -1,0 +1,139 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:KudaGo.Client.ViewModels.Details"
+    xmlns:controls="using:KudaGo.Client.Controls"
+    xmlns:converters="using:KudaGo.Client.Converters">
+
+    <DataTemplate x:Key="SelectionNodeDetailsDataTemplate" >
+        <Grid Padding="0,10,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Orientation="Vertical"
+                        Grid.Column="1">
+                <TextBlock Text="{Binding Title}"
+                           Style="{StaticResource BodyTextBlockStyle}"
+                           FontWeight="SemiBold"/>
+
+                <Grid Margin="{StaticResource DefaultControlMargin}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Image Source="{Binding Image}"
+                           Visibility="{Binding Image, Converter={StaticResource StringToVisibilityConverter}}"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Left"
+                           Margin="0,4,10,0"
+                           Stretch="UniformToFill"
+                           Width="144"
+                           Height="96"/>
+                    
+                    <RichTextBlock Name="richTextBlock"
+                                   Margin="0,0,0,0"
+                                   Grid.Column="1"
+                                   TextAlignment="Justify"
+                                   TextTrimming="WordEllipsis" 
+                                   TextWrapping="WrapWholeWords"
+                                   OverflowContentTarget="{Binding ElementName=FirstOverflowArea}"
+                                   Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}">
+                        <Paragraph>
+                            <Run Text="{Binding Description}" />
+                        </Paragraph>
+                    </RichTextBlock>
+                    
+                    <RichTextBlockOverflow Grid.Column="0"
+                                           Grid.ColumnSpan="2"
+                                           Grid.Row="1"
+                                           x:Name="FirstOverflowArea" 
+                                           Margin="0"/>
+
+                </Grid>
+            </StackPanel>
+        </Grid>
+    </DataTemplate>
+    
+    <DataTemplate x:Key="SelectionDetailsDataTemplate" >
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+                <Grid MaxWidth="800"
+                      Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto" x:Name="Comments"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel>
+                        <controls:FlipViewControl/>
+                        <StackPanel Orientation="Vertical"
+                                    Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}"
+                                    Padding="15">
+
+                            <TextBlock Text="{Binding Title}"
+                                       Margin="{StaticResource DefaultControlMargin}"
+                                       Style="{StaticResource TitleTextBlockStyle}"
+                                       FontWeight="SemiBold"/>
+
+                            <RichTextBlock TextAlignment="Justify"
+                                           TextWrapping="Wrap"
+                                           Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"
+                                           Margin="{StaticResource DoubleTextBlockMargin}">
+                                <Paragraph>
+                                    <Run Text="{Binding Description}" />
+                                </Paragraph>
+                            </RichTextBlock>
+                            <!--<TextBlock Text="{Binding Description}"  
+                                       TextAlignment="Justify"
+                                       Style="{StaticResource NormalTextBlockStyle}"
+                                       HorizontalAlignment="Stretch"
+                                       Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"
+                                       Margin="{StaticResource DoubleTextBlockMargin}"/>-->
+
+                            <!--<TextBlock Text="{Binding Date}"
+                                       Margin="{StaticResource DefaultControlMargin}"
+                                       Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"
+                                       Style="{StaticResource BodyTextBlockStyle}"/>-->
+
+                            <ItemsControl ItemsSource="{Binding Selections}"
+                                          Margin="{StaticResource DefaultControlMargin}"
+                                          ItemTemplate="{StaticResource SelectionNodeDetailsDataTemplate}"/>
+
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="3"
+                                Padding="15"
+                                Margin="{StaticResource DoubleTextBlockMargin}"
+                                Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}">
+
+                        <TextBlock Text="COMMENTS"
+                                   x:Uid="comments"
+                                   Style="{StaticResource NormalTextBlockStyle}"
+                                   FontWeight="SemiBold"/>
+
+                        <ItemsControl ItemsSource="{Binding EventCommentsViewModel.Items}"
+                                      Margin="{StaticResource DefaultControlMargin}"
+                                      ItemTemplate="{StaticResource CommentDataTemplate}"/>
+
+                        <TextBlock Text="No comments"
+                                   x:Uid="noComments"
+                                   Style="{StaticResource NormalTextBlockStyle}"
+                                   Visibility="{Binding EventCommentsViewModel.HasComments, Converter={StaticResource InverseBooleanToVisibilityConverter}}"
+                                   Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </ScrollViewer>
+    </DataTemplate>
+    
+</ResourceDictionary>

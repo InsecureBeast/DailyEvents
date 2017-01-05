@@ -14,8 +14,6 @@ namespace KudaGo.Client.ViewModels.Details
 {
     class EventDetailsPageViewModel : DetailsPageViewModel
     {
-        private string _description;
-        private ObservableCollection<string> _images;
         private string _age;
         private string _dates;
         private string _times;
@@ -29,22 +27,6 @@ namespace KudaGo.Client.ViewModels.Details
         public EventDetailsPageViewModel(long eventId, DataSource dataSource) : base(eventId, dataSource)
         {
             _eventCommentsViewModel = new EventCommentsViewModel(eventId, dataSource);
-            _images = new ObservableCollection<string>();
-        }
-
-        public string Description
-        {
-            get { return _description; }
-            private set
-            {
-                _description = value;
-                NotifyOfPropertyChanged(() => Description);
-            }
-        }
-
-        public ObservableCollection<string> Images
-        {
-            get { return _images; }
         }
 
         public string Age

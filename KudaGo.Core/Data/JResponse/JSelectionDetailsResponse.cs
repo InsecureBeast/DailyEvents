@@ -33,6 +33,7 @@ namespace KudaGo.Core.Data.JResponse
         {
             Place = new JPlace();
             Daterange = new JDate();
+            first_image = new JImage();
         }
 
         public long Id { get; set; }
@@ -41,5 +42,6 @@ namespace KudaGo.Core.Data.JResponse
         public string CType { get; set; }
         public JPlace Place { get; set; }
         public JDate Daterange { get; set; }
+        public JImage first_image { get; set; }
     }
 }

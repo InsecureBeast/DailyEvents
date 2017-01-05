@@ -55,20 +55,26 @@
                                             Style="{StaticResource BodyTextBlockStyle}"/>
                             </Grid>-->
 
-                            <TextBlock Text="{Binding Description}" 
-                                        Style="{StaticResource NormalTextBlockStyle}"
-                                        HorizontalAlignment="Stretch"
-                                        Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"
-                                        Margin="{StaticResource DoubleTextBlockMargin}"/>
+                            <RichTextBlock TextAlignment="Justify"
+                                           TextWrapping="Wrap"
+                                           Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"
+                                           Margin="{StaticResource DoubleTextBlockMargin}">
+                                <Paragraph>
+                                    <Run Text="{Binding Description}" />
+                                </Paragraph>
+                            </RichTextBlock>
 
-                            <TextBlock Text="{Binding BodyText}" 
-                                    Style="{StaticResource NormalTextBlockStyle}"
-                                    HorizontalAlignment="Stretch"/>
-
+                            <RichTextBlock TextAlignment="Justify"
+                                           TextWrapping="Wrap">
+                                <Paragraph>
+                                    <Run Text="{Binding BodyText}" />
+                                </Paragraph>
+                            </RichTextBlock>
+                            
                             <TextBlock Text="ADDITIONAL INFO"
-                                   x:Uid="additionalInfo"
-                                   Style="{StaticResource NormalTextBlockStyle}"
-                                   FontWeight="SemiBold"/>
+                                       x:Uid="additionalInfo"
+                                       Style="{StaticResource NormalTextBlockStyle}"
+                                       FontWeight="SemiBold"/>
                             
                             <TextBlock Style="{StaticResource BodyTextBlockStyle}"
                                        Margin="{StaticResource DefaultControlMargin}"

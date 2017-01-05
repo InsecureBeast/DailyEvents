@@ -21,8 +21,6 @@
                         
                     <StackPanel>
                         <controls:FlipViewControl/>
-                        <!--<Image Source="{Binding Image}"
-                               Stretch="Uniform"/>-->
                         
                         <StackPanel Orientation="Vertical"
                                     Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}"
@@ -71,11 +69,14 @@
                                             Style="{StaticResource BodyTextBlockStyle}"/>
                             </Grid>
 
-                            <TextBlock Text="{Binding Description}" 
-                                        Style="{StaticResource NormalTextBlockStyle}"
-                                        HorizontalAlignment="Stretch"
-                                        Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"
-                                        Margin="{StaticResource DoubleTextBlockMargin}"/>
+                            <RichTextBlock TextAlignment="Justify"
+                                           TextWrapping="Wrap"
+                                           Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"
+                                           Margin="{StaticResource DoubleTextBlockMargin}">
+                                <Paragraph>
+                                    <Run Text="{Binding Description}" />
+                                </Paragraph>
+                            </RichTextBlock>
 
                             <StackPanel Visibility="{Binding IsFree, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
                                 <TextBlock Text="PRICE"
@@ -138,10 +139,14 @@
                                     Style="{StaticResource NormalTextBlockStyle}"
                                     FontWeight="SemiBold"/>
 
-                        <TextBlock Text="{Binding BodyText}" 
-                                    Style="{StaticResource NormalTextBlockStyle}"
-                                    HorizontalAlignment="Stretch"
-                                    Margin="{StaticResource DoubleTextBlockMargin}"/>
+                        <RichTextBlock TextAlignment="Justify"
+                                       TextWrapping="Wrap"
+                                       Margin="{StaticResource DoubleTextBlockMargin}">
+                            <Paragraph>
+                                <Run Text="{Binding BodyText}" />
+                            </Paragraph>
+                        </RichTextBlock>
+                        
                     </StackPanel>
 
                     <StackPanel Grid.Row="3"

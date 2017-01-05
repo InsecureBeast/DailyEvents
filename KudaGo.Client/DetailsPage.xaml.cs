@@ -66,7 +66,12 @@ namespace KudaGo.Client
                 DataContext = newsViewModel;
                 template = Resources["NewsDetailsDataTemplate"] as DataTemplate;
             }
-
+            if (vm is SelectionNodeViewModel)
+            {
+                var viewModel = new SelectionDetailsPageViewModel(vm.Id, App.DataSource);
+                DataContext = viewModel;
+                template = Resources["SelectionDetailsDataTemplate"] as DataTemplate;
+            }
             contentPresenter.ContentTemplate = template;
         }
     }

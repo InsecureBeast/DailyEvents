@@ -23,6 +23,7 @@
                            FontWeight="SemiBold"
                            TextTrimming="CharacterEllipsis"/>
                 <TextBlock Text="{Binding Text}"
+                           TextAlignment="Justify"
                            TextWrapping="Wrap"/>
             </StackPanel>
         </Grid>

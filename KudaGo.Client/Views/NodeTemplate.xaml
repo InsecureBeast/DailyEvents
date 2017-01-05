@@ -53,6 +53,7 @@
                                Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
 
                 </Grid>
+                
                 <TextBlock Text="{Binding Description}" 
                            MaxLines="3"
                            TextTrimming="CharacterEllipsis"

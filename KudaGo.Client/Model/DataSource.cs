@@ -11,6 +11,7 @@ using KudaGo.Core.News;
 using KudaGo.Core.Selections;
 using KudaGo.Core.Movies;
 using KudaGo.Core.Comments;
+using KudaGo.Core.Places;
 
 namespace KudaGo.Client.Model
 {
@@ -23,20 +24,20 @@ namespace KudaGo.Client.Model
             request.TextFormat = TextFormatEnum.Plain;
             request.Next = next;
             request.Categories = "-concert,-theater";
-            request.Expand = string.Format("{0},{1}", EventListRequest.ExpandFields.IMAGES, EventListRequest.ExpandFields.PLACE);
+            request.Expand = string.Format("{0},{1}", EventListRequest.ExpandNames.IMAGES, EventListRequest.ExpandNames.PLACE);
 
             var fieldBuilder = new FieldsBuilder();
             request.Fields = fieldBuilder
-                .WithField(EventFields.DESCRIPTION)
-                .WithField(EventFields.ID)
-                .WithField(EventFields.IMAGES)
-                .WithField(EventFields.PLACE)
-                .WithField(EventFields.IS_FREE)
-                .WithField(EventFields.PRICE)
-                .WithField(EventFields.TITLE)
-                .WithField(EventFields.DATES)
-                .WithField(EventFields.CATEGORIES)
-                .WithField(EventFields.AGE_RESTRICTION).Build();
+                .WithField(EventListRequest.FieldNames.DESCRIPTION)
+                .WithField(EventListRequest.FieldNames.ID)
+                .WithField(EventListRequest.FieldNames.IMAGES)
+                .WithField(EventListRequest.FieldNames.PLACE)
+                .WithField(EventListRequest.FieldNames.IS_FREE)
+                .WithField(EventListRequest.FieldNames.PRICE)
+                .WithField(EventListRequest.FieldNames.TITLE)
+                .WithField(EventListRequest.FieldNames.DATES)
+                .WithField(EventListRequest.FieldNames.CATEGORIES)
+                .WithField(EventListRequest.FieldNames.AGE_RESTRICTION).Build();
             request.ActualSince = DateTime.Today;
             request.Location = Location.Spb;
 
@@ -50,7 +51,7 @@ namespace KudaGo.Client.Model
             request.Lang = "ru";
             request.TextFormat = TextFormatEnum.Plain;
             request.Next = next;
-            request.Expand = string.Format("{0},{1}", NewsListRequest.ExpandNames.IMAGES, EventListRequest.ExpandFields.PLACE);
+            request.Expand = string.Format("{0},{1}", NewsListRequest.ExpandNames.IMAGES, EventListRequest.ExpandNames.PLACE);
 
             var fieldBuilder = new FieldsBuilder();
             request.Fields = fieldBuilder
@@ -128,7 +129,7 @@ namespace KudaGo.Client.Model
             request.Lang = "ru";
             request.EventId = eventId;
             request.TextFormat = TextFormatEnum.Text;
-            request.Expand = EventListRequest.ExpandFields.PLACE + "," + EventListRequest.ExpandFields.PLACE;
+            request.Expand = EventListRequest.ExpandNames.PLACE + "," + EventListRequest.ExpandNames.PLACE;
 
             var res = await request.ExecuteAsync();
             return res;
@@ -146,11 +147,74 @@ namespace KudaGo.Client.Model
             return res;
         }
 
+        public async Task<IPlaceDetailsResponse> GetPlaceDetails(long placeId)
+        {
+            var request = new PlaceDetailsRequest();
+            request.Lang = "ru";
+            request.PlaceId = placeId;
+            request.Expand = PlaceListRequest.ExpandNames.IMAGES;
+            request.Fields = PlaceListRequest.FieldNames.IMAGES;
+
+            var res = await request.ExecuteAsync();
+            return res;
+        }
+
         public async Task<ICommentsResponse> GetEventComments(long eventId)
         {
             var request = new EventCommentsRequest();
             request.Lang = "ru";
             request.EventId = eventId;
+
+            var res = await request.ExecuteAsync();
+            return res;
+        }
+
+        #endregion
+
+        #region Images
+        public async Task<IPlaceListResponse> GetPlaceImages(string ids)
+        {
+            var request = new PlaceListRequest();
+            request.Lang = "ru";
+            request.Expand = string.Format("{0},{1}", PlaceListRequest.ExpandNames.IMAGES);
+            request.Ids = ids;
+
+            var fieldBuilder = new FieldsBuilder();
+            request.Fields = fieldBuilder
+                .WithField(PlaceListRequest.FieldNames.IMAGES)
+                .Build();
+
+            var res = await request.ExecuteAsync();
+            return res;
+        }
+
+        public async Task<IEventListResponse> GetEventImages(string ids)
+        {
+            var request = new EventListRequest();
+            request.Lang = "ru";
+            request.Expand = string.Format("{0},{1}", EventListRequest.ExpandNames.IMAGES);
+            request.Ids = ids;
+
+            var fieldBuilder = new FieldsBuilder();
+            request.Fields = fieldBuilder
+                .WithField(EventListRequest.FieldNames.IMAGES)
+                .Build();
+
+            var res = await request.ExecuteAsync();
+            return res;
+        }
+
+        public async Task<INewsListResponse> GetNewsImages(string ids)
+        {
+            var request = new NewsListRequest();
+            request.Lang = "ru";
+            request.Expand = string.Format("{0},{1}", NewsListRequest.ExpandNames.IMAGES);
+            request.Ids = ids;
+
+            var fieldBuilder = new FieldsBuilder();
+            request.Fields = fieldBuilder
+                .WithField(NewsListRequest.FieldNames.IMAGES)
+                .Build();
 
             var res = await request.ExecuteAsync();
             return res;
