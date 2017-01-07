@@ -103,7 +103,7 @@ namespace KudaGo.Client.Model
             request.Lang = "ru";
             request.TextFormat = TextFormatEnum.Plain;
             request.Next = next;
-            request.Expand = MovieListRequest.ExpandFields.POSTER;
+            request.Expand = MovieListRequest.ExpandNames.POSTER;
 
             var fieldBuilder = new FieldsBuilder();
             request.Fields = fieldBuilder
@@ -169,52 +169,12 @@ namespace KudaGo.Client.Model
             return res;
         }
 
-        #endregion
-
-        #region Images
-        public async Task<IPlaceListResponse> GetPlaceImages(string ids)
+        public async Task<IMovieDetailsResponse> GetMovieDetails(long movieId)
         {
-            var request = new PlaceListRequest();
+            var request = new MovieDetailsRequest();
             request.Lang = "ru";
-            request.Expand = string.Format("{0},{1}", PlaceListRequest.ExpandNames.IMAGES);
-            request.Ids = ids;
-
-            var fieldBuilder = new FieldsBuilder();
-            request.Fields = fieldBuilder
-                .WithField(PlaceListRequest.FieldNames.IMAGES)
-                .Build();
-
-            var res = await request.ExecuteAsync();
-            return res;
-        }
-
-        public async Task<IEventListResponse> GetEventImages(string ids)
-        {
-            var request = new EventListRequest();
-            request.Lang = "ru";
-            request.Expand = string.Format("{0},{1}", EventListRequest.ExpandNames.IMAGES);
-            request.Ids = ids;
-
-            var fieldBuilder = new FieldsBuilder();
-            request.Fields = fieldBuilder
-                .WithField(EventListRequest.FieldNames.IMAGES)
-                .Build();
-
-            var res = await request.ExecuteAsync();
-            return res;
-        }
-
-        public async Task<INewsListResponse> GetNewsImages(string ids)
-        {
-            var request = new NewsListRequest();
-            request.Lang = "ru";
-            request.Expand = string.Format("{0},{1}", NewsListRequest.ExpandNames.IMAGES);
-            request.Ids = ids;
-
-            var fieldBuilder = new FieldsBuilder();
-            request.Fields = fieldBuilder
-                .WithField(NewsListRequest.FieldNames.IMAGES)
-                .Build();
+            request.MovieId = movieId;
+            request.Expand = MovieListRequest.ExpandNames.IMAGES;
 
             var res = await request.ExecuteAsync();
             return res;

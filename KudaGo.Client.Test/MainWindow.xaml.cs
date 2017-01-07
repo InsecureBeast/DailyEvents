@@ -41,20 +41,21 @@ namespace KudaGo.Client.Test
 
             var request = new EventListRequest();
             request.Lang = "ru";
-            request.Expand = string.Format("{0},{1}", EventListRequest.ExpandFields.IMAGES, EventListRequest.ExpandFields.PLACE);
+            request.Expand = string.Format("{0},{1}", EventListRequest.ExpandNames.IMAGES, EventListRequest.ExpandNames.PLACE);
 
             var fieldBuilder = new FieldsBuilder();
-            request.Fields = fieldBuilder.WithField(EventFields.BODY_TEXT)
-                .WithField(EventFields.COMMENTS_COUNT)
-                .WithField(EventFields.DESCRIPTION)
-                .WithField(EventFields.ID)
-                .WithField(EventFields.IMAGES)
-                .WithField(EventFields.PLACE)
-                .WithField(EventFields.PUBLICATION_DATE)
-                .WithField(EventFields.PRICE)
-                .WithField(EventFields.TITLE)
-                .WithField(EventFields.SITE_URL)
-                .WithField(EventFields.SLUG).Build();
+            request.Fields = fieldBuilder
+                .WithField(EventListRequest.FieldNames.BODY_TEXT)
+                .WithField(EventListRequest.FieldNames.COMMENTS_COUNT)
+                .WithField(EventListRequest.FieldNames.DESCRIPTION)
+                .WithField(EventListRequest.FieldNames.ID)
+                .WithField(EventListRequest.FieldNames.IMAGES)
+                .WithField(EventListRequest.FieldNames.PLACE)
+                .WithField(EventListRequest.FieldNames.PUBLICATION_DATE)
+                .WithField(EventListRequest.FieldNames.PRICE)
+                .WithField(EventListRequest.FieldNames.TITLE)
+                .WithField(EventListRequest.FieldNames.SITE_URL)
+                .WithField(EventListRequest.FieldNames.SLUG).Build();
             request.ActualSince = DateTime.Today;
             request.Location = Location.Spb;
 

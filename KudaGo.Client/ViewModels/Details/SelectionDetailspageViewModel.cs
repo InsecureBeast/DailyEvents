@@ -7,8 +7,6 @@ using KudaGo.Client.Model;
 using KudaGo.Client.Helpers;
 using KudaGo.Client.Extensions;
 using System.Collections.ObjectModel;
-using KudaGo.Core.Selections;
-using KudaGo.Core.Data;
 
 namespace KudaGo.Client.ViewModels.Details
 {
@@ -51,29 +49,6 @@ namespace KudaGo.Client.ViewModels.Details
 
                 //await EventCommentsViewModel.Load();
             });
-        }
-
-        private async void LoadImages(IEnumerable<ISelectionItem> items)
-        {
-            var placeBuilder = new StringBuilder();
-            var eventBuilder = new StringBuilder();
-            var newsBuilder = new StringBuilder();
-
-            foreach (var item in items)
-            {
-                if (item.CType == "place")
-                    placeBuilder.Append(item.Id + ",");
-
-                if (item.CType == "event")
-                    eventBuilder.Append(item.Id + ",");
-
-                if (item.CType == "news")
-                    newsBuilder.Append(item.Id + ",");
-            }
-
-            var places = await _dataSource.GetPlaceImages(placeBuilder.ToString());
-            var events = await _dataSource.GetEventImages(eventBuilder.ToString());
-            var news = await _dataSource.GetNewsImages(newsBuilder.ToString());
         }
     }
 }

@@ -104,7 +104,7 @@ namespace KudaGo.Core.Movies
             imdb_rating,
         }
 
-        public class ExpandFields
+        public class ExpandNames
         {
             public const string IMAGES = "images";
             public const string POSTER = "poster";

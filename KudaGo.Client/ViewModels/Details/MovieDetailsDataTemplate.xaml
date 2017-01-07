@@ -1,0 +1,214 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:KudaGo.Client.ViewModels.Details"
+    xmlns:controls="using:KudaGo.Client.Controls"
+    xmlns:converters="using:KudaGo.Client.Converters">
+
+    <DataTemplate x:Key="MovieDetailsDataTemplate" >
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+                <Grid MaxWidth="800"
+                      Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto" x:Name="Comments"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel>
+                        <controls:FlipViewControl/>
+                        
+                        <StackPanel Orientation="Vertical"
+                                    Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}"
+                                    Padding="15">
+
+                            <Grid Margin="{StaticResource DefaultControlMargin}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="{Binding Title}"
+                                           Style="{StaticResource TitleTextBlockStyle}"
+                                           FontWeight="SemiBold"/>
+                                <TextBlock Text="{Binding Age}"
+                                           Grid.Column="1"
+                                           Margin="5,0,0,0"
+                                           Style="{StaticResource TitleTextBlockStyle}"
+                                           Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
+                            </Grid>
+                            
+                            <!--<RichTextBlock TextAlignment="Justify"
+                                           TextWrapping="Wrap"
+                                           Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"
+                                           Margin="{StaticResource DoubleTextBlockMargin}">
+                                <Paragraph>
+                                    <Run Text="{Binding Description}" />
+                                </Paragraph>
+                            </RichTextBlock>-->
+
+                            <RichTextBlock TextAlignment="Justify"
+                                           TextWrapping="Wrap"
+                                           Margin="{StaticResource DefaultControlMargin}">
+                                <Paragraph>
+                                    <Run Text="{Binding BodyText}" />
+                                </Paragraph>
+                            </RichTextBlock>
+                        </StackPanel>
+
+                        <ItemsControl Margin="{StaticResource DoubleTextBlockMargin}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VariableSizedWrapGrid  Orientation="Horizontal" 
+                                                            MaximumRowsOrColumns="3" 
+                                                            ItemHeight="80"
+                                                            ItemWidth="250"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                           
+                            <ListBoxItem HorizontalContentAlignment="Left"
+                                         VerticalContentAlignment="Top">
+                                <StackPanel>
+                                    <TextBlock Text="Country"
+                                               x:Uid="country"
+                                               FontWeight="SemiBold"/>
+                                    <TextBlock Text="{Binding Country}"
+                                               TextWrapping="WrapWholeWords"
+                                               Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
+                                </StackPanel>
+                            </ListBoxItem>
+
+                            <ListBoxItem HorizontalContentAlignment="Left"
+                                         VerticalContentAlignment="Top">
+                                <StackPanel>
+                                    <TextBlock Text="Year"
+                                               x:Uid="year"
+                                               FontWeight="SemiBold"/>
+                                    <TextBlock Text="{Binding Year}"
+                                               Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
+                                </StackPanel>
+                            </ListBoxItem>
+
+                            <ListBoxItem HorizontalContentAlignment="Left"
+                                         VerticalContentAlignment="Top">
+                                <StackPanel>
+                                    <TextBlock Text="Language"
+                                               x:Uid="language"
+                                               FontWeight="SemiBold"/>
+                                    <TextBlock Text="{Binding Language}"
+                                               Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
+                                </StackPanel>
+                            </ListBoxItem>
+
+                            <ListBoxItem HorizontalContentAlignment="Left"
+                                         VerticalContentAlignment="Top">
+                                <StackPanel>
+                                    <TextBlock Text="Running time"
+                                               x:Uid="runningTime"
+                                               FontWeight="SemiBold"/>
+                                    <TextBlock Text="{Binding RunningTime}"
+                                               Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
+                                </StackPanel>
+                            </ListBoxItem>
+
+                            <ListBoxItem HorizontalContentAlignment="Left"
+                                         VerticalContentAlignment="Top">
+                                <StackPanel>
+                                    <TextBlock Text="Budget"
+                                               x:Uid="budget"
+                                               FontWeight="SemiBold"/>
+                                    <TextBlock Text="{Binding Budget}"
+                                               Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
+                                </StackPanel>
+                            </ListBoxItem>
+
+                            <ListBoxItem HorizontalContentAlignment="Left"
+                                         VerticalContentAlignment="Top"
+                                         VariableSizedWrapGrid.RowSpan="3">
+                                <StackPanel>
+                                    <TextBlock Text="Actors"
+                                               x:Uid="actors"
+                                               FontWeight="SemiBold"/>
+                                    <TextBlock Text="{Binding Actors}"
+                                               TextWrapping="WrapWholeWords"
+                                               Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
+                                </StackPanel>
+                            </ListBoxItem>
+
+                            <ListBoxItem HorizontalContentAlignment="Left"
+                                         VerticalContentAlignment="Top"
+                                         VariableSizedWrapGrid.RowSpan="2">
+                                <StackPanel>
+                                    <TextBlock Text="Writer"
+                                               x:Uid="writer"
+                                               FontWeight="SemiBold"/>
+                                    <TextBlock Text="{Binding Writer}"
+                                               TextWrapping="WrapWholeWords"
+                                               Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
+                                </StackPanel>
+                            </ListBoxItem>
+
+                            <ListBoxItem HorizontalContentAlignment="Left"
+                                         VerticalContentAlignment="Top">
+                                <StackPanel>
+                                    <TextBlock Text="Director"
+                                               x:Uid="director"
+                                               FontWeight="SemiBold"/>
+                                    <TextBlock Text="{Binding Director}"
+                                               Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
+                                </StackPanel>
+                            </ListBoxItem>
+
+                            <ListBoxItem HorizontalContentAlignment="Left"
+                                         VerticalContentAlignment="Top">
+                                <StackPanel>
+                                    <TextBlock Text="Site"
+                                               x:Uid="site"
+                                               FontWeight="SemiBold"/>
+                                    <TextBlock Text="{Binding SiteUrl}"
+                                               Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
+                                </StackPanel>
+                            </ListBoxItem>
+
+                            <ListBoxItem HorizontalContentAlignment="Left"
+                                         VerticalContentAlignment="Top">
+                                <StackPanel>
+                                    <TextBlock Text="Genres"
+                                               x:Uid="genres"
+                                               FontWeight="SemiBold"/>
+                                    <TextBlock Text="{Binding Genres}"
+                                               Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
+                                </StackPanel>
+                            </ListBoxItem>
+                        </ItemsControl>
+
+
+                        <StackPanel Grid.Row="3"
+                                Padding="15"
+                                Margin="{StaticResource DoubleTextBlockMargin}"
+                                Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}">
+
+                            <TextBlock Text="COMMENTS"
+                                   x:Uid="comments"
+                                   Style="{StaticResource NormalTextBlockStyle}"
+                                   FontWeight="SemiBold"/>
+
+                            <ItemsControl ItemsSource="{Binding EventCommentsViewModel.Items}"
+                                      Margin="{StaticResource DefaultControlMargin}"
+                                      ItemTemplate="{StaticResource CommentDataTemplate}"/>
+
+                            <TextBlock Text="No comments"
+                                   x:Uid="noComments"
+                                   Style="{StaticResource NormalTextBlockStyle}"
+                                   Visibility="{Binding EventCommentsViewModel.HasComments, Converter={StaticResource InverseBooleanToVisibilityConverter}}"
+                                   Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </ScrollViewer>
+    </DataTemplate>
+    
+</ResourceDictionary>

@@ -52,7 +52,7 @@ namespace UnitTestProject1
                 .WithField(MovieListRequest.FieldNames.IMDB_URL)
                 .WithField(MovieListRequest.FieldNames.IMDB_RATING).Build();
 
-            request.Expand = MovieListRequest.ExpandFields.IMAGES + "," + MovieListRequest.ExpandFields.POSTER;
+            request.Expand = MovieListRequest.ExpandNames.IMAGES + "," + MovieListRequest.ExpandNames.POSTER;
 
             var res = await request.ExecuteAsync();
             Assert.IsNotNull(res);
