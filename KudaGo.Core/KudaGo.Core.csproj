@@ -48,6 +48,7 @@
     <Compile Include="Data\JData\JGenre.cs" />
     <Compile Include="Data\JError.cs" />
     <Compile Include="Data\JResponse\JCategoriesResponse.cs" />
+    <Compile Include="Data\JResponse\JMovieDetailsResponse.cs" />
     <Compile Include="Data\JResponse\JMovieListResponse.cs" />
     <Compile Include="Data\JResponse\JNewsDetailsResponse.cs" />
     <Compile Include="Data\JResponse\JNewsListResponse.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Events\EventsOfTheDayResponse.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="FieldsBuilder.cs" />
+    <Compile Include="Movies\MovieDetailsRequest.cs" />
     <Compile Include="Movies\MovieListResponce.cs" />
     <Compile Include="Movies\MovieListRequest.cs" />
     <Compile Include="Selections\SelectionCommentsRequest.cs" />

@@ -55,32 +55,33 @@ namespace UnitTestProject1
             var request = new EventListRequest();
             request.Lang = "ru";
             request.Expand = string.Format("{0},{1},{2},{3},{4}", 
-                EventListRequest.ExpandFields.IMAGES, 
-                EventListRequest.ExpandFields.PLACE, 
-                EventListRequest.ExpandFields.LOCATION, 
-                EventListRequest.ExpandFields.DATES, 
-                EventListRequest.ExpandFields.PARTICIPANTS);
+                EventListRequest.ExpandNames.IMAGES, 
+                EventListRequest.ExpandNames.PLACE, 
+                EventListRequest.ExpandNames.LOCATION, 
+                EventListRequest.ExpandNames.DATES, 
+                EventListRequest.ExpandNames.PARTICIPANTS);
 
             var fieldBuilder = new FieldsBuilder();
-            request.Fields = fieldBuilder.WithField(EventFields.BODY_TEXT)
-                .WithField(EventFields.COMMENTS_COUNT)
-                .WithField(EventFields.CATEGORIES)
-                .WithField(EventFields.DESCRIPTION)
-                .WithField(EventFields.DATES)
-                .WithField(EventFields.FAVORITES_COUNT)
-                .WithField(EventFields.AGE_RESTRICTION)
-                .WithField(EventFields.ID)
-                .WithField(EventFields.IMAGES)
-                .WithField(EventFields.IS_FREE)
-                .WithField(EventFields.BODY_TEXT)
-                .WithField(EventFields.LOCATION)
-                .WithField(EventFields.PARTICIPANTS)
-                .WithField(EventFields.PLACE)
-                .WithField(EventFields.PUBLICATION_DATE)
-                .WithField(EventFields.PRICE)
-                .WithField(EventFields.SHORT_TITLE)
-                .WithField(EventFields.SITE_URL)
-                .WithField(EventFields.SLUG).Build();
+            request.Fields = fieldBuilder
+                .WithField(EventListRequest.FieldNames.BODY_TEXT)
+                .WithField(EventListRequest.FieldNames.COMMENTS_COUNT)
+                .WithField(EventListRequest.FieldNames.CATEGORIES)
+                .WithField(EventListRequest.FieldNames.DESCRIPTION)
+                .WithField(EventListRequest.FieldNames.DATES)
+                .WithField(EventListRequest.FieldNames.FAVORITES_COUNT)
+                .WithField(EventListRequest.FieldNames.AGE_RESTRICTION)
+                .WithField(EventListRequest.FieldNames.ID)
+                .WithField(EventListRequest.FieldNames.IMAGES)
+                .WithField(EventListRequest.FieldNames.IS_FREE)
+                .WithField(EventListRequest.FieldNames.BODY_TEXT)
+                .WithField(EventListRequest.FieldNames.LOCATION)
+                .WithField(EventListRequest.FieldNames.PARTICIPANTS)
+                .WithField(EventListRequest.FieldNames.PLACE)
+                .WithField(EventListRequest.FieldNames.PUBLICATION_DATE)
+                .WithField(EventListRequest.FieldNames.PRICE)
+                .WithField(EventListRequest.FieldNames.SHORT_TITLE)
+                .WithField(EventListRequest.FieldNames.SITE_URL)
+                .WithField(EventListRequest.FieldNames.SLUG).Build();
             request.ActualSince = DateTime.Today;
             request.Location = Location.Spb;
 
@@ -103,7 +104,7 @@ namespace UnitTestProject1
             request.Lang = "ru";
 
             var fieldBuilder = new FieldsBuilder();
-            request.Fields = fieldBuilder.WithField(EventFields.ID).Build();
+            request.Fields = fieldBuilder.WithField(EventListRequest.FieldNames.ID).Build();
             request.ActualSince = DateTime.Today;
             request.Location = Location.Spb;
 

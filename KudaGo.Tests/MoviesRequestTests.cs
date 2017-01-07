@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using KudaGo.Core;
 using KudaGo.Core.Movies;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using KudaGo.Core.Search;
 
 namespace UnitTestProject1
 {
@@ -61,6 +62,28 @@ namespace UnitTestProject1
 
 
 
+        }
+
+        [TestMethod]
+        public async Task should_get_movie_details()
+        {
+            var request = new MovieListRequest();
+            request.Lang = "ru";
+
+            var fieldBuilder = new FieldsBuilder();
+            request.Fields = fieldBuilder.WithField(MovieListRequest.FieldNames.ID).Build();
+            request.Location = Location.Spb;
+
+            //then
+            var res = await request.ExecuteAsync();
+            var first = res.Results.First();
+
+            var detailsRequest = new MovieDetailsRequest();
+            detailsRequest.MovieId = first.Id;
+            var actual = await detailsRequest.ExecuteAsync();
+
+            Assert.IsNotNull(actual);
+            Assert.AreEqual(actual.Id, first.Id);
         }
     }
 }
