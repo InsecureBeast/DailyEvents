@@ -60,17 +60,17 @@
                                             Grid.Column="1"
                                             Grid.Row="0"
                                             MaxLines="2"
-                                            Style="{StaticResource BodyTextBlockStyle}"/>
+                                            Style="{StaticResource NormalTextBlockStyle}"/>
 
                                 <TextBlock Text="{Binding Times}"
                                             Grid.Column="1"
                                             Grid.Row="1"
                                             MaxLines="1"
-                                            Style="{StaticResource BodyTextBlockStyle}"/>
+                                            Style="{StaticResource NormalTextBlockStyle}"/>
                             </Grid>
 
                             <RichTextBlock TextAlignment="Justify"
-                                           TextWrapping="Wrap"
+                                           Style="{StaticResource NormalRichTextBlockStyle}"
                                            Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"
                                            Margin="{StaticResource DoubleTextBlockMargin}">
                                 <Paragraph>
@@ -140,7 +140,7 @@
                                     FontWeight="SemiBold"/>
 
                         <RichTextBlock TextAlignment="Justify"
-                                       TextWrapping="Wrap"
+                                       Style="{StaticResource NormalRichTextBlockStyle}"
                                        Margin="{StaticResource DoubleTextBlockMargin}">
                             <Paragraph>
                                 <Run Text="{Binding BodyText}" />

@@ -50,7 +50,7 @@
                             </RichTextBlock>-->
 
                             <RichTextBlock TextAlignment="Justify"
-                                           TextWrapping="Wrap"
+                                           Style="{StaticResource NormalRichTextBlockStyle}"
                                            Margin="{StaticResource DefaultControlMargin}">
                                 <Paragraph>
                                     <Run Text="{Binding BodyText}" />

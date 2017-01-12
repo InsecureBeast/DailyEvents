@@ -56,7 +56,7 @@
                             </Grid>-->
 
                             <RichTextBlock TextAlignment="Justify"
-                                           TextWrapping="Wrap"
+                                           Style="{StaticResource NormalRichTextBlockStyle}"
                                            Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"
                                            Margin="{StaticResource DoubleTextBlockMargin}">
                                 <Paragraph>
@@ -65,7 +65,7 @@
                             </RichTextBlock>
 
                             <RichTextBlock TextAlignment="Justify"
-                                           TextWrapping="Wrap">
+                                           Style="{StaticResource NormalRichTextBlockStyle}">
                                 <Paragraph>
                                     <Run Text="{Binding BodyText}" />
                                 </Paragraph>
@@ -75,8 +75,8 @@
                                        x:Uid="additionalInfo"
                                        Style="{StaticResource NormalTextBlockStyle}"
                                        FontWeight="SemiBold"/>
-                            
-                            <TextBlock Style="{StaticResource BodyTextBlockStyle}"
+
+                            <TextBlock Style="{StaticResource NormalTextBlockStyle}"
                                        Margin="{StaticResource DefaultControlMargin}"
                                        Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}">
                                 <Run Text="Source" x:Uid="source"/><Run Text=" "/><Hyperlink NavigateUri="{Binding Source}"><Run Text="{Binding Source}"/></Hyperlink>
@@ -85,7 +85,7 @@
                             <TextBlock Text="{Binding Date}"
                                        Margin="{StaticResource DefaultControlMargin}"
                                        Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"
-                                       Style="{StaticResource BodyTextBlockStyle}"/>
+                                       Style="{StaticResource NormalTextBlockStyle}"/>
                             
                         </StackPanel>
                     </StackPanel>

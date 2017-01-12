@@ -3,7 +3,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:KudaGo.Client.ViewModels.Details"
     xmlns:controls="using:KudaGo.Client.Controls"
-    xmlns:converters="using:KudaGo.Client.Converters">
+    xmlns:converters="using:KudaGo.Client.Converters"
+    xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls">
 
     <DataTemplate x:Key="SelectionNodeDetailsDataTemplate" >
         <UserControl>
@@ -40,7 +41,7 @@
                             Orientation="Vertical"
                             Grid.Column="1">
                     <TextBlock Text="{Binding Title}"
-                               Style="{StaticResource BodyTextBlockStyle}"
+                               Style="{StaticResource NormalTextBlockStyle}"
                                FontWeight="SemiBold"/>
 
                     <Grid Margin="{StaticResource DefaultControlMargin}">
@@ -53,19 +54,19 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Image Source="{Binding Image}"
-                               Visibility="{Binding Image, Converter={StaticResource StringToVisibilityConverter}}"
-                               VerticalAlignment="Top"
-                               HorizontalAlignment="Left"
-                               Margin="0,4,10,0"
-                               Stretch="UniformToFill"
-                               Width="144"
-                               Height="96"/>
+                        <toolkit:ImageEx Source="{Binding Image}"
+                                         Visibility="{Binding Image, Converter={StaticResource StringToVisibilityConverter}}"
+                                         VerticalAlignment="Top"
+                                         HorizontalAlignment="Left"
+                                         Margin="0,4,10,0"
+                                         Stretch="UniformToFill"
+                                         Width="144"
+                                         Height="96"/>
                     
                         <RichTextBlock Name="richTextBlock"
                                        Margin="0,0,0,0"
                                        Grid.Column="1"
-                                       TextAlignment="Justify"
+                                       Style="{StaticResource NormalRichTextBlockStyle}"
                                        TextTrimming="WordEllipsis" 
                                        TextWrapping="WrapWholeWords"
                                        OverflowContentTarget="{Binding ElementName=FirstOverflowArea}"
@@ -89,16 +90,19 @@
                             Orientation="Vertical"
                             Grid.Column="1">
                     <TextBlock Text="{Binding Title}"
-                               Style="{StaticResource BodyTextBlockStyle}"
+                               Style="{StaticResource NormalTextBlockStyle}"
                                FontWeight="SemiBold"/>
 
-                    <Image Source="{Binding NormalImage}"
-                            Visibility="{Binding NormalImage, Converter={StaticResource StringToVisibilityConverter}}"
-                            VerticalAlignment="Top"
-                            HorizontalAlignment="Left"
-                            Stretch="UniformToFill"/>
+                    <toolkit:ImageEx Margin="{StaticResource DefaultControlMargin}"
+                                     Source="{Binding NormalImage}"
+                                     Visibility="{Binding NormalImage, Converter={StaticResource StringToVisibilityConverter}}"
+                                     VerticalAlignment="Top"
+                                     HorizontalAlignment="Left"
+                                     Stretch="UniformToFill"/>
 
                     <RichTextBlock TextAlignment="Justify"
+                                   Margin="{StaticResource DefaultControlMargin}"
+                                   Style="{StaticResource NormalRichTextBlockStyle}"
                                    Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}">
                         <Paragraph>
                             <Run Text="{Binding Description}" />
