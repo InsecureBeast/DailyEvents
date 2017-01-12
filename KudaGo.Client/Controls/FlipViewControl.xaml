@@ -5,15 +5,16 @@
     xmlns:local="using:KudaGo.Client.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
 
     <UserControl.Resources>
         <DataTemplate x:Key="ImageFlipViewItemTemplate">
-            <Image Source="{Binding}" 
-               Stretch="UniformToFill"
-               VerticalAlignment="Top"/>
+            <controls:ImageEx Source="{Binding}" 
+                              Stretch="UniformToFill"
+                              VerticalAlignment="Center"/>
         </DataTemplate>
     </UserControl.Resources>
     
@@ -21,6 +22,7 @@
           SizeChanged="layoutRoot_SizeChanged">
         <FlipView ItemsSource="{Binding Images}"
                   ItemTemplate="{StaticResource ImageFlipViewItemTemplate}"
+                  VerticalContentAlignment="Top"
                   x:Name="flipView"
                   Background="{StaticResource ImageBackgroundThemeBrush}"/>
         <local:FlipViewIndicator Flipview="{Binding ElementName=flipView}"

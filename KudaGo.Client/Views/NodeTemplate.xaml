@@ -1,7 +1,8 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:KudaGo.Client.Views">
+    xmlns:local="using:KudaGo.Client.Views"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls">
 
     <DataTemplate x:Key="EventItemDataTemplate">
         <Grid Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}"
@@ -15,11 +16,11 @@
 
             <Grid>
                 <Border Background="{StaticResource ImageBackgroundThemeBrush}">
-                    <Image Source="{Binding Image}"
-                       Name="Image"
-                       MinHeight="200"
-                       MinWidth="250"
-                       Stretch="UniformToFill"/>
+                    <controls:ImageEx Source="{Binding Image}"
+                                      Name="Image"
+                                      MinHeight="200"
+                                      MinWidth="250"
+                                      Stretch="UniformToFill"/>
                 </Border>
                 <Border Background="Black"
                         VerticalAlignment="Top"
@@ -117,11 +118,11 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Border Background="{StaticResource ImageBackgroundThemeBrush}">
-                <Image Source="{Binding Image}"
-                   Name="Image"
-                   MinHeight="200"
-                   MinWidth="250"
-                   Stretch="UniformToFill"/>
+                <controls:ImageEx  Source="{Binding Image}"
+                                   Name="Image"
+                                   MinHeight="200"
+                                   MinWidth="250"
+                                   Stretch="UniformToFill"/>
             </Border>
 
             <StackPanel Orientation="Vertical"
@@ -201,11 +202,11 @@
             </Grid.RowDefinitions>
 
             <Border Background="{StaticResource ImageBackgroundThemeBrush}">
-                <Image Source="{Binding Poster}"
-                   Name="Image"
-                   MinHeight="200"
-                   MinWidth="250"
-                   Stretch="UniformToFill"/>
+                <controls:ImageEx  Source="{Binding Poster}"
+                                   Name="Image"
+                                   MinHeight="200"
+                                   MinWidth="250"
+                                   Stretch="UniformToFill"/>
             </Border>
             
             <StackPanel Orientation="Vertical"
