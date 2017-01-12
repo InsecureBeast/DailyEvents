@@ -24,7 +24,7 @@
                                                         Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
                                                         BeginTime="00:00:00"
                                                         Duration="0"
-                                                        To="White" />
+                                                        To="{StaticResource AccentColor}" />
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="SelectedUnfocused">
@@ -33,7 +33,7 @@
                                                         Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
                                                         BeginTime="00:00:00"
                                                         Duration="0"
-                                                        To="White" />
+                                                        To="{StaticResource AccentColor}" />
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="SelectedPressed">
@@ -42,7 +42,7 @@
                                                         Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
                                                         BeginTime="00:00:00"
                                                         Duration="0"
-                                                        To="White" />
+                                                        To="{StaticResource DarkAccentColor3}" />
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="SelectedPointerOver">
@@ -51,7 +51,7 @@
                                                         Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
                                                         BeginTime="00:00:00"
                                                         Duration="0"
-                                                        To="White" />
+                                                        To="{StaticResource DarkAccentColor2}" />
                                     </Storyboard>
                                 </VisualState>
                             </VisualStateGroup>
