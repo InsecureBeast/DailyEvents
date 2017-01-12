@@ -16,7 +16,7 @@
         </Grid.RowDefinitions>
 
         <Grid Height="50"
-              Background="{StaticResource NavigationBackgroundThemeBrush}">
+              Background="{StaticResource ApplicationAccentBrush}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
@@ -38,6 +38,7 @@
                        TextWrapping="NoWrap"
                        TextTrimming="CharacterEllipsis"
                        Margin="10,0,0,0"
+                       Foreground="White"
                        Style="{StaticResource BaseTextBlockStyle}"/>
         </Grid>
         

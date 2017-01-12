@@ -32,8 +32,25 @@
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
 
-            <SolidColorBrush x:Key="ApplicationAccentBrush" Color="#FFD13438" />
-            
+            <!--Set 1-->
+            <!--
+            <SolidColorBrush x:Key="ApplicationDarkAccentBrush3" Color="#FF750B1C" />
+            <SolidColorBrush x:Key="ApplicationDarkAccentBrush2" Color="#FFA80000" />
+            <SolidColorBrush x:Key="ApplicationDarkAccentBrush1" Color="#FFC50F1F" />
+            <SolidColorBrush x:Key="ApplicationAccentBrush" Color="#FFE81123" />
+            <SolidColorBrush x:Key="ApplicationLightAccentBrush1" Color="#FFE74856" />
+            <SolidColorBrush x:Key="ApplicationLightAccentBrush2" Color="#FFE6808A" />
+            <SolidColorBrush x:Key="ApplicationLightAccentBrush3" Color="#FFF4ABBA" />
+            -->
+            <!--Set 2-->
+            <SolidColorBrush x:Key="ApplicationDarkAccentBrush3" Color="#FF761721" />
+            <SolidColorBrush x:Key="ApplicationDarkAccentBrush2" Color="#FFA4262C" />
+            <SolidColorBrush x:Key="ApplicationDarkAccentBrush1" Color="#FFD13438" />
+            <SolidColorBrush x:Key="ApplicationAccentBrush" Color="#FFFF4343" />
+            <SolidColorBrush x:Key="ApplicationLightAccentBrush1" Color="#FFFF6767" />
+            <SolidColorBrush x:Key="ApplicationLightAccentBrush2" Color="#FFFF8C8C" />
+            <SolidColorBrush x:Key="ApplicationLightAccentBrush3" Color="#FFFFC0C0" />
+
             <Thickness x:Key="DefaultControlMargin">0,8,0,0</Thickness>
             <Thickness x:Key="PivotItemMargin">0,0,0,0</Thickness>
             <Thickness x:Key="DoubleTextBlockMargin">0,24,0,0</Thickness>
