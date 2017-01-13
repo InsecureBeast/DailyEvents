@@ -8,7 +8,6 @@ namespace KudaGo.Core.Data.JResponse
 {
     class JNewsDetailsResponse : JNewsListResult
     {
-        public string Description { get; set; }
         public string Body_Text { get; set; }
         public string Site_Url { get; set; }
         public long Favorites_Count { get; set; }

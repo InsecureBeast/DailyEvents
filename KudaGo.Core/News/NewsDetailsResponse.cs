@@ -9,7 +9,6 @@ namespace KudaGo.Core.News
 {
     public interface INewsDetailsResponse : INewsListResult
     {
-        string Description { get; }
         string BodyText { get; }
         string SiteUrl { get; }
         long FavoritesCount { get; }
@@ -27,7 +26,6 @@ namespace KudaGo.Core.News
             CommentsCount = jResponce.Comments_count;
         }
 
-        public string Description { get; private set; }
         public string BodyText { get; private set; }
         public string SiteUrl { get; private set; }
         public long FavoritesCount { get; private set; }

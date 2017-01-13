@@ -70,7 +70,7 @@ namespace KudaGo.Core.News
         public long Id { get; private set; }
         public DateTime? PublicationDate { get; private set; }
         public string Title { get; private set; }
-        public string Description { get; private set; }
+        public string Description { get; protected set; }
         public string Slug { get; private set; }
         public IPlace Place { get; private set; }
         public IEnumerable<IImage> Images { get; private set; }
