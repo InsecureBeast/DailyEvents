@@ -31,6 +31,10 @@ namespace KudaGo.Client.Views
         public static readonly DependencyProperty ItemTemplateSelectorProperty =
             DependencyProperty.Register("ItemTemplateSelector", typeof(DataTemplateSelector), typeof(GridViewControl), new PropertyMetadata(null, Changed));
 
+        public static readonly DependencyProperty HeaderVisibilityProperty =
+            DependencyProperty.Register("HeaderVisibility", typeof(Visibility), typeof(GridViewControl), new PropertyMetadata(Visibility.Collapsed, Changed));
+
+
         private static void Changed(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
         }
@@ -53,7 +57,9 @@ namespace KudaGo.Client.Views
             {
                 gridView.ItemTemplate = ItemTemplate;
                 gridView.ItemTemplateSelector = null;
-            }             
+            }
+
+            gridViewHeader.Visibility = HeaderVisibility;
 
             if (gridView.SelectedItem != null)
                 gridView.ScrollIntoView(gridView.SelectedItem);
@@ -77,11 +83,17 @@ namespace KudaGo.Client.Views
             set { SetValue(ItemTemplateSelectorProperty, value); }
         }
 
+        public Visibility HeaderVisibility
+        {
+            get { return (Visibility)GetValue(HeaderVisibilityProperty); }
+            set { SetValue(HeaderVisibilityProperty, value); }
+        }
+
         private void GridView_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             var columns = Math.Truncate(e.NewSize.Width / 300);
             var width = Math.Truncate(e.NewSize.Width / columns);
-            ((VariableSizedWrapGrid)gridView.ItemsPanelRoot).ItemWidth = width - 1;
+            ((ItemsWrapGrid)gridView.ItemsPanelRoot).ItemWidth = width - 1;
         }
 
         private void gridView_ItemClick(object sender, ItemClickEventArgs e)

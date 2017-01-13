@@ -15,9 +15,9 @@
     </Page.DataContext>
     
     <Page.Resources>
-        <common:EventItemTemplateSelector x:Key="EventItemTemplateSelector"
+        <!--<common:EventItemTemplateSelector x:Key="EventItemTemplateSelector"
                                           EventOfTheDayTemplate="{StaticResource EventOfTheDayItemDataTemplate}"
-                                          EventTemplate="{StaticResource EventItemDataTemplate}"/>
+                                          EventTemplate="{StaticResource EventItemDataTemplate}"/>-->
     </Page.Resources>
 
     <Grid>
@@ -30,7 +30,8 @@
                     <PivotItem Header="Events" x:Uid="eventsItem">
                         <views:GridViewControl Items="{Binding Items}"
                                                DataContext="{Binding EventsViewModel}"
-                                               ItemTemplateSelector="{StaticResource EventItemTemplateSelector}"/>
+                                               ItemTemplate="{StaticResource EventItemDataTemplate}"
+                                               HeaderVisibility="Visible"/>
                     </PivotItem>
 
                     <PivotItem Header="News" x:Uid="newsItem">

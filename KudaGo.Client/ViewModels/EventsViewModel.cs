@@ -14,7 +14,7 @@ namespace KudaGo.Client.ViewModels
     class EventsViewModel : SectionViewModel
     {
         private readonly DataSource _dataSource;
-        private IEventsOfTheDayResult _eventOfTheDay;
+        private EventOfTheDayNodeViewModel _eventOfTheDay;
 
         public EventsViewModel(DataSource dataSource)
         {
@@ -22,9 +22,23 @@ namespace KudaGo.Client.ViewModels
             LayoutHelper.InvokeFromUiThread(async () =>
             {
                 var events = await _dataSource.GetEventOfTheDay(null);
-                _eventOfTheDay = events.Results.FirstOrDefault();
-                //Items.Insert(0, new EventfTheDayNodeViewModel(_eventOfTheDay));
+                var eventOfTheDay = events.Results.FirstOrDefault();
+                if (eventOfTheDay == null)
+                    return;
+
+                EventOfTheDay = new EventOfTheDayNodeViewModel(eventOfTheDay);
+                //Items.Insert(0, @event);
             });
+        }
+
+        public EventOfTheDayNodeViewModel EventOfTheDay
+        {
+            get { return _eventOfTheDay; }
+            set
+            {
+                _eventOfTheDay = value;
+                NotifyOfPropertyChanged(() => EventOfTheDay);
+            }
         }
 
         protected override void AddData(IResponse response)

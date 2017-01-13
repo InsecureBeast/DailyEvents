@@ -60,7 +60,7 @@ namespace KudaGo.Client
                 DataContext = detailsViewModel;
                 template = Resources["EventDetailsDataTemplate"] as DataTemplate;
             }
-            if (vm is EventfTheDayNodeViewModel)
+            if (vm is EventOfTheDayNodeViewModel)
             {
                 var detailsViewModel = new EventDetailsPageViewModel(vm.Id, App.DataSource);
                 DataContext = detailsViewModel;

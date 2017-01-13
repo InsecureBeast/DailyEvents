@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace KudaGo.Client.ViewModels.Nodes
 {
-    class EventfTheDayNodeViewModel : EventBaseNodeViewModel
+    class EventOfTheDayNodeViewModel : EventBaseNodeViewModel
     {
-        public EventfTheDayNodeViewModel(IEventsOfTheDayResult result)
+        public EventOfTheDayNodeViewModel(IEventsOfTheDayResult result)
         {
             if (result == null)
                 return;

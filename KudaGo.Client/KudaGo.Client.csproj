@@ -97,6 +97,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Behaviors\FadeHeaderBehavior.cs" />
+    <Compile Include="Behaviors\ParallaxBehavior.cs" />
+    <Compile Include="Behaviors\StretchyHeaderBehavior.cs" />
     <Compile Include="Common\EventItemTemplateSelector.cs" />
     <Compile Include="Common\DetailsContentTemplateSelector.cs" />
     <Compile Include="Controls\FlipViewControl.xaml.cs">

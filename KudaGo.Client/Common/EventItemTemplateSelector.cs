@@ -25,7 +25,7 @@ namespace KudaGo.Client.Common
                 return EventTemplate;
 
             var uiElement = container as UIElement;
-            if (item is EventfTheDayNodeViewModel)
+            if (item is EventOfTheDayNodeViewModel)
             {
                 //VariableSizedWrapGrid.SetColumnSpan(uiElement, 2);
                 return EventOfTheDayTemplate;
