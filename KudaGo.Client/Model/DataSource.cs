@@ -17,10 +17,13 @@ namespace KudaGo.Client.Model
 {
     public class DataSource
     {
+        private string _culture = "ru";
+        private Location _location = Location.Spb;
+
         public async Task<IEventListResponse> GetEvents(string next)
         {
             var request = new EventListRequest();
-            request.Lang = "ru";
+            request.Lang = _culture;
             request.TextFormat = TextFormatEnum.Plain;
             request.Next = next;
             request.Categories = "-concert,-theater";
@@ -39,7 +42,7 @@ namespace KudaGo.Client.Model
                 .WithField(EventListRequest.FieldNames.CATEGORIES)
                 .WithField(EventListRequest.FieldNames.AGE_RESTRICTION).Build();
             request.ActualSince = DateTime.Today;
-            request.Location = Location.Spb;
+            request.Location = _location;
 
             var res = await request.ExecuteAsync();
             return res;
@@ -48,7 +51,7 @@ namespace KudaGo.Client.Model
         public async Task<INewsListResponse> GetNews(string next)
         {
             var request = new NewsListRequest();
-            request.Lang = "ru";
+            request.Lang = _culture;
             request.TextFormat = TextFormatEnum.Plain;
             request.Next = next;
             request.Expand = string.Format("{0},{1}", NewsListRequest.ExpandNames.IMAGES, EventListRequest.ExpandNames.PLACE);
@@ -61,7 +64,7 @@ namespace KudaGo.Client.Model
                 .WithField(NewsListRequest.FieldNames.PLACE)
                 .WithField(NewsListRequest.FieldNames.PUBLICATION_DATE)
                 .WithField(NewsListRequest.FieldNames.TITLE).Build();
-            request.Location = Location.Spb;
+            request.Location = _location;
 
             var res = await request.ExecuteAsync();
             return res;
@@ -70,7 +73,7 @@ namespace KudaGo.Client.Model
         public async Task<ISelectionListResponse> GetSelections(string next)
         {
             var request = new SelectionListRequest();
-            request.Lang = "ru";
+            request.Lang = _culture;
             request.TextFormat = TextFormatEnum.Plain;
             request.Next = next;
             request.Expand = SelectionListRequest.ExpandNames.IMAGES;
@@ -80,7 +83,7 @@ namespace KudaGo.Client.Model
                 .WithField(SelectionListRequest.FieldNames.ID)
                 .WithField(SelectionListRequest.FieldNames.PUBLICATION_DATE)
                 .WithField(SelectionListRequest.FieldNames.TITLE).Build();
-            request.Location = Location.Spb;
+            request.Location = _location;
 
             var res = await request.ExecuteAsync();
             return res;
@@ -89,7 +92,7 @@ namespace KudaGo.Client.Model
         public async Task<ISelectionDetailsResponse> GetSelectionDetails(long selectionId)
         {
             var request = new SelectionDetailsRequest();
-            request.Lang = "ru";
+            request.Lang = _culture;
             request.Expand = SelectionListRequest.ExpandNames.IMAGES;
             request.SelectionId = selectionId;
 
@@ -100,7 +103,7 @@ namespace KudaGo.Client.Model
         public async Task<IMovieListResponse> GetMovies(string next)
         {
             var request = new MovieListRequest();
-            request.Lang = "ru";
+            request.Lang = _culture;
             request.TextFormat = TextFormatEnum.Plain;
             request.Next = next;
             request.Expand = MovieListRequest.ExpandNames.POSTER;
@@ -115,7 +118,26 @@ namespace KudaGo.Client.Model
                 .WithField(MovieListRequest.FieldNames.COUNTRY)
                 .WithField(MovieListRequest.FieldNames.RUNNING_TIME)
                 .WithField(MovieListRequest.FieldNames.TITLE).Build();
-            request.Location = Location.Spb;
+            request.Location = _location;
+
+            var res = await request.ExecuteAsync();
+            return res;
+        }
+
+        public async Task<IEventsOfTheDayResponse> GetEventOfTheDay(string next)
+        {
+            var request = new EventsOfTheDayRequest();
+            request.Lang = _culture;
+            request.TextFormat = TextFormatEnum.Plain;
+            request.Next = next;
+
+            var fieldBuilder = new FieldsBuilder();
+            request.Fields = fieldBuilder
+                .WithField(EventsOfTheDayRequest.FieldsNames.DATE)
+                .WithField(EventsOfTheDayRequest.FieldsNames.EVENT)
+                .WithField(EventsOfTheDayRequest.FieldsNames.LOCATION)
+                .Build();
+            request.Location = _location;
 
             var res = await request.ExecuteAsync();
             return res;
@@ -126,7 +148,7 @@ namespace KudaGo.Client.Model
         public async Task<IEventDetailsResponse> GetEventDetails(long eventId)
         {
             var request = new EventDetailsRequest();
-            request.Lang = "ru";
+            request.Lang = _culture;
             request.EventId = eventId;
             request.TextFormat = TextFormatEnum.Text;
             request.Expand = EventListRequest.ExpandNames.PLACE + "," + EventListRequest.ExpandNames.PLACE;
@@ -138,7 +160,7 @@ namespace KudaGo.Client.Model
         public async Task<INewsDetailsResponse> GetNewsDetails(long newsId)
         {
             var request = new NewsDetailsRequest();
-            request.Lang = "ru";
+            request.Lang = _culture;
             request.NewsId = newsId;
             request.TextFormat = TextFormatEnum.Plain;
             request.Expand = NewsListRequest.ExpandNames.PLACE + "," + NewsListRequest.ExpandNames.PLACE;
@@ -150,7 +172,7 @@ namespace KudaGo.Client.Model
         public async Task<IPlaceDetailsResponse> GetPlaceDetails(long placeId)
         {
             var request = new PlaceDetailsRequest();
-            request.Lang = "ru";
+            request.Lang = _culture;
             request.PlaceId = placeId;
             request.Expand = PlaceListRequest.ExpandNames.IMAGES;
             request.Fields = PlaceListRequest.FieldNames.IMAGES;
@@ -162,7 +184,7 @@ namespace KudaGo.Client.Model
         public async Task<ICommentsResponse> GetEventComments(long eventId)
         {
             var request = new EventCommentsRequest();
-            request.Lang = "ru";
+            request.Lang = _culture;
             request.EventId = eventId;
 
             var res = await request.ExecuteAsync();
@@ -172,7 +194,7 @@ namespace KudaGo.Client.Model
         public async Task<IMovieDetailsResponse> GetMovieDetails(long movieId)
         {
             var request = new MovieDetailsRequest();
-            request.Lang = "ru";
+            request.Lang = _culture;
             request.MovieId = movieId;
             request.Expand = MovieListRequest.ExpandNames.IMAGES;
 

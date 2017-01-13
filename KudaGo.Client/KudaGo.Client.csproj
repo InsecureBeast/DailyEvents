@@ -97,7 +97,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\DetailsContentTemplateSelector.cs" />
+    <Compile Include="Common\EventItemTemplateSelector.cs" />
+    <Compile Include="Common\DetailsContentTemplateSelector.cs" />
     <Compile Include="Controls\FlipViewControl.xaml.cs">
       <DependentUpon>FlipViewControl.xaml</DependentUpon>
     </Compile>
@@ -131,6 +132,7 @@
     <Compile Include="ViewModels\EventsViewModel.cs" />
     <Compile Include="ViewModels\MoviesViewModel.cs" />
     <Compile Include="ViewModels\Nodes\CommentNodeViewModel.cs" />
+    <Compile Include="ViewModels\Nodes\EventfTheDayNodeViewModel.cs" />
     <Compile Include="ViewModels\Nodes\MovieNodeViewModel.cs" />
     <Compile Include="ViewModels\Nodes\NewsNodeViewModel.cs" />
     <Compile Include="ViewModels\Nodes\EventNodeViewModel.cs" />

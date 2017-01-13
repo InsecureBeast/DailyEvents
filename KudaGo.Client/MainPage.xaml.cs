@@ -46,9 +46,10 @@ namespace KudaGo.Client
 
         private static void InitializeStatusBar()
         {
-            var accenDarktBrush1 = Application.Current.Resources["ApplicationDarkAccentBrush1"] as SolidColorBrush;
-            var accenDarktBrush2 = Application.Current.Resources["ApplicationDarkAccentBrush2"] as SolidColorBrush;
-            var accenDarktBrush3 = Application.Current.Resources["ApplicationDarkAccentBrush3"] as SolidColorBrush;
+            var accentBrush = Application.Current.Resources["ApplicationAccentBrush"] as SolidColorBrush;
+            var accentDarkBrush1 = Application.Current.Resources["ApplicationDarkAccentBrush1"] as SolidColorBrush;
+            var accentDarkBrush2 = Application.Current.Resources["ApplicationDarkAccentBrush2"] as SolidColorBrush;
+            var accentDarkBrush3 = Application.Current.Resources["ApplicationDarkAccentBrush3"] as SolidColorBrush;
 
             //PC customization
             if (ApiInformation.IsTypePresent("Windows.UI.ViewManagement.ApplicationView"))
@@ -56,14 +57,16 @@ namespace KudaGo.Client
                 var titleBar = ApplicationView.GetForCurrentView().TitleBar;
                 if (titleBar != null)
                 {
-                    titleBar.ButtonBackgroundColor = accenDarktBrush1.Color;
-                    titleBar.ButtonHoverBackgroundColor = accenDarktBrush2.Color;
-                    titleBar.ButtonPressedBackgroundColor = accenDarktBrush3.Color;
+                    titleBar.ButtonBackgroundColor = accentBrush.Color;
+                    titleBar.ButtonHoverBackgroundColor = accentDarkBrush1.Color;
+                    titleBar.ButtonPressedBackgroundColor = accentDarkBrush2.Color;
                     titleBar.ButtonForegroundColor = Colors.White;
                     titleBar.ButtonHoverForegroundColor = Colors.White;
                     titleBar.ButtonPressedForegroundColor = Colors.White;
-                    titleBar.BackgroundColor = accenDarktBrush1.Color;
+                    titleBar.BackgroundColor = accentBrush.Color;
                     titleBar.ForegroundColor = Colors.White;
+                    titleBar.InactiveBackgroundColor = accentBrush.Color;
+                    titleBar.ButtonInactiveBackgroundColor = accentBrush.Color;
                 }
             }
 
@@ -71,11 +74,11 @@ namespace KudaGo.Client
             if (ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
             {
                 var statusBar = StatusBar.GetForCurrentView();
-                statusBar.HideAsync();
+                //statusBar.HideAsync();
                 if (statusBar != null)
                 {
                     statusBar.BackgroundOpacity = 1;
-                    statusBar.BackgroundColor = accenDarktBrush1.Color;
+                    statusBar.BackgroundColor = accentBrush.Color;
                     statusBar.ForegroundColor = Colors.White;
                 }
             }

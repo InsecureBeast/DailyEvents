@@ -108,6 +108,72 @@
         </Grid>
     </DataTemplate>
 
+    <DataTemplate x:Key="EventOfTheDayItemDataTemplate">
+        <Grid Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}"
+              Height="450">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <controls:ImageEx Source="{Binding Image}"
+                              Name="Image"
+                              MinHeight="200"
+                              MinWidth="250"
+                              VerticalAlignment="Center"
+                              HorizontalAlignment="Center"
+                              Stretch="UniformToFill"/>
+
+            <StackPanel Orientation="Vertical"
+                        Background="Transparent"
+                        VerticalAlignment="Bottom"
+                        Padding="15,10,15,15">
+                
+                <TextBlock Text="{Binding Title}"
+                           Style="{StaticResource SubtitleTextBlockStyle}"
+                           MaxLines="3"
+                           Foreground="White"
+                           TextTrimming="CharacterEllipsis"
+                           FontWeight="SemiBold"/>
+
+                <TextBlock Text="{Binding Description}" 
+                           MaxLines="3"
+                           Foreground="White"
+                           TextTrimming="CharacterEllipsis"
+                           Style="{StaticResource BodyTextBlockStyle}" />
+
+                <!--<Grid Margin="{StaticResource DefaultControlMargin}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <ContentPresenter ContentTemplate="{StaticResource CalendarIcon}" 
+                                      Margin="0,0,10,0"/>
+
+                    <TextBlock Text="{Binding Dates}"
+                               Grid.Column="1"
+                               Grid.Row="0"
+                               MaxLines="2"
+                               Style="{StaticResource BodyTextBlockStyle}"/>
+
+                    <TextBlock Text="{Binding Times}"
+                               Grid.Column="1"
+                               Grid.Row="1"
+                               MaxLines="1"
+                               Style="{StaticResource BodyTextBlockStyle}"/>
+                </Grid>-->
+
+            </StackPanel>
+        </Grid>
+    </DataTemplate>
+
     <DataTemplate x:Key="NewsItemDataTemplate">
         <Grid Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}"
               Margin="7,7,7,7"
