@@ -5,6 +5,7 @@
     xmlns:local="using:KudaGo.Client"
     xmlns:vm="using:KudaGo.Client.ViewModels"
     xmlns:views="using:KudaGo.Client.Views"
+    xmlns:common="using:KudaGo.Client.Common"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -14,7 +15,9 @@
     </Page.DataContext>
     
     <Page.Resources>
-        
+        <common:EventItemTemplateSelector x:Key="EventItemTemplateSelector"
+                                          EventOfTheDayTemplate="{StaticResource EventOfTheDayItemDataTemplate}"
+                                          EventTemplate="{StaticResource EventItemDataTemplate}"/>
     </Page.Resources>
 
     <Grid>
@@ -27,25 +30,25 @@
                     <PivotItem Header="Events" x:Uid="eventsItem">
                         <views:GridViewControl Items="{Binding Items}"
                                                DataContext="{Binding EventsViewModel}"
-                                               ItemsDataTemplate="{StaticResource EventItemDataTemplate}"/>
+                                               ItemTemplateSelector="{StaticResource EventItemTemplateSelector}"/>
                     </PivotItem>
 
                     <PivotItem Header="News" x:Uid="newsItem">
                         <views:GridViewControl Items="{Binding Items}"
                                                DataContext="{Binding NewsViewModel}"
-                                               ItemsDataTemplate="{StaticResource NewsItemDataTemplate}"/>
+                                               ItemTemplate="{StaticResource NewsItemDataTemplate}"/>
                     </PivotItem>
 
                     <PivotItem Header="Selections" x:Uid="selectionsItem">
                         <views:GridViewControl Items="{Binding Items}"
                                                DataContext="{Binding SelectionsViewModel}"
-                                               ItemsDataTemplate="{StaticResource SelectionItemDataTemplate}"/>
+                                               ItemTemplate="{StaticResource SelectionItemDataTemplate}"/>
                     </PivotItem>
 
                     <PivotItem Header="Movies" x:Uid="moviesItem">
                         <views:GridViewControl Items="{Binding Items}"
                                                DataContext="{Binding MoviesViewModel}"
-                                               ItemsDataTemplate="{StaticResource MovieItemDataTemplate}"/>
+                                               ItemTemplate="{StaticResource MovieItemDataTemplate}"/>
                     </PivotItem>
 
                 </Pivot>

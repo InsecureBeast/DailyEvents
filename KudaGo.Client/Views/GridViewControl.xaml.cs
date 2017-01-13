@@ -25,9 +25,15 @@ namespace KudaGo.Client.Views
         public static readonly DependencyProperty ItemsProperty =
             DependencyProperty.Register("Items", typeof(object), typeof(GridViewControl), new PropertyMetadata(null));
 
-        public static readonly DependencyProperty ItemsDataTemplateProperty =
-            DependencyProperty.Register("ItemsDataTemplate", typeof(DataTemplate), typeof(GridViewControl), new PropertyMetadata(null));
+        public static readonly DependencyProperty ItemTemplateProperty =
+            DependencyProperty.Register("ItemTemplate", typeof(DataTemplate), typeof(GridViewControl), new PropertyMetadata(null));
 
+        public static readonly DependencyProperty ItemTemplateSelectorProperty =
+            DependencyProperty.Register("ItemTemplateSelector", typeof(DataTemplateSelector), typeof(GridViewControl), new PropertyMetadata(null, Changed));
+
+        private static void Changed(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+        }
 
         public GridViewControl()
         {
@@ -38,7 +44,16 @@ namespace KudaGo.Client.Views
         private void GridViewControl_Loaded(object sender, RoutedEventArgs e)
         {
             gridView.SetBinding(GridView.ItemsSourceProperty, new Binding() { Path = new PropertyPath("Items"), Source = this });
-            gridView.ItemTemplate = ItemsDataTemplate;
+            if (ItemTemplateSelector != null)
+            {
+                gridView.ItemTemplate = null;
+                gridView.ItemTemplateSelector = ItemTemplateSelector;
+            }
+            else
+            {
+                gridView.ItemTemplate = ItemTemplate;
+                gridView.ItemTemplateSelector = null;
+            }             
 
             if (gridView.SelectedItem != null)
                 gridView.ScrollIntoView(gridView.SelectedItem);
@@ -50,17 +65,23 @@ namespace KudaGo.Client.Views
             set { SetValue(ItemsProperty, value); }
         }
 
-        public DataTemplate ItemsDataTemplate
+        public DataTemplate ItemTemplate
         {
-            get { return (DataTemplate)GetValue(ItemsDataTemplateProperty); }
-            set { SetValue(ItemsDataTemplateProperty, value); }
+            get { return (DataTemplate)GetValue(ItemTemplateProperty); }
+            set { SetValue(ItemTemplateProperty, value); }
+        }
+
+        public DataTemplateSelector ItemTemplateSelector
+        {
+            get { return (DataTemplateSelector)GetValue(ItemTemplateSelectorProperty); }
+            set { SetValue(ItemTemplateSelectorProperty, value); }
         }
 
         private void GridView_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             var columns = Math.Truncate(e.NewSize.Width / 300);
             var width = Math.Truncate(e.NewSize.Width / columns);
-            ((ItemsWrapGrid)gridView.ItemsPanelRoot).ItemWidth = width - 1;
+            ((VariableSizedWrapGrid)gridView.ItemsPanelRoot).ItemWidth = width - 1;
         }
 
         private void gridView_ItemClick(object sender, ItemClickEventArgs e)
