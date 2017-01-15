@@ -5,26 +5,33 @@
     xmlns:local="using:KudaGo.Client"
     xmlns:views="using:KudaGo.Client.Views"
     xmlns:controls="using:KudaGo.Client.Controls"
+    xmlns:common="using:KudaGo.Client.Common"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Views\DetailsTemplates.xaml" />
+                <ResourceDictionary Source="ViewModels\Details\EventDetailsTemplates.xaml" />
                 <ResourceDictionary Source="ViewModels\Details\NewsDetailsDataTemplate.xaml" />
                 <ResourceDictionary Source="ViewModels\Details\SelectionDetailsDataTemplate.xaml" />
                 <ResourceDictionary Source="ViewModels\Details\MovieDetailsDataTemplate.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+            <common:DetailsContentTemplateSelector x:Key="DetailsContentTemplateSelector"
+                                                   MovieTemplate="{StaticResource MovieDetailsDataTemplate}"
+                                                   EventTemplate="{StaticResource EventDetailsDataTemplate}"
+                                                   NewsTemplate="{StaticResource NewsDetailsDataTemplate}"
+                                                   SelectionTemplate="{StaticResource SelectionDetailsDataTemplate}"/>
+
         </ResourceDictionary>
-        
     </Page.Resources>
     
     <views:NavigationControl Title="{Binding Title}">
         <views:NavigationControl.ViewContent>
             <Grid>
                 <ContentPresenter x:Name="contentPresenter"
-                                  Content="{Binding}" 
+                                  Content="{Binding}"
                                   Visibility="{Binding IsBusy, Converter={StaticResource InverseBooleanToVisibilityConverter}}"/>
                 <ProgressRing IsActive="True" 
                               Width="50"

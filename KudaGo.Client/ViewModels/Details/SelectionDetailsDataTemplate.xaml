@@ -4,7 +4,9 @@
     xmlns:local="using:KudaGo.Client.ViewModels.Details"
     xmlns:controls="using:KudaGo.Client.Controls"
     xmlns:converters="using:KudaGo.Client.Converters"
-    xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls">
+    xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:behaviors="using:KudaGo.Client.Behaviors">
 
     <DataTemplate x:Key="SelectionNodeDetailsDataTemplate" >
         <UserControl>
@@ -32,6 +34,7 @@
                         </VisualState>
                     </VisualStateGroup>
                 </VisualStateManager.VisualStateGroups>
+                
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*" />
@@ -128,7 +131,7 @@
                     </Grid.RowDefinitions>
 
                     <StackPanel>
-                        <controls:FlipViewControl/>
+                        <controls:FlipViewControl x:Name="flipViewControl"/>
                         <StackPanel Orientation="Vertical"
                                     Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}"
                                     Padding="15">
@@ -191,6 +194,10 @@
                     </StackPanel>
                 </Grid>
             </Grid>
+            
+            <interactivity:Interaction.Behaviors>
+                <behaviors:ParallaxBehavior ParallaxContent="{Binding ElementName=flipViewControl}" ParallaxMultiplier="-0.2"/>
+            </interactivity:Interaction.Behaviors>
         </ScrollViewer>
     </DataTemplate>
     

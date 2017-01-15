@@ -59,7 +59,7 @@
                                Style="{StaticResource SubtitleTextBlockStyle}"
                                MaxLines="3"
                                Foreground="White"
-                               Margin="15"
+                               Margin="10"
                                Name="HeaderTitle"
                                Visibility="Collapsed"
                                VerticalAlignment="Bottom"

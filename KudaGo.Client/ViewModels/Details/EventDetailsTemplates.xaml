@@ -3,7 +3,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:KudaGo.Client.Views"
     xmlns:controls="using:KudaGo.Client.Controls"
-    xmlns:converters="using:KudaGo.Client.Converters">
+    xmlns:converters="using:KudaGo.Client.Converters"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:behaviors="using:KudaGo.Client.Behaviors">
 
     <converters:LocationConverter x:Key="LocationConverter" />
 
@@ -20,7 +22,7 @@
                     </Grid.RowDefinitions>
                         
                     <StackPanel>
-                        <controls:FlipViewControl/>
+                        <controls:FlipViewControl x:Name="flipViewControl"/>
                         
                         <StackPanel Orientation="Vertical"
                                     Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}"
@@ -171,6 +173,9 @@
                     </StackPanel>
                 </Grid>
             </Grid>
+            <interactivity:Interaction.Behaviors>
+                <behaviors:ParallaxBehavior ParallaxContent="{Binding ElementName=flipViewControl}" ParallaxMultiplier="-0.2"/>
+            </interactivity:Interaction.Behaviors>
         </ScrollViewer>
     </DataTemplate>
     
