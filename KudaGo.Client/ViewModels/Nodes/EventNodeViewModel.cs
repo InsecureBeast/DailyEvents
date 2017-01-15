@@ -2,15 +2,21 @@
 using KudaGo.Core.Data;
 using KudaGo.Core.Events;
 using System;
-using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace KudaGo.Client.ViewModels.Nodes
 {
-    class EventNodeViewModel : NodeViewModel
+    class EventBaseNodeViewModel : NodeViewModel
+    {
+        public override string Title { get; protected set; }
+        public override long Id { get; protected set; }
+        public string Image { get; protected set; }
+        public string Description { get; protected set; }
+        public string Dates { get; protected set; }
+        public string Times { get; protected set; }
+    }
+
+    class EventNodeViewModel : EventBaseNodeViewModel
     {
         public EventNodeViewModel(IEventListResult result)
         {
@@ -31,7 +37,7 @@ namespace KudaGo.Client.ViewModels.Nodes
 
             //TODO
             Categories = result.Categories.FirstOrDefault();
-            
+
             var dates = result.Dates.LastOrDefault();
             if (dates == null)
                 return;
@@ -52,14 +58,8 @@ namespace KudaGo.Client.ViewModels.Nodes
             }
         }
 
-        public string Image { get; private set; }
-        public override string Title { get; protected set; }
-        public string Description { get; private set; }
         public string Place { get; private set; }
         public string Age { get; private set; }
-        public string Dates { get; private set; }
-        public string Times { get; private set; }
         public string Categories { get; private set; }
-        public override long Id { get; protected set; }
     }
 }

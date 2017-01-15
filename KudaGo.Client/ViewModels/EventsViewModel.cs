@@ -1,4 +1,5 @@
-﻿using KudaGo.Client.Model;
+﻿using KudaGo.Client.Helpers;
+using KudaGo.Client.Model;
 using KudaGo.Client.ViewModels.Nodes;
 using KudaGo.Core.Data;
 using KudaGo.Core.Events;
@@ -13,10 +14,31 @@ namespace KudaGo.Client.ViewModels
     class EventsViewModel : SectionViewModel
     {
         private readonly DataSource _dataSource;
+        private EventOfTheDayNodeViewModel _eventOfTheDay;
 
         public EventsViewModel(DataSource dataSource)
         {
             _dataSource = dataSource;
+            LayoutHelper.InvokeFromUiThread(async () =>
+            {
+                var events = await _dataSource.GetEventOfTheDay(null);
+                var eventOfTheDay = events.Results.FirstOrDefault();
+                if (eventOfTheDay == null)
+                    return;
+
+                EventOfTheDay = new EventOfTheDayNodeViewModel(eventOfTheDay);
+                //Items.Insert(0, EventOfTheDay);
+            });
+        }
+
+        public EventOfTheDayNodeViewModel EventOfTheDay
+        {
+            get { return _eventOfTheDay; }
+            set
+            {
+                _eventOfTheDay = value;
+                NotifyOfPropertyChanged(() => EventOfTheDay);
+            }
         }
 
         protected override void AddData(IResponse response)

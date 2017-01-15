@@ -25,9 +25,19 @@ namespace KudaGo.Client.Views
         public static readonly DependencyProperty ItemsProperty =
             DependencyProperty.Register("Items", typeof(object), typeof(GridViewControl), new PropertyMetadata(null));
 
-        public static readonly DependencyProperty ItemsDataTemplateProperty =
-            DependencyProperty.Register("ItemsDataTemplate", typeof(DataTemplate), typeof(GridViewControl), new PropertyMetadata(null));
+        public static readonly DependencyProperty ItemTemplateProperty =
+            DependencyProperty.Register("ItemTemplate", typeof(DataTemplate), typeof(GridViewControl), new PropertyMetadata(null));
 
+        public static readonly DependencyProperty ItemTemplateSelectorProperty =
+            DependencyProperty.Register("ItemTemplateSelector", typeof(DataTemplateSelector), typeof(GridViewControl), new PropertyMetadata(null, Changed));
+
+        public static readonly DependencyProperty HeaderVisibilityProperty =
+            DependencyProperty.Register("HeaderVisibility", typeof(Visibility), typeof(GridViewControl), new PropertyMetadata(Visibility.Collapsed, Changed));
+
+
+        private static void Changed(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+        }
 
         public GridViewControl()
         {
@@ -38,7 +48,18 @@ namespace KudaGo.Client.Views
         private void GridViewControl_Loaded(object sender, RoutedEventArgs e)
         {
             gridView.SetBinding(GridView.ItemsSourceProperty, new Binding() { Path = new PropertyPath("Items"), Source = this });
-            gridView.ItemTemplate = ItemsDataTemplate;
+            if (ItemTemplateSelector != null)
+            {
+                gridView.ItemTemplate = null;
+                gridView.ItemTemplateSelector = ItemTemplateSelector;
+            }
+            else
+            {
+                gridView.ItemTemplate = ItemTemplate;
+                gridView.ItemTemplateSelector = null;
+            }
+
+            gridViewHeader.Visibility = HeaderVisibility;
 
             if (gridView.SelectedItem != null)
                 gridView.ScrollIntoView(gridView.SelectedItem);
@@ -50,10 +71,22 @@ namespace KudaGo.Client.Views
             set { SetValue(ItemsProperty, value); }
         }
 
-        public DataTemplate ItemsDataTemplate
+        public DataTemplate ItemTemplate
         {
-            get { return (DataTemplate)GetValue(ItemsDataTemplateProperty); }
-            set { SetValue(ItemsDataTemplateProperty, value); }
+            get { return (DataTemplate)GetValue(ItemTemplateProperty); }
+            set { SetValue(ItemTemplateProperty, value); }
+        }
+
+        public DataTemplateSelector ItemTemplateSelector
+        {
+            get { return (DataTemplateSelector)GetValue(ItemTemplateSelectorProperty); }
+            set { SetValue(ItemTemplateSelectorProperty, value); }
+        }
+
+        public Visibility HeaderVisibility
+        {
+            get { return (Visibility)GetValue(HeaderVisibilityProperty); }
+            set { SetValue(HeaderVisibilityProperty, value); }
         }
 
         private void GridView_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -70,6 +103,27 @@ namespace KudaGo.Client.Views
                 return;
 
             parent.Frame.Navigate(typeof(DetailsPage), e.ClickedItem);
+        }
+
+        private void Image_ImageExOpened(object sender, Microsoft.Toolkit.Uwp.UI.Controls.ImageExOpenedEventArgs e)
+        {
+            FadeBorder.Visibility = Visibility.Visible;
+            HeaderTitle.Visibility = Visibility.Visible;
+        }
+
+        private void gridViewHeader_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            var parent = VisualHelper.FindParent<Page>(sender as FrameworkElement);
+            if (parent == null)
+                return;
+
+            //todo пока только под events
+            var element = sender as FrameworkElement;
+            var viewModel = element.DataContext as EventsViewModel;
+            if (viewModel == null)
+                return;
+
+            parent.Frame.Navigate(typeof(DetailsPage), viewModel.EventOfTheDay);
         }
     }
 }
