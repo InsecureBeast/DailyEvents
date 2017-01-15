@@ -110,6 +110,49 @@
         </Grid>
     </DataTemplate>
 
+    <DataTemplate x:Key="EventOfTheDayItemDataTemplate">
+        <Grid Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}"
+              Margin="7,7,7,7"
+              Height="450">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid>
+
+                <Border MinHeight="200"
+                        MinWidth="250"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Background="Transparent"/>
+
+                <Border Background="Black"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Margin="10"
+                        Padding="10,2,10,2"
+                        Opacity="0.7">
+                    <TextBlock Text="{Binding Categories}"
+                               Foreground="White"
+                               Opacity="1"/>
+                </Border>
+            </Grid>
+
+            <StackPanel Orientation="Vertical"
+                        Grid.Row="1"
+                        Padding="15,10,15,15">
+
+                <TextBlock Text="{Binding Title}"
+                           Style="{StaticResource SubtitleTextBlockStyle}"
+                           MaxLines="3"
+                           TextTrimming="CharacterEllipsis"
+                           FontWeight="SemiBold"/>
+            </StackPanel>
+        </Grid>
+    </DataTemplate>
+
     <DataTemplate x:Key="NewsItemDataTemplate">
         <Grid Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}"
               Margin="7,7,7,7"

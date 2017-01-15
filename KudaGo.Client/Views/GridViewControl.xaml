@@ -26,39 +26,45 @@
                   ItemContainerStyle="{StaticResource GridViewItem}"
                   x:Name="gridView">
             <GridView.Header>
-                <Grid MaxHeight="400" 
+                <Grid MaxHeight="300" 
                       x:Name="gridViewHeader"
                       Visibility="Collapsed">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-
+                   
                     <controls:ImageEx Source="{Binding EventOfTheDay.Image}"
                                       x:Name="Image"
+                                      ImageExOpened="Image_ImageExOpened"
                                       VerticalAlignment="Center"
                                       HorizontalAlignment="Center"
                                       Stretch="UniformToFill"/>
 
-                    <StackPanel Orientation="Vertical"
-                                x:Name="TitleTbx"
-                                Background="Transparent"
-                                VerticalAlignment="Bottom"
-                                Padding="15,10,15,15">
-
-                        <TextBlock Text="{Binding EventOfTheDay.Title}"
-                                   Style="{StaticResource SubtitleTextBlockStyle}"
-                                   MaxLines="3"
-                                   Foreground="White"
-                                   TextTrimming="CharacterEllipsis"
-                                   FontWeight="SemiBold"/>
-
-                        <TextBlock Text="{Binding EventOfTheDay.Description}" 
-                                   MaxLines="3"
-                                   Foreground="White"
-                                   TextTrimming="CharacterEllipsis"
-                                   Style="{StaticResource BodyTextBlockStyle}" />
-                    </StackPanel>
+                    <Border x:Name="FadeBorder"
+                            Visibility="Collapsed">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0.5,1"
+                                                 EndPoint="0.5,0" >
+                                <GradientStop Color="Transparent"
+                                              Offset="1" />
+                                <GradientStop Color="#BB000000" 
+                                              Offset="0" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+                    </Border>
+                    
+                    <TextBlock Text="{Binding EventOfTheDay.Title}"
+                               Style="{StaticResource SubtitleTextBlockStyle}"
+                               MaxLines="3"
+                               Foreground="White"
+                               Margin="15"
+                               Name="HeaderTitle"
+                               Visibility="Collapsed"
+                               VerticalAlignment="Bottom"
+                               HorizontalAlignment="Center"
+                               TextTrimming="CharacterEllipsis"
+                               FontWeight="SemiBold"/>
                 </Grid>
             </GridView.Header>
             <GridView.ItemsPanel>
@@ -69,7 +75,6 @@
 
             <interactivity:Interaction.Behaviors>
                 <behaviors:ParallaxBehavior ParallaxContent="{Binding ElementName=gridViewHeader}" ParallaxMultiplier="-0.2"/>
-                <behaviors:ParallaxBehavior ParallaxContent="{Binding ElementName=TitleTbx}" ParallaxMultiplier="-0.4"/>
             </interactivity:Interaction.Behaviors>
             
         </GridView>

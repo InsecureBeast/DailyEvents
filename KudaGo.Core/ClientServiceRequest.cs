@@ -52,8 +52,17 @@ namespace KudaGo.Core
 
             using (var client = new HttpClient(handler))
             {
-                client.DefaultRequestHeaders.Add("User-Agent", botUserAgent);
-                return await client.GetAsync(uri);
+                try
+                {
+                    //client.DefaultRequestHeaders.Add("User-Agent", botUserAgent);
+                    return await client.GetAsync(uri);
+                }
+                catch (Exception e)
+                {
+
+                    throw e;
+                }
+                
             }
         }
     }

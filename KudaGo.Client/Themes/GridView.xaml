@@ -295,7 +295,11 @@
                                 </VisualStateGroup.Transitions>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        <ContentPresenter x:Name="ContentPresenter" ContentTransitions="{TemplateBinding ContentTransitions}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{TemplateBinding Padding}" />
+                        <ContentPresenter x:Name="ContentPresenter" 
+                                          ContentTransitions="{TemplateBinding ContentTransitions}" 
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+                                          Margin="{TemplateBinding Padding}" />
                         <!-- The 'Xg' text simulates the amount of space one line of text will occupy.
                              In the DataPlaceholder state, the Content is not loaded yet so we
                              approximate the size of the item using placeholder text. -->
@@ -322,10 +326,31 @@
                                 VerticalAlignment="Top" 
                                 HorizontalAlignment="Right" 
                                 Visibility="Collapsed">
-                            <FontIcon x:Name="MultiSelectCheck" FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="" FontSize="16" Foreground="{ThemeResource SystemControlForegroundBaseMediumHighBrush}" Opacity="0" />
+                            <FontIcon x:Name="MultiSelectCheck" 
+                                      FontFamily="{ThemeResource SymbolThemeFontFamily}" 
+                                      Glyph="" 
+                                      FontSize="16" 
+                                      Foreground="{ThemeResource SystemControlForegroundBaseMediumHighBrush}" 
+                                      Opacity="0" />
                         </Border>
-                        <Border x:Name="MultiArrangeOverlayTextBorder" Opacity="0" IsHitTestVisible="False" MinWidth="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Background="{ThemeResource SystemControlBackgroundAccentBrush}" BorderThickness="2" BorderBrush="{ThemeResource SystemControlBackgroundChromeWhiteBrush}">
-                            <TextBlock x:Name="MultiArrangeOverlayText" Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TemplateSettings.DragItemsCount}" Style="{ThemeResource CaptionTextBlockStyle}" IsHitTestVisible="False" Opacity="0" VerticalAlignment="Center" HorizontalAlignment="Center" AutomationProperties.AccessibilityView="Raw" />
+                        <Border x:Name="MultiArrangeOverlayTextBorder" 
+                                Opacity="0" 
+                                IsHitTestVisible="False" 
+                                MinWidth="20" 
+                                Height="20" 
+                                VerticalAlignment="Center" 
+                                HorizontalAlignment="Center"
+                                Background="{ThemeResource SystemControlBackgroundAccentBrush}" 
+                                BorderThickness="2" 
+                                BorderBrush="{ThemeResource SystemControlBackgroundChromeWhiteBrush}">
+                            <TextBlock x:Name="MultiArrangeOverlayText" 
+                                       Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TemplateSettings.DragItemsCount}" 
+                                       Style="{ThemeResource CaptionTextBlockStyle}" 
+                                       IsHitTestVisible="False" 
+                                       Opacity="0" 
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center" 
+                                       AutomationProperties.AccessibilityView="Raw" />
                         </Border>
                     </Grid>
                 </ControlTemplate>

@@ -104,5 +104,11 @@ namespace KudaGo.Client.Views
 
             parent.Frame.Navigate(typeof(DetailsPage), e.ClickedItem);
         }
+
+        private void Image_ImageExOpened(object sender, Microsoft.Toolkit.Uwp.UI.Controls.ImageExOpenedEventArgs e)
+        {
+            FadeBorder.Visibility = Visibility.Visible;
+            HeaderTitle.Visibility = Visibility.Visible;
+        }
     }
 }

@@ -27,7 +27,7 @@ namespace KudaGo.Client.ViewModels
                     return;
 
                 EventOfTheDay = new EventOfTheDayNodeViewModel(eventOfTheDay);
-                //Items.Insert(0, @event);
+                //Items.Insert(0, EventOfTheDay);
             });
         }
 
