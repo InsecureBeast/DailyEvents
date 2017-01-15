@@ -27,6 +27,9 @@ namespace KudaGo.Client.Views
         public static readonly DependencyProperty CoordinatesProperty =
             DependencyProperty.Register("Coordinates", typeof(ICoordinates), typeof(MapDetailsControl), new PropertyMetadata(null, new PropertyChangedCallback(OnPropertyChanged)));
 
+        public static readonly DependencyProperty IsReadOnlyProperty =
+            DependencyProperty.Register("IsReadOnly", typeof(bool), typeof(MapDetailsControl), new PropertyMetadata(false, new PropertyChangedCallback(OnReadOnlyChanged)));
+
         public MapDetailsControl()
         {
             this.InitializeComponent();
@@ -36,6 +39,12 @@ namespace KudaGo.Client.Views
         {
             get { return (ICoordinates)GetValue(CoordinatesProperty); }
             set { SetValue(CoordinatesProperty, value); }
+        }
+
+        public bool IsReadOnly
+        {
+            get { return (bool)GetValue(IsReadOnlyProperty); }
+            set { SetValue(IsReadOnlyProperty, value); }
         }
 
         private static void OnPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -68,5 +77,19 @@ namespace KudaGo.Client.Views
             control.map.Center = centerPoint;
             control.map.ZoomLevel = 16;
         }
+
+        private static void OnReadOnlyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var control = d as MapDetailsControl;
+            if (control == null)
+                return;
+
+            var isReadOnly = (bool)e.NewValue;
+            if (isReadOnly)
+                control.BlockBorder.Visibility = Visibility.Visible;
+            else
+                control.BlockBorder.Visibility = Visibility.Collapsed;
+        }
+
     }
 }

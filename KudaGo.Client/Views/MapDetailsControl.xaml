@@ -15,6 +15,8 @@
                          IsEnabled="False"
                          MapServiceToken="SK6xmPUHHCeExe4OFbbr~AJ9f8FNFQfU9WCGgDgh1Ug~AmtrjFfAAsJxk2qXoOkZBiH4s291xzc_GRqaQ-iDpkgl9lrKnR8cDdTJXGnNy5l0"/>
         <Border Background="White"
+                x:Name="BlockBorder"
+                Visibility="Collapsed"
                 Opacity="0.01"/>
     </Grid>
 </UserControl>

@@ -7,8 +7,11 @@ using KudaGo.Client.Model;
 using KudaGo.Client.Helpers;
 using KudaGo.Client.Extensions;
 using KudaGo.Core.Data;
-using System.Collections.ObjectModel;
 using KudaGo.Client.ViewModels.Comments;
+using System.Windows.Input;
+using KudaGo.Client.Command;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 
 namespace KudaGo.Client.ViewModels.Details
 {
@@ -23,10 +26,13 @@ namespace KudaGo.Client.ViewModels.Details
         private string _metro;
         private ICoordinates _location;
         private readonly EventCommentsViewModel _eventCommentsViewModel;
+        private DelegateCommand _mapCommand;
+        private IPlace _placeObj;
 
         public EventDetailsPageViewModel(long eventId, DataSource dataSource) : base(eventId, dataSource)
         {
             _eventCommentsViewModel = new EventCommentsViewModel(eventId, dataSource);
+            _mapCommand = new DelegateCommand(MapOpen);
         }
 
         public string Age
@@ -109,6 +115,11 @@ namespace KudaGo.Client.ViewModels.Details
             }
         }
 
+        public ICommand MapCommand
+        {
+            get { return _mapCommand; }
+        }
+
         public EventCommentsViewModel EventCommentsViewModel
         {
             get { return _eventCommentsViewModel; }
@@ -139,6 +150,7 @@ namespace KudaGo.Client.ViewModels.Details
                     Place = rs.Place.Title.GetNormalString();
                     Metro = rs.Place.Subway;
                     Location = rs.Place.Coords;
+                    _placeObj = rs.Place;
                 }
 
                 var dates = rs.Dates.LastOrDefault();
@@ -162,6 +174,15 @@ namespace KudaGo.Client.ViewModels.Details
 
                 await EventCommentsViewModel.Load();
             });
+        }
+
+        private void MapOpen(object obj)
+        {
+            var frame = Window.Current.Content as Frame;
+            if (frame == null)
+                return;
+
+            frame.Navigate(typeof(MapPage), new MapPageViewModel(_placeObj));
         }
     }
 }
