@@ -28,6 +28,7 @@
             <GridView.Header>
                 <Grid MaxHeight="300" 
                       x:Name="gridViewHeader"
+                      Tapped="gridViewHeader_Tapped"
                       Visibility="Collapsed">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>

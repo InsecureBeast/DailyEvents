@@ -110,5 +110,20 @@ namespace KudaGo.Client.Views
             FadeBorder.Visibility = Visibility.Visible;
             HeaderTitle.Visibility = Visibility.Visible;
         }
+
+        private void gridViewHeader_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            var parent = VisualHelper.FindParent<Page>(sender as FrameworkElement);
+            if (parent == null)
+                return;
+
+            //todo пока только под events
+            var element = sender as FrameworkElement;
+            var viewModel = element.DataContext as EventsViewModel;
+            if (viewModel == null)
+                return;
+
+            parent.Frame.Navigate(typeof(DetailsPage), viewModel.EventOfTheDay);
+        }
     }
 }
