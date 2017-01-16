@@ -44,7 +44,7 @@ namespace KudaGo.Client
             SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
         }
 
-        private static void InitializeStatusBar()
+        private void InitializeStatusBar()
         {
             var accentBrush = Application.Current.Resources["ApplicationAccentBrush"] as SolidColorBrush;
             var accentDarkBrush1 = Application.Current.Resources["ApplicationDarkAccentBrush1"] as SolidColorBrush;

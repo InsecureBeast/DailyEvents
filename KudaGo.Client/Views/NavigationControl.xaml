@@ -44,7 +44,7 @@
         
         <SplitView x:Name="splitView" 
                    Grid.Row="1"
-                   DisplayMode="CompactOverlay"  
+                   DisplayMode="Overlay"  
                    IsPaneOpen="False" 
                    CompactPaneLength="50" 
                    OpenPaneLength="200">
@@ -56,7 +56,7 @@
             </SplitView.Pane>
 
             <SplitView.Content>
-                    <ContentPresenter x:Name="contentPresenter"/>
+                <ContentPresenter x:Name="contentPresenter"/>
             </SplitView.Content>
         </SplitView>
     </Grid>
