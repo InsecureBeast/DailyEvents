@@ -10,7 +10,10 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Foundation.Metadata;
+using Windows.UI;
 using Windows.UI.Core;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -97,6 +100,48 @@ namespace KudaGo.Client
             // Register a global back event handler. This can be registered on a per-page-bases if you only have a subset of your pages
             // that needs to handle back or if you want to do page-specific logic before deciding to navigate back on those pages.
             SystemNavigationManager.GetForCurrentView().BackRequested += App_BackRequested;
+
+            InitializeStatusBar();
+        }
+
+        private void InitializeStatusBar()
+        {
+            var accentBrush = Application.Current.Resources["ApplicationAccentBrush"] as SolidColorBrush;
+            var accentDarkBrush1 = Application.Current.Resources["ApplicationDarkAccentBrush1"] as SolidColorBrush;
+            var accentDarkBrush2 = Application.Current.Resources["ApplicationDarkAccentBrush2"] as SolidColorBrush;
+            var accentDarkBrush3 = Application.Current.Resources["ApplicationDarkAccentBrush3"] as SolidColorBrush;
+
+            //PC customization
+            if (ApiInformation.IsTypePresent("Windows.UI.ViewManagement.ApplicationView"))
+            {
+                var titleBar = ApplicationView.GetForCurrentView().TitleBar;
+                if (titleBar != null)
+                {
+                    titleBar.ButtonBackgroundColor = accentBrush.Color;
+                    titleBar.ButtonHoverBackgroundColor = accentDarkBrush1.Color;
+                    titleBar.ButtonPressedBackgroundColor = accentDarkBrush2.Color;
+                    titleBar.ButtonForegroundColor = Colors.White;
+                    titleBar.ButtonHoverForegroundColor = Colors.White;
+                    titleBar.ButtonPressedForegroundColor = Colors.White;
+                    titleBar.BackgroundColor = accentBrush.Color;
+                    titleBar.ForegroundColor = Colors.White;
+                    titleBar.InactiveBackgroundColor = accentBrush.Color;
+                    titleBar.ButtonInactiveBackgroundColor = accentBrush.Color;
+                }
+            }
+
+            //Mobile customization
+            if (ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
+            {
+                var statusBar = StatusBar.GetForCurrentView();
+                statusBar.HideAsync();
+                if (statusBar != null)
+                {
+                    statusBar.BackgroundOpacity = 1;
+                    statusBar.BackgroundColor = accentBrush.Color;
+                    statusBar.ForegroundColor = Colors.White;
+                }
+            }
         }
 
         /// <summary>

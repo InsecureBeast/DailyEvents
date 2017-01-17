@@ -30,7 +30,6 @@ namespace KudaGo.Client
         public MainPage()
         {
             InitializeComponent();
-            InitializeStatusBar();
 
             // Caching your main page is good practice, this makes it snappy for the user to return to "home" of your app.
             NavigationCacheMode = NavigationCacheMode.Required;
@@ -42,46 +41,6 @@ namespace KudaGo.Client
             // Once it is reached there is no further back so we can always disable the title bar back UI when navigated here.
             // If you want to you can always to the Frame.CanGoBack check for all your pages and act accordingly.
             SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
-        }
-
-        private void InitializeStatusBar()
-        {
-            var accentBrush = Application.Current.Resources["ApplicationAccentBrush"] as SolidColorBrush;
-            var accentDarkBrush1 = Application.Current.Resources["ApplicationDarkAccentBrush1"] as SolidColorBrush;
-            var accentDarkBrush2 = Application.Current.Resources["ApplicationDarkAccentBrush2"] as SolidColorBrush;
-            var accentDarkBrush3 = Application.Current.Resources["ApplicationDarkAccentBrush3"] as SolidColorBrush;
-
-            //PC customization
-            if (ApiInformation.IsTypePresent("Windows.UI.ViewManagement.ApplicationView"))
-            {
-                var titleBar = ApplicationView.GetForCurrentView().TitleBar;
-                if (titleBar != null)
-                {
-                    titleBar.ButtonBackgroundColor = accentBrush.Color;
-                    titleBar.ButtonHoverBackgroundColor = accentDarkBrush1.Color;
-                    titleBar.ButtonPressedBackgroundColor = accentDarkBrush2.Color;
-                    titleBar.ButtonForegroundColor = Colors.White;
-                    titleBar.ButtonHoverForegroundColor = Colors.White;
-                    titleBar.ButtonPressedForegroundColor = Colors.White;
-                    titleBar.BackgroundColor = accentBrush.Color;
-                    titleBar.ForegroundColor = Colors.White;
-                    titleBar.InactiveBackgroundColor = accentBrush.Color;
-                    titleBar.ButtonInactiveBackgroundColor = accentBrush.Color;
-                }
-            }
-
-            //Mobile customization
-            if (ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
-            {
-                var statusBar = StatusBar.GetForCurrentView();
-                //statusBar.HideAsync();
-                if (statusBar != null)
-                {
-                    statusBar.BackgroundOpacity = 1;
-                    statusBar.BackgroundColor = accentBrush.Color;
-                    statusBar.ForegroundColor = Colors.White;
-                }
-            }
         }
 
         private async void Pivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -100,12 +59,12 @@ namespace KudaGo.Client
                         await viewModel.NewsViewModel.Load();
                     break;
                 case 2:
-                    if (!viewModel.SelectionsViewModel.Items.Any())
-                        await viewModel.SelectionsViewModel.Load();
-                    break;
-                case 3:
                     if (!viewModel.MoviesViewModel.Items.Any())
                         await viewModel.MoviesViewModel.Load();
+                    break;
+                case 3:
+                    if (!viewModel.SelectionsViewModel.Items.Any())
+                        await viewModel.SelectionsViewModel.Load();
                     break;
                 default:
                     break;

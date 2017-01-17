@@ -40,18 +40,17 @@
                                                ItemTemplate="{StaticResource NewsItemDataTemplate}"/>
                     </PivotItem>
 
-                    <PivotItem Header="Selections" x:Uid="selectionsItem">
-                        <views:GridViewControl Items="{Binding Items}"
-                                               DataContext="{Binding SelectionsViewModel}"
-                                               ItemTemplate="{StaticResource SelectionItemDataTemplate}"/>
-                    </PivotItem>
-
                     <PivotItem Header="Movies" x:Uid="moviesItem">
                         <views:GridViewControl Items="{Binding Items}"
                                                DataContext="{Binding MoviesViewModel}"
                                                ItemTemplate="{StaticResource MovieItemDataTemplate}"/>
                     </PivotItem>
-
+                    
+                    <PivotItem Header="Selections" x:Uid="selectionsItem">
+                        <views:GridViewControl Items="{Binding Items}"
+                                               DataContext="{Binding SelectionsViewModel}"
+                                               ItemTemplate="{StaticResource SelectionItemDataTemplate}"/>
+                    </PivotItem>
                 </Pivot>
                 
             </views:NavigationControl.ViewContent>

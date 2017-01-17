@@ -26,7 +26,7 @@
                   ItemContainerStyle="{StaticResource GridViewItem}"
                   x:Name="gridView">
             <GridView.Header>
-                <Grid MaxHeight="300" 
+                <Grid MaxHeight="250" 
                       x:Name="gridViewHeader"
                       Tapped="gridViewHeader_Tapped"
                       Visibility="Collapsed">

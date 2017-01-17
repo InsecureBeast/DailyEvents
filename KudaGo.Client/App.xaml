@@ -53,9 +53,9 @@
                     <StaticResource x:Key="PivotHeaderItemBackgroundSelectedPointerOver" ResourceKey="SystemControlHighlightTransparentBrush" />
                     <StaticResource x:Key="PivotHeaderItemBackgroundSelectedPressed" ResourceKey="SystemControlHighlightTransparentBrush" />
                     <StaticResource x:Key="PivotHeaderItemBackgroundDisabled" ResourceKey="SystemControlTransparentBrush" />
-                    <StaticResource x:Key="PivotHeaderItemForegroundUnselected" ResourceKey="ApplicationLightAccentBrush3" />
-                    <StaticResource x:Key="PivotHeaderItemForegroundUnselectedPointerOver" ResourceKey="ApplicationLightAccentBrush2" />
-                    <StaticResource x:Key="PivotHeaderItemForegroundUnselectedPressed" ResourceKey="ApplicationLightAccentBrush1" />
+                    <StaticResource x:Key="PivotHeaderItemForegroundUnselected" ResourceKey="ApplicationLightAccentBrush2" />
+                    <StaticResource x:Key="PivotHeaderItemForegroundUnselectedPointerOver" ResourceKey="ApplicationLightAccentBrush3" />
+                    <StaticResource x:Key="PivotHeaderItemForegroundUnselectedPressed" ResourceKey="ApplicationLightAccentBrush3" />
                     <StaticResource x:Key="PivotHeaderItemForegroundSelected" ResourceKey="WhiteColor" />
                     <StaticResource x:Key="PivotHeaderItemForegroundSelectedPointerOver" ResourceKey="WhiteColor" />
                     <StaticResource x:Key="PivotHeaderItemForegroundSelectedPressed" ResourceKey="WhiteColor" />
