@@ -18,5 +18,14 @@ namespace KudaGo.Client.Helpers
 
             frame.Navigate(pageType, viewModel);
         }
+
+        internal static void GoBack()
+        {
+            Frame rootFrame = Window.Current.Content as Frame;
+            if (rootFrame == null)
+                return;
+
+            rootFrame.GoBack();
+        }
     }
 }

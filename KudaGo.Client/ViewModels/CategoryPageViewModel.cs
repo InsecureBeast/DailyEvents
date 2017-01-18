@@ -7,17 +7,25 @@ using System.Threading.Tasks;
 
 namespace KudaGo.Client.ViewModels
 {
+    interface IFilterListener
+    {
+        void Update(CategoryPageViewModel categoryViewModel);
+    }
+
     class CategoryPageViewModel : PropertyChangedBase
     {
         private readonly ObservableCollection<CategoryNodeViewModel> _items;
         private readonly DataSource _dataSource;
+        private readonly IFilterListener _filterListeer;
         private bool _isBusy;
         private bool _isFree;
         private CategoryNodeViewModel _selectedItem;
 
-        public CategoryPageViewModel(DataSource dataSource)
+        public CategoryPageViewModel(DataSource dataSource, IFilterListener filterListeer)
         {
             _dataSource = dataSource;
+            _filterListeer = filterListeer;
+
             _items = new ObservableCollection<CategoryNodeViewModel>();
             LayoutHelper.InvokeFromUiThread(async () =>
             {
@@ -57,6 +65,8 @@ namespace KudaGo.Client.ViewModels
             {
                 _selectedItem = value;
                 NotifyOfPropertyChanged(() => SelectedItem);
+                NavigationHelper.GoBack();
+                _filterListeer.Update(this);
             }
         }
 

@@ -41,13 +41,15 @@
                        Style="{StaticResource BaseTextBlockStyle}"/>
         </Grid>
 
-        <!--<CheckBox Content="Is free"
-                  Grid.Row="1"
-                  Checked="{Binding IsFree}"/>-->
+        <Grid Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}"
+              Grid.Row="1">
+            <CheckBox Content="Is free"
+                      Margin="10"
+                      IsChecked="{Binding IsFree}"/>
+        </Grid>
 
         <ListView ItemsSource="{Binding Items}"
                   SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
-                  ItemClick="ListView_ItemClick"
                   IsItemClickEnabled="True"
                   Grid.Row="2"/>
 

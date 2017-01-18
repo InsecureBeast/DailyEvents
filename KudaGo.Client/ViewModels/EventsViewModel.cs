@@ -1,4 +1,5 @@
 ﻿using KudaGo.Client.Command;
+using KudaGo.Client.Controls;
 using KudaGo.Client.Helpers;
 using KudaGo.Client.Model;
 using KudaGo.Client.ViewModels.Nodes;
@@ -13,16 +14,19 @@ using System.Windows.Input;
 
 namespace KudaGo.Client.ViewModels
 {
-    class EventsViewModel : SectionViewModel
+    class EventsViewModel : SectionViewModel, IFilterListener
     {
         private readonly DataSource _dataSource;
         private EventOfTheDayNodeViewModel _eventOfTheDay;
         private readonly DelegateCommand _filterCommand;
+        private GetDataDelegate _getData;
+        private string _filter;
 
         public EventsViewModel(DataSource dataSource)
         {
             _dataSource = dataSource;
             _filterCommand = new DelegateCommand(Filter);
+            _getData = GetEventData;
 
             LayoutHelper.InvokeFromUiThread(async () =>
             {
@@ -67,12 +71,30 @@ namespace KudaGo.Client.ViewModels
         protected override async Task<IResponse> GetData(string next)
         {
             IsBusy = true;
-            return await _dataSource.GetEvents(next);
+            return await _getData(next);
         }
 
         private void Filter(object obj)
         {
-            NavigationHelper.NavigateTo(typeof(CategoryPage), new CategoryPageViewModel(_dataSource));
+            NavigationHelper.NavigateTo(typeof(CategoryPage), new CategoryPageViewModel(_dataSource, this));
+        }
+
+        public async void Update(CategoryPageViewModel categoryViewModel)
+        {
+            _filter = categoryViewModel.SelectedItem.Slug;
+            _getData = GetDataWithFilter;
+            Items.Clear();
+            await Load();
+        }
+
+        private async Task<IResponse> GetDataWithFilter(string next)
+        {
+            return await _dataSource.GetEventsWithFilter(next, _filter);
+        }
+
+        protected async Task<IResponse> GetEventData(string next)
+        {
+            return await _dataSource.GetEvents(next);
         }
     }
 }

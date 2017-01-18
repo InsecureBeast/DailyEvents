@@ -46,14 +46,5 @@ namespace KudaGo.Client
 
             DataContext = e.Parameter as CategoryPageViewModel;
         }
-
-        private void ListView_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            Frame rootFrame = Window.Current.Content as Frame;
-            if (rootFrame == null)
-                return;
-
-            rootFrame.GoBack();
-        }
     }
 }

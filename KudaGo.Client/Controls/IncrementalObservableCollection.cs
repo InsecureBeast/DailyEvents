@@ -14,6 +14,9 @@ using Windows.UI.Xaml.Data;
 
 namespace KudaGo.Client.Controls
 {
+    public delegate Task<IResponse> GetDataDelegate(string next);
+    public delegate void AddDataDelegate(IResponse response);
+
     class IncrementalObservableCollection<T> : ObservableCollection<T>, ISupportIncrementalLoading
     {
         private GetDataDelegate _getData;
@@ -21,9 +24,6 @@ namespace KudaGo.Client.Controls
         private bool _hasMoreItems = true;
         private string _next;
         private int _count;
-
-        public delegate Task<IResponse> GetDataDelegate(string next);
-        public delegate void AddDataDelegate(IResponse response);
 
         public IncrementalObservableCollection(GetDataDelegate getData, AddDataDelegate addData)
         {
@@ -45,6 +45,13 @@ namespace KudaGo.Client.Controls
         public IAsyncOperation<LoadMoreItemsResult> LoadMoreItemsAsync(uint count)
         {
             return LoadDataAsync().AsAsyncOperation<LoadMoreItemsResult>();
+        }
+
+        protected override void ClearItems()
+        {
+            base.ClearItems();
+            _hasMoreItems = true;
+            _next = string.Empty;
         }
 
         private async Task<LoadMoreItemsResult> LoadDataAsync()
