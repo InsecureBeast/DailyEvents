@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading;
+using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
@@ -57,7 +58,7 @@ namespace KudaGo.Client
         /// will be used such as when the application is launched to open a specific file.
         /// </summary>
         /// <param name="e">Details about the launch request and process.</param>
-        protected override void OnLaunched(LaunchActivatedEventArgs e)
+        protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
@@ -101,10 +102,10 @@ namespace KudaGo.Client
             // that needs to handle back or if you want to do page-specific logic before deciding to navigate back on those pages.
             SystemNavigationManager.GetForCurrentView().BackRequested += App_BackRequested;
 
-            InitializeStatusBar();
+            await InitializeStatusBar();
         }
 
-        private void InitializeStatusBar()
+        private async Task InitializeStatusBar()
         {
             var accentBrush = Application.Current.Resources["ApplicationAccentBrush"] as SolidColorBrush;
             var accentDarkBrush1 = Application.Current.Resources["ApplicationDarkAccentBrush1"] as SolidColorBrush;
@@ -134,7 +135,7 @@ namespace KudaGo.Client
             if (ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
             {
                 var statusBar = StatusBar.GetForCurrentView();
-                statusBar.HideAsync();
+                await statusBar.HideAsync();
                 if (statusBar != null)
                 {
                     statusBar.BackgroundOpacity = 1;

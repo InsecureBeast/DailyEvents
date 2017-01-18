@@ -12,6 +12,7 @@ using KudaGo.Core.Selections;
 using KudaGo.Core.Movies;
 using KudaGo.Core.Comments;
 using KudaGo.Core.Places;
+using KudaGo.Core.Categories;
 
 namespace KudaGo.Client.Model
 {
@@ -198,6 +199,28 @@ namespace KudaGo.Client.Model
             request.MovieId = movieId;
             request.Expand = MovieListRequest.ExpandNames.IMAGES;
 
+            var res = await request.ExecuteAsync();
+            return res;
+        }
+
+        #endregion
+
+        #region Categories
+
+        public async Task<IEnumerable<ICategoriesResponse>> GetEventCategories()
+        {
+            var request = new EventCategoriesRequest();
+            request.Lang = _culture;
+            request.OrderBy = CategoryOrderBy.Name;
+            var res = await request.ExecuteAsync();
+            return res;
+        }
+
+        public async Task<IEnumerable<ICategoriesResponse>> GetPlaceCategories()
+        {
+            var request = new PlaceCategoriesRequest();
+            request.Lang = _culture;
+            request.OrderBy = CategoryOrderBy.Name;
             var res = await request.ExecuteAsync();
             return res;
         }

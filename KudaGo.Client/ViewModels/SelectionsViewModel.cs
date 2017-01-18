@@ -19,7 +19,7 @@ namespace KudaGo.Client.ViewModels
             _dataSource = dataSource;
         }
 
-        protected override async void AddData(IResponse response)
+        protected override void AddData(IResponse response)
         {
             var res = response as ISelectionListResponse;
             if (res == null)

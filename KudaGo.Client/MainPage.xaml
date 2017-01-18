@@ -56,4 +56,15 @@
             </views:NavigationControl.ViewContent>
         </views:NavigationControl>
     </Grid>
+
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Label="Filter" 
+                          Icon="Filter"  
+                          Command="{Binding EventsViewModel.FilterCommand}"/>
+        </CommandBar>
+    </Page.BottomAppBar>
+    
+    
+    
 </Page>

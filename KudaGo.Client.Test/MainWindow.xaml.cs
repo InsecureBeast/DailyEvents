@@ -37,7 +37,7 @@ namespace KudaGo.Client.Test
 
         private async void OnLoaded(object sender, RoutedEventArgs e)
         {
-            LoadEventOfTheDay();
+            await LoadEventOfTheDay();
 
             var request = new EventListRequest();
             request.Lang = "ru";

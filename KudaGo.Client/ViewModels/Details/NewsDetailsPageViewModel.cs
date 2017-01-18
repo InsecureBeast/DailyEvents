@@ -12,7 +12,6 @@ namespace KudaGo.Client.ViewModels.Details
 {
     class NewsDetailsPageViewModel : DetailsPageViewModel
     {
-        private string _description;
         private Uri _source;
         private string _date;
 

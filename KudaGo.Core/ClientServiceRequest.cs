@@ -44,7 +44,7 @@ namespace KudaGo.Core
         /// <exception cref="WebException">An error occurred while downloading the resource. </exception>
         private static async Task<HttpResponseMessage> HttpGetAsync(string uri)
         {
-            const string botUserAgent = "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)";
+            //const string botUserAgent = "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)";
             var handler = new HttpClientHandler
             {
                 AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip
