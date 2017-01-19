@@ -27,6 +27,13 @@ namespace KudaGo.Client
         public CategoryPage()
         {
             this.InitializeComponent();
+            Loaded += CategoryPage_Loaded;
+        }
+
+        private void CategoryPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (listView.SelectedItem != null)
+                listView.ScrollIntoView(listView.SelectedItem);
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)

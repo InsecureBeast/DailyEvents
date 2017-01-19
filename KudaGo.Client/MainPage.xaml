@@ -61,7 +61,7 @@
         <CommandBar>
             <AppBarButton Label="Filter" 
                           Icon="Filter"  
-                          Command="{Binding EventsViewModel.FilterCommand}"/>
+                          Command="{Binding EventFilterCommand}"/>
         </CommandBar>
     </Page.BottomAppBar>
     

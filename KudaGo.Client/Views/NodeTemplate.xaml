@@ -4,10 +4,12 @@
     xmlns:local="using:KudaGo.Client.Views"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls">
 
+    <x:Double x:Key="ItemHeight">400</x:Double>
+    
     <DataTemplate x:Key="EventItemDataTemplate">
         <Grid Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}"
               Margin="7,7,7,7"
-              Height="450">
+              Height="{StaticResource ItemHeight}">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -46,7 +48,7 @@
                     
                     <TextBlock Text="{Binding Title}"
                                Style="{StaticResource SubtitleTextBlockStyle}"
-                               MaxLines="3"
+                               MaxLines="2"
                                TextTrimming="CharacterEllipsis"
                                FontWeight="SemiBold"/>
                     <TextBlock Text="{Binding Age}"
@@ -58,7 +60,7 @@
                 </Grid>
                 
                 <TextBlock Text="{Binding Description}" 
-                           MaxLines="3"
+                           MaxLines="2"
                            TextTrimming="CharacterEllipsis"
                            Style="{StaticResource BodyTextBlockStyle}"
                            Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}" />
@@ -113,7 +115,7 @@
     <DataTemplate x:Key="EventOfTheDayItemDataTemplate">
         <Grid Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}"
               Margin="7,7,7,7"
-              Height="450">
+              Height="{StaticResource ItemHeight}">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -156,7 +158,7 @@
     <DataTemplate x:Key="NewsItemDataTemplate">
         <Grid Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}"
               Margin="7,7,7,7"
-              Height="450">
+              Height="{StaticResource ItemHeight}">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -178,12 +180,12 @@
 
                 <TextBlock Text="{Binding Title}"
                             Style="{StaticResource SubtitleTextBlockStyle}"
-                            MaxLines="3"
+                            MaxLines="2"
                             TextTrimming="CharacterEllipsis"
                             FontWeight="SemiBold"/>
 
                 <TextBlock Text="{Binding Description}" 
-                           MaxLines="3"
+                           MaxLines="2"
                            TextTrimming="CharacterEllipsis"
                            Style="{StaticResource BodyTextBlockStyle}"
                            Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}" />
@@ -270,7 +272,7 @@
 
                     <TextBlock Text="{Binding Title}"
                                Style="{StaticResource SubtitleTextBlockStyle}"
-                               MaxLines="3"
+                               MaxLines="2"
                                TextTrimming="CharacterEllipsis"
                                FontWeight="SemiBold"/>
                     <TextBlock Text="{Binding Age}"

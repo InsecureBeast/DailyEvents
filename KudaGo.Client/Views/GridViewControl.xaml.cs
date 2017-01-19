@@ -93,7 +93,8 @@ namespace KudaGo.Client.Views
         {
             var columns = Math.Truncate(e.NewSize.Width / 300);
             var width = Math.Truncate(e.NewSize.Width / columns);
-            ((ItemsWrapGrid)gridView.ItemsPanelRoot).ItemWidth = width - 1;
+            var offset = columns == 1 ? 0 : 1;
+            ((ItemsWrapGrid)gridView.ItemsPanelRoot).ItemWidth = width - offset;
         }
 
         private void gridView_ItemClick(object sender, ItemClickEventArgs e)

@@ -1,16 +1,11 @@
-﻿using KudaGo.Client.Command;
-using KudaGo.Client.Controls;
+﻿using KudaGo.Client.Controls;
 using KudaGo.Client.Helpers;
 using KudaGo.Client.Model;
 using KudaGo.Client.ViewModels.Nodes;
 using KudaGo.Core.Data;
 using KudaGo.Core.Events;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Input;
 
 namespace KudaGo.Client.ViewModels
 {
@@ -18,14 +13,12 @@ namespace KudaGo.Client.ViewModels
     {
         private readonly DataSource _dataSource;
         private EventOfTheDayNodeViewModel _eventOfTheDay;
-        private readonly DelegateCommand _filterCommand;
         private GetDataDelegate _getData;
         private string _filter;
 
         public EventsViewModel(DataSource dataSource)
         {
             _dataSource = dataSource;
-            _filterCommand = new DelegateCommand(Filter);
             _getData = GetEventData;
 
             LayoutHelper.InvokeFromUiThread(async () =>
@@ -38,11 +31,6 @@ namespace KudaGo.Client.ViewModels
                 EventOfTheDay = new EventOfTheDayNodeViewModel(eventOfTheDay);
                 //Items.Insert(0, EventOfTheDay);
             });
-        }
-
-        public ICommand FilterCommand
-        {
-            get { return _filterCommand; }
         }
 
         public EventOfTheDayNodeViewModel EventOfTheDay
@@ -72,11 +60,6 @@ namespace KudaGo.Client.ViewModels
         {
             IsBusy = true;
             return await _getData(next);
-        }
-
-        private void Filter(object obj)
-        {
-            NavigationHelper.NavigateTo(typeof(CategoryPage), new CategoryPageViewModel(_dataSource, this));
         }
 
         public async void Update(CategoryPageViewModel categoryViewModel)
