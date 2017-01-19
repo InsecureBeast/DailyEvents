@@ -15,6 +15,7 @@ namespace KudaGo.Client.ViewModels
     class CategoryPageViewModel : PropertyChangedBase
     {
         private readonly ObservableCollection<CategoryNodeViewModel> _items;
+        private readonly ObservableCollection<CategoryNodeViewModel> _categories;
         private readonly DataSource _dataSource;
         private readonly IFilterListener _filterListeer;
         private bool _isBusy;
@@ -27,6 +28,8 @@ namespace KudaGo.Client.ViewModels
             _filterListeer = filterListeer;
 
             _items = new ObservableCollection<CategoryNodeViewModel>();
+            _categories = new ObservableCollection<CategoryNodeViewModel>();
+
             LayoutHelper.InvokeFromUiThread(async () =>
             {
                 await Load();
@@ -77,11 +80,25 @@ namespace KudaGo.Client.ViewModels
 
             IsBusy = true;
             var items = await _dataSource.GetEventCategories();
-            foreach (var item in items)
+            foreach (var item in items.OrderBy(i => i.Name))
             {
-                Items.Add(new CategoryNodeViewModel(item));
+                var node = new CategoryNodeViewModel(item);
+                var exist = Items.FirstOrDefault(n => node.Name.Contains(n.Name));
+                if (exist == null)
+                {
+                    Items.Add(node);
+                    continue;
+                }
+
+                exist.Slug = exist.Slug + "," + node.Slug;
             }
+
             IsBusy = false;
+        }
+
+        public void LoadCategories()
+        {
+            //_categories.Add(new CategoryNodeViewModel("Развлечение", ""));
         }
     }
 }
