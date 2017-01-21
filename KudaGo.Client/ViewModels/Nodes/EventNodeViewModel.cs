@@ -18,10 +18,13 @@ namespace KudaGo.Client.ViewModels.Nodes
 
     class EventNodeViewModel : EventBaseNodeViewModel
     {
-        public EventNodeViewModel(IEventListResult result)
+        public EventNodeViewModel(IEventListResult result, ICategoryNameProvider categoryNameProvider)
         {
             if (result == null)
                 return;
+
+            if (categoryNameProvider == null)
+                throw new ArgumentNullException("categoryNameProvider");
 
             var image = result.Images.FirstOrDefault();
             if (image != null)
@@ -36,8 +39,12 @@ namespace KudaGo.Client.ViewModels.Nodes
             if (result.Place != null)
                 Place = result.Place.Title.GetNormalString();
 
-            //TODO
-            Categories = result.Categories.FirstOrDefault();
+            var firstCat = result.Categories.FirstOrDefault();
+            var catName = categoryNameProvider.GetName(firstCat);
+            if (string.IsNullOrEmpty(catName))
+                Categories = firstCat;
+            else
+                Categories = catName;
 
             var dates = result.Dates.LastOrDefault();
             if (dates == null)

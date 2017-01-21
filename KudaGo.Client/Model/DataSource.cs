@@ -23,7 +23,8 @@ namespace KudaGo.Client.Model
 
         public async Task<IEventListResponse> GetEvents(string next, bool? isFree)
         {
-            var filter = "-concert,-theater,-stock,-education,-kids,-tour,-dance-trainings,-exhibition,-speed-dating";
+            //var filter = "-concert,-theater,-stock,-education,-kids,-tour,-dance-trainings,-exhibition,-speed-dating";
+            var filter = "-concert,-theater,-stock,-kids,-dance-trainings,-speed-dating";
             return await GetEventsWithFilter(next, filter, isFree);
         }
 

@@ -26,9 +26,12 @@ namespace KudaGo.Client.ViewModels
             var dataSource = App.DataSource;
             _newsViewModel = new NewsViewModel(dataSource);
             _eventsViewModel = new EventsViewModel(dataSource);
+            _categoryPageViewModel = new CategoryPageViewModel(dataSource, _eventsViewModel);
+            _eventsViewModel.SetCategoryNameProvider(_categoryPageViewModel);
+
             _selectionsViewModel = new SelectionsViewModel(dataSource);
             _moviesViewModel = new MoviesViewModel(dataSource);
-            _categoryPageViewModel = new CategoryPageViewModel(dataSource, _eventsViewModel);
+            
             _eventFilterCommand = new DelegateCommand(Filter);
         }
 

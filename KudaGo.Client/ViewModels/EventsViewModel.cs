@@ -11,9 +11,15 @@ using System.Threading.Tasks;
 
 namespace KudaGo.Client.ViewModels
 {
+    interface ICategoryNameProvider
+    {
+        string GetName(string slug);
+    }
+
     class EventsViewModel : SectionViewModel, IFilterListener
     {
         private readonly DataSource _dataSource;
+        private ICategoryNameProvider _categoryNameProvider;
         private EventOfTheDayNodeViewModel _eventOfTheDay;
         private GetDataDelegate _getData;
         private string _filter;
@@ -45,6 +51,11 @@ namespace KudaGo.Client.ViewModels
             }
         }
 
+        public void SetCategoryNameProvider(ICategoryNameProvider provider)
+        {
+            _categoryNameProvider = provider;
+        }
+
         protected override void AddData(IResponse response)
         {
             var res = response as IEventListResponse;
@@ -53,7 +64,7 @@ namespace KudaGo.Client.ViewModels
 
             foreach (var result in res.Results)
             {
-                Items.Add(new EventNodeViewModel(result));
+                Items.Add(new EventNodeViewModel(result, _categoryNameProvider));
             }
             IsBusy = false;
         }

@@ -4,6 +4,7 @@ using KudaGo.Client.ViewModels.Nodes;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using System;
 
 namespace KudaGo.Client.ViewModels
 {
@@ -12,7 +13,7 @@ namespace KudaGo.Client.ViewModels
         void Update(CategoryPageViewModel categoryViewModel);
     }
 
-    class CategoryPageViewModel : PropertyChangedBase
+    class CategoryPageViewModel : PropertyChangedBase, ICategoryNameProvider
     {
         private readonly ObservableCollection<CategoryNodeViewModel> _items;
         private readonly ObservableCollection<CategoryNodeViewModel> _categories;
@@ -100,6 +101,15 @@ namespace KudaGo.Client.ViewModels
             }
 
             IsBusy = false;
+        }
+
+        public string GetName(string slug)
+        {
+            var first = Items.FirstOrDefault(i => i.Slug.Contains(slug));
+            if (first == null)
+                return string.Empty;
+
+            return first.Name;
         }
     }
 }
