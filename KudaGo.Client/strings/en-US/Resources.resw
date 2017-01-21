@@ -121,7 +121,7 @@
     <value>Events</value>
   </data>
   <data name="mainNavControl.Title" xml:space="preserve">
-    <value>Today</value>
+    <value>Main</value>
   </data>
   <data name="newsItem.Header" xml:space="preserve">
     <value>News</value>
@@ -161,5 +161,11 @@
   </data>
   <data name="IsFree.Content" xml:space="preserve">
     <value>Is free</value>
+  </data>
+  <data name="Filter.Label" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="ChooseCategory.Title" xml:space="preserve">
+    <value>Choose the category</value>
   </data>
 </root>

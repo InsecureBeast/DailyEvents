@@ -21,9 +21,10 @@ namespace KudaGo.Client.Model
         private string _culture = "ru";
         private Location _location = Location.Spb;
 
-        public async Task<IEventListResponse> GetEvents(string next)
+        public async Task<IEventListResponse> GetEvents(string next, bool? isFree)
         {
-            return await GetEventsWithFilter(next, "-concert,-theater", null);
+            var filter = "-concert,-theater,-stock,-education,-kids,-tour,-dance-trainings,-exhibition,-speed-dating";
+            return await GetEventsWithFilter(next, filter, isFree);
         }
 
         public async Task<IEventListResponse> GetEventsWithFilter(string next, string categorySlug, bool? isFree)

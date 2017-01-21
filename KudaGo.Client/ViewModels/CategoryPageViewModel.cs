@@ -19,7 +19,7 @@ namespace KudaGo.Client.ViewModels
         private readonly DataSource _dataSource;
         private readonly IFilterListener _filterListeer;
         private bool _isBusy;
-        private bool _isFree;
+        private bool? _isFree;
         private CategoryNodeViewModel _selectedItem;
 
         public CategoryPageViewModel(DataSource dataSource, IFilterListener filterListeer)
@@ -51,12 +51,12 @@ namespace KudaGo.Client.ViewModels
             }
         }
 
-        public bool IsFree
+        public bool? IsFree
         {
             get { return _isFree; }
             set
             {
-                _isFree = value;
+                _isFree = value == false ? null : value;
                 SelectedItem = null;
                 NotifyOfPropertyChanged(() => IsFree);
             }

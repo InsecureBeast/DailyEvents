@@ -48,11 +48,14 @@ namespace KudaGo.Client
             var viewModel = DataContext as MainPageViewModel;
             if (viewModel == null)
                 return;
+
+            BottomCommandBar.Visibility = Visibility.Collapsed;
             switch (pivot.SelectedIndex)
             {
                 case 0:
                     if (!viewModel.EventsViewModel.Items.Any())
                         await viewModel.EventsViewModel.Load();
+                    BottomCommandBar.Visibility = Visibility.Visible;
                     break;
                 case 1:
                     if (!viewModel.NewsViewModel.Items.Any())

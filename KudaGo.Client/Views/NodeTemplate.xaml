@@ -42,7 +42,7 @@
                         VerticalAlignment="Top"
                         Margin="10"
                         Padding="10,2,10,5"
-                        Background="OrangeRed">
+                        Background="{StaticResource ApplicationAccentBrush}">
                     <TextBlock Text="Free"
                                x:Uid="free"
                                Foreground="White"/>

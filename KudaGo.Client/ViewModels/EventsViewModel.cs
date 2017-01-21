@@ -1,9 +1,11 @@
-﻿using KudaGo.Client.Controls;
+﻿using KudaGo.Client.Common;
+using KudaGo.Client.Controls;
 using KudaGo.Client.Helpers;
 using KudaGo.Client.Model;
 using KudaGo.Client.ViewModels.Nodes;
 using KudaGo.Core.Data;
 using KudaGo.Core.Events;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -15,7 +17,7 @@ namespace KudaGo.Client.ViewModels
         private EventOfTheDayNodeViewModel _eventOfTheDay;
         private GetDataDelegate _getData;
         private string _filter;
-        private bool _isFree;
+        private bool? _isFree = null;
 
         public EventsViewModel(DataSource dataSource)
         {
@@ -30,7 +32,6 @@ namespace KudaGo.Client.ViewModels
                     return;
 
                 EventOfTheDay = new EventOfTheDayNodeViewModel(eventOfTheDay);
-                //Items.Insert(0, EventOfTheDay);
             });
         }
 
@@ -66,7 +67,12 @@ namespace KudaGo.Client.ViewModels
         public async void Update(CategoryPageViewModel categoryViewModel)
         {
             _filter = categoryViewModel.SelectedItem.Slug;
-            _getData = GetDataWithFilter;
+
+            if (categoryViewModel.SelectedItem is AllCategoryNodeViewModel)
+                _getData = GetEventData;
+            else
+                _getData = GetDataWithFilter;
+
             _isFree = categoryViewModel.IsFree;
             Items.Clear();
             await Load();
@@ -79,7 +85,7 @@ namespace KudaGo.Client.ViewModels
 
         protected async Task<IResponse> GetEventData(string next)
         {
-            return await _dataSource.GetEvents(next);
+            return await _dataSource.GetEvents(next, _isFree);
         }
     }
 }
