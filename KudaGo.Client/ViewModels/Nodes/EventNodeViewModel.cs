@@ -31,6 +31,7 @@ namespace KudaGo.Client.ViewModels.Nodes
             Title = result.Title.GetNormalString();
             Description = result.Description;
             Age = result.AgeRestriction;
+            IsFree = result.IsFree;
 
             if (result.Place != null)
                 Place = result.Place.Title.GetNormalString();
@@ -61,5 +62,6 @@ namespace KudaGo.Client.ViewModels.Nodes
         public string Place { get; private set; }
         public string Age { get; private set; }
         public string Categories { get; private set; }
+        public bool IsFree { get; private set; }
     }
 }

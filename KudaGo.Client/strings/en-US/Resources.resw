@@ -139,7 +139,7 @@
     <value>Movies</value>
   </data>
   <data name="free.Text" xml:space="preserve">
-    <value>FREE</value>
+    <value>Free</value>
   </data>
   <data name="price.Text" xml:space="preserve">
     <value>PRICE</value>
@@ -158,5 +158,8 @@
   </data>
   <data name="source.Text" xml:space="preserve">
     <value>Source</value>
+  </data>
+  <data name="IsFree.Content" xml:space="preserve">
+    <value>Is free</value>
   </data>
 </root>

@@ -15,6 +15,7 @@ namespace KudaGo.Client.ViewModels
         private EventOfTheDayNodeViewModel _eventOfTheDay;
         private GetDataDelegate _getData;
         private string _filter;
+        private bool _isFree;
 
         public EventsViewModel(DataSource dataSource)
         {
@@ -66,13 +67,14 @@ namespace KudaGo.Client.ViewModels
         {
             _filter = categoryViewModel.SelectedItem.Slug;
             _getData = GetDataWithFilter;
+            _isFree = categoryViewModel.IsFree;
             Items.Clear();
             await Load();
         }
 
         private async Task<IResponse> GetDataWithFilter(string next)
         {
-            return await _dataSource.GetEventsWithFilter(next, _filter);
+            return await _dataSource.GetEventsWithFilter(next, _filter, _isFree);
         }
 
         protected async Task<IResponse> GetEventData(string next)

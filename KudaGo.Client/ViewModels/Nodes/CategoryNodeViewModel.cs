@@ -7,8 +7,10 @@ using KudaGo.Core.Categories;
 
 namespace KudaGo.Client.ViewModels.Nodes
 {
-    class CategoryNodeViewModel
+    class CategoryNodeViewModel : PropertyChangedBase
     {
+        private bool _isFree;
+
         public CategoryNodeViewModel(ICategoriesResponse item)
         {
             if (item == null)
@@ -38,9 +40,19 @@ namespace KudaGo.Client.ViewModels.Nodes
                 Name = "События для бизнеса"; //TODO Localization
         }
 
-        public string Name { get; private set; }
-        public string OriginalName { get; private set; }
+        public string Name { get; protected set; }
+        public string OriginalName { get; protected set; }
         public string Slug { get; set; }
+
+        public bool IsFree
+        {
+            get { return _isFree; }
+            set
+            {
+                _isFree = value;
+                NotifyOfPropertyChanged(() => IsFree);
+            }
+        }
 
         public override string ToString()
         {
@@ -64,6 +76,16 @@ namespace KudaGo.Client.ViewModels.Nodes
                 return originalName;
 
             return originalName.Substring(0, start - 1);
+        }
+    }
+
+    class AllCategoryNodeViewModel : CategoryNodeViewModel
+    {
+        public AllCategoryNodeViewModel() : base(null)
+        {
+            Name = "Все"; //TODO Localization
+            Slug = string.Empty;
+            OriginalName = "All";
         }
     }
 }

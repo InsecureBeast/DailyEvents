@@ -139,7 +139,7 @@
     <value>Кино</value>
   </data>
   <data name="free.Text" xml:space="preserve">
-    <value>БЕСПЛАТНО</value>
+    <value>Бесплатно</value>
   </data>
   <data name="price.Text" xml:space="preserve">
     <value>СТОИМОСТЬ</value>
@@ -158,5 +158,8 @@
   </data>
   <data name="source.Text" xml:space="preserve">
     <value>Источник</value>
+  </data>
+  <data name="IsFree.Content" xml:space="preserve">
+    <value>Только бесплатные</value>
   </data>
 </root>

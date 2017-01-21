@@ -6,6 +6,17 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    <Page.Resources>
+        <DataTemplate x:Key="CategoryNodeTemplate">
+            <Border BorderThickness="0,0,0,0"
+                    BorderBrush="{StaticResource AppBarBorderThemeBrush}">
+                <TextBlock Text="{Binding Name}"
+                           Style="{StaticResource SubtitleTextBlockStyle}"
+                           FontWeight="Light"
+                           Margin="0,10,0,10"/>
+            </Border>
+        </DataTemplate>
+    </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
@@ -41,15 +52,18 @@
                        Style="{StaticResource BaseTextBlockStyle}"/>
         </Grid>
 
-        <Grid Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}"
+        <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
               Grid.Row="1">
             <CheckBox Content="Is free"
+                      x:Uid="IsFree"
                       Margin="10"
-                      IsChecked="{Binding IsFree}"/>
+                      IsChecked="{Binding IsFree, Mode=TwoWay}"/>
         </Grid>
 
         <ListView ItemsSource="{Binding Items}"
+                  Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}"
                   SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                  ItemTemplate="{StaticResource CategoryNodeTemplate}"
                   IsItemClickEnabled="True"
                   x:Name="listView"
                   Grid.Row="2"/>

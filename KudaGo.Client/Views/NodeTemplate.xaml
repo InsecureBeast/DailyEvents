@@ -30,11 +30,22 @@
                         VerticalAlignment="Top"
                         HorizontalAlignment="Left"
                         Margin="10"
-                        Padding="10,2,10,2"
+                        Padding="10,2,10,5"
                         Opacity="0.7">
                     <TextBlock Text="{Binding Categories}"
                                Foreground="White"
                                Opacity="1"/>
+                </Border>
+
+                <Border Visibility="{Binding IsFree, Converter={StaticResource BooleanToVisibilityConverter}}"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        Margin="10"
+                        Padding="10,2,10,5"
+                        Background="OrangeRed">
+                    <TextBlock Text="Free"
+                               x:Uid="free"
+                               Foreground="White"/>
                 </Border>
             </Grid>
             <StackPanel Orientation="Vertical"

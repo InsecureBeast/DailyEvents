@@ -27,7 +27,6 @@
                 <ControlTemplate TargetType="GridViewItem">
                     <Grid x:Name="ContentBorder" 
                           Control.IsTemplateFocusTarget="True" 
-                           
                           Background="{TemplateBinding Background}" 
                           BorderBrush="{TemplateBinding BorderBrush}" 
                           BorderThickness="{TemplateBinding BorderThickness}" 

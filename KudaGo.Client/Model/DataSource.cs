@@ -23,15 +23,16 @@ namespace KudaGo.Client.Model
 
         public async Task<IEventListResponse> GetEvents(string next)
         {
-            return await GetEventsWithFilter(next, "-concert,-theater");
+            return await GetEventsWithFilter(next, "-concert,-theater", null);
         }
 
-        public async Task<IEventListResponse> GetEventsWithFilter(string next, string categorySlug)
+        public async Task<IEventListResponse> GetEventsWithFilter(string next, string categorySlug, bool? isFree)
         {
             var request = new EventListRequest();
             request.Lang = _culture;
             request.TextFormat = TextFormatEnum.Plain;
             request.Next = next;
+            request.IsFree = isFree;
             request.Categories = categorySlug;
             request.Expand = string.Format("{0},{1}", EventListRequest.ExpandNames.IMAGES, EventListRequest.ExpandNames.PLACE);
 

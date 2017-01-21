@@ -80,20 +80,20 @@
                                 </Paragraph>
                             </RichTextBlock>
 
-                            <StackPanel Visibility="{Binding IsFree, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
+                            <StackPanel >
                                 <TextBlock Text="PRICE"
                                            x:Uid="price"
                                            Style="{StaticResource NormalTextBlockStyle}"
                                            FontWeight="SemiBold"/>
                                 <TextBlock Text="{Binding Price}"
+                                           Visibility="{Binding IsFree, Converter={StaticResource InverseBooleanToVisibilityConverter}}"
+                                           Style="{StaticResource NormalTextBlockStyle}"/>
+                                <TextBlock Text="Free"
+                                           x:Uid="free"
+                                           Visibility="{Binding IsFree, Converter={StaticResource BooleanToVisibilityConverter}}"
                                            Style="{StaticResource NormalTextBlockStyle}"/>
                             </StackPanel>
                             
-                            <TextBlock Text="FREE"
-                                        x:Uid="free"
-                                        Visibility="{Binding IsFree, Converter={StaticResource BooleanToVisibilityConverter}}"
-                                        Style="{StaticResource NormalTextBlockStyle}"
-                                        FontWeight="SemiBold"/>
                         </StackPanel>
                     </StackPanel>
 

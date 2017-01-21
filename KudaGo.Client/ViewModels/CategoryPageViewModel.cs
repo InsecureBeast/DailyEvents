@@ -57,6 +57,7 @@ namespace KudaGo.Client.ViewModels
             set
             {
                 _isFree = value;
+                SelectedItem = null;
                 NotifyOfPropertyChanged(() => IsFree);
             }
         }
@@ -68,6 +69,9 @@ namespace KudaGo.Client.ViewModels
             {
                 _selectedItem = value;
                 NotifyOfPropertyChanged(() => SelectedItem);
+                if (_selectedItem == null)
+                    return;
+
                 NavigationHelper.GoBack();
                 _filterListeer.Update(this);
             }
@@ -80,6 +84,8 @@ namespace KudaGo.Client.ViewModels
 
             IsBusy = true;
             var items = await _dataSource.GetEventCategories();
+
+            Items.Add(new AllCategoryNodeViewModel());
             foreach (var item in items.OrderBy(i => i.Name))
             {
                 var node = new CategoryNodeViewModel(item);
@@ -94,11 +100,6 @@ namespace KudaGo.Client.ViewModels
             }
 
             IsBusy = false;
-        }
-
-        public void LoadCategories()
-        {
-            //_categories.Add(new CategoryNodeViewModel("Развлечение", ""));
         }
     }
 }

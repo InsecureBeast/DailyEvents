@@ -13,6 +13,7 @@
                 <ResourceDictionary Source="Views\Icons.xaml" />
                 <ResourceDictionary Source="Views\CommentsDataTemplate.xaml" />
                 <ResourceDictionary Source="Themes\GridView.xaml" />
+                <ResourceDictionary Source="Themes\ListView.xaml" />
                 <ResourceDictionary Source="Themes\Styles.xaml" />
                 <ResourceDictionary Source="Controls\FlipViewIndicator.xaml" />
             </ResourceDictionary.MergedDictionaries>

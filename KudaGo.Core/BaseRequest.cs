@@ -67,7 +67,7 @@ namespace KudaGo.Core
                 if (IsFree.Value)
                     _builder.Append("&is_free=true");
                 if (!IsFree.Value)
-                    _builder.Append("&is_free=1");
+                    _builder.Append("&is_free=false");
             }
             if (Latitude != null)
                 _builder.Append("&lat=" + Latitude);
