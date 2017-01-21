@@ -3,6 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:KudaGo.Client.Views"
     xmlns:controls="using:KudaGo.Client.Controls"
+    xmlns:common="using:KudaGo.Client.Common"
     xmlns:converters="using:KudaGo.Client.Converters"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:behaviors="using:KudaGo.Client.Behaviors">
@@ -97,44 +98,36 @@
                         </StackPanel>
                     </StackPanel>
 
-                    <local:MapDetailsControl x:Name="map" 
-                                             Margin="{StaticResource DoubleTextBlockMargin}"
-                                             Grid.Row="1"
-                                             Coordinates="{Binding Location}"
-                                             IsReadOnly="True"
-                                             Visibility="{Binding Place, Converter={StaticResource StringToVisibilityConverter}}"
-                                             Height="250"/>
-                    <Button Margin="15"
-                                VerticalAlignment="Bottom"
-                                Grid.Row="1"
-                                Padding="15,15,15,15"
-                                Visibility="{Binding Place, Converter={StaticResource StringToVisibilityConverter}}"
-                                Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}"
-                                Opacity="0.9">
-                        <StackPanel>
+                    <Grid Visibility="{Binding Place, Converter={StaticResource StringToVisibilityConverter}}"
+                          common:TappedEventProvider.Command="{Binding MapCommand}"
+                          Grid.Row="1">
+                        <local:MapDetailsControl x:Name="map" 
+                                                 Margin="{StaticResource DoubleTextBlockMargin}"
+                                                 Coordinates="{Binding Location}"
+                                                 IsReadOnly="True"
+                                                 Visibility="{Binding Place, Converter={StaticResource StringToVisibilityConverter}}"
+                                                 Height="250"/>
 
-                            <Grid Margin="-2,0,0,0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
+                        <Grid Margin="15"
+                              Padding="15"
+                              VerticalAlignment="Bottom"
+                              Opacity="0.8"
+                              Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}"
+                              Visibility="{Binding Place, Converter={StaticResource StringToVisibilityConverter}}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
 
-                                <StackPanel Grid.Column="0">
-                                    <TextBlock Text="{Binding Place}"
-                                            Style="{StaticResource BodyTextBlockStyle}"/>
-                                    <TextBlock Text="{Binding Metro}"
-                                            Style="{StaticResource BodyTextBlockStyle}"
-                                            Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
-                                </StackPanel>
-
-                                <Button Content=">"
-                                    Grid.Column="1"
-                                    Command="{Binding MapCommand}"
-                                    Margin="10,0,0,0"/>
-                            </Grid>
-
-                        </StackPanel>
-                    </Button>
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="{Binding Place}"
+                                        Style="{StaticResource BodyTextBlockStyle}"/>
+                                <TextBlock Text="{Binding Metro}"
+                                        Style="{StaticResource BodyTextBlockStyle}"
+                                        Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
 
                     <StackPanel Grid.Row="2"
                                 Padding="15"
