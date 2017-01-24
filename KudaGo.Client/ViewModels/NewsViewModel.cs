@@ -12,9 +12,9 @@ namespace KudaGo.Client.ViewModels
 {
     class NewsViewModel : SectionViewModel
     {
-        private readonly DataSource _dataSource;
+        private readonly IDataSource _dataSource;
 
-        public NewsViewModel(DataSource dataSource)
+        public NewsViewModel(IDataSource dataSource)
         {
             _dataSource = dataSource;
         }

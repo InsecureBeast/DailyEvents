@@ -12,8 +12,8 @@ namespace KudaGo.Client.ViewModels.Nodes
 {
     internal class SelectionNodeViewModel : NodeViewModel
     {
-        private readonly DataSource _dataSource;
-        public SelectionNodeViewModel(ISelectionListResult result, DataSource dataSource )
+        private readonly IDataSource _dataSource;
+        public SelectionNodeViewModel(ISelectionListResult result, IDataSource dataSource )
         {
             if (result == null)
                 return;

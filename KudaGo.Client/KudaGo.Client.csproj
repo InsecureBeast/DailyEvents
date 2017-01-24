@@ -103,6 +103,7 @@
     <Compile Include="CategoryPage.xaml.cs">
       <DependentUpon>CategoryPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Common\SearchItemTemplateSelector.cs" />
     <Compile Include="Common\TappedEventProvider.cs" />
     <Compile Include="Common\DelegateCommand.cs" />
     <Compile Include="Common\EventItemTemplateSelector.cs" />
@@ -160,6 +161,7 @@
     <Compile Include="ViewModels\Nodes\NodeViewModel.cs" />
     <Compile Include="ViewModels\Nodes\SelectionNodeViewModel.cs" />
     <Compile Include="ViewModels\SearchPageViewModel.cs" />
+    <Compile Include="ViewModels\Search\SearchNodeViewModel.cs" />
     <Compile Include="ViewModels\SectionViewModel.cs" />
     <Compile Include="ViewModels\PropertyChangedBase.cs" />
     <Compile Include="ViewModels\SelectionsViewModel.cs" />

@@ -11,7 +11,7 @@ namespace KudaGo.Client.ViewModels.Details
 {
     class SelectionDetailsNodeViewModel
     {
-        public SelectionDetailsNodeViewModel(ISelectionItem item, DataSource dataSource)
+        public SelectionDetailsNodeViewModel(ISelectionItem item, IDataSource dataSource)
         {
             if (item == null)
                 return;

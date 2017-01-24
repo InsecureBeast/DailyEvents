@@ -13,7 +13,7 @@ namespace KudaGo.Client.ViewModels.Details
     class SelectionDetailsPageViewModel : DetailsPageViewModel
     {
         private readonly ObservableCollection<SelectionDetailsNodeViewModel> _selections;
-        public SelectionDetailsPageViewModel(long selectionId, DataSource dataSource) : base(selectionId, dataSource)
+        public SelectionDetailsPageViewModel(long selectionId, IDataSource dataSource) : base(selectionId, dataSource)
         {
             _selections = new ObservableCollection<SelectionDetailsNodeViewModel>();
         }

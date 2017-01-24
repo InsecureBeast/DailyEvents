@@ -3,11 +3,42 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:KudaGo.Client"
+    xmlns:views="using:KudaGo.Client.Views"
+    xmlns:common="using:KudaGo.Client.Common"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <common:SearchItemTemplateSelector x:Key="ItemTemplateSelector"
+                                           NewsTemplate="{StaticResource NewsItemDataTemplate}"
+                                           EventTemplate="{StaticResource EventItemDataTemplate}"
+                                           PlaceTemplate="{x:Null}"
+                                           SelectionTemplate="{StaticResource SelectionItemDataTemplate}"/>
+    </Page.Resources>
+    
+    <views:NavigationControl Title="{Binding NavigationViewModel.SearchString}">
+        <views:NavigationControl.ViewContent>
+            <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
 
-    </Grid>
+                <views:GridViewControl Items="{Binding Items}"
+                                       Grid.Row="1" 
+                                       ItemTemplateSelector="{StaticResource ItemTemplateSelector}"/>
+
+                <ProgressRing IsActive="True" 
+                              Grid.Row="1"
+                              Width="50"
+                              Height="50"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              Foreground="{StaticResource InkToolbarAccentColorThemeBrush}"
+                              Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
+            </Grid>
+        </views:NavigationControl.ViewContent>
+    </views:NavigationControl>
 </Page>

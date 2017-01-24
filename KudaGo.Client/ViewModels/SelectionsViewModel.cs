@@ -12,9 +12,9 @@ namespace KudaGo.Client.ViewModels
 {
     class SelectionsViewModel : SectionViewModel
     {
-        private readonly DataSource _dataSource;
+        private readonly IDataSource _dataSource;
 
-        public SelectionsViewModel(DataSource dataSource)
+        public SelectionsViewModel(IDataSource dataSource)
         {
             _dataSource = dataSource;
         }

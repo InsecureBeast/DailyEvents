@@ -15,10 +15,10 @@ namespace KudaGo.Client.ViewModels.Comments
     {
         private IncrementalObservableCollection<CommentNodeViewModel> _items;
         private bool _isBusy;
-        protected readonly DataSource _dataSource;
+        protected readonly IDataSource _dataSource;
         protected readonly long _id;
 
-        public CommentsViewModel(long id, DataSource dataSource)
+        public CommentsViewModel(long id, IDataSource dataSource)
         {
             _id = id;
             _dataSource = dataSource;

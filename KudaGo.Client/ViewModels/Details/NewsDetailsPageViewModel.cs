@@ -15,7 +15,7 @@ namespace KudaGo.Client.ViewModels.Details
         private Uri _source;
         private string _date;
 
-        public NewsDetailsPageViewModel(long id, DataSource dataSource) : base(id, dataSource)
+        public NewsDetailsPageViewModel(long id, IDataSource dataSource) : base(id, dataSource)
         {
             
         }

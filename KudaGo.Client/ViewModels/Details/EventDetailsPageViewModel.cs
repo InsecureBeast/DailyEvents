@@ -29,7 +29,7 @@ namespace KudaGo.Client.ViewModels.Details
         private DelegateCommand _mapCommand;
         private IPlace _placeObj;
 
-        public EventDetailsPageViewModel(long eventId, DataSource dataSource) : base(eventId, dataSource)
+        public EventDetailsPageViewModel(long eventId, IDataSource dataSource) : base(eventId, dataSource)
         {
             _eventCommentsViewModel = new EventCommentsViewModel(eventId, dataSource);
             _mapCommand = new DelegateCommand(MapOpen);

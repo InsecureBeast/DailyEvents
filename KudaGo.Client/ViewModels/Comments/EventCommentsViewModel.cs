@@ -10,7 +10,7 @@ namespace KudaGo.Client.ViewModels.Comments
 {
     class EventCommentsViewModel : CommentsViewModel
     {
-        public EventCommentsViewModel(long id, DataSource dataSource) : base(id, dataSource)
+        public EventCommentsViewModel(long id, IDataSource dataSource) : base(id, dataSource)
         {
         }
 

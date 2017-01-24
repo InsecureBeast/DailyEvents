@@ -18,14 +18,14 @@ namespace KudaGo.Client.ViewModels
 
     class EventsViewModel : SectionViewModel, IFilterListener
     {
-        private readonly DataSource _dataSource;
+        private readonly IDataSource _dataSource;
         private ICategoryNameProvider _categoryNameProvider;
         private EventOfTheDayNodeViewModel _eventOfTheDay;
         private GetDataDelegate _getData;
         private string _filter;
         private bool? _isFree = null;
 
-        public EventsViewModel(DataSource dataSource)
+        public EventsViewModel(IDataSource dataSource)
         {
             _dataSource = dataSource;
             _getData = GetEventData;

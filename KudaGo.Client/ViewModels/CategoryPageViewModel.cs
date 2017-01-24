@@ -16,20 +16,18 @@ namespace KudaGo.Client.ViewModels
     class CategoryPageViewModel : PropertyChangedBase, ICategoryNameProvider
     {
         private readonly ObservableCollection<CategoryNodeViewModel> _items;
-        private readonly ObservableCollection<CategoryNodeViewModel> _categories;
-        private readonly DataSource _dataSource;
+        private readonly IDataSource _dataSource;
         private readonly IFilterListener _filterListeer;
         private bool _isBusy;
         private bool? _isFree;
         private CategoryNodeViewModel _selectedItem;
 
-        public CategoryPageViewModel(DataSource dataSource, IFilterListener filterListeer)
+        public CategoryPageViewModel(IDataSource dataSource, IFilterListener filterListeer)
         {
             _dataSource = dataSource;
             _filterListeer = filterListeer;
 
             _items = new ObservableCollection<CategoryNodeViewModel>();
-            _categories = new ObservableCollection<CategoryNodeViewModel>();
 
             LayoutHelper.InvokeFromUiThread(async () =>
             {

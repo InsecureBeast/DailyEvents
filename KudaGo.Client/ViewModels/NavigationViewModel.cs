@@ -12,12 +12,12 @@ namespace KudaGo.Client.ViewModels
 {
     class NavigationViewModel : PropertyChangedBase
     {
-        private readonly DataSource _dataSource;
+        private readonly IDataSource _dataSource;
         private readonly DelegateCommand _searchCommand;
         private bool _inSearchMode = false;
         private string _searchString;
 
-        public NavigationViewModel(DataSource dataSource)
+        public NavigationViewModel(IDataSource dataSource)
         {
             _dataSource = dataSource;
             _searchCommand = new DelegateCommand(Search);
@@ -56,7 +56,7 @@ namespace KudaGo.Client.ViewModels
                 if (string.IsNullOrEmpty(SearchString))
                     return;
 
-                NavigationHelper.NavigateTo(typeof(SearchPage), new SearchPageViewModel(_dataSource));
+                NavigationHelper.NavigateTo(typeof(SearchPage), new SearchPageViewModel(_dataSource, SearchString));
                 return;
             }
 

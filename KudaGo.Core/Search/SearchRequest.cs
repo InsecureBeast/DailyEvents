@@ -43,9 +43,6 @@ namespace KudaGo.Core.Search
             if (!string.IsNullOrEmpty(Next))
                 return Next;
 
-            if (CType == null)
-                throw new Exception("CType must be set");
-
             if (Q == null)
                 throw new Exception("Q must be set");
 

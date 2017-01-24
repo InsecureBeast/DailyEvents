@@ -16,7 +16,29 @@ using KudaGo.Core.Categories;
 
 namespace KudaGo.Client.Model
 {
-    public class DataSource
+    public interface IDataSource
+    {
+        Task<IEventListResponse> GetEvents(string next, bool? isFree);
+        Task<IEventListResponse> GetEventsWithFilter(string next, string categorySlug, bool? isFree);
+        Task<INewsListResponse> GetNews(string next);
+        Task<ISelectionListResponse> GetSelections(string next);
+        Task<ISelectionDetailsResponse> GetSelectionDetails(long selectionId);
+        Task<IMovieListResponse> GetMovies(string next);
+        Task<IEventsOfTheDayResponse> GetEventOfTheDay(string next);
+
+        Task<IEventDetailsResponse> GetEventDetails(long eventId);
+        Task<INewsDetailsResponse> GetNewsDetails(long newsId);
+        Task<IPlaceDetailsResponse> GetPlaceDetails(long placeId);
+        Task<ICommentsResponse> GetEventComments(long eventId);
+        Task<IMovieDetailsResponse> GetMovieDetails(long movieId);
+
+        Task<IEnumerable<ICategoriesResponse>> GetEventCategories();
+        Task<IEnumerable<ICategoriesResponse>> GetPlaceCategories();
+
+        Task<ISearchResponse> Search(string q, string next);
+    }
+
+    public class DataSource : IDataSource
     {
         private string _culture = "ru";
         private Location _location = Location.Spb;
@@ -234,5 +256,18 @@ namespace KudaGo.Client.Model
         }
 
         #endregion
+
+        public async Task<ISearchResponse> Search(string q, string next)
+        {
+            var request = new SearchRequest();
+            request.Next = next;
+            request.Q = q;
+            request.Lang = _culture;
+            request.Location = _location;
+            request.Expand = SearchRequest.ExpandFields.PLACES + "," + SearchRequest.ExpandFields.DATES;
+
+            var res = await request.ExecuteAsync();
+            return res;
+        }
     }
 }

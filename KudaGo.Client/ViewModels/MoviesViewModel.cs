@@ -12,9 +12,9 @@ namespace KudaGo.Client.ViewModels
 {
     class MoviesViewModel : SectionViewModel
     {
-        private readonly DataSource _dataSource;
+        private readonly IDataSource _dataSource;
 
-        public MoviesViewModel(DataSource dataSource)
+        public MoviesViewModel(IDataSource dataSource)
         {
             _dataSource = dataSource;
         }

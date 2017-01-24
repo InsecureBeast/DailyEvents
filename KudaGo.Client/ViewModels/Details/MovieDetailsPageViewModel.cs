@@ -21,7 +21,7 @@ namespace KudaGo.Client.ViewModels.Details
         private string _writer;
         private string _director;
 
-        public MovieDetailsPageViewModel(long id, DataSource dataSource) : base(id, dataSource)
+        public MovieDetailsPageViewModel(long id, IDataSource dataSource) : base(id, dataSource)
         {
         }
 

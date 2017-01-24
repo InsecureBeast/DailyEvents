@@ -22,6 +22,7 @@ namespace KudaGo.Core.Search
         ICoordinates Coords { get; }
         bool IsClosed { get; }
         bool IsStub { get; }
+        IImage FirstImage { get; }
     }
 
     class SearchResponse : ISearchResponse
@@ -66,6 +67,7 @@ namespace KudaGo.Core.Search
             CType = jResult.Ctype.GetCType();
             Place = new Place(jResult.Place);
             Coords = new Coordinates(jResult.Coords);
+            FirstImage = new ImageImpl(jResult.first_image);
         }
 
         public int Id { get; private set; }
@@ -77,5 +79,6 @@ namespace KudaGo.Core.Search
         public CType CType { get; private set; }
         public IPlace Place { get; private set; }
         public ICoordinates Coords { get; private set; }
+        public IImage FirstImage { get; private set; }
     }
 }

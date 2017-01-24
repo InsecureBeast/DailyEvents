@@ -12,7 +12,7 @@ namespace KudaGo.Client.ViewModels.Details
 {
     class DetailsPageViewModel : PropertyChangedBase
     {
-        protected readonly DataSource _dataSource;
+        protected readonly IDataSource _dataSource;
         private readonly NavigationViewModel _navigationViewModel;
         protected ObservableCollection<string> _images;
         private string _title;
@@ -20,7 +20,7 @@ namespace KudaGo.Client.ViewModels.Details
         private bool _isBusy;
         private string _description;
 
-        public DetailsPageViewModel(long id, DataSource dataSource)
+        public DetailsPageViewModel(long id, IDataSource dataSource)
         {
             _dataSource = dataSource;
             _images = new ObservableCollection<string>();

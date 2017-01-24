@@ -30,7 +30,7 @@ namespace KudaGo.Client
     /// </summary>
     sealed partial class App : Application
     {
-        private static DataSource _dataSource = new DataSource();
+        private static IDataSource _dataSource = new DataSource();
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -48,7 +48,7 @@ namespace KudaGo.Client
             CultureInfo.DefaultThreadCurrentUICulture = culture;
         }
 
-        public static DataSource DataSource
+        public static IDataSource DataSource
         {
             get { return _dataSource; }
         }
