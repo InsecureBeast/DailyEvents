@@ -43,7 +43,7 @@ namespace KudaGo.Core
             }
         }
 
-        public static string GetEvent(this CType cType)
+        public static string GetCType(this CType cType)
         {
             switch (cType)
             {

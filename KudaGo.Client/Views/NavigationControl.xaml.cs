@@ -1,4 +1,5 @@
 ﻿using KudaGo.Client.Helpers;
+using KudaGo.Client.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -68,6 +69,21 @@ namespace KudaGo.Client.Views
                 return;
 
             control.title.Text = e.NewValue.ToString();
+        }
+
+        private void SearchBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            SearchBoxLayout.Visibility = Visibility.Collapsed;
+        }
+
+        private void AppBarButton_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            SearchBox.Focus(FocusState.Programmatic);
+        }
+
+        private void CommandBar_Opened(object sender, object e)
+        {
+
         }
     }
 }

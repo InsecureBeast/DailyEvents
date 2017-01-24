@@ -52,7 +52,7 @@ namespace KudaGo.Core.Search
             _builder.Append(Q);
 
             if (CType != null)
-                _builder.Append("&ctype=" + CType.Value.GetEvent());
+                _builder.Append("&ctype=" + CType.Value.GetCType());
             if (Expand != null)
                 _builder.Append("&expand=" + Expand);
             if (IncludeInactual != null && IncludeInactual.Value)

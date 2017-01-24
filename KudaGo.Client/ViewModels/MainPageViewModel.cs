@@ -20,6 +20,7 @@ namespace KudaGo.Client.ViewModels
         private readonly MoviesViewModel _moviesViewModel;
         private readonly CategoryPageViewModel _categoryPageViewModel;
         private readonly DelegateCommand _eventFilterCommand;
+        private readonly NavigationViewModel _navigationViewModel;
 
         public MainPageViewModel()
         {
@@ -31,6 +32,8 @@ namespace KudaGo.Client.ViewModels
 
             _selectionsViewModel = new SelectionsViewModel(dataSource);
             _moviesViewModel = new MoviesViewModel(dataSource);
+
+            _navigationViewModel = new NavigationViewModel(dataSource);
             
             _eventFilterCommand = new DelegateCommand(Filter);
         }
@@ -58,6 +61,11 @@ namespace KudaGo.Client.ViewModels
         public MoviesViewModel MoviesViewModel
         {
             get { return _moviesViewModel; }
+        }
+
+        public NavigationViewModel NavigationViewModel
+        {
+            get { return _navigationViewModel; }
         }
 
         private void Filter(object obj)

@@ -10,9 +10,10 @@ using System.Threading.Tasks;
 
 namespace KudaGo.Client.ViewModels.Details
 {
-    public class DetailsPageViewModel : PropertyChangedBase
+    class DetailsPageViewModel : PropertyChangedBase
     {
         protected readonly DataSource _dataSource;
+        private readonly NavigationViewModel _navigationViewModel;
         protected ObservableCollection<string> _images;
         private string _title;
         private string _bodyText;
@@ -23,6 +24,7 @@ namespace KudaGo.Client.ViewModels.Details
         {
             _dataSource = dataSource;
             _images = new ObservableCollection<string>();
+            _navigationViewModel = new NavigationViewModel(dataSource);
             IsBusy = true;
             Task.Run(async () =>
             {
@@ -74,6 +76,11 @@ namespace KudaGo.Client.ViewModels.Details
         public ObservableCollection<string> Images
         {
             get { return _images; }
+        }
+
+        public NavigationViewModel NavigationViewModel
+        {
+            get { return _navigationViewModel; }
         }
 
         protected virtual Task LoadDetails(long id)

@@ -8,29 +8,45 @@
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
-
+    
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="48"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid Height="50"
-              Background="{StaticResource ApplicationAccentBrush}">
+        <Grid Background="{StaticResource ApplicationAccentBrush}">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="48"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="48"/>
             </Grid.ColumnDefinitions>
 
-            <Button x:Name="hamburgerButton" 
-                    FontFamily="Segoe MDL2 Assets" 
-                    Content="&#xE700;"
-                    Width="50" 
-                    Height="50" 
-                    Background="{StaticResource ApplicationAccentBrush}" 
-                    Foreground="White"
-                    Click="HamburgerButton_Click"/>
+            <CommandBar Background="Transparent"
+                        x:Name="CommandBar"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3">
+
+                <CommandBar.Content>
+                    <AppBarButton Foreground="White"
+                                  Width="48"
+                                  Click="HamburgerButton_Click">
+                        <TextBlock FontFamily="Segoe MDL2 Assets" 
+                                   Text="&#xE700;"
+                                   FontWeight="Light"
+                                   FontSize="19"
+                                   HorizontalAlignment="Center"/>
+                    </AppBarButton>
+                </CommandBar.Content>
+                
+                <AppBarButton Icon="Find"
+                              Width="48"
+                              Foreground="White"
+                              Label="Search"
+                              x:Uid="searchAppBarButton"
+                              Tapped="AppBarButton_Tapped"
+                              Command="{Binding NavigationViewModel.SearchCommand}"/>
+            </CommandBar>
 
             <TextBlock x:Name="title"
                        Grid.Column="1"
@@ -41,13 +57,39 @@
                        Foreground="White"
                        Style="{StaticResource BaseTextBlockStyle}"/>
         </Grid>
-        
+
+        <Grid Visibility="{Binding NavigationViewModel.InSearchMode, Converter={StaticResource BooleanToVisibilityConverter}, Mode=TwoWay}"
+              Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
+              Margin="50,0,0,0"
+              x:Name="SearchBoxLayout">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Text="{Binding NavigationViewModel.SearchString, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                    x:Name="SearchBox"
+                    BorderThickness="0"
+                    VerticalContentAlignment="Bottom"
+                     FontSize="16"
+                     Margin="4"
+                    LostFocus="SearchBox_LostFocus"/>
+            
+            <AppBarButton Icon="Find"
+                          Width="48"
+                          Grid.Column="1"
+                          Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
+                          Tapped="AppBarButton_Tapped"
+                          Command="{Binding NavigationViewModel.SearchCommand}"/>
+
+        </Grid>
+
         <SplitView x:Name="splitView" 
                    Grid.Row="1"
                    DisplayMode="Overlay"  
                    IsPaneOpen="False" 
-                   CompactPaneLength="50" 
-                   OpenPaneLength="200">
+                   CompactPaneLength="48" 
+                   OpenPaneLength="400">
             <SplitView.Pane>
                 <StackPanel Orientation="Vertical"
                             Background="#FF2B2B2B">
