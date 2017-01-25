@@ -91,7 +91,7 @@
                    DisplayMode="Overlay"  
                    IsPaneOpen="False" 
                    CompactPaneLength="48" 
-                   OpenPaneLength="400">
+                   OpenPaneLength="300">
             <SplitView.Pane>
                 <StackPanel Orientation="Vertical"
                             Background="#FF2B2B2B">
