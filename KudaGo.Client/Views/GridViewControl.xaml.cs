@@ -29,15 +29,10 @@ namespace KudaGo.Client.Views
             DependencyProperty.Register("ItemTemplate", typeof(DataTemplate), typeof(GridViewControl), new PropertyMetadata(null));
 
         public static readonly DependencyProperty ItemTemplateSelectorProperty =
-            DependencyProperty.Register("ItemTemplateSelector", typeof(DataTemplateSelector), typeof(GridViewControl), new PropertyMetadata(null, Changed));
+            DependencyProperty.Register("ItemTemplateSelector", typeof(DataTemplateSelector), typeof(GridViewControl), new PropertyMetadata(null));
 
         public static readonly DependencyProperty HeaderVisibilityProperty =
-            DependencyProperty.Register("HeaderVisibility", typeof(Visibility), typeof(GridViewControl), new PropertyMetadata(Visibility.Collapsed, Changed));
-
-
-        private static void Changed(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-        }
+            DependencyProperty.Register("HeaderVisibility", typeof(Visibility), typeof(GridViewControl), new PropertyMetadata(Visibility.Collapsed));
 
         public GridViewControl()
         {

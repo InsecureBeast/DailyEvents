@@ -27,7 +27,8 @@ namespace KudaGo.Core.Search
         News,
         Event,
         Place,
-        List
+        List,
+        Movie
     }
     
     public class SearchRequest : BaseRequest<ISearchResponse>

@@ -231,7 +231,7 @@
               Padding="15">
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
@@ -240,6 +240,7 @@
                        Height="80"
                        TextWrapping="Wrap"
                        TextTrimming="CharacterEllipsis"
+                       VerticalAlignment="Center"
                        FontWeight="SemiBold"/>
 
             <TextBlock Text="{Binding Date}"
@@ -306,6 +307,60 @@
                                Style="{StaticResource BodyTextBlockStyle}"/>
                 </StackPanel>
                 
+            </StackPanel>
+        </Grid>
+    </DataTemplate>
+
+    <DataTemplate x:Key="PlaceItemDataTemplate">
+        <Grid Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}"
+              Margin="7,7,7,7"
+              Height="{StaticResource ItemHeight}">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <controls:ImageEx Source="{Binding Image}"
+                              Name="Image"
+                              MinHeight="200"
+                              MinWidth="250"
+                              IsCacheEnabled="True"
+                              VerticalAlignment="Center"
+                              HorizontalAlignment="Center"
+                              Stretch="UniformToFill"/>
+
+            <StackPanel Orientation="Vertical"
+                        Grid.Row="1"
+                        Padding="15,10,15,15">
+                <TextBlock Text="{Binding Title}"
+                               Style="{StaticResource SubtitleTextBlockStyle}"
+                               MaxLines="2"
+                               TextTrimming="CharacterEllipsis"
+                               FontWeight="SemiBold"/>
+                
+                <TextBlock Text="{Binding Description}" 
+                           MaxLines="3"
+                           TextTrimming="CharacterEllipsis"
+                           Style="{StaticResource BodyTextBlockStyle}"
+                           Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}" />
+
+                <Grid Margin="-2,8,0,0"
+                      Visibility="{Binding Place, Converter={StaticResource StringToVisibilityConverter}}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <ContentPresenter ContentTemplate="{StaticResource LocationIcon}" 
+                                      Margin="0,0,10,0"/>
+
+                    <TextBlock Text="{Binding Place}"
+                               Grid.Column="1"
+                               MaxLines="2"
+                               TextTrimming="CharacterEllipsis"
+                               Style="{StaticResource BodyTextBlockStyle}"/>
+                </Grid>
             </StackPanel>
         </Grid>
     </DataTemplate>

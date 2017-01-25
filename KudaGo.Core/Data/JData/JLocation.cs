@@ -12,7 +12,7 @@
 
     internal class JCoordinates
     {
-        public double Lat { get; set; }
-        public double Lon { get; set; }
+        public double? Lat { get; set; }
+        public double? Lon { get; set; }
     }
 }

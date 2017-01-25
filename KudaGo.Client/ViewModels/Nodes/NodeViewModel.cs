@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KudaGo.Client.ViewModels.Nodes
 {
-    abstract class NodeViewModel
+    abstract class NodeViewModel : PropertyChangedBase
     {
         public abstract long Id { get; protected set; }
         public virtual string Title { get; protected set; }

@@ -13,7 +13,7 @@
         <common:SearchItemTemplateSelector x:Key="ItemTemplateSelector"
                                            NewsTemplate="{StaticResource NewsItemDataTemplate}"
                                            EventTemplate="{StaticResource EventItemDataTemplate}"
-                                           PlaceTemplate="{x:Null}"
+                                           PlaceTemplate="{StaticResource PlaceItemDataTemplate}"
                                            SelectionTemplate="{StaticResource SelectionItemDataTemplate}"/>
     </Page.Resources>
     

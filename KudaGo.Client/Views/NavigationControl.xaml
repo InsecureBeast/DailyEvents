@@ -68,15 +68,17 @@
             </Grid.ColumnDefinitions>
 
             <TextBox Text="{Binding NavigationViewModel.SearchString, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                    x:Name="SearchBox"
-                    BorderThickness="0"
-                    VerticalContentAlignment="Bottom"
+                     x:Name="SearchBox"
+                     BorderThickness="0"
+                     VerticalContentAlignment="Bottom"
                      FontSize="16"
                      Margin="4"
-                    LostFocus="SearchBox_LostFocus"/>
+                     LostFocus="SearchBox_LostFocus"
+                     KeyDown="SearchBox_KeyDown"/>
             
             <AppBarButton Icon="Find"
                           Width="48"
+                          x:Name="SearchButton"
                           Grid.Column="1"
                           Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
                           Tapped="AppBarButton_Tapped"

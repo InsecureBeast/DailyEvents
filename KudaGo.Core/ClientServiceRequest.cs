@@ -42,7 +42,7 @@ namespace KudaGo.Core
         }
 
         /// <exception cref="WebException">An error occurred while downloading the resource. </exception>
-        private static async Task<HttpResponseMessage> HttpGetAsync(string uri)
+        public static async Task<HttpResponseMessage> HttpGetAsync(string uri)
         {
             //const string botUserAgent = "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)";
             var handler = new HttpClientHandler
@@ -57,10 +57,9 @@ namespace KudaGo.Core
                     //client.DefaultRequestHeaders.Add("User-Agent", botUserAgent);
                     return await client.GetAsync(uri);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
-
-                    throw e;
+                    throw;
                 }
                 
             }

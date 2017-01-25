@@ -85,5 +85,14 @@ namespace KudaGo.Client.Views
         {
 
         }
+
+        private void SearchBox_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == Windows.System.VirtualKey.Enter)
+            {
+                SearchButton.Command.Execute(null);
+            }
+                
+        }
     }
 }

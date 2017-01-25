@@ -51,8 +51,8 @@ namespace KudaGo.Core.Data
             if (coords == null)
                 return;
 
-            Lat = coords.Lat;
-            Lon = coords.Lon;
+            Lat = coords.Lat.HasValue? coords.Lat.Value : 0;
+            Lon = coords.Lon.HasValue? coords.Lon.Value : 0;
         }
 
         public double Lat { get; private set; }

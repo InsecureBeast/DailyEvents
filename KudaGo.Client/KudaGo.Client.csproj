@@ -122,6 +122,7 @@
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\WebViewExtensions.cs" />
     <Compile Include="Helpers\DeviceTypeHelper.cs" />
+    <Compile Include="Common\ImageLoader.cs" />
     <Compile Include="Helpers\LayoutHelper.cs" />
     <Compile Include="Helpers\NavigationHelper.cs" />
     <Compile Include="Helpers\ResourcesHelper.cs" />
