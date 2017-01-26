@@ -10,12 +10,14 @@
 
     <converters:LocationConverter x:Key="LocationConverter" />
 
-    <DataTemplate x:Key="EventDetailsDataTemplate" >
+    <DataTemplate x:Key="PlaceDetailsDataTemplate" >
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
                 <Grid MaxWidth="800"
                       Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}">
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
@@ -45,33 +47,6 @@
                                            Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
                             </Grid>
 
-                            <Grid Margin="{StaticResource DoubleTextBlockMargin}">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                </Grid.RowDefinitions>
-
-                                <ContentPresenter ContentTemplate="{StaticResource CalendarIcon}" 
-                                                Margin="0,0,10,0"/>
-
-                                <TextBlock Text="{Binding Dates}"
-                                            Grid.Column="1"
-                                            Grid.Row="0"
-                                            MaxLines="2"
-                                            Style="{StaticResource NormalTextBlockStyle}"/>
-
-                                <TextBlock Text="{Binding Times}"
-                                            Grid.Column="1"
-                                            Grid.Row="1"
-                                            MaxLines="1"
-                                            Style="{StaticResource NormalTextBlockStyle}"/>
-                            </Grid>
-
                             <RichTextBlock TextAlignment="Justify"
                                            Style="{StaticResource NormalRichTextBlockStyle}"
                                            Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"
@@ -81,7 +56,7 @@
                                 </Paragraph>
                             </RichTextBlock>
 
-                            <StackPanel >
+                            <!--<StackPanel >
                                 <TextBlock Text="PRICE"
                                            x:Uid="price"
                                            Style="{StaticResource NormalTextBlockStyle}"
@@ -93,34 +68,35 @@
                                            x:Uid="free"
                                            Visibility="{Binding IsFree, Converter={StaticResource BooleanToVisibilityConverter}}"
                                            Style="{StaticResource NormalTextBlockStyle}"/>
-                            </StackPanel>
+                            </StackPanel>-->
                             
                         </StackPanel>
                     </StackPanel>
 
-                    <Grid Visibility="{Binding Place, Converter={StaticResource StringToVisibilityConverter}}"
+                    <!--Place-->
+                    <Grid Visibility="{Binding Adress, Converter={StaticResource StringToVisibilityConverter}}"
                           common:TappedEventProvider.Command="{Binding MapCommand}"
                           Grid.Row="1">
                         <local:MapDetailsControl x:Name="map" 
                                                  Margin="{StaticResource DoubleTextBlockMargin}"
                                                  Coordinates="{Binding Location}"
                                                  IsReadOnly="True"
-                                                 Visibility="{Binding Place, Converter={StaticResource StringToVisibilityConverter}}"
+                                                 Visibility="{Binding Adress, Converter={StaticResource StringToVisibilityConverter}}"
                                                  Height="250"/>
 
                         <Grid Margin="15"
                               Padding="15"
                               VerticalAlignment="Bottom"
-                              Opacity="0.8"
+                              Opacity="0.85"
                               Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}"
-                              Visibility="{Binding Place, Converter={StaticResource StringToVisibilityConverter}}">
+                              Visibility="{Binding Adress, Converter={StaticResource StringToVisibilityConverter}}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
 
-                            <StackPanel Grid.Column="0">
-                                <TextBlock Text="{Binding Place}"
+                            <StackPanel Grid.Column="0" Opacity="1">
+                                <TextBlock Text="{Binding Adress}"
                                         Style="{StaticResource BodyTextBlockStyle}"/>
                                 <TextBlock Text="{Binding Metro}"
                                         Style="{StaticResource BodyTextBlockStyle}"
@@ -129,6 +105,7 @@
                         </Grid>
                     </Grid>
 
+                    <!--BodyText-->
                     <StackPanel Grid.Row="2"
                                 Padding="15"
                                 Margin="{StaticResource DoubleTextBlockMargin}"
@@ -148,8 +125,45 @@
                         </RichTextBlock>
                         
                     </StackPanel>
+                   
+                    <!--Phone-->
+                    <Grid Margin="{StaticResource DoubleTextBlockMargin}"
+                          Visibility="{Binding Phone, Converter={StaticResource StringToVisibilityConverter}}"
+                          Padding="15"
+                          Grid.Row="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
 
-                    <StackPanel Grid.Row="3"
+                        <TextBlock Text="CONTACTS"
+                                   x:Uid="contactsTbk"
+                                   Grid.ColumnSpan="2"
+                                   Style="{StaticResource NormalTextBlockStyle}"
+                                   FontWeight="SemiBold"/>
+                        
+                        <ContentPresenter ContentTemplate="{StaticResource PhoneIcon}" 
+                                          Margin="{StaticResource DoubleTextBlockMargin}"
+                                          Grid.Row="1"
+                                          Grid.Column="0"
+                                          Height="32"
+                                          Width="32" />
+                        
+                        <StackPanel Grid.Column="1" 
+                                    Grid.Row="1"
+                                    Margin="{StaticResource DoubleTextBlockMargin}">
+                            <TextBlock Text="{Binding Phone}"
+                                       Style="{StaticResource NormalTextBlockStyle}"/>
+                            <TextBlock Text="{Binding Timetable}"
+                                       Style="{StaticResource NormalTextBlockStyle}"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <StackPanel Grid.Row="5"
                                 Padding="15"
                                 Margin="{StaticResource DoubleTextBlockMargin}"
                                 Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}">

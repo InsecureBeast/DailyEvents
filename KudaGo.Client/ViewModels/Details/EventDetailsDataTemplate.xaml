@@ -1,0 +1,180 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:KudaGo.Client.Views"
+    xmlns:controls="using:KudaGo.Client.Controls"
+    xmlns:common="using:KudaGo.Client.Common"
+    xmlns:converters="using:KudaGo.Client.Converters"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:behaviors="using:KudaGo.Client.Behaviors">
+
+    <converters:LocationConverter x:Key="LocationConverter" />
+
+    <DataTemplate x:Key="EventDetailsDataTemplate" >
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+                <Grid MaxWidth="800"
+                      Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto" x:Name="Comments"/>
+                    </Grid.RowDefinitions>
+                        
+                    <StackPanel>
+                        <controls:FlipViewControl x:Name="flipViewControl"/>
+                        
+                        <StackPanel Orientation="Vertical"
+                                    Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}"
+                                    Padding="15">
+
+                            <Grid Margin="{StaticResource DefaultControlMargin}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="{Binding Title}"
+                                           Style="{StaticResource TitleTextBlockStyle}"
+                                           FontWeight="SemiBold"/>
+                                <TextBlock Text="{Binding Age}"
+                                           Grid.Column="1"
+                                           Margin="5,0,0,0"
+                                           Style="{StaticResource TitleTextBlockStyle}"
+                                           Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
+                            </Grid>
+
+                            <Grid Margin="{StaticResource DoubleTextBlockMargin}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <ContentPresenter ContentTemplate="{StaticResource CalendarIcon}" 
+                                                Margin="0,0,10,0"/>
+
+                                <TextBlock Text="{Binding Dates}"
+                                            Grid.Column="1"
+                                            Grid.Row="0"
+                                            MaxLines="2"
+                                            Style="{StaticResource NormalTextBlockStyle}"/>
+
+                                <TextBlock Text="{Binding Times}"
+                                            Grid.Column="1"
+                                            Grid.Row="1"
+                                            MaxLines="1"
+                                            Style="{StaticResource NormalTextBlockStyle}"/>
+                            </Grid>
+
+                            <RichTextBlock TextAlignment="Justify"
+                                           Style="{StaticResource NormalRichTextBlockStyle}"
+                                           Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"
+                                           Margin="{StaticResource DoubleTextBlockMargin}">
+                                <Paragraph>
+                                    <Run Text="{Binding Description}" />
+                                </Paragraph>
+                            </RichTextBlock>
+
+                            <StackPanel >
+                                <TextBlock Text="PRICE"
+                                           x:Uid="price"
+                                           Style="{StaticResource NormalTextBlockStyle}"
+                                           FontWeight="SemiBold"/>
+                                <TextBlock Text="{Binding Price}"
+                                           Visibility="{Binding IsFree, Converter={StaticResource InverseBooleanToVisibilityConverter}}"
+                                           Style="{StaticResource NormalTextBlockStyle}"/>
+                                <TextBlock Text="Free"
+                                           x:Uid="free"
+                                           Visibility="{Binding IsFree, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                           Style="{StaticResource NormalTextBlockStyle}"/>
+                            </StackPanel>
+                            
+                        </StackPanel>
+                    </StackPanel>
+
+                    <Grid Visibility="{Binding Place, Converter={StaticResource StringToVisibilityConverter}}"
+                          common:TappedEventProvider.Command="{Binding MapCommand}"
+                          Grid.Row="1">
+                        <local:MapDetailsControl x:Name="map" 
+                                                 Margin="{StaticResource DoubleTextBlockMargin}"
+                                                 Coordinates="{Binding Location}"
+                                                 IsReadOnly="True"
+                                                 Visibility="{Binding Place, Converter={StaticResource StringToVisibilityConverter}}"
+                                                 Height="250"/>
+
+                        <Grid Margin="15"
+                              Padding="15"
+                              VerticalAlignment="Bottom"
+                              Opacity="0.85"
+                              Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}"
+                              Visibility="{Binding Place, Converter={StaticResource StringToVisibilityConverter}}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="{Binding Place}"
+                                        Style="{StaticResource BodyTextBlockStyle}"/>
+                                <TextBlock Text="{Binding Metro}"
+                                        Style="{StaticResource BodyTextBlockStyle}"
+                                        Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+
+                    <StackPanel Grid.Row="2"
+                                Padding="15"
+                                Margin="{StaticResource DoubleTextBlockMargin}"
+                                Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}">
+                        
+                        <TextBlock Text="DESCRIPTION"
+                                    x:Uid="description"
+                                    Style="{StaticResource NormalTextBlockStyle}"
+                                    FontWeight="SemiBold"/>
+
+                        <RichTextBlock TextAlignment="Justify"
+                                       Style="{StaticResource NormalRichTextBlockStyle}"
+                                       Margin="{StaticResource DoubleTextBlockMargin}">
+                            <Paragraph>
+                                <Run Text="{Binding BodyText}" />
+                            </Paragraph>
+                        </RichTextBlock>
+                        
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="3"
+                                Padding="15"
+                                Margin="{StaticResource DoubleTextBlockMargin}"
+                                Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}">
+
+                        <TextBlock Text="COMMENTS"
+                                   x:Uid="comments"
+                                   Style="{StaticResource NormalTextBlockStyle}"
+                                   FontWeight="SemiBold"/>
+
+                        <ItemsControl ItemsSource="{Binding EventCommentsViewModel.Items}"
+                                      Margin="{StaticResource DefaultControlMargin}"
+                                      ItemTemplate="{StaticResource CommentDataTemplate}"/>
+
+                        <TextBlock Text="No comments"
+                                   x:Uid="noComments"
+                                   Style="{StaticResource NormalTextBlockStyle}"
+                                   Visibility="{Binding EventCommentsViewModel.HasComments, Converter={StaticResource InverseBooleanToVisibilityConverter}}"
+                                   Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+            <interactivity:Interaction.Behaviors>
+                <behaviors:ParallaxBehavior ParallaxContent="{Binding ElementName=flipViewControl}" ParallaxMultiplier="-0.2"/>
+            </interactivity:Interaction.Behaviors>
+        </ScrollViewer>
+    </DataTemplate>
+    
+</ResourceDictionary>

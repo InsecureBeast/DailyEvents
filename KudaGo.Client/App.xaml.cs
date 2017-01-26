@@ -14,6 +14,7 @@ using Windows.Foundation.Collections;
 using Windows.Foundation.Metadata;
 using Windows.UI;
 using Windows.UI.Core;
+using Windows.UI.Popups;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -40,6 +41,7 @@ namespace KudaGo.Client
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            this.UnhandledException += OnUnhandledException;
 
             //todo
             var lang = Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride;
@@ -189,6 +191,13 @@ namespace KudaGo.Client
             var deferral = e.SuspendingOperation.GetDeferral();
             //TODO: Save application state and stop any background activity
             deferral.Complete();
+        }
+
+        private async void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            e.Handled = true;
+            var dialog = new MessageDialog(e.Message);
+            await dialog.ShowAsync();
         }
     }
 }

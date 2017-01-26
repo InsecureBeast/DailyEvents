@@ -104,9 +104,9 @@ namespace KudaGo.Client
             }
             if (type == CType.Place)
             {
-                var viewModel = new MovieDetailsPageViewModel(vm.Id, App.DataSource);
+                var viewModel = new PlaceDetailsPageViewModel(vm.Id, App.DataSource);
                 DataContext = viewModel;
-                template = Resources["MovieDetailsDataTemplate"] as DataTemplate;
+                template = Resources["PlaceDetailsDataTemplate"] as DataTemplate;
             }
             if (type == CType.Movie)
             {

@@ -9,21 +9,22 @@ namespace KudaGo.Client.ViewModels
 {
     class MapPageViewModel : PropertyChangedBase
     {
-        private readonly IPlace _place;
-
-        public MapPageViewModel(IPlace place)
+        public MapPageViewModel(ICoordinates coords, string title)
         {
-            _place = place;
+            Location = coords;
+            Title = title;
         }
 
         public ICoordinates Location
         {
-            get { return _place.Coords; }
+            get;
+            private set;
         }
 
         public string Title
         {
-            get { return _place.Title; }
+            get;
+            private set;
         }
     }
 }

@@ -145,6 +145,7 @@
     <Compile Include="ViewModels\Details\EventDetailsPageViewModel.cs" />
     <Compile Include="ViewModels\Details\MovieDetailsPageViewModel.cs" />
     <Compile Include="ViewModels\Details\NewsDetailsPageViewModel.cs" />
+    <Compile Include="ViewModels\Details\PlaceDetailsPageViewModel.cs" />
     <Compile Include="ViewModels\Details\SelectionDetailsNodeViewModel.cs" />
     <Compile Include="ViewModels\Details\SelectionDetailsPageViewModel.cs" />
     <Compile Include="ViewModels\EventsViewModel.cs" />
@@ -247,6 +248,11 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
+    <Page Include="ViewModels\Details\PlaceDetailsDataTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
     <Page Include="ViewModels\Details\MovieDetailsDataTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -267,7 +273,7 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
-    <Page Include="ViewModels\Details\EventDetailsTemplates.xaml">
+    <Page Include="ViewModels\Details\EventDetailsDataTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -309,7 +315,6 @@
       <Name>Windows Mobile Extensions for the UWP %28WindowsMobile, Version=10.0.14393.0%29</Name>
     </SDKReference>
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

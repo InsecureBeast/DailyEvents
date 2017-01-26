@@ -182,7 +182,7 @@ namespace KudaGo.Client.ViewModels.Details
             if (frame == null)
                 return;
 
-            frame.Navigate(typeof(MapPage), new MapPageViewModel(_placeObj));
+            frame.Navigate(typeof(MapPage), new MapPageViewModel(Location, Place));
         }
     }
 }

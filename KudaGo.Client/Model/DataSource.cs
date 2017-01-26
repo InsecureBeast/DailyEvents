@@ -206,7 +206,6 @@ namespace KudaGo.Client.Model
             request.Lang = _culture;
             request.PlaceId = placeId;
             request.Expand = PlaceListRequest.ExpandNames.IMAGES;
-            request.Fields = PlaceListRequest.FieldNames.IMAGES;
 
             var res = await request.ExecuteAsync();
             return res;

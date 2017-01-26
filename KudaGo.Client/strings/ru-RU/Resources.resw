@@ -168,4 +168,7 @@
   <data name="ChooseCategory.Title" xml:space="preserve">
     <value>Выберите категорию</value>
   </data>
+  <data name="contactsTbk.Text" xml:space="preserve">
+    <value>КОНТАКТЫ</value>
+  </data>
 </root>

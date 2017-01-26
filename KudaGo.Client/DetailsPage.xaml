@@ -12,10 +12,11 @@
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="ViewModels\Details\EventDetailsTemplates.xaml" />
+                <ResourceDictionary Source="ViewModels\Details\EventDetailsDataTemplate.xaml" />
                 <ResourceDictionary Source="ViewModels\Details\NewsDetailsDataTemplate.xaml" />
                 <ResourceDictionary Source="ViewModels\Details\SelectionDetailsDataTemplate.xaml" />
                 <ResourceDictionary Source="ViewModels\Details\MovieDetailsDataTemplate.xaml" />
+                <ResourceDictionary Source="ViewModels\Details\PlaceDetailsDataTemplate.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <common:DetailsContentTemplateSelector x:Key="DetailsContentTemplateSelector"
