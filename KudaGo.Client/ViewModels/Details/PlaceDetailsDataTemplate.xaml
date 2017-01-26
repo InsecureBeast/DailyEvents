@@ -127,41 +127,37 @@
                     </StackPanel>
                    
                     <!--Phone-->
-                    <Grid Margin="{StaticResource DoubleTextBlockMargin}"
-                          Visibility="{Binding Phone, Converter={StaticResource StringToVisibilityConverter}}"
-                          Padding="15"
-                          Grid.Row="3">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-
+                    <StackPanel Margin="{StaticResource DoubleTextBlockMargin}"
+                                Visibility="{Binding Phone, Converter={StaticResource StringToVisibilityConverter}}"
+                                common:TappedEventProvider.Command="{Binding CallCommand}"
+                                Padding="15"
+                                Grid.Row="3">
+                        
                         <TextBlock Text="CONTACTS"
                                    x:Uid="contactsTbk"
-                                   Grid.ColumnSpan="2"
                                    Style="{StaticResource NormalTextBlockStyle}"
                                    FontWeight="SemiBold"/>
-                        
-                        <ContentPresenter ContentTemplate="{StaticResource PhoneIcon}" 
-                                          Margin="{StaticResource DoubleTextBlockMargin}"
-                                          Grid.Row="1"
-                                          Grid.Column="0"
-                                          Height="32"
-                                          Width="32" />
-                        
-                        <StackPanel Grid.Column="1" 
-                                    Grid.Row="1"
-                                    Margin="24,24,0,0">
-                            <TextBlock Text="{Binding Phone}"
+
+                        <Grid Margin="{StaticResource DoubleTextBlockMargin}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <ContentPresenter ContentTemplate="{StaticResource PhoneIcon}" 
+                                              Grid.Column="0"
+                                              Height="32"
+                                              Width="32"/>
+
+                            <StackPanel Grid.Column="1" 
+                                        Margin="24,0,0,0">
+                                <TextBlock Text="{Binding Phone}"
                                        Style="{StaticResource NormalTextBlockStyle}"/>
-                            <TextBlock Text="{Binding Timetable}"
+                                <TextBlock Text="{Binding Timetable}"
                                        Style="{StaticResource NormalTextBlockStyle}"/>
-                        </StackPanel>
-                    </Grid>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
 
                     <StackPanel Grid.Row="5"
                                 Padding="15"

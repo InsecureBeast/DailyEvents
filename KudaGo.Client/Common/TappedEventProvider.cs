@@ -10,8 +10,6 @@ namespace KudaGo.Client.Common
 {
     public class TappedEventProvider
     {
-        private static FrameworkElement _element;
-
         public static readonly DependencyProperty CommandProperty =
             DependencyProperty.RegisterAttached("Command", typeof(ICommand), typeof(TappedEventProvider), new PropertyMetadata(null, OnCommandChange));
 
@@ -27,16 +25,16 @@ namespace KudaGo.Client.Common
 
         private static void OnCommandChange(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            _element = d as FrameworkElement;
-            if (_element == null)
+            var element = d as FrameworkElement;
+            if (element == null)
                 return;
 
-            _element.Tapped += Element_Tapped;
+            element.Tapped += Element_Tapped;
         }
 
         private static void Element_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            var command = GetCommand(_element);
+            var command = GetCommand(sender as FrameworkElement);
             if (command == null)
                 return;
 

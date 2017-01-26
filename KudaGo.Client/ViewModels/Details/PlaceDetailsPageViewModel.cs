@@ -25,12 +25,14 @@ namespace KudaGo.Client.ViewModels.Details
         private string _timetable;
         private bool _isClosed;
         private readonly DelegateCommand _mapCommand;
+        private readonly DelegateCommand _callCommand;
         //private readonly PlaceCommentsViewModel _commentsViewModel;
 
         public PlaceDetailsPageViewModel(long id, IDataSource dataSource) : base(id, dataSource)
         {
             //_commentsViewModel = new PlaceCommentsViewModel(id, dataSource);
             _mapCommand = new DelegateCommand(MapOpen);
+            _callCommand = new DelegateCommand(Call);
         }
 
         public Uri Source
@@ -108,6 +110,11 @@ namespace KudaGo.Client.ViewModels.Details
             get { return _mapCommand; }
         }
 
+        public ICommand CallCommand
+        {
+            get { return _callCommand; }
+        }
+
         protected override async Task LoadDetails(long id)
         {
             var rs = await _dataSource.GetPlaceDetails(id);
@@ -143,6 +150,14 @@ namespace KudaGo.Client.ViewModels.Details
                 return;
 
             frame.Navigate(typeof(MapPage), new MapPageViewModel(Location, Title));
+        }
+
+        private void Call(object obj)
+        {
+            if (DeviceTypeHelper.GetDeviceFormFactorType() == DeviceFormFactorType.Phone)
+            {
+                Windows.ApplicationModel.Calls.PhoneCallManager.ShowPhoneCallUI(Phone, Title);
+            }
         }
     }
 }
