@@ -9,6 +9,7 @@ namespace KudaGo.Core
     {
         private string _lang;
         private int _pageSize;
+
         protected readonly StringBuilder _builder;
 
         protected BaseRequest()
@@ -50,6 +51,8 @@ namespace KudaGo.Core
         public long? Longitude { get; set; }
         public long? Radius { get; set; }
         public string Next { get; set; }
+        public TextFormatEnum? TextFormat { get; set; }
+
         public abstract Task<TResponse> ExecuteAsync();
 
         protected virtual string Build()
@@ -75,6 +78,8 @@ namespace KudaGo.Core
                 _builder.Append("&lon=" + Longitude);
             if (Radius != null)
                 _builder.Append("&=radius" + Radius);
+            if (TextFormat != null)
+                _builder.Append("&text_format=" + TextFormat.Value.ToString().ToLowerInvariant());
 
             return _builder.ToString();
         }

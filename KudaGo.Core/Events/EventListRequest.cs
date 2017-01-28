@@ -9,7 +9,6 @@ namespace KudaGo.Core.Events
         public string Fields { get; set; }
         public string Expand { get; set; }
         public OrderByEnum? OrederBy { get; set; }
-        public TextFormatEnum? TextFormat { get; set; }
         public string Ids { get; set; }
         public DateTime? ActualSince { get; set; }
         public DateTime? ActualUntil { get; set; }
@@ -40,9 +39,6 @@ namespace KudaGo.Core.Events
 
             if (OrederBy != null)
                 _builder.Append("&order_by=" + OrederBy.Value.ToString().ToLowerInvariant());
-
-            if (TextFormat != null)
-                _builder.Append("&text_format=" + TextFormat.Value.ToString().ToLowerInvariant());
 
             if (!string.IsNullOrEmpty(Ids))
                 _builder.Append("&ids=" + Ids);

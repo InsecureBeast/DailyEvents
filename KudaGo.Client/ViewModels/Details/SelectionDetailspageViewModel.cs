@@ -9,7 +9,6 @@ using KudaGo.Client.Extensions;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using KudaGo.Client.Command;
-using KudaGo.Client.ViewModels.Nodes;
 
 namespace KudaGo.Client.ViewModels.Details
 {

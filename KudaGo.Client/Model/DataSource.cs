@@ -126,6 +126,7 @@ namespace KudaGo.Client.Model
             request.Lang = _culture;
             request.Expand = SelectionListRequest.ExpandNames.IMAGES;
             request.SelectionId = selectionId;
+            request.TextFormat = TextFormatEnum.Text;
 
             var res = await request.ExecuteAsync();
             return res;
