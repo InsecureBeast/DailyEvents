@@ -9,109 +9,38 @@
     xmlns:behaviors="using:KudaGo.Client.Behaviors">
 
     <DataTemplate x:Key="SelectionNodeDetailsDataTemplate" >
-        <UserControl>
-            <Grid Padding="0,10,0,10">
-                <VisualStateManager.VisualStateGroups>
-                    <VisualStateGroup>
-                        <VisualState x:Name="Small">
-                            <VisualState.StateTriggers>
-                                <AdaptiveTrigger MinWindowWidth="0" />
-                            </VisualState.StateTriggers>
-                            <VisualState.Setters>
-                                <Setter Target="BigPanel.Visibility" Value="Collapsed" />
-                                <Setter Target="SmallPanel.Visibility" Value="Visible" />
-                            </VisualState.Setters>
-                        </VisualState>
-
-                        <VisualState x:Name="Big">
-                            <VisualState.StateTriggers>
-                                <AdaptiveTrigger MinWindowWidth="500" />
-                            </VisualState.StateTriggers>
-                            <VisualState.Setters>
-                                <Setter Target="BigPanel.Visibility" Value="Visible" />
-                                <Setter Target="SmallPanel.Visibility" Value="Collapsed" />
-                            </VisualState.Setters>
-                        </VisualState>
-                    </VisualStateGroup>
-                </VisualStateManager.VisualStateGroups>
-                
+        <UserControl Margin="0,1,0,0">
+            <Grid Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}"
+                     Padding="15">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <StackPanel x:Name="BigPanel"
-                            Orientation="Vertical"
+                <toolkit:ImageEx Source="{Binding Image}"
+                                 Visibility="{Binding Image, Converter={StaticResource StringToVisibilityConverter}}"
+                                 VerticalAlignment="Top"
+                                 Margin="0,0,0,0"
+                                 Height="105"
+                                 Width="180"
+                                 HorizontalAlignment="Center"
+                                 Stretch="UniformToFill"/>
+                    
+                <StackPanel Margin="10,0,0,0"
                             Grid.Column="1">
                     <TextBlock Text="{Binding Title}"
+                               Margin="0,-5,0,0"
                                Style="{StaticResource NormalTextBlockStyle}"
+                               MaxLines="2"
+                               TextTrimming="CharacterEllipsis"
                                FontWeight="SemiBold"/>
 
-                    <Grid Margin="{StaticResource DefaultControlMargin}">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="100"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <toolkit:ImageEx Source="{Binding Image}"
-                                         Visibility="{Binding Image, Converter={StaticResource StringToVisibilityConverter}}"
-                                         VerticalAlignment="Top"
-                                         HorizontalAlignment="Left"
-                                         Margin="0,4,10,0"
-                                         Stretch="UniformToFill"
-                                         Width="144"
-                                         Height="96"/>
-                    
-                        <RichTextBlock Name="richTextBlock"
-                                       Margin="0,0,0,0"
-                                       Grid.Column="1"
-                                       Style="{StaticResource NormalRichTextBlockStyle}"
-                                       TextTrimming="WordEllipsis" 
-                                       TextWrapping="WrapWholeWords"
-                                       OverflowContentTarget="{Binding ElementName=FirstOverflowArea}"
-                                       Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}">
-                            <Paragraph>
-                                <Run Text="{Binding Description}" />
-                            </Paragraph>
-                        </RichTextBlock>
-                    
-                        <RichTextBlockOverflow Grid.Column="0"
-                                               Grid.ColumnSpan="2"
-                                               Grid.Row="1"
-                                               x:Name="FirstOverflowArea" 
-                                               Margin="0"/>
-
-                    </Grid>
-                </StackPanel>
-
-                <StackPanel x:Name="SmallPanel"
-                            Visibility="Collapsed"
-                            Orientation="Vertical"
-                            Grid.Column="1">
-                    <TextBlock Text="{Binding Title}"
+                    <TextBlock TextAlignment="DetectFromContent"
                                Style="{StaticResource NormalTextBlockStyle}"
-                               FontWeight="SemiBold"/>
-
-                    <toolkit:ImageEx Margin="{StaticResource DefaultControlMargin}"
-                                     Source="{Binding NormalImage}"
-                                     Visibility="{Binding NormalImage, Converter={StaticResource StringToVisibilityConverter}}"
-                                     VerticalAlignment="Top"
-                                     HorizontalAlignment="Left"
-                                     Stretch="UniformToFill"/>
-
-                    <RichTextBlock TextAlignment="Justify"
-                                   Margin="{StaticResource DefaultControlMargin}"
-                                   Style="{StaticResource NormalRichTextBlockStyle}"
-                                   Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}">
-                        <Paragraph>
-                            <Run Text="{Binding Description}" />
-                        </Paragraph>
-
-                    </RichTextBlock>
+                               MaxLines="4"
+                               TextTrimming="CharacterEllipsis"
+                               Text="{Binding Description}"
+                               Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
                 </StackPanel>
             </Grid>
         </UserControl>
@@ -162,20 +91,21 @@
                                        Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"
                                        Style="{StaticResource BodyTextBlockStyle}"/>-->
 
-                            <ItemsControl ItemsSource="{Binding Selections}"
-                                          x:Name="selectionItemsControl"
-                                          Margin="{StaticResource DefaultControlMargin}"
-                                          ItemTemplate="{StaticResource SelectionNodeDetailsDataTemplate}">
-                                
-                            </ItemsControl>
+                            <ListView ItemsSource="{Binding Selections}"
+                                      x:Name="selectionItemsControl"
+                                      Margin="-15,8,-15,0"
+                                      ItemContainerStyle="{StaticResource NoSelectedListViewItemStyle}"
+                                      ItemTemplate="{StaticResource SelectionNodeDetailsDataTemplate}"
+                                      BorderThickness="0,0,0,1"
+                                      BorderBrush="{StaticResource ApplicationPageBackgroundThemeBrush}">
+                            </ListView>
 
                         </StackPanel>
                     </StackPanel>
 
                     <StackPanel Grid.Row="3"
                                 Padding="15"
-                                Margin="{StaticResource DoubleTextBlockMargin}"
-                                Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}">
+                                Margin="{StaticResource DoubleTextBlockMargin}">
 
                         <TextBlock Text="COMMENTS"
                                    x:Uid="comments"

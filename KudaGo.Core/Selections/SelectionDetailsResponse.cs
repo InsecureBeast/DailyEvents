@@ -31,6 +31,7 @@ namespace KudaGo.Core.Selections
         IPlace Place { get; }
         IDate Daterange { get; }
         IImage FirstImage { get; }
+        string ItemUrl { get; }
     }
 
     class SelectionDetailsResponse : ISelectionDetailsResponse
@@ -89,6 +90,7 @@ namespace KudaGo.Core.Selections
             Place = new Place(jSelectionItem.Place);
             Daterange = new DateImpl(jSelectionItem.Daterange);
             FirstImage = new ImageImpl(jSelectionItem.first_image);
+            ItemUrl = jSelectionItem.Item_url;
         }
 
         public long Id { get; private set; }
@@ -98,5 +100,6 @@ namespace KudaGo.Core.Selections
         public IPlace Place { get; private set; }
         public IDate Daterange { get; private set; }
         public IImage FirstImage { get; private set; }
+        public string ItemUrl { get; private set; }
     }
 }

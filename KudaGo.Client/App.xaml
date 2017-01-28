@@ -28,6 +28,7 @@
                     <Color x:Key="LightAccentColor1">#FFFF6767</Color>
                     <Color x:Key="LightAccentColor2">#FFFF8C8C</Color>
                     <Color x:Key="LightAccentColor3">#FFFFC0C0</Color>
+                    <Color x:Key="PageColor">#FFE6E6E6</Color>
                     <!--Set 2-->
                     <SolidColorBrush x:Key="ApplicationDarkAccentBrush3" Color="{StaticResource DarkAccentColor3}" />
                     <SolidColorBrush x:Key="ApplicationDarkAccentBrush2" Color="{StaticResource DarkAccentColor2}" />
@@ -36,8 +37,8 @@
                     <SolidColorBrush x:Key="ApplicationLightAccentBrush1" Color="{StaticResource LightAccentColor1}" />
                     <SolidColorBrush x:Key="ApplicationLightAccentBrush2" Color="{StaticResource LightAccentColor2}" />
                     <SolidColorBrush x:Key="ApplicationLightAccentBrush3" Color="{StaticResource LightAccentColor3}" />
-                    
-                    <SolidColorBrush x:Key="ApplicationPageBackgroundThemeBrush" Color="#FFE6E6E6" />
+
+                    <SolidColorBrush x:Key="ApplicationPageBackgroundThemeBrush" Color="{StaticResource PageColor}" />
                     <SolidColorBrush x:Key="ApplicationPageBackgroundSecondThemeBrush" Color="#FFFFFFFF" />
                     <SolidColorBrush x:Key="NavigationBackgroundThemeBrush" Color="#FFF2F2F2" />
                     <SolidColorBrush x:Key="ImageBackgroundThemeBrush" Color="LightGray" />
@@ -63,7 +64,15 @@
                     <StaticResource x:Key="PivotHeaderItemForegroundDisabled" ResourceKey="SystemControlDisabledBaseMediumLowBrush" />
                     <StaticResource x:Key="PivotHeaderItemFocusPipeFill" ResourceKey="SystemControlHighlightAltAccentBrush" />
                     <StaticResource x:Key="PivotItemBackground" ResourceKey="SystemControlTransparentBrush" />
-                    
+
+                    <!-- Resources for Windows.UI.Xaml.Controls.ListViewItem -->
+                    <StaticResource x:Key="ListViewItemBackground" ResourceKey="AccentColor" />
+                    <!--<StaticResource x:Key="ListViewItemPlaceholderBackground" ResourceKey="AccentColor" />-->
+                    <StaticResource x:Key="ListViewItemBackgroundPressed" ResourceKey="ApplicationLightAccentBrush3" />
+                    <StaticResource x:Key="ListViewItemBackgroundSelected" ResourceKey="ApplicationLightAccentBrush3" />
+                    <StaticResource x:Key="ListViewItemBackgroundSelectedPointerOver" ResourceKey="ApplicationLightAccentBrush2" />
+                    <StaticResource x:Key="ListViewItemBackgroundSelectedPressed" ResourceKey="ApplicationLightAccentBrush2" />
+
                 </ResourceDictionary>
                 <ResourceDictionary x:Key="HighContrast">
                     <SolidColorBrush x:Key="ApplicationPageBackgroundThemeBrush" Color="#FF000000" />
@@ -88,6 +97,14 @@
                     <StaticResource x:Key="PivotHeaderItemForegroundDisabled" ResourceKey="SystemControlDisabledBaseMediumLowBrush" />
                     <StaticResource x:Key="PivotHeaderItemFocusPipeFill" ResourceKey="SystemControlHighlightAltAccentBrush" />
                     <StaticResource x:Key="PivotItemBackground" ResourceKey="SystemControlTransparentBrush" />
+
+                    <!-- Resources for Windows.UI.Xaml.Controls.ListViewItem -->
+                    <StaticResource x:Key="ListViewItemBackground" ResourceKey="SystemControlTransparentBrush" />
+                    <StaticResource x:Key="ListViewItemBackgroundPressed" ResourceKey="SystemControlHighlightListMediumBrush" />
+                    <StaticResource x:Key="ListViewItemBackgroundSelected" ResourceKey="SystemControlHighlightListAccentLowBrush" />
+                    <StaticResource x:Key="ListViewItemBackgroundSelectedPointerOver" ResourceKey="SystemControlHighlightListAccentMediumBrush" />
+                    <StaticResource x:Key="ListViewItemBackgroundSelectedPressed" ResourceKey="SystemControlHighlightListAccentHighBrush" />
+
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
 

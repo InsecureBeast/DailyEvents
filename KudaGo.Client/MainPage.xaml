@@ -25,7 +25,6 @@
                                  x:Uid="mainNavControl">
             <views:NavigationControl.ViewContent>
                 <Pivot SelectionChanged="Pivot_SelectionChanged"
-                       Background="{StaticResource NavigationBackgroundThemeBrush}"
                        x:Name="pivot">
                     <PivotItem Header="Events" x:Uid="eventsItem">
                         <views:GridViewControl Items="{Binding Items}"

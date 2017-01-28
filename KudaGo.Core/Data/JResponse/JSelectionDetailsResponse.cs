@@ -43,5 +43,6 @@ namespace KudaGo.Core.Data.JResponse
         public JPlace Place { get; set; }
         public JDate Daterange { get; set; }
         public JImage first_image { get; set; }
+        public string Item_url { get; set; }
     }
 }
