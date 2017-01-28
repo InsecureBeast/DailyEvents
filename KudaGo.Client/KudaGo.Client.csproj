@@ -103,6 +103,7 @@
     <Compile Include="CategoryPage.xaml.cs">
       <DependentUpon>CategoryPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Common\ItemClickCommand.cs" />
     <Compile Include="Common\SearchItemTemplateSelector.cs" />
     <Compile Include="Common\TappedEventProvider.cs" />
     <Compile Include="Common\DelegateCommand.cs" />

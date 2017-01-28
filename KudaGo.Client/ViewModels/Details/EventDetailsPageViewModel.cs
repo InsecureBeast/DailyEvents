@@ -170,6 +170,7 @@ namespace KudaGo.Client.ViewModels.Details
                         Dates = datesStr;
                         Times = times;
                     }
+
                 }
 
                 await EventCommentsViewModel.Load();

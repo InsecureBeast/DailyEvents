@@ -4,7 +4,7 @@ using KudaGo.Core.Search;
 
 namespace KudaGo.Core
 {
-    static class Extensions
+    public static class Extensions
     {
         public static string GetLocation(this Location location)
         {
@@ -55,6 +55,10 @@ namespace KudaGo.Core
                     return "place";
                 case CType.List:
                     return "list";
+                case CType.Movie:
+                    return "movie";
+                case CType.ListItem:
+                    return "listitem";
                 default:
                     throw new ArgumentOutOfRangeException("cType", cType, null);
             }
@@ -72,6 +76,10 @@ namespace KudaGo.Core
                     return CType.Place;
                 case "list":
                     return CType.List;
+                case "movie":
+                    return CType.Movie;
+                case "listitem":
+                    return CType.ListItem;
                 default:
                     throw new NotSupportedException("ctype with name " + ctype + "does not support");
             }

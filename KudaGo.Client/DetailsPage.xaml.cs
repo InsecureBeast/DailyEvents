@@ -79,6 +79,10 @@ namespace KudaGo.Client
             {
                 SetTemplate(((SearchNodeViewModel)vm).Type, vm);
             }
+            if (vm is SelectionDetailsNodeViewModel)
+            {
+                SetTemplate(((SelectionDetailsNodeViewModel)vm).Type, vm);
+            }
         }
 
         private void SetTemplate(CType type, NodeViewModel vm)

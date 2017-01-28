@@ -28,7 +28,8 @@ namespace KudaGo.Core.Search
         Event,
         Place,
         List,
-        Movie
+        Movie,
+        ListItem
     }
     
     public class SearchRequest : BaseRequest<ISearchResponse>

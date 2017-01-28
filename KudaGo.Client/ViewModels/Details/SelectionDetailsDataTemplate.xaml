@@ -3,6 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:KudaGo.Client.ViewModels.Details"
     xmlns:controls="using:KudaGo.Client.Controls"
+    xmlns:common="using:KudaGo.Client.Common"
     xmlns:converters="using:KudaGo.Client.Converters"
     xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
@@ -94,9 +95,11 @@
                             <ListView ItemsSource="{Binding Selections}"
                                       x:Name="selectionItemsControl"
                                       Margin="-15,8,-15,0"
+                                      IsItemClickEnabled="True"
                                       ItemContainerStyle="{StaticResource NoSelectedListViewItemStyle}"
                                       ItemTemplate="{StaticResource SelectionNodeDetailsDataTemplate}"
                                       BorderThickness="0,0,0,1"
+                                      common:ItemClickCommand.Command="{Binding SelectCommand}"
                                       BorderBrush="{StaticResource ApplicationPageBackgroundThemeBrush}">
                             </ListView>
 
