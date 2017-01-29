@@ -116,6 +116,8 @@
     <Compile Include="Controls\IncrementalObservableCollection.cs" />
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\LocationConverter.cs" />
+    <Compile Include="Converters\StringToGridColumnConverter.cs" />
+    <Compile Include="Converters\StringToGridColumnSpanConverter.cs" />
     <Compile Include="Converters\StringToVisibilityConverter.cs" />
     <Compile Include="DetailsPage.xaml.cs">
       <DependentUpon>DetailsPage.xaml</DependentUpon>

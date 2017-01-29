@@ -9,13 +9,16 @@
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:behaviors="using:KudaGo.Client.Behaviors">
 
+    <converters:StringToGridColumnSpanConverter x:Key="StringToGridColumnSpanConverter"/>
+    <converters:StringToGridColumnConverter x:Key="StringToGridColumnConverter"/>
+
     <DataTemplate x:Key="SelectionNodeDetailsDataTemplate" >
         <UserControl Margin="0,1,0,0">
             <Grid Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}"
                      Padding="15">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="3*" />
                 </Grid.ColumnDefinitions>
 
                 <toolkit:ImageEx Source="{Binding Image}"
@@ -28,7 +31,8 @@
                                  Stretch="UniformToFill"/>
                     
                 <StackPanel Margin="10,0,0,0"
-                            Grid.Column="1">
+                            Grid.ColumnSpan="{Binding Image, Converter={StaticResource StringToGridColumnSpanConverter}}"
+                            Grid.Column="{Binding Image, Converter={StaticResource StringToGridColumnConverter}}">
                     <TextBlock Text="{Binding Title}"
                                Margin="0,-5,0,0"
                                Style="{StaticResource NormalTextBlockStyle}"
@@ -94,6 +98,8 @@
 
                             <ListView ItemsSource="{Binding Selections}"
                                       x:Name="selectionItemsControl"
+                                      ScrollViewer.HorizontalScrollMode="Disabled"
+                                      ScrollViewer.VerticalScrollMode="Disabled"
                                       Margin="-15,8,-15,0"
                                       IsItemClickEnabled="True"
                                       ItemContainerStyle="{StaticResource NoSelectedListViewItemStyle}"
