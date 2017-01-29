@@ -17,6 +17,7 @@
                 <ResourceDictionary Source="ViewModels\Details\SelectionDetailsDataTemplate.xaml" />
                 <ResourceDictionary Source="ViewModels\Details\MovieDetailsDataTemplate.xaml" />
                 <ResourceDictionary Source="ViewModels\Details\PlaceDetailsDataTemplate.xaml" />
+                <ResourceDictionary Source="ViewModels\Details\ListItemDetailsDataTemplate.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <common:DetailsContentTemplateSelector x:Key="DetailsContentTemplateSelector"

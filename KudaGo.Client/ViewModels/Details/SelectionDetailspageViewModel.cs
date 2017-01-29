@@ -67,9 +67,6 @@ namespace KudaGo.Client.ViewModels.Details
             if (node == null)
                 return;
 
-            if (node.Type == Core.Search.CType.ListItem)
-                return;
-
             NavigationHelper.NavigateTo(typeof(DetailsPage), node);
         }
     }

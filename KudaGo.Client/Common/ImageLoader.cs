@@ -46,5 +46,40 @@ namespace KudaGo.Client.Common
 
             return ApiService.SITE_BASE_URL + res.Value;
         }
+
+        public static async Task<string> LoadMovieImage(string itemUrl)
+        {
+            if (string.IsNullOrEmpty(itemUrl))
+                return string.Empty;
+
+            var page = await ClientServiceRequest<string>.HttpGetAsync(itemUrl);
+            var content = await page.Content.ReadAsStringAsync();
+            var source = WebUtility.HtmlDecode(content);
+            HtmlDocument document = new HtmlDocument();
+            document.LoadHtml(source);
+
+            var links = document.DocumentNode.Descendants("span");
+            var link = GetLink(links);
+            return ApiService.SITE_BASE_URL + link;
+        }
+
+        private static string GetLink(IEnumerable<HtmlNode> links)
+        {
+            foreach (var item in links)
+            {
+                if (item.Attributes["data-future-href"] == null)
+                    continue;
+
+                if (item.Attributes["class"] == null)
+                    continue;
+
+                if (item.Attributes["class"].Value != "single-content-frame-preview")
+                    continue;
+
+                return item.Attributes["data-future-href"].Value;
+            }
+
+            return string.Empty;
+        }
     }
 }

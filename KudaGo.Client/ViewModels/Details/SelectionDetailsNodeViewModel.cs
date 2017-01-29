@@ -52,7 +52,12 @@ namespace KudaGo.Client.ViewModels.Details
         public override long Id { get; protected set; }
         private async void LoadImage(string itemUrl)
         {
-            var image = await ImageLoader.LoadImage(itemUrl);
+            string image = string.Empty;
+            if (itemUrl.Contains("movie"))
+                image = await ImageLoader.LoadMovieImage(itemUrl);
+            else
+                image = await ImageLoader.LoadImage(itemUrl);
+
             LayoutHelper.InvokeFromUiThread(() =>
             {
                 Image = image;

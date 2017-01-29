@@ -1,0 +1,48 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:KudaGo.Client.ViewModels.Details"
+    xmlns:controls="using:KudaGo.Client.Controls"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:behaviors="using:KudaGo.Client.Behaviors">
+
+    <DataTemplate x:Key="ListItemDetailsDataTemplate" >
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+                <Grid MaxWidth="800"
+                      Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}">
+                    
+                    <!--<StackPanel>-->
+                        <!--<controls:FlipViewControl x:Name="flipViewControl"/>-->
+                        
+                        <StackPanel Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}"
+                                    Padding="15">
+
+                            <TextBlock Text="{Binding Title}"
+                                       Style="{StaticResource TitleTextBlockStyle}"
+                                       FontWeight="SemiBold"/>
+                            
+                            <TextBlock Text="DESCRIPTION"
+                                       x:Uid="description"
+                                       Margin="{StaticResource DoubleTextBlockMargin}"
+                                       Style="{StaticResource NormalTextBlockStyle}"
+                                       FontWeight="SemiBold"/>
+
+                            <RichTextBlock TextAlignment="Justify"
+                                           Style="{StaticResource NormalRichTextBlockStyle}"
+                                           Margin="{StaticResource DoubleTextBlockMargin}">
+                                <Paragraph>
+                                    <Run Text="{Binding BodyText}" />
+                                </Paragraph>
+                            </RichTextBlock>
+                        </StackPanel>
+                    <!--</StackPanel>-->
+                </Grid>
+            </Grid>
+            <!--<interactivity:Interaction.Behaviors>
+                <behaviors:ParallaxBehavior ParallaxContent="{Binding ElementName=flipViewControl}" ParallaxMultiplier="-0.2"/>
+            </interactivity:Interaction.Behaviors>-->
+        </ScrollViewer>
+    </DataTemplate>
+    
+</ResourceDictionary>

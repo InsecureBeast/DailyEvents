@@ -118,6 +118,16 @@ namespace KudaGo.Client
                 DataContext = viewModel;
                 template = Resources["MovieDetailsDataTemplate"] as DataTemplate;
             }
+            if (type == CType.ListItem)
+            {
+                var node = vm as SelectionDetailsNodeViewModel;
+                if (node == null)
+                    return;
+
+                var viewModel = new ListItemDetailsPageViewModel(node, App.DataSource);
+                DataContext = viewModel;
+                template = Resources["ListItemDetailsDataTemplate"] as DataTemplate;
+            }
             contentPresenter.ContentTemplate = template;
         }
     }
