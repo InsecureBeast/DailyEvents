@@ -19,11 +19,8 @@ namespace KudaGo.Client.ViewModels.Nodes
                 return;
 
             _dataSource = dataSource;
-            //Task.Run(async ()=> await LoadImage(result.Id));
-
             Id = result.Id;
             Title = result.Title.GetNormalString();
-            //Description = result.Description;
 
             if (result.PublicationDate.HasValue)
             {

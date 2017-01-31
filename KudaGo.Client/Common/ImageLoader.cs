@@ -31,10 +31,17 @@ namespace KudaGo.Client.Common
             
             Task<string> t = Task<string>.Factory.StartNew(() =>
             {
-                var content = GetContent(itemUrl);
-                var source = WebUtility.HtmlDecode(content.Result);
-                return source;
-            });
+                try
+                {
+                    var content = GetContent(itemUrl);
+                    var source = WebUtility.HtmlDecode(content.Result);
+                    return source;
+                }
+                catch (Exception)
+                {
+                    return string.Empty;
+                }
+            }, TaskCreationOptions.LongRunning);
 
             var doc = await t;
             HtmlDocument document = new HtmlDocument();

@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using KudaGo.Core.Search;
 using KudaGo.Client.Common;
-using KudaGo.Client.Helpers;
 using KudaGo.Client.Extensions;
 
 namespace KudaGo.Client.ViewModels.Search
@@ -22,6 +21,8 @@ namespace KudaGo.Client.ViewModels.Search
             Title = result.Title.GetNormalString();
             Description = result.Description.GetNormalString();
             Place = result.Address;
+            Categories = string.Empty;
+            
 
             var image = result.FirstImage;
             if (image.Image != null)
@@ -33,15 +34,14 @@ namespace KudaGo.Client.ViewModels.Search
         private async void LoadImage(string itemUrl)
         {
             var image = await ImageLoader.LoadImage(itemUrl);
-            LayoutHelper.InvokeFromUiThread(() =>
-            {
-                Image = image;
-            });
+            Image = image;
         }
 
         public override long Id { get; protected set; }
         public CType Type { get; private set; }
         public string Place { get; private set; }
+        public string Categories { get; private set; }
+        public bool IsFree { get { return false; } }
 
         public string Image
         {

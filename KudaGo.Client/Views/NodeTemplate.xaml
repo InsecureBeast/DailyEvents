@@ -27,6 +27,7 @@
                                   Stretch="UniformToFill"/>
                 
                 <Border Background="Black"
+                        Visibility="{Binding Categories, Converter={StaticResource StringToVisibilityConverter}}"
                         VerticalAlignment="Top"
                         HorizontalAlignment="Left"
                         Margin="10"
@@ -325,7 +326,6 @@
                               Name="Image"
                               MinHeight="200"
                               MinWidth="250"
-                              IsCacheEnabled="True"
                               VerticalAlignment="Center"
                               HorizontalAlignment="Center"
                               Stretch="UniformToFill"/>
