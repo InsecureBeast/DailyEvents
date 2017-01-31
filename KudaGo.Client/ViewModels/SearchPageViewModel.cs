@@ -25,7 +25,7 @@ namespace KudaGo.Client.ViewModels
             _navigationViewModel.InSearchMode = true;
             _navigationViewModel.SearchString = q;
 
-            LayoutHelper.InvokeFromUiThread(async () =>
+            Task.Factory.StartNew(async () =>
             {
                 await Load();
             });

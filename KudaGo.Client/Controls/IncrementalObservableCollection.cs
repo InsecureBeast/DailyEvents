@@ -1,4 +1,5 @@
-﻿using KudaGo.Core.Data;
+﻿using KudaGo.Client.Helpers;
+using KudaGo.Core.Data;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -66,8 +67,7 @@ namespace KudaGo.Client.Controls
             {
                 _next = result.Next;
                 _count = result.Count;
-                var dispatcher = Window.Current.Dispatcher;
-                await dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                LayoutHelper.InvokeFromUiThread(() => 
                 {
                     _addData(result);
                 });

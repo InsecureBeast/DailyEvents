@@ -50,6 +50,7 @@ namespace KudaGo.Client.ViewModels.Details
         public string Place { get; private set; }
         public CType Type { get; private set; }
         public override long Id { get; protected set; }
+
         private async void LoadImage(string itemUrl)
         {
             string image = string.Empty;

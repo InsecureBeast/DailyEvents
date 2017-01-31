@@ -28,12 +28,17 @@ namespace KudaGo.Client.Common
 
             if (string.IsNullOrEmpty(itemUrl))
                 return string.Empty;
+            
+            Task<string> t = Task<string>.Factory.StartNew(() =>
+            {
+                var content = GetContent(itemUrl);
+                var source = WebUtility.HtmlDecode(content.Result);
+                return source;
+            });
 
-            var page = await ClientServiceRequest<string>.HttpGetAsync(itemUrl);
-            var content = await page.Content.ReadAsStringAsync();
-            var source = WebUtility.HtmlDecode(content);
+            var doc = await t;
             HtmlDocument document = new HtmlDocument();
-            document.LoadHtml(source);
+            document.LoadHtml(doc);
 
             var imgs = document.DocumentNode.Descendants().Where(x => x.Name == "img");// ToArray()[1].Attributes.First(n => n.Value == "post-big-preview-image");
             var imgNode = imgs.FirstOrDefault(i => i.Attributes.ToList().Exists(a => a.Value == "post-big-preview-image"));
@@ -52,15 +57,27 @@ namespace KudaGo.Client.Common
             if (string.IsNullOrEmpty(itemUrl))
                 return string.Empty;
 
-            var page = await ClientServiceRequest<string>.HttpGetAsync(itemUrl);
-            var content = await page.Content.ReadAsStringAsync();
-            var source = WebUtility.HtmlDecode(content);
+            Task<string> t = Task<string>.Factory.StartNew(() =>
+            {
+                var content = GetContent(itemUrl);
+                var source = WebUtility.HtmlDecode(content.Result);
+                return source;
+            });
+
+            var doc = await t;
             HtmlDocument document = new HtmlDocument();
-            document.LoadHtml(source);
+            document.LoadHtml(doc);
 
             var links = document.DocumentNode.Descendants("span");
             var link = GetLink(links);
             return ApiService.SITE_BASE_URL + link;
+        }
+
+        private static async Task<string> GetContent(string itemUrl)
+        {
+            var page = await ClientServiceRequest<string>.HttpGetAsync(itemUrl);
+            var content = await page.Content.ReadAsStringAsync();
+            return content;
         }
 
         private static string GetLink(IEnumerable<HtmlNode> links)
