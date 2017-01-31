@@ -171,4 +171,13 @@
   <data name="contactsTbk.Text" xml:space="preserve">
     <value>КОНТАКТЫ</value>
   </data>
+  <data name="actorsTbk.Text" xml:space="preserve">
+    <value>Актеры</value>
+  </data>
+  <data name="countryTbk.Text" xml:space="preserve">
+    <value>Страна</value>
+  </data>
+  <data name="directorTbk.Text" xml:space="preserve">
+    <value>Режисер</value>
+  </data>
 </root>

@@ -58,134 +58,31 @@
                                     <Run Text="{Binding BodyText}" />
                                 </Paragraph>
                             </RichTextBlock>
+                        
+
+                            <TextBlock Text="Actors"
+                                       Margin="{StaticResource DoubleTextBlockMargin}"
+                                       x:Uid="actorsTbk"
+                                       FontWeight="SemiBold"/>
+                            <TextBlock Text="{Binding Actors}"
+                                       TextWrapping="WrapWholeWords"
+                                       Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
+
+                            <TextBlock Text="Director"
+                                       Margin="{StaticResource DoubleTextBlockMargin}"
+                                       x:Uid="directorTbk"
+                                       FontWeight="SemiBold"/>
+                            <TextBlock Text="{Binding Director}"
+                                       Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
+                            
+                            <TextBlock Text="Country"
+                                       Margin="{StaticResource DoubleTextBlockMargin}"
+                                       x:Uid="countryTbk"
+                                       FontWeight="SemiBold"/>
+                            <TextBlock Text="{Binding Country}"
+                                       TextWrapping="WrapWholeWords"
+                                       Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
                         </StackPanel>
-
-                        <ItemsControl Margin="{StaticResource DoubleTextBlockMargin}">
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <VariableSizedWrapGrid  Orientation="Horizontal" 
-                                                            MaximumRowsOrColumns="3" 
-                                                            ItemHeight="80"
-                                                            ItemWidth="250"/>
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                           
-                            <ListBoxItem HorizontalContentAlignment="Left"
-                                         VerticalContentAlignment="Top">
-                                <StackPanel>
-                                    <TextBlock Text="Country"
-                                               x:Uid="country"
-                                               FontWeight="SemiBold"/>
-                                    <TextBlock Text="{Binding Country}"
-                                               TextWrapping="WrapWholeWords"
-                                               Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
-                                </StackPanel>
-                            </ListBoxItem>
-
-                            <ListBoxItem HorizontalContentAlignment="Left"
-                                         VerticalContentAlignment="Top">
-                                <StackPanel>
-                                    <TextBlock Text="Year"
-                                               x:Uid="year"
-                                               FontWeight="SemiBold"/>
-                                    <TextBlock Text="{Binding Year}"
-                                               Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
-                                </StackPanel>
-                            </ListBoxItem>
-
-                            <ListBoxItem HorizontalContentAlignment="Left"
-                                         VerticalContentAlignment="Top">
-                                <StackPanel>
-                                    <TextBlock Text="Language"
-                                               x:Uid="language"
-                                               FontWeight="SemiBold"/>
-                                    <TextBlock Text="{Binding Language}"
-                                               Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
-                                </StackPanel>
-                            </ListBoxItem>
-
-                            <ListBoxItem HorizontalContentAlignment="Left"
-                                         VerticalContentAlignment="Top">
-                                <StackPanel>
-                                    <TextBlock Text="Running time"
-                                               x:Uid="runningTime"
-                                               FontWeight="SemiBold"/>
-                                    <TextBlock Text="{Binding RunningTime}"
-                                               Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
-                                </StackPanel>
-                            </ListBoxItem>
-
-                            <ListBoxItem HorizontalContentAlignment="Left"
-                                         VerticalContentAlignment="Top">
-                                <StackPanel>
-                                    <TextBlock Text="Budget"
-                                               x:Uid="budget"
-                                               FontWeight="SemiBold"/>
-                                    <TextBlock Text="{Binding Budget}"
-                                               Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
-                                </StackPanel>
-                            </ListBoxItem>
-
-                            <ListBoxItem HorizontalContentAlignment="Left"
-                                         VerticalContentAlignment="Top"
-                                         VariableSizedWrapGrid.RowSpan="3">
-                                <StackPanel>
-                                    <TextBlock Text="Actors"
-                                               x:Uid="actors"
-                                               FontWeight="SemiBold"/>
-                                    <TextBlock Text="{Binding Actors}"
-                                               TextWrapping="WrapWholeWords"
-                                               Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
-                                </StackPanel>
-                            </ListBoxItem>
-
-                            <ListBoxItem HorizontalContentAlignment="Left"
-                                         VerticalContentAlignment="Top"
-                                         VariableSizedWrapGrid.RowSpan="2">
-                                <StackPanel>
-                                    <TextBlock Text="Writer"
-                                               x:Uid="writer"
-                                               FontWeight="SemiBold"/>
-                                    <TextBlock Text="{Binding Writer}"
-                                               TextWrapping="WrapWholeWords"
-                                               Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
-                                </StackPanel>
-                            </ListBoxItem>
-
-                            <ListBoxItem HorizontalContentAlignment="Left"
-                                         VerticalContentAlignment="Top">
-                                <StackPanel>
-                                    <TextBlock Text="Director"
-                                               x:Uid="director"
-                                               FontWeight="SemiBold"/>
-                                    <TextBlock Text="{Binding Director}"
-                                               Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
-                                </StackPanel>
-                            </ListBoxItem>
-
-                            <ListBoxItem HorizontalContentAlignment="Left"
-                                         VerticalContentAlignment="Top">
-                                <StackPanel>
-                                    <TextBlock Text="Site"
-                                               x:Uid="site"
-                                               FontWeight="SemiBold"/>
-                                    <TextBlock Text="{Binding SiteUrl}"
-                                               Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
-                                </StackPanel>
-                            </ListBoxItem>
-
-                            <ListBoxItem HorizontalContentAlignment="Left"
-                                         VerticalContentAlignment="Top">
-                                <StackPanel>
-                                    <TextBlock Text="Genres"
-                                               x:Uid="genres"
-                                               FontWeight="SemiBold"/>
-                                    <TextBlock Text="{Binding Genres}"
-                                               Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
-                                </StackPanel>
-                            </ListBoxItem>
-                        </ItemsControl>
-
 
                         <StackPanel Grid.Row="3"
                                 Padding="15"

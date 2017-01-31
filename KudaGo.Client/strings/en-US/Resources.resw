@@ -171,4 +171,13 @@
   <data name="contactsTbk.Text" xml:space="preserve">
     <value>CONTACTS</value>
   </data>
+  <data name="actorsTbk.Text" xml:space="preserve">
+    <value>Actors</value>
+  </data>
+  <data name="countryTbk.Text" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="directorTbk.Text" xml:space="preserve">
+    <value>Director</value>
+  </data>
 </root>
