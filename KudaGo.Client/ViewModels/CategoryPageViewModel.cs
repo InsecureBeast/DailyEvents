@@ -16,6 +16,7 @@ namespace KudaGo.Client.ViewModels
     class CategoryPageViewModel : PropertyChangedBase, ICategoryNameProvider
     {
         private readonly ObservableCollection<CategoryNodeViewModel> _items;
+        private readonly NavigationViewModel _navigationViewModel;
         private readonly IDataSource _dataSource;
         private readonly IFilterListener _filterListeer;
         private bool _isBusy;
@@ -28,11 +29,17 @@ namespace KudaGo.Client.ViewModels
             _filterListeer = filterListeer;
 
             _items = new ObservableCollection<CategoryNodeViewModel>();
+            _navigationViewModel = new NavigationViewModel(dataSource);
 
             LayoutHelper.InvokeFromUiThread(async () =>
             {
                 await Load();
             });
+        }
+
+        public NavigationViewModel NavigationViewModel
+        {
+            get { return _navigationViewModel; }
         }
 
         public ObservableCollection<CategoryNodeViewModel> Items
