@@ -50,25 +50,72 @@ namespace KudaGo.Client.ViewModels.Nodes
             if (dates == null)
                 return;
 
-            if (dates.Start.HasValue && dates.End.HasValue)
-            {
-                var start = dates.Start.Value;
-                var end = dates.End.Value;
-                var datesStr = string.Format("{0} - {1}", start.ToString("D"), end.ToString("D"));
-                var times = string.Format("{0} - {1}", start.ToString("t"), end.ToString("t"));
-                if (start == end)
-                {
-                    datesStr = start.ToString("D");
-                    times = start.ToString("t");
-                }
-                Dates = datesStr;
-                Times = times;
-            }
+            Dates = GetDates(dates);
+            Times = GetTimes(dates);
         }
 
         public string Place { get; private set; }
         public string Age { get; private set; }
         public string Categories { get; private set; }
         public bool IsFree { get; private set; }
+
+        
+        public static string GetDates(IDate dates)
+        {
+            string datesStr = string.Empty;
+
+            if (dates.Start.HasValue && dates.End.HasValue)
+            {
+                var start = dates.Start.Value;
+                var end = dates.End.Value;
+                datesStr = string.Format("{0} - {1}", start.ToString("D"), end.ToString("D"));
+
+                if (start.Date == end.Date)
+                {
+                    datesStr = start.ToString("D");
+                }
+
+                if (start.Date == new DateTime(0001, 01, 3))
+                {
+                    datesStr = string.Format("{0} - {1}", DateTime.Now.ToString("D"), end.ToString("D"));
+                }
+
+                if (start.Date == new DateTime(0001, 01, 3) && end.Date == new DateTime(9999, 1, 1))
+                {
+                    datesStr = string.Empty;
+                }
+            }
+
+            return datesStr;
+        }
+
+        public static string GetTimes(IDate dates)
+        {
+            string times = string.Empty;
+
+            if (dates.Start.HasValue && dates.End.HasValue)
+            {
+                var start = dates.Start.Value;
+                var end = dates.End.Value;
+                times = string.Format("{0} - {1}", start.ToString("t"), end.ToString("t"));
+
+                if (start.TimeOfDay == end.TimeOfDay)
+                    times = start.ToString("t");
+
+                if (start.TimeOfDay == TimeSpan.FromHours(0))
+                    times = string.Empty;
+
+                if (end.TimeOfDay == new TimeSpan(23, 59, 00))
+                    times = string.Empty;
+
+                if (start.Date == new DateTime(0001, 01, 3))
+                    times = string.Empty;
+
+                if (start.Date == new DateTime(0001, 01, 3) && end.Date == new DateTime(9999, 1, 1))
+                    times = string.Empty;
+            }
+
+            return times;
+        }
     }
 }

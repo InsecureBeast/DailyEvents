@@ -29,5 +29,6 @@ namespace KudaGo.Core.Data.JResponse
         public JCoordinates Coords { get; set; }
         public JImage first_image { get; set; }
         public string item_url { get; set; }
+        public JDate Daterange { get; set; }
     }
 }

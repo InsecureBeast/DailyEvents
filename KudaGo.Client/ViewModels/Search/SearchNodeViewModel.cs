@@ -22,7 +22,9 @@ namespace KudaGo.Client.ViewModels.Search
             Description = result.Description.GetNormalString();
             Place = result.Address;
             Categories = string.Empty;
-            
+
+            Dates = EventNodeViewModel.GetDates(result.Dates);
+            Times = EventNodeViewModel.GetTimes(result.Dates);
 
             var image = result.FirstImage;
             if (image.Image != null)
@@ -42,6 +44,8 @@ namespace KudaGo.Client.ViewModels.Search
         public string Place { get; private set; }
         public string Categories { get; private set; }
         public bool IsFree { get { return false; } }
+        public string Dates { get; private set; }
+        public string Times { get; private set; }
 
         public string Image
         {

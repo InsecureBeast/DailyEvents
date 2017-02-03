@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using KudaGo.Core.Data;
 using KudaGo.Core.Data.JData;
@@ -24,6 +25,7 @@ namespace KudaGo.Core.Search
         bool IsStub { get; }
         IImage FirstImage { get; }
         string ItemUrl { get; }
+        IDate Dates { get; }
     }
 
     class SearchResponse : ISearchResponse
@@ -56,6 +58,8 @@ namespace KudaGo.Core.Search
             {
                 Place = new Place(new JPlace());
                 Coords = new Coordinates(new JCoordinates());
+                Dates = new DateImpl(new JDate());
+                FirstImage = new ImageImpl(new JImage());
                 return;
             }
 
@@ -70,6 +74,7 @@ namespace KudaGo.Core.Search
             Coords = new Coordinates(jResult.Coords);
             FirstImage = new ImageImpl(jResult.first_image);
             ItemUrl = jResult.item_url;
+            Dates = new DateImpl(jResult.Daterange);
         }
 
         public int Id { get; private set; }
@@ -83,5 +88,6 @@ namespace KudaGo.Core.Search
         public ICoordinates Coords { get; private set; }
         public IImage FirstImage { get; private set; }
         public string ItemUrl { get; private set; }
+        public IDate Dates { get; private set; }
     }
 }

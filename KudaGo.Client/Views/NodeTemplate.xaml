@@ -77,7 +77,8 @@
                            Style="{StaticResource BodyTextBlockStyle}"
                            Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}" />
 
-                <Grid Margin="{StaticResource DefaultControlMargin}">
+                <Grid Margin="{StaticResource DefaultControlMargin}"
+                      Visibility="{Binding Dates, Converter={StaticResource StringToVisibilityConverter}}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
