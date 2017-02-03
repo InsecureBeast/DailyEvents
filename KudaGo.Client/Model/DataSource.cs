@@ -265,6 +265,7 @@ namespace KudaGo.Client.Model
             request.Lang = _culture;
             request.Location = _location;
             request.Expand = SearchRequest.ExpandFields.PLACES + "," + SearchRequest.ExpandFields.DATES;
+            request.TextFormat = TextFormatEnum.Plain;
 
             var res = await request.ExecuteAsync();
             return res;

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using KudaGo.Core.Search;
 using KudaGo.Client.Common;
 using KudaGo.Client.Extensions;
+using HtmlAgilityPack;
 
 namespace KudaGo.Client.ViewModels.Search
 {
@@ -19,7 +20,9 @@ namespace KudaGo.Client.ViewModels.Search
             Type = result.CType;
             Id = result.Id;
             Title = result.Title.GetNormalString();
-            Description = result.Description.GetNormalString();
+            var descriptionHtml = result.Description.GetNormalString();
+            Description = descriptionHtml.StripHtmlTags();
+
             Place = result.Address;
             Categories = string.Empty;
 
