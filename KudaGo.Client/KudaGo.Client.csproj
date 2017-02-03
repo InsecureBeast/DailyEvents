@@ -105,6 +105,7 @@
     </Compile>
     <Compile Include="Common\ItemClickCommand.cs" />
     <Compile Include="Common\SearchItemTemplateSelector.cs" />
+    <Compile Include="Common\SettingsChangeNotifier.cs" />
     <Compile Include="Common\TappedEventProvider.cs" />
     <Compile Include="Common\DelegateCommand.cs" />
     <Compile Include="Common\EventItemTemplateSelector.cs" />
@@ -141,6 +142,9 @@
     <Compile Include="SearchPage.xaml.cs">
       <DependentUpon>SearchPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\CategoryPageViewModel.cs" />
     <Compile Include="ViewModels\Comments\CommentsViewModel.cs" />
     <Compile Include="ViewModels\Comments\EventCommentsViewModel.cs" />
@@ -171,6 +175,7 @@
     <Compile Include="ViewModels\SectionViewModel.cs" />
     <Compile Include="ViewModels\PropertyChangedBase.cs" />
     <Compile Include="ViewModels\SelectionsViewModel.cs" />
+    <Compile Include="ViewModels\SettingsPageViewModel.cs" />
     <Compile Include="Views\GridViewControl.xaml.cs">
       <DependentUpon>GridViewControl.xaml</DependentUpon>
     </Compile>
@@ -229,6 +234,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SearchPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SettingsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

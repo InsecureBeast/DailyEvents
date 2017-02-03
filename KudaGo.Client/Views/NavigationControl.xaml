@@ -93,10 +93,12 @@
                    CompactPaneLength="48" 
                    OpenPaneLength="300">
             <SplitView.Pane>
-                <StackPanel Orientation="Vertical"
-                            Background="#FF2B2B2B">
-                    <Button Content="Home"/>
-                </StackPanel>
+                <Grid Background="#FF2B2B2B">
+                    
+                    <Button Content="Settings"
+                            VerticalAlignment="Bottom"
+                            Command="{Binding NavigationViewModel.SettingsCommand}"/>
+                </Grid>
             </SplitView.Pane>
 
             <SplitView.Content>

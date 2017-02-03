@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KudaGo.Client.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,11 @@ namespace KudaGo.Client.Helpers
                 return;
 
             frame.Navigate(pageType, viewModel);
+        }
+
+        public static void NavigateToSettings()
+        {
+            NavigateTo(typeof(SettingsPage), new SettingsPageViewModel(App.DataSource, App.SettingsNotifier));
         }
 
         internal static void GoBack()

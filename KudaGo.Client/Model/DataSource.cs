@@ -36,6 +36,9 @@ namespace KudaGo.Client.Model
         Task<IEnumerable<ICategoriesResponse>> GetPlaceCategories();
 
         Task<ISearchResponse> Search(string q, string next);
+
+        void SetLocation(Location location);
+        void SetCulture(string culture);
     }
 
     public class DataSource : IDataSource
@@ -269,6 +272,19 @@ namespace KudaGo.Client.Model
 
             var res = await request.ExecuteAsync();
             return res;
+        }
+
+        public void SetLocation(Location location)
+        {
+            _location = location;
+        }
+
+        public void SetCulture(string culture)
+        {
+            if (culture != "ru" && culture != "en")
+                throw new ArgumentException(nameof(culture));
+
+            _culture = culture;
         }
     }
 }

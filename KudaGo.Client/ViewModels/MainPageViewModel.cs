@@ -1,4 +1,5 @@
 ﻿using KudaGo.Client.Command;
+using KudaGo.Client.Common;
 using KudaGo.Client.Controls;
 using KudaGo.Client.Helpers;
 using KudaGo.Client.Model;
@@ -12,7 +13,7 @@ using System.Windows.Input;
 
 namespace KudaGo.Client.ViewModels
 {
-    internal class MainPageViewModel : PropertyChangedBase
+    internal class MainPageViewModel : PropertyChangedBase, ISettingsChangeListener
     {
         private readonly NewsViewModel _newsViewModel;
         private readonly EventsViewModel _eventsViewModel;
@@ -25,6 +26,9 @@ namespace KudaGo.Client.ViewModels
         public MainPageViewModel()
         {
             var dataSource = App.DataSource;
+            var notifier = App.SettingsNotifier;
+            notifier.Subscribe(this);
+
             _newsViewModel = new NewsViewModel(dataSource);
             _eventsViewModel = new EventsViewModel(dataSource);
             _categoryPageViewModel = new CategoryPageViewModel(dataSource, _eventsViewModel);
@@ -71,6 +75,15 @@ namespace KudaGo.Client.ViewModels
         private void Filter(object obj)
         {
             NavigationHelper.NavigateTo(typeof(CategoryPage), _categoryPageViewModel);
+        }
+
+        public void UpdateSettings()
+        {
+            EventsViewModel.Update();
+            NewsViewModel.Update();
+            MoviesViewModel.Update();
+            SelectionsViewModel.Update();
+            
         }
     }
 }

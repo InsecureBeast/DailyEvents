@@ -42,6 +42,15 @@ namespace KudaGo.Client.ViewModels
             await _items.LoadMoreItemsAsync(0);
         }
 
+        public async Task Update()
+        {
+            if (Items.Count == 0)
+                return;
+
+            Items.Clear();
+            await Load();
+        }
+
         protected virtual void AddData(IResponse response)
         {
         }

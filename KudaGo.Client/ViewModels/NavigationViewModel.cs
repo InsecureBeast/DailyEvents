@@ -14,6 +14,7 @@ namespace KudaGo.Client.ViewModels
     {
         private readonly IDataSource _dataSource;
         private readonly DelegateCommand _searchCommand;
+        private readonly DelegateCommand _settingsCommand;
         private bool _inSearchMode = false;
         private string _searchString;
 
@@ -21,11 +22,17 @@ namespace KudaGo.Client.ViewModels
         {
             _dataSource = dataSource;
             _searchCommand = new DelegateCommand(Search);
+            _settingsCommand = new DelegateCommand(Settings);
         }
 
         public ICommand SearchCommand
         {
             get { return _searchCommand; }
+        }
+
+        public ICommand SettingsCommand
+        {
+            get { return _settingsCommand; }
         }
 
         public bool InSearchMode
@@ -61,6 +68,11 @@ namespace KudaGo.Client.ViewModels
             }
 
             InSearchMode = true;
+        }
+
+        private void Settings(object obj)
+        {
+            NavigationHelper.NavigateToSettings();
         }
     }
 }
