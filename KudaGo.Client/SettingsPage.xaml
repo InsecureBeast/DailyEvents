@@ -25,6 +25,7 @@
         </Border>
         
         <TextBlock Text="Choose location"
+                   x:Uid="LocationTbk"
                    Grid.Row="1"
                    Margin="{StaticResource DoubleTextBlockMargin}"/>
         <ComboBox ItemsSource="{Binding Locations, Mode=OneWay}"

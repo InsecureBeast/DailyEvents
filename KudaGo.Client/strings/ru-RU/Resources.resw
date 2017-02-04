@@ -180,4 +180,10 @@
   <data name="directorTbk.Text" xml:space="preserve">
     <value>Режисер</value>
   </data>
+  <data name="LocationTbk.Text" xml:space="preserve">
+    <value>Расположение</value>
+  </data>
+  <data name="SettingsTbk.Text" xml:space="preserve">
+    <value>Параметры</value>
+  </data>
 </root>

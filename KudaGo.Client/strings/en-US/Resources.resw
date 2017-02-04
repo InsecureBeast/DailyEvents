@@ -180,4 +180,10 @@
   <data name="directorTbk.Text" xml:space="preserve">
     <value>Director</value>
   </data>
+  <data name="LocationTbk.Text" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="SettingsTbk.Text" xml:space="preserve">
+    <value>Settings</value>
+  </data>
 </root>

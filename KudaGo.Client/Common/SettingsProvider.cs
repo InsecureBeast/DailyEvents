@@ -21,22 +21,36 @@ namespace KudaGo.Client.Common
 
         public Location GetLocation()
         {
-            var value = _settings.Values["Location"] as string;
-            if (value == null)
-                return Location.Moskva;
+            try
+            {
+                var value = _settings.Values["Location"] as string;
+                if (value == null)
+                    return Location.Moskva;
 
-            return value.GetLocation();
+                return value.GetLocation();
+            }
+            catch (Exception)
+            {
+                return Location.Moskva;
+            }         
         }
 
         public void SaveLocation(Location location)
         {
-            // Create a simple setting
-            var str = location.GetStrLocation();
+            try
+            {
+                // Create a simple setting
+                var str = location.GetStrLocation();
 
-            // Delete a simple setting
-            //_settings.Values.Remove("Location");
+                // Delete a simple setting
+                //_settings.Values.Remove("Location");
 
-            _settings.Values["Location"] = str;
+                _settings.Values["Location"] = str;
+            }
+            catch
+            {
+                ;
+            }
         }
     }
 }

@@ -27,7 +27,7 @@ namespace KudaGo.Client
         public SettingsPage()
         {
             InitializeComponent();
-        }
+        }       
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
