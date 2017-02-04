@@ -149,7 +149,7 @@ namespace KudaGo.Client.ViewModels.Details
             if (frame == null)
                 return;
 
-            frame.Navigate(typeof(MapPage), new MapPageViewModel(Location, Title));
+            frame.Navigate(typeof(MapPage), new MapPageViewModel(Location, Title, _dataSource));
         }
 
         private void Call(object obj)

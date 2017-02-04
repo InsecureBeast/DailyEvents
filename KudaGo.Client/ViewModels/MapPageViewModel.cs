@@ -1,4 +1,5 @@
-﻿using KudaGo.Core.Data;
+﻿using KudaGo.Client.Model;
+using KudaGo.Core.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +10,12 @@ namespace KudaGo.Client.ViewModels
 {
     class MapPageViewModel : PropertyChangedBase
     {
-        public MapPageViewModel(ICoordinates coords, string title)
+        private readonly NavigationViewModel _navigationViewModel;
+
+        public MapPageViewModel(ICoordinates coords, string title, IDataSource dataSource)
         {
+            _navigationViewModel = new NavigationViewModel(dataSource);
+
             Location = coords;
             Title = title;
         }
@@ -25,6 +30,11 @@ namespace KudaGo.Client.ViewModels
         {
             get;
             private set;
+        }
+
+        public NavigationViewModel NavigationViewModel
+        {
+            get { return _navigationViewModel; }
         }
     }
 }
