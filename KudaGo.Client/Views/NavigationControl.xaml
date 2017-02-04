@@ -9,6 +9,10 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
     
+    <UserControl.Resources>
+        <x:Double x:Key="NavButtonHeight">40</x:Double>
+    </UserControl.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="48"/>
@@ -91,13 +95,40 @@
                    DisplayMode="Overlay"  
                    IsPaneOpen="False" 
                    CompactPaneLength="48" 
-                   OpenPaneLength="300">
+                   OpenPaneLength="250">
             <SplitView.Pane>
                 <Grid Background="#FF2B2B2B">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Border BorderThickness="0,0,0,1"
+                            Grid.Row="2"
+                            BorderBrush="#FF555555"/>
                     
-                    <Button Content="Settings"
-                            VerticalAlignment="Bottom"
-                            Command="{Binding NavigationViewModel.SettingsCommand}"/>
+                    <Button Grid.Row="3"
+                            Background="Transparent"
+                            HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Left"
+                            Height="{StaticResource NavButtonHeight}"
+                            Command="{Binding NavigationViewModel.SettingsCommand}">
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Left">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" 
+                                       Text="&#xE115;"
+                                       FontWeight="Thin"
+                                       Foreground="White"
+                                       FontSize="20"/>
+                            <TextBlock Text="Settings"
+                                       x:Uid="SettingsTbk"
+                                       FontWeight="Light"
+                                       Foreground="White"
+                                       Margin="15,0,0,0"/>
+                        </StackPanel>
+                    </Button>
                 </Grid>
             </SplitView.Pane>
 
