@@ -19,7 +19,10 @@ namespace KudaGo.Client.ViewModels.Nodes
 
             var image = @event.FirstImage;
             if (image != null)
+            {
                 Image = image.Thumbnail.Normal;
+                NotifyOfPropertyChanged(() => Image);
+            }
 
             Id = @event.Id;
             Title = @event.Title.GetNormalString();

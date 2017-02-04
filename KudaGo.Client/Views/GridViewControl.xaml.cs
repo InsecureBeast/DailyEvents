@@ -32,7 +32,7 @@ namespace KudaGo.Client.Views
             DependencyProperty.Register("ItemTemplateSelector", typeof(DataTemplateSelector), typeof(GridViewControl), new PropertyMetadata(null));
 
         public static readonly DependencyProperty HeaderVisibilityProperty =
-            DependencyProperty.Register("HeaderVisibility", typeof(Visibility), typeof(GridViewControl), new PropertyMetadata(Visibility.Collapsed));
+            DependencyProperty.Register("HeaderVisibility", typeof(Visibility), typeof(GridViewControl), new PropertyMetadata(Visibility.Collapsed, HeaderVisibilityChanged));
 
         public GridViewControl()
         {
@@ -121,5 +121,12 @@ namespace KudaGo.Client.Views
 
             parent.Frame.Navigate(typeof(DetailsPage), viewModel.EventOfTheDay);
         }
+
+        private static void HeaderVisibilityChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var control = d as GridViewControl;
+            control.gridViewHeader.Visibility = (Visibility) e.NewValue;
+        }
+
     }
 }

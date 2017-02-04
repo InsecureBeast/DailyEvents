@@ -42,7 +42,7 @@ namespace KudaGo.Client.ViewModels
             await _items.LoadMoreItemsAsync(0);
         }
 
-        public async Task Update()
+        public virtual async Task Update()
         {
             if (Items.Count == 0)
                 return;

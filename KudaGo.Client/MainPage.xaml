@@ -30,7 +30,7 @@
                         <views:GridViewControl Items="{Binding Items}"
                                                DataContext="{Binding EventsViewModel}"
                                                ItemTemplate="{StaticResource EventItemDataTemplate}"
-                                               HeaderVisibility="Visible"/>
+                                               HeaderVisibility="{Binding EventOfTheDay.Image, Converter={StaticResource StringToVisibilityConverter}}"/>
                     </PivotItem>
 
                     <PivotItem Header="News" x:Uid="newsItem">

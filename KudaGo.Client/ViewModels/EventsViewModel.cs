@@ -29,16 +29,7 @@ namespace KudaGo.Client.ViewModels
         {
             _dataSource = dataSource;
             _getData = GetEventData;
-
-            LayoutHelper.InvokeFromUiThread(async () =>
-            {
-                var events = await _dataSource.GetEventOfTheDay(null);
-                var eventOfTheDay = events.Results.FirstOrDefault();
-                if (eventOfTheDay == null)
-                    return;
-
-                EventOfTheDay = new EventOfTheDayNodeViewModel(eventOfTheDay);
-            });
+            LoadEventOfDay();
         }
 
         public EventOfTheDayNodeViewModel EventOfTheDay
@@ -89,6 +80,12 @@ namespace KudaGo.Client.ViewModels
             await Load();
         }
 
+        public override async Task Update()
+        {
+            LoadEventOfDay();
+            await base.Update();
+        }
+
         private async Task<IResponse> GetDataWithFilter(string next)
         {
             return await _dataSource.GetEventsWithFilter(next, _filter, _isFree);
@@ -97,6 +94,16 @@ namespace KudaGo.Client.ViewModels
         protected async Task<IResponse> GetEventData(string next)
         {
             return await _dataSource.GetEvents(next, _isFree);
+        }
+
+        private void LoadEventOfDay()
+        {
+            LayoutHelper.InvokeFromUiThread(async () =>
+            {
+                var events = await _dataSource.GetEventOfTheDay(null);
+                var eventOfTheDay = events.Results.FirstOrDefault();
+                EventOfTheDay = new EventOfTheDayNodeViewModel(eventOfTheDay);
+            });
         }
     }
 }

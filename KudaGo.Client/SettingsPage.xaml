@@ -7,13 +7,30 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-          Padding="15">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundSecondThemeBrush}"
+          Padding="15,0,15,15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Border Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
+                Margin="-15,0,-15,0">
+            <TextBlock Text="Settings"
+                       Margin="15,0,0,0"
+                       Style="{StaticResource BaseTextBlockStyle}"
+                       x:Uid="SettingsTbk"
+                       VerticalAlignment="Center"/>
+        </Border>
+        
         <TextBlock Text="Choose location"
-                   Margin="{StaticResource DefaultControlMargin}"/>
+                   Grid.Row="1"
+                   Margin="{StaticResource DoubleTextBlockMargin}"/>
         <ComboBox ItemsSource="{Binding Locations, Mode=OneWay}"
                   SelectedItem="{Binding SelectedLocation, Mode=TwoWay}"
                   Width="400"
+                  Grid.Row="2"
                   Margin="{StaticResource DefaultControlMargin}"/>
     </Grid>
 </Page>
