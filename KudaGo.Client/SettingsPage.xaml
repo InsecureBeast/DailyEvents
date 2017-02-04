@@ -30,7 +30,7 @@
                    Margin="{StaticResource DoubleTextBlockMargin}"/>
         <ComboBox ItemsSource="{Binding Locations, Mode=OneWay}"
                   SelectedItem="{Binding SelectedLocation, Mode=TwoWay}"
-                  Width="400"
+                  Width="250"
                   Grid.Row="2"
                   Margin="{StaticResource DefaultControlMargin}"/>
     </Grid>
