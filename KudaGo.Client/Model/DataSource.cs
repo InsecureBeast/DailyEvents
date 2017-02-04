@@ -44,7 +44,12 @@ namespace KudaGo.Client.Model
     public class DataSource : IDataSource
     {
         private string _culture = "ru";
-        private Location _location = Location.Spb;
+        private Location _location;
+
+        public DataSource(Location location)
+        {
+            _location = location;
+        }
 
         public async Task<IEventListResponse> GetEvents(string next, bool? isFree)
         {

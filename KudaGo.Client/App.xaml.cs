@@ -32,8 +32,9 @@ namespace KudaGo.Client
     /// </summary>
     sealed partial class App : Application
     {
-        private static IDataSource _dataSource = new DataSource();
+        private static IDataSource _dataSource;
         private static SettingsChangeNotifier _settingsNotifier;
+        private static ISettingsProvider _settingsProvider;
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -51,7 +52,11 @@ namespace KudaGo.Client
             CultureInfo.DefaultThreadCurrentCulture = culture;
             CultureInfo.DefaultThreadCurrentUICulture = culture;
 
+            _settingsProvider = new SettingsProvider();
             _settingsNotifier = new SettingsChangeNotifier();
+
+            var location = _settingsProvider.GetLocation();
+            _dataSource = new DataSource(location);
         }
 
         public static IDataSource DataSource
@@ -62,6 +67,11 @@ namespace KudaGo.Client
         internal static ISettingsChangeNotifier SettingsNotifier
         {
             get { return _settingsNotifier; }
+        }
+
+        internal static ISettingsProvider SettingsProvider
+        {
+            get { return _settingsProvider; }
         }
 
         /// <summary>

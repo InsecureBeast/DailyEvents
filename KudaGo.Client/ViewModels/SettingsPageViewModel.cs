@@ -15,16 +15,22 @@ namespace KudaGo.Client.ViewModels
         private readonly IDataSource _dataSource;
         private readonly List<LocationItem> _locations;
         private readonly ISettingsChangeNotifier _notifier;
+        private readonly ISettingsProvider _settingsProvider;
         private LocationItem _selectedLocation;
 
-        public SettingsPageViewModel(IDataSource dataSource, ISettingsChangeNotifier notifier)
+        public SettingsPageViewModel(IDataSource dataSource, ISettingsChangeNotifier notifier, ISettingsProvider settingsProvider)
         {
             _dataSource = dataSource;
             _notifier = notifier;
+            _settingsProvider = settingsProvider;
 
             _locations = new List<LocationItem>();
             LoadLocations();
-            //TODO from settings
+
+            //From settings
+            var savedLocation = _settingsProvider.GetLocation();
+            var selected = _locations.FirstOrDefault(l => l.Location == savedLocation);
+            SelectedLocation = selected;
         }
 
         public IEnumerable<LocationItem> Locations => _locations;
@@ -60,7 +66,8 @@ namespace KudaGo.Client.ViewModels
         private void Save()
         {
             _dataSource.SetLocation(SelectedLocation.Location);
-            //TODO save to settings
+            //save to settings
+            _settingsProvider.SaveLocation(SelectedLocation.Location);
             _notifier.Notify();
         }
     }

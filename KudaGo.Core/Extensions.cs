@@ -6,7 +6,7 @@ namespace KudaGo.Core
 {
     public static class Extensions
     {
-        public static string GetLocation(this Location location)
+        public static string GetStrLocation(this Location location)
         {
             switch (location)
             {
@@ -40,6 +40,43 @@ namespace KudaGo.Core
                     return "new-york";
                 default:
                     throw new ArgumentOutOfRangeException("location", location, null);
+            }
+        }
+
+        public static Location GetLocation(this string strLocation)
+        {
+            switch (strLocation)
+            {
+                case "spb" :
+                    return Location.Spb;
+                case "msk" :
+                    return Location.Moskva;
+                case "nsk" :
+                    return Location.Novosibirsk;
+                case "ekb" :
+                    return Location.Ekaterinburg;
+                case "nnv" :
+                    return Location.NNovgorod;
+                case "kzn" :
+                    return Location.Kazan;
+                case "vbg" :
+                    return Location.Viborg;
+                case "smr" :
+                    return Location.Samara;
+                case "krd" :
+                    return Location.Krasnodar;
+                case "sochi":
+                    return Location.Sochi;
+                case "ufa" :
+                    return Location.Ufa;
+                case "krasnoyarsk" :
+                    return Location.Krasnoyarsk;
+                case "kev":
+                    return Location.Kiev;
+                case "new-york":
+                    return Location.NewYork;
+                default:
+                    throw new ArgumentOutOfRangeException("location", strLocation, null);
             }
         }
 

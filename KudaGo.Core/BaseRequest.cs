@@ -64,7 +64,7 @@ namespace KudaGo.Core
             if (Page != null)
                 _builder.Append("&page=" + Page);
             if (Location != null)
-                _builder.Append("&location=" + Location.Value.GetLocation());
+                _builder.Append("&location=" + Location.Value.GetStrLocation());
             if (IsFree != null)
             {
                 if (IsFree.Value)

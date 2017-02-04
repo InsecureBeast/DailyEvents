@@ -22,7 +22,7 @@ namespace KudaGo.Client.Helpers
 
         public static void NavigateToSettings()
         {
-            NavigateTo(typeof(SettingsPage), new SettingsPageViewModel(App.DataSource, App.SettingsNotifier));
+            NavigateTo(typeof(SettingsPage), new SettingsPageViewModel(App.DataSource, App.SettingsNotifier, App.SettingsProvider));
         }
 
         internal static void GoBack()

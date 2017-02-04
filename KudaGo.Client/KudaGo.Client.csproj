@@ -106,6 +106,7 @@
     <Compile Include="Common\ItemClickCommand.cs" />
     <Compile Include="Common\SearchItemTemplateSelector.cs" />
     <Compile Include="Common\SettingsChangeNotifier.cs" />
+    <Compile Include="Common\SettingsProvider.cs" />
     <Compile Include="Common\TappedEventProvider.cs" />
     <Compile Include="Common\DelegateCommand.cs" />
     <Compile Include="Common\EventItemTemplateSelector.cs" />
