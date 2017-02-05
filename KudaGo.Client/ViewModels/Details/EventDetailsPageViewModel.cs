@@ -12,6 +12,7 @@ using System.Windows.Input;
 using KudaGo.Client.Command;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using KudaGo.Client.ViewModels.Nodes;
 
 namespace KudaGo.Client.ViewModels.Details
 {
@@ -156,21 +157,8 @@ namespace KudaGo.Client.ViewModels.Details
                 var dates = rs.Dates.LastOrDefault();
                 if (dates != null)
                 {
-                    if (dates.Start.HasValue && dates.End.HasValue)
-                    {
-                        var start = dates.Start.Value;
-                        var end = dates.End.Value;
-                        var datesStr = string.Format("{0} - {1}", start.ToString("D"), end.ToString("D"));
-                        var times = string.Format("{0} - {1}", start.ToString("t"), end.ToString("t"));
-                        if (start == end)
-                        {
-                            datesStr = start.ToString("D");
-                            times = start.ToString("t");
-                        }
-                        Dates = datesStr;
-                        Times = times;
-                    }
-
+                    Dates = EventNodeViewModel.GetDates(dates);
+                    Times = EventNodeViewModel.GetTimes(dates);
                 }
 
                 await EventCommentsViewModel.Load();

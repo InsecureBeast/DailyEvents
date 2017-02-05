@@ -80,7 +80,7 @@ namespace KudaGo.Client.ViewModels.Nodes
                     datesStr = string.Format("{0} - {1}", DateTime.Now.ToString("D"), end.ToString("D"));
                 }
 
-                if (start.Date == new DateTime(0001, 01, 3) && end.Date == new DateTime(9999, 1, 1))
+                if (start.Date == new DateTime(0001, 01, 3) && end.Date >= new DateTime(9999, 1, 1))
                 {
                     datesStr = string.Empty;
                 }
