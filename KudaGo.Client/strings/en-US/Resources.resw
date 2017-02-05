@@ -186,4 +186,7 @@
   <data name="SettingsTbk.Text" xml:space="preserve">
     <value>Settings</value>
   </data>
+  <data name="EventOfDay" xml:space="preserve">
+    <value>Event of the day</value>
+  </data>
 </root>

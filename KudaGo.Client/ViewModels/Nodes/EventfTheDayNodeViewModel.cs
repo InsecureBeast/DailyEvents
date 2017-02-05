@@ -1,4 +1,5 @@
 ﻿using KudaGo.Client.Extensions;
+using KudaGo.Client.Helpers;
 using KudaGo.Core.Events;
 using System;
 using System.Collections.Generic;
@@ -27,25 +28,17 @@ namespace KudaGo.Client.ViewModels.Nodes
             Id = @event.Id;
             Title = @event.Title.GetNormalString();
             Description = @event.Description;
+            Categories = ResourcesHelper.GetLocalizationString("EventOfDay");
 
             var dates = @event.DateRange;
             if (dates == null)
                 return;
 
-            if (dates.Start.HasValue && dates.End.HasValue)
-            {
-                var start = dates.Start.Value;
-                var end = dates.End.Value;
-                var datesStr = string.Format("{0} - {1}", start.ToString("D"), end.ToString("D"));
-                var times = string.Format("{0} - {1}", start.ToString("t"), end.ToString("t"));
-                if (start == end)
-                {
-                    datesStr = start.ToString("D");
-                    times = start.ToString("t");
-                }
-                Dates = datesStr;
-                Times = times;
-            }
+
+            Dates = EventNodeViewModel.GetDates(@event.DateRange);
+            Times = EventNodeViewModel.GetTimes(@event.DateRange);
         }
+
+        public string Categories { get; private set; }
     }
 }

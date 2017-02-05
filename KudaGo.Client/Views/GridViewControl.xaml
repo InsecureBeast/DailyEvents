@@ -33,16 +33,19 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                    
                     <controls:ImageEx Source="{Binding EventOfTheDay.Image}"
                                       x:Name="Image"
+                                      Grid.RowSpan="3"
                                       ImageExOpened="Image_ImageExOpened"
                                       VerticalAlignment="Center"
                                       HorizontalAlignment="Center"
                                       Stretch="UniformToFill"/>
 
                     <Border x:Name="FadeBorder"
+                            Grid.RowSpan="3"
                             Visibility="Collapsed">
                         <Border.Background>
                             <LinearGradientBrush StartPoint="0.5,1"
@@ -54,18 +57,46 @@
                             </LinearGradientBrush>
                         </Border.Background>
                     </Border>
-                    
+
+                    <Border Background="Black"
+                            Visibility="{Binding Categories, Converter={StaticResource StringToVisibilityConverter}}"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Left"
+                            Margin="10"
+                            Padding="10,2,10,5"
+                            Opacity="0.7">
+                        <TextBlock Text="{Binding EventOfTheDay.Categories}"
+                               Foreground="White"
+                               Opacity="1"/>
+                    </Border>
+
                     <TextBlock Text="{Binding EventOfTheDay.Title}"
                                Style="{StaticResource SubtitleTextBlockStyle}"
                                MaxLines="3"
+                               Grid.Row="1"
                                Foreground="White"
-                               Margin="10"
+                               Margin="0"
                                Name="HeaderTitle"
                                Visibility="Collapsed"
-                               VerticalAlignment="Bottom"
                                HorizontalAlignment="Center"
                                TextTrimming="CharacterEllipsis"
                                FontWeight="SemiBold"/>
+
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                Margin="0,4,0,8"
+                                Grid.Row="2">
+                        <TextBlock Text="{Binding EventOfTheDay.Dates}"
+                                   MaxLines="1"
+                                   Foreground="White"
+                                   Style="{StaticResource BodyTextBlockStyle}"/>
+
+                        <TextBlock Text="{Binding EventOfTheDay.Times}"
+                                   MaxLines="1"
+                                   Foreground="White"
+                                   Margin="10,0,0,0"
+                                   Style="{StaticResource BodyTextBlockStyle}"/>
+                    </StackPanel>
                 </Grid>
             </GridView.Header>
             <GridView.ItemsPanel>

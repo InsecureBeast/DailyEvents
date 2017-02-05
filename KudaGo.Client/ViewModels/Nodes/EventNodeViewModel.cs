@@ -111,7 +111,7 @@ namespace KudaGo.Client.ViewModels.Nodes
                 if (start.Date == new DateTime(0001, 01, 3))
                     times = string.Empty;
 
-                if (start.Date == new DateTime(0001, 01, 3) && end.Date == new DateTime(9999, 1, 1))
+                if (start.Date == new DateTime(0001, 01, 3) && end.Date >= new DateTime(3000, 1, 1))
                     times = string.Empty;
             }
 

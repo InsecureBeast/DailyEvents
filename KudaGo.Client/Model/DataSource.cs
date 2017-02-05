@@ -190,8 +190,8 @@ namespace KudaGo.Client.Model
             var request = new EventDetailsRequest();
             request.Lang = _culture;
             request.EventId = eventId;
-            request.TextFormat = TextFormatEnum.Text;
-            request.Expand = EventListRequest.ExpandNames.PLACE + "," + EventListRequest.ExpandNames.PLACE;
+            request.TextFormat = TextFormatEnum.Plain;
+            request.Expand = EventListRequest.ExpandNames.PLACE + "," + EventListRequest.ExpandNames.IMAGES;
 
             var res = await request.ExecuteAsync();
             return res;
