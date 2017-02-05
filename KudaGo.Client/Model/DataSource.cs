@@ -236,6 +236,7 @@ namespace KudaGo.Client.Model
             request.Lang = _culture;
             request.MovieId = movieId;
             request.Expand = MovieListRequest.ExpandNames.IMAGES;
+            request.TextFormat = TextFormatEnum.Plain;
 
             var res = await request.ExecuteAsync();
             return res;
