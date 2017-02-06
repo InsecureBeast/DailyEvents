@@ -24,47 +24,58 @@
         <views:NavigationControl Title="Today" 
                                  x:Uid="mainNavControl">
             <views:NavigationControl.ViewContent>
-                <Pivot SelectionChanged="Pivot_SelectionChanged"
-                       x:Name="pivot">
-                    <PivotItem Header="Events" x:Uid="eventsItem">
-                        <views:GridViewControl Items="{Binding Items}"
-                                               DataContext="{Binding EventsViewModel}"
-                                               ItemTemplate="{StaticResource EventItemDataTemplate}"
-                                               HeaderVisibility="{Binding EventOfTheDay.Image, Converter={StaticResource StringToVisibilityConverter}}"/>
-                    </PivotItem>
-
-                    <PivotItem Header="News" x:Uid="newsItem">
-                        <views:GridViewControl Items="{Binding Items}"
-                                               DataContext="{Binding NewsViewModel}"
-                                               ItemTemplate="{StaticResource NewsItemDataTemplate}"/>
-                    </PivotItem>
-
-                    <PivotItem Header="Movies" x:Uid="moviesItem">
-                        <views:GridViewControl Items="{Binding Items}"
-                                               DataContext="{Binding MoviesViewModel}"
-                                               ItemTemplate="{StaticResource MovieItemDataTemplate}"/>
-                    </PivotItem>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
                     
-                    <PivotItem Header="Selections" x:Uid="selectionsItem">
-                        <views:GridViewControl Items="{Binding Items}"
-                                               DataContext="{Binding SelectionsViewModel}"
-                                               ItemTemplate="{StaticResource SelectionItemDataTemplate}"/>
-                    </PivotItem>
-                </Pivot>
-                
+                    <Pivot SelectionChanged="Pivot_SelectionChanged"
+                           x:Name="pivot">
+                        <PivotItem Header="Events" x:Uid="eventsItem">
+                            <views:GridViewControl Items="{Binding Items}"
+                                                   DataContext="{Binding EventsViewModel}"
+                                                   ItemTemplate="{StaticResource EventItemDataTemplate}"
+                                                   HeaderVisibility="{Binding EventOfTheDay.Image, Converter={StaticResource StringToVisibilityConverter}}"/>
+                        </PivotItem>
+
+                        <PivotItem Header="News" x:Uid="newsItem">
+                            <views:GridViewControl Items="{Binding Items}"
+                                                   DataContext="{Binding NewsViewModel}"
+                                                   ItemTemplate="{StaticResource NewsItemDataTemplate}"/>
+                        </PivotItem>
+
+                        <PivotItem Header="Movies" x:Uid="moviesItem">
+                            <views:GridViewControl Items="{Binding Items}"
+                                                   DataContext="{Binding MoviesViewModel}"
+                                                   ItemTemplate="{StaticResource MovieItemDataTemplate}"/>
+                        </PivotItem>
+                    
+                        <PivotItem Header="Selections" x:Uid="selectionsItem">
+                            <views:GridViewControl Items="{Binding Items}"
+                                                   DataContext="{Binding SelectionsViewModel}"
+                                                   ItemTemplate="{StaticResource SelectionItemDataTemplate}"/>
+                        </PivotItem>
+                    </Pivot>
+
+                    <CommandBar x:Name="BottomCommandBar" 
+                                Grid.Row="1"
+                                Background="{StaticResource NavigationBackgroundThemeBrush}">
+                        <AppBarButton Label="Filter" 
+                              x:Uid="Filter"
+                              Icon="Filter"  
+                              Command="{Binding EventFilterCommand}"/>
+                </CommandBar>
+                </Grid>
             </views:NavigationControl.ViewContent>
         </views:NavigationControl>
+
+        
     </Grid>
 
-    <Page.BottomAppBar>
-        <CommandBar x:Name="BottomCommandBar" 
-                    Background="{StaticResource NavigationBackgroundThemeBrush}">
-            <AppBarButton Label="Filter" 
-                          x:Uid="Filter"
-                          Icon="Filter"  
-                          Command="{Binding EventFilterCommand}"/>
-        </CommandBar>
-    </Page.BottomAppBar>
+    <!--<Page.BottomAppBar>
+        
+    </Page.BottomAppBar>-->
     
     
     
