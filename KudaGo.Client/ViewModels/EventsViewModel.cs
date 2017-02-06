@@ -57,12 +57,10 @@ namespace KudaGo.Client.ViewModels
             {
                 Items.Add(new EventNodeViewModel(result, _categoryNameProvider));
             }
-            IsBusy = false;
         }
 
         protected override async Task<IResponse> GetData(string next)
         {
-            IsBusy = true;
             return await _getData(next);
         }
 

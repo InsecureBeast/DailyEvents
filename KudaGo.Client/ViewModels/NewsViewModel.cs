@@ -29,12 +29,10 @@ namespace KudaGo.Client.ViewModels
             {
                 Items.Add(new NewsNodeViewModel(result));
             }
-            IsBusy = false;
         }
 
         protected override async Task<IResponse> GetData(string next)
         {
-            IsBusy = true;
             return await _dataSource.GetNews(next);
         }
     }

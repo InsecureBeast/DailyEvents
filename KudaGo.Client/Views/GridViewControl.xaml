@@ -118,5 +118,10 @@
                       Foreground="{StaticResource InkToolbarAccentColorThemeBrush}"
                       Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
+        <TextBlock Text="К сожалению, пока нет ничего подходящего."
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   Visibility="{Binding IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+        
     </Grid>
 </UserControl>

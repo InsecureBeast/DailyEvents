@@ -25,6 +25,9 @@ namespace KudaGo.Client.Controls
         private bool _hasMoreItems = true;
         private string _next;
         private int _count;
+        private bool _isBusy;
+
+        public event EventHandler<IsBusyEventArgs> IsBusyChanged;
 
         public IncrementalObservableCollection(GetDataDelegate getData, AddDataDelegate addData)
         {
@@ -39,8 +42,15 @@ namespace KudaGo.Client.Controls
 
         public bool Busy
         {
-            get;
-            set;
+            get { return _isBusy; }
+            set
+            {
+                _isBusy = value;
+                LayoutHelper.InvokeFromUiThread(() =>
+                {
+                    IsBusyChanged?.Invoke(this, new IsBusyEventArgs(value));
+                });
+            }
         }
 
         public IAsyncOperation<LoadMoreItemsResult> LoadMoreItemsAsync(uint count)
@@ -77,5 +87,15 @@ namespace KudaGo.Client.Controls
 
             return new LoadMoreItemsResult { Count = (uint)_count }; ;
         }
+    }
+
+    class IsBusyEventArgs : EventArgs
+    {
+        public IsBusyEventArgs(bool isBusy)
+        {
+            IsBusy = isBusy;
+        }
+
+        public bool IsBusy { get; private set; }
     }
 }

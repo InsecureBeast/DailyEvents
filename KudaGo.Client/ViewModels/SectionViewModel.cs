@@ -16,12 +16,14 @@ namespace KudaGo.Client.ViewModels
     {
         private readonly IncrementalObservableCollection<NodeViewModel> _items;
         private bool _isBusy;
+        private bool _isEmpty = false;
 
         public SectionViewModel()
         {
             _items = new IncrementalObservableCollection<NodeViewModel>(GetData, AddData);
+            _items.IsBusyChanged += IsBusyChanged;
         }
-
+        
         public ObservableCollection<NodeViewModel> Items
         {
             get { return _items; }
@@ -34,6 +36,19 @@ namespace KudaGo.Client.ViewModels
             {
                 _isBusy = value;
                 NotifyOfPropertyChanged(() => IsBusy);
+                IsEmpty = false;
+                if (_isBusy == false && Items.Count == 0)
+                    IsEmpty = true;
+            }
+        }
+
+        public bool IsEmpty
+        {
+            get { return _isEmpty; }
+            set
+            {
+                _isEmpty = value;
+                NotifyOfPropertyChanged(() => IsEmpty);
             }
         }
 
@@ -58,6 +73,11 @@ namespace KudaGo.Client.ViewModels
         protected virtual Task<IResponse> GetData(string next)
         {
             return null;
+        }
+
+        private void IsBusyChanged(object sender, IsBusyEventArgs e)
+        {
+            IsBusy = e.IsBusy;
         }
     }
 }
