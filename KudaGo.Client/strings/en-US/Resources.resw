@@ -189,4 +189,10 @@
   <data name="EventOfDay" xml:space="preserve">
     <value>Event of the day</value>
   </data>
+  <data name="movieUrlTbk.Text" xml:space="preserve">
+    <value>Movie url</value>
+  </data>
+  <data name="trailerTbk.Text" xml:space="preserve">
+    <value>Trailer</value>
+  </data>
 </root>

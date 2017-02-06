@@ -18,7 +18,6 @@ namespace KudaGo.Core.Movies
         public long MovieId { get; set; }
         public string Fields { get; set; }
         public string Expand { get; set; }
-        //public TextFormatEnum? TextFormat { get; set; }
 
         public override async Task<IMovieDetailsResponse> ExecuteAsync()
         {
@@ -45,9 +44,6 @@ namespace KudaGo.Core.Movies
 
             if (Expand != null)
                 _builder.Append("&expand=" + Expand);
-
-            //if (TextFormat != null)
-            //    _builder.Append("&text_format=" + TextFormat.Value.ToString().ToLowerInvariant());
 
             return base.Build();
         }

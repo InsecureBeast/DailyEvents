@@ -53,7 +53,7 @@
 
                             <RichTextBlock TextAlignment="Justify"
                                            Style="{StaticResource NormalRichTextBlockStyle}"
-                                           Margin="{StaticResource DefaultControlMargin}">
+                                           Margin="{StaticResource DoubleTextBlockMargin}">
                                 <Paragraph>
                                     <Run Text="{Binding BodyText}" />
                                 </Paragraph>
@@ -82,6 +82,27 @@
                             <TextBlock Text="{Binding Country}"
                                        TextWrapping="WrapWholeWords"
                                        Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
+
+                            <TextBlock Text="Trailer"
+                                       Margin="{StaticResource DoubleTextBlockMargin}"
+                                       x:Uid="trailerTbk"
+                                       FontWeight="SemiBold"/>
+                            <TextBlock Style="{StaticResource NormalTextBlockStyle}"
+                                       Margin="{StaticResource DefaultControlMargin}"
+                                       Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}">
+                                <Hyperlink NavigateUri="{Binding Trailer}"><Run Text="{Binding Trailer}"/></Hyperlink>
+                            </TextBlock>
+
+                            <TextBlock Text="Url"
+                                       Visibility="{Binding Url, Converter={StaticResource StringToVisibilityConverter}}"
+                                       Margin="{StaticResource DoubleTextBlockMargin}"
+                                       x:Uid="movieUrlTbk"
+                                       FontWeight="SemiBold"/>
+                            <TextBlock Style="{StaticResource NormalTextBlockStyle}"
+                                       Margin="{StaticResource DefaultControlMargin}"
+                                       Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}">
+                                <Hyperlink NavigateUri="{Binding Url}"><Run Text="{Binding Url}"/></Hyperlink>
+                            </TextBlock>
                         </StackPanel>
 
                         <StackPanel Grid.Row="3"

@@ -16,9 +16,9 @@ namespace KudaGo.Client.ViewModels.Details
         private string _language;
         private string _year;
         private string _runningTime;
-        private string _budget;
+        private string _trailer;
         private string _actors;
-        private string _writer;
+        private string _url;
         private string _director;
 
         public MovieDetailsPageViewModel(long id, IDataSource dataSource) : base(id, dataSource)
@@ -75,13 +75,13 @@ namespace KudaGo.Client.ViewModels.Details
             }
         }
 
-        public string Budget
+        public string Trailer
         {
-            get { return _budget; }
+            get { return _trailer; }
             private set
             {
-                _budget = value;
-                NotifyOfPropertyChanged(() => Budget);
+                _trailer = value;
+                NotifyOfPropertyChanged(() => Trailer);
             }
         }
 
@@ -95,13 +95,13 @@ namespace KudaGo.Client.ViewModels.Details
             }
         }
 
-        public string Writer
+        public string Url
         {
-            get { return _writer; }
+            get { return _url; }
             private set
             {
-                _writer = value;
-                NotifyOfPropertyChanged(() => Writer);
+                _url = value;
+                NotifyOfPropertyChanged(() => Url);
             }
         }
 
@@ -139,9 +139,9 @@ namespace KudaGo.Client.ViewModels.Details
                 Language = rs.Language;
                 var format = ResourcesHelper.GetLocalizationString("MinutesStringFormat");
                 RunningTime = string.Format(format, rs.RunningTime);
-                Budget = rs.Budget;
+                Trailer = rs.Trailer;
                 Actors = rs.Stars;
-                Writer = rs.Writer;
+                Url = rs.Url;
                 Director = rs.Director;
 
                 //await EventCommentsViewModel.Load();
