@@ -30,7 +30,7 @@ namespace KudaGo.Client.ViewModels.Details
                 LoadImage(item.ItemUrl);
 
             Title = item.Title.GetNormalString();
-            Description = item.Description;
+            Description = item.Description.StripHtmlTags();
             Type = item.CType.GetCType();
             Id = item.Id;
         }

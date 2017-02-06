@@ -17,14 +17,16 @@
             <Grid Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}"
                      Padding="15">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="5*" />
+                    <ColumnDefinition Width="144"/>
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
                 <toolkit:ImageEx Source="{Binding Image}"
                                  Visibility="{Binding Image, Converter={StaticResource StringToVisibilityConverter}}"
                                  Margin="0,0,0,0"
                                  HorizontalAlignment="Center"
+                                 Height="96"
+                                 Width="144"
                                  Stretch="UniformToFill"/>
                     
                 <StackPanel Margin="10,0,0,0"
@@ -39,7 +41,7 @@
 
                     <TextBlock TextAlignment="DetectFromContent"
                                Style="{StaticResource NormalTextBlockStyle}"
-                               MaxLines="4"
+                               MaxLines="3"
                                TextTrimming="CharacterEllipsis"
                                Text="{Binding Description}"
                                Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
