@@ -171,7 +171,7 @@
     <Compile Include="ViewModels\NewsViewModel.cs" />
     <Compile Include="ViewModels\Nodes\NodeViewModel.cs" />
     <Compile Include="ViewModels\Nodes\SelectionNodeViewModel.cs" />
-    <Compile Include="ViewModels\SearchPageViewModel.cs" />
+    <Compile Include="ViewModels\Search\SearchPageViewModel.cs" />
     <Compile Include="ViewModels\Search\SearchNodeViewModel.cs" />
     <Compile Include="ViewModels\SectionViewModel.cs" />
     <Compile Include="ViewModels\PropertyChangedBase.cs" />

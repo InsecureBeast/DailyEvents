@@ -14,7 +14,7 @@
                                            NewsTemplate="{StaticResource NewsItemDataTemplate}"
                                            EventTemplate="{StaticResource EventItemDataTemplate}"
                                            PlaceTemplate="{StaticResource PlaceItemDataTemplate}"
-                                           SelectionTemplate="{StaticResource SelectionItemDataTemplate}"/>
+                                           SelectionTemplate="{StaticResource SearchSelectionItemDataTemplate}"/>
     </Page.Resources>
     
     <views:NavigationControl Title="{Binding NavigationViewModel.SearchString}">
@@ -28,15 +28,6 @@
                 <views:GridViewControl Items="{Binding Items}"
                                        Grid.Row="1" 
                                        ItemTemplateSelector="{StaticResource ItemTemplateSelector}"/>
-
-                <ProgressRing IsActive="True" 
-                              Grid.Row="1"
-                              Width="50"
-                              Height="50"
-                              HorizontalAlignment="Center"
-                              VerticalAlignment="Center"
-                              Foreground="{StaticResource InkToolbarAccentColorThemeBrush}"
-                              Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
             </Grid>
         </views:NavigationControl.ViewContent>

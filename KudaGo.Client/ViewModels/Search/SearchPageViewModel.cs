@@ -1,9 +1,6 @@
-﻿using KudaGo.Client.Helpers;
-using KudaGo.Client.Model;
-using KudaGo.Client.ViewModels.Nodes;
+﻿using KudaGo.Client.Model;
 using KudaGo.Client.ViewModels.Search;
 using KudaGo.Core.Data;
-using KudaGo.Core.Events;
 using KudaGo.Core.Search;
 using System;
 using System.Collections.Generic;
@@ -46,6 +43,8 @@ namespace KudaGo.Client.ViewModels
             {
                 Items.Add(new SearchNodeViewModel(result));
             }
+
+            base.AddData(response);
         }
 
         protected override async Task<IResponse> GetData(string next)

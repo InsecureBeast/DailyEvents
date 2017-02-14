@@ -211,6 +211,34 @@
         </Grid>
     </DataTemplate>
 
+    <DataTemplate x:Key="SearchSelectionItemDataTemplate">
+        <Grid Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}"
+              Margin="7,7,7,7"
+              Padding="15"
+              MinHeight="400">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="{Binding Title}"
+                       Style="{StaticResource SubtitleTextBlockStyle}"
+                       Height="80"
+                       TextWrapping="Wrap"
+                       TextTrimming="CharacterEllipsis"
+                       VerticalAlignment="Center"
+                       FontWeight="SemiBold"/>
+
+            <TextBlock Text="{Binding Date}"
+                        Grid.Row="1"
+                       MaxLines="1"
+                       Margin="{StaticResource DefaultControlMargin}"
+                       Style="{StaticResource BodyTextBlockStyle}"/>
+
+        </Grid>
+    </DataTemplate>
+
     <DataTemplate x:Key="MovieItemDataTemplate">
         <Grid Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}"
               Margin="7,7,7,7"
