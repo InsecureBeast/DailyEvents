@@ -119,8 +119,11 @@
                       Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
         <TextBlock Text="К сожалению, пока нет ничего подходящего."
+                   x:Uid="NothingSuitable."
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"
+                   Style="{StaticResource SubtitleTextBlockStyle}"
+                   Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"
                    Visibility="{Binding IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}"/>
         
     </Grid>

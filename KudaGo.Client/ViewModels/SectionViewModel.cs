@@ -15,7 +15,7 @@ namespace KudaGo.Client.ViewModels
     class SectionViewModel : PropertyChangedBase
     {
         private readonly IncrementalObservableCollection<NodeViewModel> _items;
-        private bool _isBusy;
+        private bool _isBusy = false;
         private bool _isEmpty = false;
 
         public SectionViewModel()
@@ -36,9 +36,6 @@ namespace KudaGo.Client.ViewModels
             {
                 _isBusy = value;
                 NotifyOfPropertyChanged(() => IsBusy);
-                IsEmpty = false;
-                if (_isBusy == false && Items.Count == 0)
-                    IsEmpty = true;
             }
         }
 
@@ -68,6 +65,7 @@ namespace KudaGo.Client.ViewModels
 
         protected virtual void AddData(IResponse response)
         {
+            IsEmpty = Items.Count == 0;
         }
 
         protected virtual Task<IResponse> GetData(string next)

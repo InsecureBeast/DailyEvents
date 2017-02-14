@@ -51,12 +51,17 @@ namespace KudaGo.Client.ViewModels
         {
             var res = response as IEventListResponse;
             if (res == null)
+            {
+                IsEmpty = true;
                 return;
+            }
 
             foreach (var result in res.Results)
             {
                 Items.Add(new EventNodeViewModel(result, _categoryNameProvider));
             }
+
+            base.AddData(response);
         }
 
         protected override async Task<IResponse> GetData(string next)

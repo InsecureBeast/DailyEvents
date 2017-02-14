@@ -29,6 +29,8 @@ namespace KudaGo.Client.ViewModels
             {
                 Items.Add(new MovieNodeViewModel(result));
             }
+
+            base.AddData(response);
         }
 
         protected override async Task<IResponse> GetData(string next)

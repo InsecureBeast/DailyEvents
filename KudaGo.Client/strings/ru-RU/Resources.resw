@@ -195,4 +195,7 @@
   <data name="trailerTbk.Text" xml:space="preserve">
     <value>Трейлер</value>
   </data>
+  <data name="NothingSuitable.Text" xml:space="preserve">
+    <value>К сожалению, пока нет ничего подходящего.</value>
+  </data>
 </root>
