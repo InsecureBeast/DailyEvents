@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using KudaGo.Client.Helpers;
 
 namespace KudaGo.Client.ViewModels
 {
@@ -47,20 +48,10 @@ namespace KudaGo.Client.ViewModels
 
         private void LoadLocations()
         {
-            _locations.Add(new LocationItem(Location.Ekaterinburg, "Екатеринбург"));
-            _locations.Add(new LocationItem(Location.Kazan, "Казань"));
-            _locations.Add(new LocationItem(Location.Kiev, "Киев"));
-            _locations.Add(new LocationItem(Location.Krasnodar, "Краснодар"));
-            _locations.Add(new LocationItem(Location.Krasnoyarsk, "Красноярск"));
-            _locations.Add(new LocationItem(Location.Moskva, "Москва"));
-            _locations.Add(new LocationItem(Location.NewYork, "Нью-Йорк"));
-            _locations.Add(new LocationItem(Location.NNovgorod, "Нижний Новгород"));
-            _locations.Add(new LocationItem(Location.Novosibirsk, "Новосибирск"));
-            _locations.Add(new LocationItem(Location.Samara, "Самара"));
-            _locations.Add(new LocationItem(Location.Sochi, "Сочи"));
-            _locations.Add(new LocationItem(Location.Spb, "Санкт-Петербург"));
-            _locations.Add(new LocationItem(Location.Ufa, "Уфа"));
-            _locations.Add(new LocationItem(Location.Viborg, "Выборг"));
+            foreach (Location location in Enum.GetValues(typeof(Location)))
+            {
+                _locations.Add(new LocationItem(location));
+            }
         }
 
         private void Save()
@@ -74,10 +65,10 @@ namespace KudaGo.Client.ViewModels
 
     class LocationItem
     {
-        public LocationItem(Location location, string localizeName)
+        public LocationItem(Location location)
         {
             Location = location;
-            Title = localizeName;
+            Title = LocationHelper.GetCity(location);
         }
 
         public Location Location { get; set; }

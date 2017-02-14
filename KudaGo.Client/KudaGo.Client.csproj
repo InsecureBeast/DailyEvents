@@ -129,6 +129,7 @@
     <Compile Include="Helpers\DeviceTypeHelper.cs" />
     <Compile Include="Common\ImageLoader.cs" />
     <Compile Include="Helpers\LayoutHelper.cs" />
+    <Compile Include="Helpers\LocationHelper.cs" />
     <Compile Include="Helpers\NavigationHelper.cs" />
     <Compile Include="Helpers\ResourcesHelper.cs" />
     <Compile Include="Helpers\VisualHelper.cs" />

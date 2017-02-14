@@ -22,10 +22,13 @@ namespace KudaGo.Client.ViewModels
         private readonly DelegateCommand _eventFilterCommand;
         private readonly NavigationViewModel _navigationViewModel;
         private readonly IDataSource _dataSource;
+        private string _city;
+        private readonly ISettingsProvider _settings;
 
         public MainPageViewModel()
         {
             _dataSource = App.DataSource;
+            _settings = App.SettingsProvider;
             var notifier = App.SettingsNotifier;
             notifier.Subscribe(this);
 
@@ -40,6 +43,8 @@ namespace KudaGo.Client.ViewModels
             _navigationViewModel = new NavigationViewModel(_dataSource);
             
             _eventFilterCommand = new DelegateCommand(Filter);
+
+            UpdateCity();
         }
 
         public ICommand EventFilterCommand
@@ -92,11 +97,16 @@ namespace KudaGo.Client.ViewModels
             get { return _navigationViewModel; }
         }
 
-        private void Filter(object obj)
+        public string City
         {
-            NavigationHelper.NavigateTo(typeof(CategoryPage), _categoryPageViewModel);
-        }
-
+            get { return _city; }
+            set
+            {
+                _city = value;
+                NotifyOfPropertyChanged(() => City);
+            }
+        }    
+        
         public void UpdateSettings()
         {
             EventsViewModel = new EventsViewModel(_dataSource);
@@ -105,6 +115,19 @@ namespace KudaGo.Client.ViewModels
             NewsViewModel = new NewsViewModel(_dataSource);
             MoviesViewModel = new MoviesViewModel(_dataSource);
             SelectionsViewModel = new SelectionsViewModel(_dataSource);
+
+            UpdateCity();
+        }
+
+        private void Filter(object obj)
+        {
+            NavigationHelper.NavigateTo(typeof(CategoryPage), _categoryPageViewModel);
+        }
+
+        private void UpdateCity()
+        {
+            var location = _settings.GetLocation();
+            City = LocationHelper.GetCity(location);
         }
     }
 }
