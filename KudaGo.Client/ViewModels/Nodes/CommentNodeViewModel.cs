@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using KudaGo.Core.Comments;
+using KudaGo.Client.Helpers;
 
 namespace KudaGo.Client.ViewModels.Nodes
 {
@@ -17,8 +18,7 @@ namespace KudaGo.Client.ViewModels.Nodes
             Text = result.Text;
             UserImage = result.User.Avatar;
             if (string.IsNullOrEmpty(UserImage))
-                UserImage = "https://lh6.googleusercontent.com/kfRPEQ7Wuqw7Kqrwh_bfjBgnueQBj16mMQ1X3Mzy1ZKY7hRJCh-BiHW9s84TmfBDDqcm8emwE66fWkI=w1920-h950";
-            
+                UserImage = ResourcesHelper.GetIconPath("profile.png");
             UserName = result.User.DisplayName;
         }
 
