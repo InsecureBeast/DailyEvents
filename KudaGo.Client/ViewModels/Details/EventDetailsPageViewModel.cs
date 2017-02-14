@@ -135,8 +135,8 @@ namespace KudaGo.Client.ViewModels.Details
             LayoutHelper.InvokeFromUiThread(async () => 
             {
                 Title = rs.Title.GetNormalString();
-                Description = rs.Description;
-                BodyText = rs.BodyText;
+                Description = rs.Description.GetNormalString();
+                BodyText = rs.BodyText.GetNormalString();
                 Age = rs.AgeRestriction;
                 IsFree = rs.IsFree;
                 Price = rs.Price;

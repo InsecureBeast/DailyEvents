@@ -52,7 +52,6 @@ namespace KudaGo.Client
             SetTemplate(e.Parameter as NodeViewModel);
         }
 
-        //TemplateSelector not working!!! что за херня!!!
         private void SetTemplate(NodeViewModel vm)
         {
             if (vm is EventNodeViewModel)

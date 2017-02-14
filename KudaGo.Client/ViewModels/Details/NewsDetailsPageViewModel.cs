@@ -49,8 +49,8 @@ namespace KudaGo.Client.ViewModels.Details
             LayoutHelper.InvokeFromUiThread(() =>
             {
                 Title = rs.Title.GetNormalString();
-                Description = rs.Description;
-                BodyText = rs.BodyText;
+                Description = rs.Description.GetNormalString();
+                BodyText = rs.BodyText.GetNormalString();
                 Source = new Uri(rs.SiteUrl);
 
                 foreach (var image in rs.Images)

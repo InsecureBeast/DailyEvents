@@ -124,8 +124,8 @@ namespace KudaGo.Client.ViewModels.Details
             LayoutHelper.InvokeFromUiThread(() =>
             {
                 Title = rs.Title.GetNormalString();
-                Description = rs.Description;
-                BodyText = rs.BodyText;
+                Description = rs.Description.GetNormalString();
+                BodyText = rs.BodyText.GetNormalString();
                 Adress = rs.Address;
                 Phone = rs.Phone;
                 Timetable = rs.Timetable;

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using KudaGo.Client.Model;
 using System.Collections.ObjectModel;
+using KudaGo.Client.Extensions;
 
 namespace KudaGo.Client.ViewModels.Details
 {
@@ -17,8 +18,8 @@ namespace KudaGo.Client.ViewModels.Details
 
         public ListItemDetailsPageViewModel(SelectionDetailsNodeViewModel node, IDataSource dataSource)
         {
-            Title = node.Title;
-            BodyText = node.Description;
+            Title = node.Title.GetNormalString();
+            BodyText = node.Description.GetNormalString();
             _images.Add(node.Image);
             _navigationViewModel = new NavigationViewModel(dataSource);
         }
