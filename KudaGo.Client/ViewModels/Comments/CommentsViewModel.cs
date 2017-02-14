@@ -13,7 +13,7 @@ namespace KudaGo.Client.ViewModels.Comments
 {
     class CommentsViewModel : PropertyChangedBase
     {
-        private IncrementalObservableCollection<CommentNodeViewModel> _items;
+        private readonly IncrementalObservableCollection<CommentNodeViewModel> _items;
         private bool _isBusy;
         protected readonly IDataSource _dataSource;
         protected readonly long _id;
@@ -23,7 +23,6 @@ namespace KudaGo.Client.ViewModels.Comments
             _id = id;
             _dataSource = dataSource;
             _items = new IncrementalObservableCollection<CommentNodeViewModel>(GetComments, AddComments);
-            
         }
 
         public IncrementalObservableCollection<CommentNodeViewModel> Items
@@ -39,6 +38,11 @@ namespace KudaGo.Client.ViewModels.Comments
                 _isBusy = value;
                 NotifyOfPropertyChanged(() => IsBusy);
             }
+        }
+
+        public bool HasComments
+        {
+            get { return Items.Any(); }
         }
 
         public async Task Load()
@@ -57,6 +61,8 @@ namespace KudaGo.Client.ViewModels.Comments
                 Items.Add(new CommentNodeViewModel(result));
             }
             IsBusy = false;
+
+            NotifyOfPropertyChanged(() => HasComments);
         }
 
         protected virtual Task<IResponse> GetComments(string next)

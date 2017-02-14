@@ -68,6 +68,7 @@
                     </CommandBar>
                     
                     <TextBlock Text="{Binding City}"
+                               Name="CityTextBlock"
                                Grid.Row="1"
                                HorizontalAlignment="Left"
                                Margin="10,12,0,0"

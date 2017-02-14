@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using KudaGo.Client.Model;
 using KudaGo.Client.Helpers;
 using KudaGo.Client.Extensions;
+using KudaGo.Client.ViewModels.Comments;
 
 namespace KudaGo.Client.ViewModels.Details
 {
@@ -121,7 +122,7 @@ namespace KudaGo.Client.ViewModels.Details
             if (rs == null)
                 return;
 
-            LayoutHelper.InvokeFromUiThread(() =>
+            LayoutHelper.InvokeFromUiThread(async () =>
             {
                 Title = rs.Title.GetNormalString();
                 Description = rs.Description.GetNormalString();
@@ -144,8 +145,13 @@ namespace KudaGo.Client.ViewModels.Details
                 Url = rs.Url;
                 Director = rs.Director;
 
-                //await EventCommentsViewModel.Load();
+                await CommentsViewModel.Load();
             });
+        }
+
+        protected override CommentsViewModel CreateCommentsViewModel()
+        {
+            return new MovieCommentsViewModel(_id, _dataSource);
         }
     }
 }

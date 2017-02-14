@@ -1,9 +1,7 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:KudaGo.Client.ViewModels.Details"
     xmlns:controls="using:KudaGo.Client.Controls"
-    xmlns:converters="using:KudaGo.Client.Converters"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:behaviors="using:KudaGo.Client.Behaviors">
 
@@ -130,14 +128,14 @@
                                    Style="{StaticResource NormalTextBlockStyle}"
                                    FontWeight="SemiBold"/>
 
-                        <ItemsControl ItemsSource="{Binding EventCommentsViewModel.Items}"
+                        <ItemsControl ItemsSource="{Binding CommentsViewModel.Items}"
                                       Margin="{StaticResource DefaultControlMargin}"
                                       ItemTemplate="{StaticResource CommentDataTemplate}"/>
 
                         <TextBlock Text="No comments"
                                    x:Uid="noComments"
                                    Style="{StaticResource NormalTextBlockStyle}"
-                                   Visibility="{Binding EventCommentsViewModel.HasComments, Converter={StaticResource InverseBooleanToVisibilityConverter}}"
+                                   Visibility="{Binding CommentsViewModel.HasComments, Converter={StaticResource InverseBooleanToVisibilityConverter}}"
                                    Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
                     </StackPanel>
                 </Grid>

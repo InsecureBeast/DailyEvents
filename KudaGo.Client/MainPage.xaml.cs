@@ -50,12 +50,14 @@ namespace KudaGo.Client
                 return;
 
             BottomCommandBar.Visibility = Visibility.Collapsed;
+            CityTextBlock.Visibility = Visibility.Collapsed;
             switch (pivot.SelectedIndex)
             {
                 case 0:
                     if (!viewModel.EventsViewModel.Items.Any())
                         await viewModel.EventsViewModel.Load();
                     BottomCommandBar.Visibility = Visibility.Visible;
+                    CityTextBlock.Visibility = Visibility.Visible;
                     break;
                 case 1:
                     if (!viewModel.NewsViewModel.Items.Any())

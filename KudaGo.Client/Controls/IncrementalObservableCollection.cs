@@ -72,7 +72,6 @@ namespace KudaGo.Client.Controls
 
             Busy = true;
             var result = await _getData(_next);
-
             if (_hasMoreItems)
             {
                 _next = result.Next;

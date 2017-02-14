@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using KudaGo.Client.ViewModels.Comments;
 
 namespace KudaGo.Client.ViewModels.Details
 {
@@ -14,7 +15,9 @@ namespace KudaGo.Client.ViewModels.Details
     {
         protected readonly IDataSource _dataSource;
         private readonly NavigationViewModel _navigationViewModel;
+        private readonly CommentsViewModel _commentsViewModel;
         protected ObservableCollection<string> _images;
+        protected readonly long _id;
         private string _title;
         private string _bodyText;
         private bool _isBusy;
@@ -22,15 +25,22 @@ namespace KudaGo.Client.ViewModels.Details
 
         public DetailsPageViewModel(long id, IDataSource dataSource)
         {
+            _id = id;
             _dataSource = dataSource;
             _images = new ObservableCollection<string>();
             _navigationViewModel = new NavigationViewModel(dataSource);
+            _commentsViewModel = CreateCommentsViewModel();
             IsBusy = true;
             Task.Run(async () =>
             {
                 await LoadDetails(id);
                 LayoutHelper.InvokeFromUiThread(() => IsBusy = false);
             });
+        }
+
+        protected virtual CommentsViewModel CreateCommentsViewModel()
+        {
+            return new CommentsViewModel(_id, _dataSource);
         }
 
         public bool IsBusy
@@ -83,9 +93,13 @@ namespace KudaGo.Client.ViewModels.Details
             get { return _navigationViewModel; }
         }
 
-        protected virtual Task LoadDetails(long id)
+        public CommentsViewModel CommentsViewModel
         {
-            return null;
+            get { return _commentsViewModel; }
+        }
+
+        protected virtual async Task LoadDetails(long id)
+        {
         }
     }
 }

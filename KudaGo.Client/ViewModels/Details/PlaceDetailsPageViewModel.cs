@@ -26,11 +26,9 @@ namespace KudaGo.Client.ViewModels.Details
         private bool _isClosed;
         private readonly DelegateCommand _mapCommand;
         private readonly DelegateCommand _callCommand;
-        //private readonly PlaceCommentsViewModel _commentsViewModel;
 
         public PlaceDetailsPageViewModel(long id, IDataSource dataSource) : base(id, dataSource)
         {
-            //_commentsViewModel = new PlaceCommentsViewModel(id, dataSource);
             _mapCommand = new DelegateCommand(MapOpen);
             _callCommand = new DelegateCommand(Call);
         }
@@ -121,7 +119,7 @@ namespace KudaGo.Client.ViewModels.Details
             if (rs == null)
                 return;
 
-            LayoutHelper.InvokeFromUiThread(() =>
+            LayoutHelper.InvokeFromUiThread(async () =>
             {
                 Title = rs.Title.GetNormalString();
                 Description = rs.Description.GetNormalString();
@@ -139,8 +137,13 @@ namespace KudaGo.Client.ViewModels.Details
                 Metro = rs.Subway;
                 Location = rs.Coords;
 
-                //await EventCommentsViewModel.Load();
+                await CommentsViewModel.Load();
             });
+        }
+
+        protected override CommentsViewModel CreateCommentsViewModel()
+        {
+            return new PlaceCommentsViewModel(_id, _dataSource);
         }
 
         private void MapOpen(object obj)

@@ -20,21 +20,22 @@ namespace KudaGo.Client.Model
     {
         Task<IEventListResponse> GetEvents(string next, bool? isFree);
         Task<IEventListResponse> GetEventsWithFilter(string next, string categorySlug, bool? isFree);
+        Task<IEventsOfTheDayResponse> GetEventOfTheDay(string next);
+        Task<ICommentsResponse> GetEventComments(long eventId);
         Task<INewsListResponse> GetNews(string next);
+        Task<ICommentsResponse> GetNewsComments(long newsId);
         Task<ISelectionListResponse> GetSelections(string next);
         Task<ISelectionDetailsResponse> GetSelectionDetails(long selectionId);
+        Task<ICommentsResponse> GetSelectionComments(long selectionId);
         Task<IMovieListResponse> GetMovies(string next);
-        Task<IEventsOfTheDayResponse> GetEventOfTheDay(string next);
-
         Task<IEventDetailsResponse> GetEventDetails(long eventId);
         Task<INewsDetailsResponse> GetNewsDetails(long newsId);
         Task<IPlaceDetailsResponse> GetPlaceDetails(long placeId);
-        Task<ICommentsResponse> GetEventComments(long eventId);
+        Task<ICommentsResponse> GetPlaceComments(long placeId);
         Task<IMovieDetailsResponse> GetMovieDetails(long movieId);
-
+        Task<ICommentsResponse> GetMovieComments(long movieId);
         Task<IEnumerable<ICategoriesResponse>> GetEventCategories();
         Task<IEnumerable<ICategoriesResponse>> GetPlaceCategories();
-
         Task<ISearchResponse> Search(string q, string next);
 
         void SetLocation(Location location);
@@ -81,6 +82,25 @@ namespace KudaGo.Client.Model
                 .WithField(EventListRequest.FieldNames.CATEGORIES)
                 .WithField(EventListRequest.FieldNames.AGE_RESTRICTION).Build();
             request.ActualSince = DateTime.Today;
+            request.Location = _location;
+
+            var res = await request.ExecuteAsync();
+            return res;
+        }
+
+        public async Task<IEventsOfTheDayResponse> GetEventOfTheDay(string next)
+        {
+            var request = new EventsOfTheDayRequest();
+            request.Lang = _culture;
+            request.TextFormat = TextFormatEnum.Plain;
+            request.Next = next;
+
+            var fieldBuilder = new FieldsBuilder();
+            request.Fields = fieldBuilder
+                .WithField(EventsOfTheDayRequest.FieldsNames.DATE)
+                .WithField(EventsOfTheDayRequest.FieldsNames.EVENT)
+                .WithField(EventsOfTheDayRequest.FieldsNames.LOCATION)
+                .Build();
             request.Location = _location;
 
             var res = await request.ExecuteAsync();
@@ -140,6 +160,16 @@ namespace KudaGo.Client.Model
             return res;
         }
 
+        public async Task<ICommentsResponse> GetSelectionComments(long selectionId)
+        {
+            var request = new SelectionCommentsRequest();
+            request.Lang = _culture;
+            request.SelectionId = selectionId;
+
+            var res = await request.ExecuteAsync();
+            return res;
+        }
+
         public async Task<IMovieListResponse> GetMovies(string next)
         {
             var request = new MovieListRequest();
@@ -158,25 +188,6 @@ namespace KudaGo.Client.Model
                 .WithField(MovieListRequest.FieldNames.COUNTRY)
                 .WithField(MovieListRequest.FieldNames.RUNNING_TIME)
                 .WithField(MovieListRequest.FieldNames.TITLE).Build();
-            request.Location = _location;
-
-            var res = await request.ExecuteAsync();
-            return res;
-        }
-
-        public async Task<IEventsOfTheDayResponse> GetEventOfTheDay(string next)
-        {
-            var request = new EventsOfTheDayRequest();
-            request.Lang = _culture;
-            request.TextFormat = TextFormatEnum.Plain;
-            request.Next = next;
-
-            var fieldBuilder = new FieldsBuilder();
-            request.Fields = fieldBuilder
-                .WithField(EventsOfTheDayRequest.FieldsNames.DATE)
-                .WithField(EventsOfTheDayRequest.FieldsNames.EVENT)
-                .WithField(EventsOfTheDayRequest.FieldsNames.LOCATION)
-                .Build();
             request.Location = _location;
 
             var res = await request.ExecuteAsync();
@@ -209,12 +220,33 @@ namespace KudaGo.Client.Model
             return res;
         }
 
+        public async Task<ICommentsResponse> GetNewsComments(long newsId)
+        {
+            var request = new NewsCommentsRequest();
+            request.Lang = _culture;
+            request.NewsId = newsId;
+
+            var res = await request.ExecuteAsync();
+            return res;
+        }
+
         public async Task<IPlaceDetailsResponse> GetPlaceDetails(long placeId)
         {
             var request = new PlaceDetailsRequest();
             request.Lang = _culture;
             request.PlaceId = placeId;
+            request.TextFormat = TextFormatEnum.Plain;
             request.Expand = PlaceListRequest.ExpandNames.IMAGES;
+
+            var res = await request.ExecuteAsync();
+            return res;
+        }
+
+        public async Task<ICommentsResponse> GetPlaceComments(long placeId)
+        {
+            var request = new PlaceCommentsRequest();
+            request.Lang = _culture;
+            request.PlaceId = placeId;
 
             var res = await request.ExecuteAsync();
             return res;
@@ -237,6 +269,16 @@ namespace KudaGo.Client.Model
             request.MovieId = movieId;
             request.Expand = MovieListRequest.ExpandNames.IMAGES;
             request.TextFormat = TextFormatEnum.Plain;
+
+            var res = await request.ExecuteAsync();
+            return res;
+        }
+
+        public async Task<ICommentsResponse> GetMovieComments(long movieId)
+        {
+            var request = new MovieCommentsRequest();
+            request.Lang = _culture;
+            request.MovieId = movieId;
 
             var res = await request.ExecuteAsync();
             return res;

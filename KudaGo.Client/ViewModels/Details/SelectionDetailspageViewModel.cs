@@ -9,6 +9,7 @@ using KudaGo.Client.Extensions;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using KudaGo.Client.Command;
+using KudaGo.Client.ViewModels.Comments;
 
 namespace KudaGo.Client.ViewModels.Details
 {
@@ -23,15 +24,9 @@ namespace KudaGo.Client.ViewModels.Details
             _selectCommand = new DelegateCommand(Select);
         }
 
-        public ObservableCollection<SelectionDetailsNodeViewModel> Selections
-        {
-            get { return _selections; }
-        }
+        public ObservableCollection<SelectionDetailsNodeViewModel> Selections => _selections;
 
-        public ICommand SelectCommand
-        {
-            get { return _selectCommand; }
-        }
+        public ICommand SelectCommand => _selectCommand;
 
         protected override async Task LoadDetails(long id)
         {
@@ -39,7 +34,7 @@ namespace KudaGo.Client.ViewModels.Details
             if (rs == null)
                 return;
 
-            LayoutHelper.InvokeFromUiThread(() =>
+            LayoutHelper.InvokeFromUiThread(async () =>
             {
                 Title = rs.Title.GetNormalString();
                 Description = rs.Description;
@@ -49,16 +44,18 @@ namespace KudaGo.Client.ViewModels.Details
                     _images.Add(image.Image);
                 }
 
-                var ids = rs.Items.Select(i => i.Id);
-                
-
                 foreach (var item in rs.Items)
                 {
                     _selections.Add(new SelectionDetailsNodeViewModel(item, _dataSource));
                 }
 
-                //await EventCommentsViewModel.Load();
+                await CommentsViewModel.Load();
             });
+        }
+
+        protected override CommentsViewModel CreateCommentsViewModel()
+        {
+            return new SelectionCommentsViewModel(_id, _dataSource);
         }
 
         private void Select(object nodeViewModel)

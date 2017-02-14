@@ -8,16 +8,16 @@ using KudaGo.Core.Data;
 
 namespace KudaGo.Client.ViewModels.Comments
 {
-    class EventCommentsViewModel : CommentsViewModel
+    class PlaceCommentsViewModel : CommentsViewModel
     {
-        public EventCommentsViewModel(long id, IDataSource dataSource) : base(id, dataSource)
+        public PlaceCommentsViewModel(long placeId, IDataSource dataSource) : base(placeId, dataSource)
         {
         }
 
         protected override async Task<IResponse> GetComments(string next)
         {
             IsBusy = true;
-            return await _dataSource.GetEventComments(_id);
+            return await _dataSource.GetPlaceComments(_id);
         }
     }
 }

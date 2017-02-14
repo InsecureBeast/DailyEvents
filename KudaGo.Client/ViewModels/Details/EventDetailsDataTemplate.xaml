@@ -159,14 +159,14 @@
                                    Style="{StaticResource NormalTextBlockStyle}"
                                    FontWeight="SemiBold"/>
 
-                        <ItemsControl ItemsSource="{Binding EventCommentsViewModel.Items}"
+                        <ItemsControl ItemsSource="{Binding CommentsViewModel.Items}"
                                       Margin="{StaticResource DefaultControlMargin}"
                                       ItemTemplate="{StaticResource CommentDataTemplate}"/>
 
                         <TextBlock Text="No comments"
                                    x:Uid="noComments"
                                    Style="{StaticResource NormalTextBlockStyle}"
-                                   Visibility="{Binding EventCommentsViewModel.HasComments, Converter={StaticResource InverseBooleanToVisibilityConverter}}"
+                                   Visibility="{Binding CommentsViewModel.HasComments, Converter={StaticResource InverseBooleanToVisibilityConverter}}"
                                    Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
                     </StackPanel>
                 </Grid>

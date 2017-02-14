@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using KudaGo.Client.Model;
 using KudaGo.Client.Helpers;
 using KudaGo.Client.Extensions;
-using System.Collections.ObjectModel;
+using KudaGo.Client.ViewModels.Comments;
 
 namespace KudaGo.Client.ViewModels.Details
 {
@@ -17,7 +17,6 @@ namespace KudaGo.Client.ViewModels.Details
 
         public NewsDetailsPageViewModel(long id, IDataSource dataSource) : base(id, dataSource)
         {
-            
         }
 
         public Uri Source
@@ -39,14 +38,14 @@ namespace KudaGo.Client.ViewModels.Details
                 NotifyOfPropertyChanged(() => Date);
             }
         }
-
+        
         protected override async Task LoadDetails(long id)
         {
             var rs = await _dataSource.GetNewsDetails(id);
             if (rs == null)
                 return;
 
-            LayoutHelper.InvokeFromUiThread(() =>
+            LayoutHelper.InvokeFromUiThread(async () =>
             {
                 Title = rs.Title.GetNormalString();
                 Description = rs.Description.GetNormalString();
@@ -71,8 +70,13 @@ namespace KudaGo.Client.ViewModels.Details
                     Date = string.Format(format, rs.PublicationDate.Value.ToString("g"));
                 }
 
-                //await EventCommentsViewModel.Load();
+                await CommentsViewModel.Load();
             });
+        }
+
+        protected override CommentsViewModel CreateCommentsViewModel()
+        {
+            return new NewsCommentsViewModel(_id, _dataSource);
         }
     }
 }

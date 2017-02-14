@@ -148,8 +148,12 @@
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\CategoryPageViewModel.cs" />
+    <Compile Include="ViewModels\Comments\PlaceCommentsViewModel.cs" />
     <Compile Include="ViewModels\Comments\CommentsViewModel.cs" />
     <Compile Include="ViewModels\Comments\EventCommentsViewModel.cs" />
+    <Compile Include="ViewModels\Comments\MovieCommentsViewModel.cs" />
+    <Compile Include="ViewModels\Comments\NewsCommentsViewModel.cs" />
+    <Compile Include="ViewModels\Comments\SelectionCommentsViewModel.cs" />
     <Compile Include="ViewModels\Details\DetailsPageViewModel.cs" />
     <Compile Include="ViewModels\Details\EventDetailsPageViewModel.cs" />
     <Compile Include="ViewModels\Details\ListItemDetailsPageViewModel.cs" />
@@ -328,6 +332,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <SDKReference Include="WindowsMobile, Version=10.0.10586.0">
+      <Name>Windows Mobile Extensions for the UWP %28WindowsMobile, Version=10.0.10586.0%29</Name>
+    </SDKReference>
     <SDKReference Include="WindowsMobile, Version=10.0.14393.0">
       <Name>Windows Mobile Extensions for the UWP %28WindowsMobile, Version=10.0.14393.0%29</Name>
     </SDKReference>

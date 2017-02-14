@@ -26,13 +26,10 @@ namespace KudaGo.Client.ViewModels.Details
         private string _price;
         private string _metro;
         private ICoordinates _location;
-        private readonly EventCommentsViewModel _eventCommentsViewModel;
-        private DelegateCommand _mapCommand;
-        private IPlace _placeObj;
+        private readonly DelegateCommand _mapCommand;
 
         public EventDetailsPageViewModel(long eventId, IDataSource dataSource) : base(eventId, dataSource)
         {
-            _eventCommentsViewModel = new EventCommentsViewModel(eventId, dataSource);
             _mapCommand = new DelegateCommand(MapOpen);
         }
 
@@ -121,11 +118,6 @@ namespace KudaGo.Client.ViewModels.Details
             get { return _mapCommand; }
         }
 
-        public EventCommentsViewModel EventCommentsViewModel
-        {
-            get { return _eventCommentsViewModel; }
-        }
-
         protected override async Task LoadDetails(long id)
         {
             var rs = await _dataSource.GetEventDetails(id);
@@ -151,7 +143,6 @@ namespace KudaGo.Client.ViewModels.Details
                     Place = rs.Place.Title.GetNormalString();
                     Metro = rs.Place.Subway;
                     Location = rs.Place.Coords;
-                    _placeObj = rs.Place;
                 }
 
                 var dates = rs.Dates.LastOrDefault();
@@ -161,8 +152,13 @@ namespace KudaGo.Client.ViewModels.Details
                     Times = EventNodeViewModel.GetTimes(dates);
                 }
 
-                await EventCommentsViewModel.Load();
+                await CommentsViewModel.Load();
             });
+        }
+
+        protected override CommentsViewModel CreateCommentsViewModel()
+        {
+            return new EventCommentsViewModel(_id, _dataSource);
         }
 
         private void MapOpen(object obj)
