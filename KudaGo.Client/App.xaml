@@ -67,11 +67,27 @@
 
                     <!-- Resources for Windows.UI.Xaml.Controls.ListViewItem -->
                     <StaticResource x:Key="ListViewItemBackground" ResourceKey="AccentColor" />
-                    <!--<StaticResource x:Key="ListViewItemPlaceholderBackground" ResourceKey="AccentColor" />-->
-                    <StaticResource x:Key="ListViewItemBackgroundPressed" ResourceKey="ApplicationLightAccentBrush3" />
-                    <StaticResource x:Key="ListViewItemBackgroundSelected" ResourceKey="ApplicationLightAccentBrush3" />
-                    <StaticResource x:Key="ListViewItemBackgroundSelectedPointerOver" ResourceKey="ApplicationLightAccentBrush2" />
+                    <StaticResource x:Key="ListViewItemBackgroundPointerOver" ResourceKey="ApplicationLightAccentBrush3" />
+                    <StaticResource x:Key="ListViewItemBackgroundPressed" ResourceKey="ApplicationLightAccentBrush2" />
+                    <StaticResource x:Key="ListViewItemBackgroundSelected" ResourceKey="ApplicationLightAccentBrush2" />
+                    <StaticResource x:Key="ListViewItemBackgroundSelectedPointerOver" ResourceKey="ApplicationLightAccentBrush3" />
                     <StaticResource x:Key="ListViewItemBackgroundSelectedPressed" ResourceKey="ApplicationLightAccentBrush2" />
+
+                    <!-- Resources for Windows.UI.Xaml.Controls.ComboBoxItem -->
+                    <StaticResource x:Key="ComboBoxItemBackgroundPressed" ResourceKey="ApplicationLightAccentBrush2" />
+                    <StaticResource x:Key="ComboBoxItemBackgroundPointerOver" ResourceKey="ApplicationLightAccentBrush3" />
+                    <StaticResource x:Key="ComboBoxItemBackgroundSelected" ResourceKey="ApplicationLightAccentBrush2" />
+                    <StaticResource x:Key="ComboBoxItemBackgroundSelectedPressed" ResourceKey="ApplicationLightAccentBrush2" />
+                    <StaticResource x:Key="ComboBoxItemBackgroundSelectedPointerOver" ResourceKey="ApplicationLightAccentBrush3" />
+
+                    <!-- Resources for Windows.UI.Xaml.Controls.CheckBox -->
+                    <StaticResource x:Key="CheckBoxCheckBackgroundFillChecked" ResourceKey="ApplicationLightAccentBrush2" />
+                    <StaticResource x:Key="CheckBoxCheckBackgroundFillCheckedPointerOver" ResourceKey="ApplicationLightAccentBrush3" />
+                    <StaticResource x:Key="CheckBoxCheckBackgroundFillCheckedPressed" ResourceKey="ApplicationLightAccentBrush2" />
+                    <StaticResource x:Key="CheckBoxCheckBackgroundStrokeCheckedPointerOver" ResourceKey="ApplicationLightAccentBrush3" />
+                    <StaticResource x:Key="CheckBoxCheckBackgroundStrokeCheckedPressed" ResourceKey="ApplicationLightAccentBrush3" />
+                    <!--<StaticResource x:Key="CheckBoxCheckBackgroundStrokeUnchecked" ResourceKey="AccentColor" />-->
+                    <StaticResource x:Key="CheckBoxCheckBackgroundStrokeUncheckedPointerOver" ResourceKey="AccentColor" />
 
                 </ResourceDictionary>
                 <ResourceDictionary x:Key="HighContrast">
