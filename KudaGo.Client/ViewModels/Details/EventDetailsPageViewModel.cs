@@ -145,7 +145,7 @@ namespace KudaGo.Client.ViewModels.Details
                     Location = rs.Place.Coords;
                 }
 
-                var dates = rs.Dates.LastOrDefault();
+                var dates = rs.Dates;
                 if (dates != null)
                 {
                     Dates = EventNodeViewModel.GetDates(dates);

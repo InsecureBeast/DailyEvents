@@ -27,14 +27,34 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
                 <Grid Background="{StaticResource NavigationBackgroundThemeBrush}"
                       Grid.Row="0">
-                    <CheckBox Content="Is free"
-                              x:Uid="IsFree"
-                              Margin="10"
-                              IsChecked="{Binding IsFree, Mode=TwoWay}"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <ToggleButton Content="Today"
+                                  Margin="5"
+                                  IsChecked="{Binding IsToday, Mode=TwoWay}"
+                                  ClickMode="Press"
+                                  IsThreeState="False"/>
+                    <ToggleButton Content="On the weekend"
+                                  Margin="5"
+                                  Grid.Column="1"
+                                  IsChecked="{Binding IsWeekend, Mode=TwoWay}"
+                                  ClickMode="Press"
+                                  IsThreeState="False"/>
+                    <ToggleButton Content="Tomorrow"
+                                  Margin="5"
+                                  Grid.Column="2"
+                                  IsChecked="{Binding IsTomorrow, Mode=TwoWay}"
+                                  ClickMode="Press"
+                                  IsThreeState="False"/>
                 </Grid>
 
                 <ListView ItemsSource="{Binding Items}"
@@ -42,6 +62,7 @@
                           SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
                           ItemTemplate="{StaticResource CategoryNodeTemplate}"
                           IsItemClickEnabled="True"
+                          ItemClick="ListView_OnItemClick"
                           x:Name="listView"
                           Grid.Row="1"/>
 
@@ -54,6 +75,11 @@
                               Foreground="{StaticResource InkToolbarAccentColorThemeBrush}"
                               Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
+                <CheckBox Content="Is free"
+                          Grid.Row="2"
+                          x:Uid="IsFree"
+                          Margin="10"
+                          IsChecked="{Binding IsFree, Mode=TwoWay}"/>
             </Grid>
         </views:NavigationControl.ViewContent>
     </views:NavigationControl>

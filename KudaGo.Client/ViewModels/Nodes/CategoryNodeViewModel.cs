@@ -84,7 +84,8 @@ namespace KudaGo.Client.ViewModels.Nodes
         public AllCategoryNodeViewModel() : base(null)
         {
             Name = "Все"; //TODO Localization
-            Slug = string.Empty;
+            Slug = "-concert,-theater,-stock,-kids,-dance-trainings,-speed-dating";
+            //Slug = "-concert,-theater,-stock,-education,-kids,-tour,-dance-trainings,-exhibition,-speed-dating";
             OriginalName = "All";
         }
     }

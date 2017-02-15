@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
+using System.Collections.Generic;
 
 namespace KudaGo.Client.ViewModels
 {
@@ -22,6 +23,9 @@ namespace KudaGo.Client.ViewModels
         private bool _isBusy;
         private bool? _isFree;
         private CategoryNodeViewModel _selectedItem;
+        private bool _isToday;
+        private bool _isWeekend;
+        private bool _isTomorrow;
 
         public CategoryPageViewModel(IDataSource dataSource, IFilterListener filterListeer)
         {
@@ -75,12 +79,67 @@ namespace KudaGo.Client.ViewModels
             {
                 _selectedItem = value;
                 NotifyOfPropertyChanged(() => SelectedItem);
-                if (_selectedItem == null)
-                    return;
-
-                NavigationHelper.GoBack();
-                _filterListeer.Update(this);
+                Update();
             }
+        }
+
+        public void Update()
+        {
+            if (SelectedItem == null)
+                return;
+
+            NavigationHelper.GoBack();
+            _filterListeer.Update(this);
+        }
+
+        public bool IsToday
+        {
+            get { return _isToday; }
+            set
+            {
+                _isToday = value;
+                if (_isToday)
+                {
+                    IsTomorrow = false;
+                    IsWeekend = false;
+                }
+                NotifyOfPropertyChanged(() => IsToday);
+            }
+        }
+
+        public bool IsWeekend
+        {
+            get { return _isWeekend; }
+            set
+            {
+                _isWeekend = value;
+                if (_isWeekend)
+                {
+                    IsToday = false;
+                    IsTomorrow = false;
+                }
+                NotifyOfPropertyChanged(() => IsWeekend);
+            }
+        }
+
+        public bool IsTomorrow
+        {
+            get { return _isTomorrow; }
+            set
+            {
+                _isTomorrow = value;
+                if (_isTomorrow)
+                {
+                    IsToday = false;
+                    IsWeekend = false;
+                }
+                NotifyOfPropertyChanged(() => IsTomorrow);
+            }
+        }
+
+        public FilterDefinition FilterDefinition
+        {
+            get { return GetFilterDefinition(); }
         }
 
         public async Task Load()
@@ -110,11 +169,62 @@ namespace KudaGo.Client.ViewModels
 
         public string GetName(string slug)
         {
-            var first = Items.FirstOrDefault(i => i.Slug.Contains(slug));
+            var items = Items.Skip(1);
+            var first = items.FirstOrDefault(i => i.Slug.Contains(slug));
             if (first == null)
                 return string.Empty;
 
             return first.Name;
+        }
+
+        private DateTime GetToday()
+        {
+            return DateTime.Today;
+        }
+
+        private DateTime GetTommorow()
+        {
+            return DateTime.Today + TimeSpan.FromDays(1);
+        }
+
+        private IEnumerable<DateTime> GetWeekend()
+        {
+            var end = DateTime.Today + TimeSpan.FromDays(5);
+            var days = new List<DateTime>();
+            for (var date = DateTime.Today; date <= end; date = date.AddDays(1))
+            {
+                if (date.DayOfWeek == DayOfWeek.Sunday || date.DayOfWeek == DayOfWeek.Saturday)
+                    days.Add(date);
+            }
+            return days;
+        }
+
+        private FilterDefinition GetFilterDefinition()
+        {
+            var definition = new FilterDefinition();
+            definition.IsFree = _isFree;
+
+            if (SelectedItem != null)
+                definition.Categories = SelectedItem.Slug;
+
+            if (IsToday)
+            {
+                definition.ActualSince = GetToday();
+                definition.ActualUntil = GetToday();
+            }
+            if (IsTomorrow)
+            {
+                definition.ActualSince = GetTommorow();
+                definition.ActualUntil = GetTommorow();
+            }
+            if (IsWeekend)
+            {
+                var weekend = GetWeekend().ToArray();
+                definition.ActualSince = weekend[0];
+                definition.ActualUntil = weekend[1];
+            }
+
+            return definition;
         }
     }
 }

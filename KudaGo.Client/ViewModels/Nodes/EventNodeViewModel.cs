@@ -2,6 +2,7 @@
 using KudaGo.Core.Data;
 using KudaGo.Core.Events;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace KudaGo.Client.ViewModels.Nodes
@@ -46,7 +47,7 @@ namespace KudaGo.Client.ViewModels.Nodes
             else
                 Categories = catName;
 
-            var dates = result.Dates.LastOrDefault();
+            var dates = result.Dates.ToArray();
             if (dates == null)
                 return;
 
@@ -59,10 +60,18 @@ namespace KudaGo.Client.ViewModels.Nodes
         public string Categories { get; private set; }
         public bool IsFree { get; private set; }
 
-        
-        public static string GetDates(IDate dates)
+
+        public static string GetDates(IDate date)
         {
-            string datesStr = string.Empty;
+            return GetDates(new [] {date});
+        }
+
+        public static string GetDates(IEnumerable<IDate> dateList)
+        {
+            var datesStr = string.Empty;
+            var dates = GetClosureDate(dateList);
+            if (dates == null)
+                return datesStr;
 
             if (dates.Start.HasValue && dates.End.HasValue)
             {
@@ -89,9 +98,17 @@ namespace KudaGo.Client.ViewModels.Nodes
             return datesStr;
         }
 
-        public static string GetTimes(IDate dates)
+        public static string GetTimes(IDate date)
         {
-            string times = string.Empty;
+            return GetTimes(new[] {date});
+        }
+
+        public static string GetTimes(IEnumerable<IDate> dateList)
+        {
+            var times = string.Empty;
+            var dates = GetClosureDate(dateList);
+            if (dates == null)
+                return times;
 
             if (dates.Start.HasValue && dates.End.HasValue)
             {
@@ -116,6 +133,14 @@ namespace KudaGo.Client.ViewModels.Nodes
             }
 
             return times;
+        }
+
+        private static IDate GetClosureDate(IEnumerable<IDate> dateList)
+        {
+            var today = DateTime.Today;
+            var dates = dateList.ToArray();
+            var closure = dates.FirstOrDefault(d => d.Start >= today);
+            return closure ?? dates.LastOrDefault();
         }
     }
 }

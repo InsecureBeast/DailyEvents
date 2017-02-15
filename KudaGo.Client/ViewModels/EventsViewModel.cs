@@ -23,12 +23,13 @@ namespace KudaGo.Client.ViewModels
         private EventOfTheDayNodeViewModel _eventOfTheDay;
         private GetDataDelegate _getData;
         private string _filter;
-        private bool? _isFree = null;
+        private FilterDefinition _filterDefinition;
 
         public EventsViewModel(IDataSource dataSource)
         {
             _dataSource = dataSource;
             _getData = GetEventData;
+            _filterDefinition = new FilterDefinition();
             LoadEventOfDay();
         }
 
@@ -71,14 +72,8 @@ namespace KudaGo.Client.ViewModels
 
         public async void Update(CategoryPageViewModel categoryViewModel)
         {
-            _filter = categoryViewModel.SelectedItem.Slug;
-
-            if (categoryViewModel.SelectedItem is AllCategoryNodeViewModel)
-                _getData = GetEventData;
-            else
-                _getData = GetDataWithFilter;
-
-            _isFree = categoryViewModel.IsFree;
+            _filterDefinition = categoryViewModel.FilterDefinition;
+            _getData = GetEventData;
             Items.Clear();
             await Load();
         }
@@ -89,14 +84,9 @@ namespace KudaGo.Client.ViewModels
             await base.Update();
         }
 
-        private async Task<IResponse> GetDataWithFilter(string next)
-        {
-            return await _dataSource.GetEventsWithFilter(next, _filter, _isFree);
-        }
-
         protected async Task<IResponse> GetEventData(string next)
         {
-            return await _dataSource.GetEvents(next, _isFree);
+            return await _dataSource.GetEvents(next, _filterDefinition);
         }
 
         private void LoadEventOfDay()

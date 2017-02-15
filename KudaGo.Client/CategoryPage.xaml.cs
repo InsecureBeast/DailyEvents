@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using KudaGo.Client.ViewModels.Nodes;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -52,6 +53,16 @@ namespace KudaGo.Client
             }
 
             DataContext = e.Parameter as CategoryPageViewModel;
+        }
+
+        private void ListView_OnItemClick(object sender, ItemClickEventArgs e)
+        {
+            //var viewModel = DataContext as CategoryPageViewModel;
+            //if (viewModel == null)
+            //    return;
+
+            //if (viewModel.SelectedItem == (CategoryNodeViewModel)listView.SelectedItem)
+            //    viewModel.Update();
         }
     }
 }

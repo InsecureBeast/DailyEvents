@@ -18,8 +18,7 @@ namespace KudaGo.Client.Model
 {
     public interface IDataSource
     {
-        Task<IEventListResponse> GetEvents(string next, bool? isFree);
-        Task<IEventListResponse> GetEventsWithFilter(string next, string categorySlug, bool? isFree);
+        Task<IEventListResponse> GetEvents(string next, FilterDefinition filterDefinition);
         Task<IEventsOfTheDayResponse> GetEventOfTheDay(string next);
         Task<ICommentsResponse> GetEventComments(long eventId);
         Task<INewsListResponse> GetNews(string next);
@@ -52,21 +51,19 @@ namespace KudaGo.Client.Model
             _location = location;
         }
 
-        public async Task<IEventListResponse> GetEvents(string next, bool? isFree)
+        public async Task<IEventListResponse> GetEvents(string next, FilterDefinition filterDefinition)
         {
-            //var filter = "-concert,-theater,-stock,-education,-kids,-tour,-dance-trainings,-exhibition,-speed-dating";
-            var filter = "-concert,-theater,-stock,-kids,-dance-trainings,-speed-dating";
-            return await GetEventsWithFilter(next, filter, isFree);
-        }
+            if (filterDefinition == null)
+                throw new ArgumentNullException(nameof(filterDefinition));
 
-        public async Task<IEventListResponse> GetEventsWithFilter(string next, string categorySlug, bool? isFree)
-        {
             var request = new EventListRequest();
             request.Lang = _culture;
             request.TextFormat = TextFormatEnum.Plain;
             request.Next = next;
-            request.IsFree = isFree;
-            request.Categories = categorySlug;
+            request.IsFree = filterDefinition.IsFree;
+            request.Categories = filterDefinition.Categories;
+            request.ActualSince = filterDefinition.ActualSince;
+            request.ActualUntil = filterDefinition.ActualUntil;
             request.Expand = string.Format("{0},{1}", EventListRequest.ExpandNames.IMAGES, EventListRequest.ExpandNames.PLACE);
 
             var fieldBuilder = new FieldsBuilder();
