@@ -198,4 +198,16 @@
   <data name="NothingSuitable.Text" xml:space="preserve">
     <value>Unfortunately, there is nothing suitable.</value>
   </data>
+  <data name="FilterPage.Title" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="TodayButton.Content" xml:space="preserve">
+    <value>Today</value>
+  </data>
+  <data name="TomorrowButton.Content" xml:space="preserve">
+    <value>Tomorrow</value>
+  </data>
+  <data name="WeekendButton.Content" xml:space="preserve">
+    <value>On the weekend</value>
+  </data>
 </root>

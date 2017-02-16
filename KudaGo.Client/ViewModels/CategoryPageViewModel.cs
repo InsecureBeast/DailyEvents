@@ -67,8 +67,8 @@ namespace KudaGo.Client.ViewModels
             set
             {
                 _isFree = value == false ? null : value;
-                SelectedItem = null;
                 NotifyOfPropertyChanged(() => IsFree);
+                Update();
             }
         }
 
@@ -102,6 +102,7 @@ namespace KudaGo.Client.ViewModels
                 {
                     IsTomorrow = false;
                     IsWeekend = false;
+                    Update();
                 }
                 NotifyOfPropertyChanged(() => IsToday);
             }
@@ -117,6 +118,7 @@ namespace KudaGo.Client.ViewModels
                 {
                     IsToday = false;
                     IsTomorrow = false;
+                    Update();
                 }
                 NotifyOfPropertyChanged(() => IsWeekend);
             }
@@ -132,6 +134,7 @@ namespace KudaGo.Client.ViewModels
                 {
                     IsToday = false;
                     IsWeekend = false;
+                    Update();
                 }
                 NotifyOfPropertyChanged(() => IsTomorrow);
             }

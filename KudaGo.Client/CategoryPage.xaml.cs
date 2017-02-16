@@ -57,12 +57,11 @@ namespace KudaGo.Client
 
         private void ListView_OnItemClick(object sender, ItemClickEventArgs e)
         {
-            //var viewModel = DataContext as CategoryPageViewModel;
-            //if (viewModel == null)
-            //    return;
+            var viewModel = DataContext as CategoryPageViewModel;
+            if (viewModel == null)
+                return;
 
-            //if (viewModel.SelectedItem == (CategoryNodeViewModel)listView.SelectedItem)
-            //    viewModel.Update();
+            viewModel.SelectedItem = null;
         }
     }
 }

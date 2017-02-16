@@ -20,8 +20,8 @@
         </DataTemplate>
     </Page.Resources>
 
-    <views:NavigationControl Title="Choose the category" 
-                             x:Uid="ChooseCategory">
+    <views:NavigationControl Title="Filter" 
+                             x:Uid="FilterPage">
         <views:NavigationControl.ViewContent>
             <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
                 <Grid.RowDefinitions>
@@ -32,29 +32,38 @@
 
                 <Grid Background="{StaticResource NavigationBackgroundThemeBrush}"
                       Grid.Row="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
                     
-                    <ToggleButton Content="Today"
-                                  Margin="5"
-                                  IsChecked="{Binding IsToday, Mode=TwoWay}"
-                                  ClickMode="Press"
-                                  IsThreeState="False"/>
-                    <ToggleButton Content="On the weekend"
-                                  Margin="5"
-                                  Grid.Column="1"
-                                  IsChecked="{Binding IsWeekend, Mode=TwoWay}"
-                                  ClickMode="Press"
-                                  IsThreeState="False"/>
-                    <ToggleButton Content="Tomorrow"
-                                  Margin="5"
-                                  Grid.Column="2"
-                                  IsChecked="{Binding IsTomorrow, Mode=TwoWay}"
-                                  ClickMode="Press"
-                                  IsThreeState="False"/>
+                    <StackPanel Orientation="Horizontal"
+                                Grid.Row="0">
+                        <ToggleButton Content="Today"
+                                      x:Uid="TodayButton"
+                                      Margin="5"
+                                      IsChecked="{Binding IsToday, Mode=TwoWay}"
+                                      ClickMode="Press"
+                                      IsThreeState="False"/>
+                        <ToggleButton Content="Tomorrow"
+                                      x:Uid="TomorrowButton"
+                                      Margin="5"
+                                      IsChecked="{Binding IsTomorrow, Mode=TwoWay}"
+                                      ClickMode="Press"
+                                      IsThreeState="False"/>
+                        <ToggleButton Content="On the weekend"
+                                      x:Uid="WeekendButton"
+                                      Margin="5"
+                                      IsChecked="{Binding IsWeekend, Mode=TwoWay}"
+                                      ClickMode="Press"
+                                      IsThreeState="False"/>
+                    </StackPanel>
+                    
+                    <CheckBox Content="Is free"
+                              Grid.Row="1"
+                              x:Uid="IsFree"
+                              Margin="10"
+                              IsChecked="{Binding IsFree, Mode=TwoWay}"/>
                 </Grid>
 
                 <ListView ItemsSource="{Binding Items}"
@@ -64,7 +73,8 @@
                           IsItemClickEnabled="True"
                           ItemClick="ListView_OnItemClick"
                           x:Name="listView"
-                          Grid.Row="1"/>
+                          Grid.Row="1">
+                </ListView>
 
                 <ProgressRing IsActive="True" 
                               Grid.Row="1"
@@ -74,12 +84,6 @@
                               VerticalAlignment="Center"
                               Foreground="{StaticResource InkToolbarAccentColorThemeBrush}"
                               Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-
-                <CheckBox Content="Is free"
-                          Grid.Row="2"
-                          x:Uid="IsFree"
-                          Margin="10"
-                          IsChecked="{Binding IsFree, Mode=TwoWay}"/>
             </Grid>
         </views:NavigationControl.ViewContent>
     </views:NavigationControl>
