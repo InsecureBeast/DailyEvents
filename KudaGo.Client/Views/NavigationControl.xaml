@@ -32,11 +32,11 @@
                         Grid.ColumnSpan="3">
 
                 <CommandBar.Content>
-                    <AppBarButton Foreground="White"
-                                  Width="48"
+                    <AppBarButton Width="48"
                                   Click="HamburgerButton_Click">
                         <TextBlock FontFamily="Segoe MDL2 Assets" 
                                    Text="&#xE700;"
+                                   Foreground="White"
                                    FontWeight="Light"
                                    FontSize="19"
                                    HorizontalAlignment="Center"/>
@@ -74,19 +74,26 @@
             <TextBox Text="{Binding NavigationViewModel.SearchString, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                      x:Name="SearchBox"
                      BorderThickness="0"
-                     VerticalContentAlignment="Bottom"
+                     VerticalContentAlignment="Center"
                      FontSize="16"
                      Margin="4"
+                     Padding="8"
+                     PlaceholderText="Search"
+                     x:Uid="SearchTextBox"
                      LostFocus="SearchBox_LostFocus"
                      KeyDown="SearchBox_KeyDown"/>
-            
-            <AppBarButton Icon="Find"
-                          Width="48"
-                          x:Name="SearchButton"
-                          Grid.Column="1"
-                          Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
-                          Tapped="AppBarButton_Tapped"
-                          Command="{Binding NavigationViewModel.SearchCommand}"/>
+
+            <Button Width="48"
+                    VerticalAlignment="Stretch"
+                    BorderThickness="0"
+                    x:Name="SearchButton"
+                    Grid.Column="1"
+                    Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
+                    Tapped="AppBarButton_Tapped"
+                    Command="{Binding NavigationViewModel.SearchCommand}">
+                <SymbolIcon x:Name="play" 
+                            Symbol="Find"/>
+            </Button>
 
         </Grid>
 

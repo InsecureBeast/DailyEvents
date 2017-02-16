@@ -106,6 +106,20 @@
                     <StaticResource x:Key="ToggleButtonBorderBrushCheckedPointerOver" ResourceKey="ApplicationDarkAccentBrush1" />
                     <StaticResource x:Key="ToggleButtonBorderBrushCheckedPressed" ResourceKey="ApplicationDarkAccentBrush2" />
 
+                    <!-- Resources for Windows.UI.Xaml.Controls.Primitives.TextBox -->
+                    <!--<StaticResource x:Key="TextControlButtonBackgroundPointerOver" ResourceKey="ApplicationLightAccentBrush3" />-->
+                    <StaticResource x:Key="TextControlButtonBackgroundPressed" ResourceKey="ApplicationLightAccentBrush2" />
+
+                    <!-- Resources for Windows.UI.Xaml.Controls.AppBarButton -->
+                    <StaticResource x:Key="AppBarButtonForeground" ResourceKey="SystemControlForegroundBaseHighBrush" />
+                    <StaticResource x:Key="AppBarButtonForegroundPointerOver" ResourceKey="FocusVisualWhiteStrokeThemeBrush" />
+                    <StaticResource x:Key="AppBarButtonForegroundPressed" ResourceKey="FocusVisualWhiteStrokeThemeBrush" />
+                    <StaticResource x:Key="AppBarButtonForegroundDisabled" ResourceKey="SystemControlDisabledBaseMediumLowBrush" />
+                    <StaticResource x:Key="AppBarButtonBorderBrush" ResourceKey="SystemControlTransparentBrush" />
+                    <StaticResource x:Key="AppBarButtonBorderBrushPointerOver" ResourceKey="SystemControlTransparentBrush" />
+                    <StaticResource x:Key="AppBarButtonBorderBrushPressed" ResourceKey="SystemControlTransparentBrush" />
+                    <StaticResource x:Key="AppBarButtonBorderBrushDisabled" ResourceKey="SystemControlTransparentBrush" />
+
                 </ResourceDictionary>
                 <ResourceDictionary x:Key="HighContrast">
                     <SolidColorBrush x:Key="ApplicationPageBackgroundThemeBrush" Color="#FF000000" />

@@ -210,4 +210,7 @@
   <data name="WeekendButton.Content" xml:space="preserve">
     <value>На выходных</value>
   </data>
+  <data name="SearchTextBox.PlaceholderText" xml:space="preserve">
+    <value>Поиск</value>
+  </data>
 </root>
