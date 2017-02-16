@@ -38,7 +38,8 @@
                     </Grid.RowDefinitions>
                     
                     <StackPanel Orientation="Horizontal"
-                                Grid.Row="0">
+                                Grid.Row="0"
+                                Margin="5">
                         <ToggleButton Content="Today"
                                       x:Uid="TodayButton"
                                       Margin="5"
@@ -62,7 +63,7 @@
                     <CheckBox Content="Is free"
                               Grid.Row="1"
                               x:Uid="IsFree"
-                              Margin="10"
+                              Margin="10,0,10,10"
                               IsChecked="{Binding IsFree, Mode=TwoWay}"/>
                 </Grid>
 

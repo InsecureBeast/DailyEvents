@@ -81,13 +81,30 @@
                     <StaticResource x:Key="ComboBoxItemBackgroundSelectedPointerOver" ResourceKey="ApplicationLightAccentBrush3" />
 
                     <!-- Resources for Windows.UI.Xaml.Controls.CheckBox -->
-                    <StaticResource x:Key="CheckBoxCheckBackgroundFillChecked" ResourceKey="ApplicationLightAccentBrush2" />
-                    <StaticResource x:Key="CheckBoxCheckBackgroundFillCheckedPointerOver" ResourceKey="ApplicationLightAccentBrush3" />
-                    <StaticResource x:Key="CheckBoxCheckBackgroundFillCheckedPressed" ResourceKey="ApplicationLightAccentBrush2" />
-                    <StaticResource x:Key="CheckBoxCheckBackgroundStrokeCheckedPointerOver" ResourceKey="ApplicationLightAccentBrush3" />
-                    <StaticResource x:Key="CheckBoxCheckBackgroundStrokeCheckedPressed" ResourceKey="ApplicationLightAccentBrush3" />
+                    <StaticResource x:Key="CheckBoxCheckBackgroundFillChecked" ResourceKey="AccentColor" />
+                    <StaticResource x:Key="CheckBoxCheckBackgroundFillCheckedPointerOver" ResourceKey="ApplicationDarkAccentBrush1" />
+                    <StaticResource x:Key="CheckBoxCheckBackgroundFillCheckedPressed" ResourceKey="ApplicationDarkAccentBrush2" />
+                    <StaticResource x:Key="CheckBoxCheckBackgroundStrokeCheckedPointerOver" ResourceKey="ApplicationDarkAccentBrush1" />
+                    <StaticResource x:Key="CheckBoxCheckBackgroundStrokeCheckedPressed" ResourceKey="ApplicationDarkAccentBrush2" />
+                    <StaticResource x:Key="CheckBoxCheckBackgroundFillUncheckedPressed" ResourceKey="ApplicationDarkAccentBrush2" />
                     <!--<StaticResource x:Key="CheckBoxCheckBackgroundStrokeUnchecked" ResourceKey="AccentColor" />-->
-                    <StaticResource x:Key="CheckBoxCheckBackgroundStrokeUncheckedPointerOver" ResourceKey="AccentColor" />
+                    <StaticResource x:Key="CheckBoxCheckBackgroundStrokeUncheckedPointerOver" ResourceKey="ApplicationLightAccentBrush1" />
+                    <StaticResource x:Key="CheckBoxCheckBackgroundStrokeUncheckedPressed" ResourceKey="ApplicationDarkAccentBrush2" />
+                    
+                    <!-- Resources for Windows.UI.Xaml.Controls.Primitives.ToggleButton -->
+                    <StaticResource x:Key="ToggleButtonBackground" ResourceKey="SystemControlBackgroundBaseLowBrush" />
+                    <StaticResource x:Key="ToggleButtonBackgroundPointerOver" ResourceKey="ApplicationLightAccentBrush3" />
+                    <StaticResource x:Key="ToggleButtonBackgroundPressed" ResourceKey="ApplicationLightAccentBrush2" />
+                    <StaticResource x:Key="ToggleButtonBackgroundDisabled" ResourceKey="SystemControlBackgroundBaseLowBrush" />
+                    <StaticResource x:Key="ToggleButtonBackgroundChecked" ResourceKey="AccentColor" />
+                    <StaticResource x:Key="ToggleButtonBackgroundCheckedPointerOver" ResourceKey="ApplicationDarkAccentBrush1" />
+                    <StaticResource x:Key="ToggleButtonBackgroundCheckedPressed" ResourceKey="ApplicationDarkAccentBrush2" />
+                    <StaticResource x:Key="ToggleButtonBorderBrushPointerOver" ResourceKey="ApplicationLightAccentBrush3" />
+                    <StaticResource x:Key="ToggleButtonBorderBrushPressed" ResourceKey="ApplicationLightAccentBrush2" />
+                    <StaticResource x:Key="ToggleButtonBorderBrushDisabled" ResourceKey="SystemControlBackgroundBaseLowBrush" />
+                    <StaticResource x:Key="ToggleButtonBorderBrushChecked" ResourceKey="AccentColor" />
+                    <StaticResource x:Key="ToggleButtonBorderBrushCheckedPointerOver" ResourceKey="ApplicationDarkAccentBrush1" />
+                    <StaticResource x:Key="ToggleButtonBorderBrushCheckedPressed" ResourceKey="ApplicationDarkAccentBrush2" />
 
                 </ResourceDictionary>
                 <ResourceDictionary x:Key="HighContrast">
