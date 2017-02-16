@@ -213,4 +213,7 @@
   <data name="SearchTextBox.PlaceholderText" xml:space="preserve">
     <value>Search</value>
   </data>
+  <data name="HomeTbk.Text" xml:space="preserve">
+    <value>Home</value>
+  </data>
 </root>

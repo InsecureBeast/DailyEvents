@@ -112,6 +112,25 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
+                    <Button Grid.Row="0"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Left"
+                            Height="{StaticResource NavButtonHeight}"
+                            Click="HomeButton_OnClick">
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Left">
+                            <SymbolIcon Symbol="Home"
+                                        Foreground="White"/>
+                            <TextBlock Text="Home"
+                                       x:Uid="HomeTbk"
+                                       FontWeight="Light"
+                                       Foreground="White"
+                                       Margin="15,0,0,0"/>
+                        </StackPanel>
+                    </Button>
+                    
                     <Border BorderThickness="0,0,0,1"
                             Grid.Row="2"
                             BorderBrush="#FF555555"/>

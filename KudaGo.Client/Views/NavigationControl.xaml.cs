@@ -100,5 +100,11 @@ namespace KudaGo.Client.Views
             splitView.IsPaneOpen = false;
             NavigationHelper.NavigateToSettings();
         }
+
+        private void HomeButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            splitView.IsPaneOpen = false;
+            NavigationHelper.GoHome();
+        }
     }
 }

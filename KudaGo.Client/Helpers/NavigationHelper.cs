@@ -33,5 +33,14 @@ namespace KudaGo.Client.Helpers
 
             rootFrame.GoBack();
         }
+
+        internal static void GoHome()
+        {
+            Frame rootFrame = Window.Current.Content as Frame;
+            if (rootFrame == null)
+                return;
+
+            rootFrame.Navigate(typeof(MainPage));
+        }
     }
 }
