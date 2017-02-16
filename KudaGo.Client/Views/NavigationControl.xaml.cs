@@ -94,5 +94,11 @@ namespace KudaGo.Client.Views
             }
                 
         }
+
+        private void SettingsButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            splitView.IsPaneOpen = false;
+            NavigationHelper.NavigateToSettings();
+        }
     }
 }

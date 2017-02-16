@@ -114,7 +114,7 @@
                             HorizontalAlignment="Stretch"
                             HorizontalContentAlignment="Left"
                             Height="{StaticResource NavButtonHeight}"
-                            Command="{Binding NavigationViewModel.SettingsCommand}">
+                            Click="SettingsButton_OnClick">
                         <StackPanel Orientation="Horizontal"
                                     HorizontalAlignment="Left">
                             <TextBlock FontFamily="Segoe MDL2 Assets" 
