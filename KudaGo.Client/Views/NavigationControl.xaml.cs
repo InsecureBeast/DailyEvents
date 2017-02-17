@@ -5,8 +5,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.Email;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -105,6 +107,21 @@ namespace KudaGo.Client.Views
         {
             splitView.IsPaneOpen = false;
             NavigationHelper.GoHome();
+        }
+
+        private async void FeedbackButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            splitView.IsPaneOpen = false;
+            var emailMessage = new EmailMessage();
+            emailMessage.To.Add(new EmailRecipient("pe.dmitriev@gmail.com"));
+            emailMessage.Body = "";
+            emailMessage.Subject = "KudaGo Client feedback";
+            await EmailManager.ShowComposeNewEmailAsync(emailMessage);
+        }
+
+        private void PlacesButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            splitView.IsPaneOpen = false;
         }
     }
 }

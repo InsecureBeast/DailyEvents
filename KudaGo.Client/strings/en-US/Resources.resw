@@ -216,4 +216,10 @@
   <data name="HomeTbk.Text" xml:space="preserve">
     <value>Home</value>
   </data>
+  <data name="FeedbackTbk.Text" xml:space="preserve">
+    <value>Feedback</value>
+  </data>
+  <data name="PlacesTbk.Text" xml:space="preserve">
+    <value>Places</value>
+  </data>
 </root>

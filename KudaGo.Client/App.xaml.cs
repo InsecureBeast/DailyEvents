@@ -148,6 +148,7 @@ namespace KudaGo.Client
                     titleBar.BackgroundColor = accentBrush.Color;
                     titleBar.ForegroundColor = Colors.White;
                     titleBar.InactiveBackgroundColor = accentBrush.Color;
+                    titleBar.InactiveForegroundColor = Colors.White;
                     titleBar.ButtonInactiveBackgroundColor = accentBrush.Color;
                 }
             }

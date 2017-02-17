@@ -11,6 +11,7 @@
     
     <UserControl.Resources>
         <x:Double x:Key="NavButtonHeight">40</x:Double>
+        <x:Double x:Key="ButtonHeight">50</x:Double>
     </UserControl.Resources>
     
     <Grid>
@@ -107,7 +108,9 @@
                 <Grid Background="#FF2B2B2B">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
@@ -117,7 +120,7 @@
                             BorderThickness="0"
                             HorizontalAlignment="Stretch"
                             HorizontalContentAlignment="Left"
-                            Height="{StaticResource NavButtonHeight}"
+                            Height="{StaticResource ButtonHeight}"
                             Click="HomeButton_OnClick">
                         <StackPanel Orientation="Horizontal"
                                     HorizontalAlignment="Left">
@@ -125,33 +128,67 @@
                                         Foreground="White"/>
                             <TextBlock Text="Home"
                                        x:Uid="HomeTbk"
-                                       FontWeight="Light"
                                        Foreground="White"
                                        Margin="15,0,0,0"/>
                         </StackPanel>
                     </Button>
-                    
+
+                    <Button Grid.Row="1"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Left"
+                            Height="{StaticResource ButtonHeight}"
+                            Click="PlacesButton_OnClick"
+                            Visibility="Collapsed">
+                        
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Left">
+                            <SymbolIcon Symbol="Map"
+                                        Foreground="White"/>
+                            <TextBlock Text="Places"
+                                       x:Uid="PlacesTbk"
+                                       Foreground="White"
+                                       Margin="15,0,0,0"/>
+                        </StackPanel>
+                    </Button>
+
+
                     <Border BorderThickness="0,0,0,1"
                             Grid.Row="2"
                             BorderBrush="#FF555555"/>
-                    
+
                     <Button Grid.Row="3"
                             Background="Transparent"
                             BorderThickness="0"
                             HorizontalAlignment="Stretch"
                             HorizontalContentAlignment="Left"
-                            Height="{StaticResource NavButtonHeight}"
+                            Height="{StaticResource ButtonHeight}"
+                            Click="FeedbackButton_OnClick">
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Left">
+                            <TextBlock Text="Feedback"
+                                       x:Uid="FeedbackTbk"
+                                       VerticalAlignment="Center"
+                                       Foreground="White"
+                                       Margin="35,0,0,0"/>
+                        </StackPanel>
+                    </Button>
+                    
+                    <Button Grid.Row="4"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Left"
+                            Height="{StaticResource ButtonHeight}"
                             Click="SettingsButton_OnClick">
                         <StackPanel Orientation="Horizontal"
                                     HorizontalAlignment="Left">
-                            <TextBlock FontFamily="Segoe MDL2 Assets" 
-                                       Text="&#xE115;"
-                                       FontWeight="Thin"
-                                       Foreground="White"
-                                       FontSize="20"/>
+                            <SymbolIcon Symbol="Setting"
+                                        Foreground="White"/>
                             <TextBlock Text="Settings"
                                        x:Uid="SettingsTbk"
-                                       FontWeight="Light"
+                                       VerticalAlignment="Center"
                                        Foreground="White"
                                        Margin="15,0,0,0"/>
                         </StackPanel>
