@@ -160,7 +160,7 @@
                         </Grid>
                         
                         <view:AdvControl Margin="-15,12,-15,0"
-                                         Size="Medium"/>
+                                         Size="Small"/>
 
                     </StackPanel>
 

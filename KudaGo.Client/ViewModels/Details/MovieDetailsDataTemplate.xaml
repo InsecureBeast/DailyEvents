@@ -106,7 +106,7 @@
                             </TextBlock>
                             
                             <view:AdvControl Margin="-15,0,-15,0"
-                                             Size="Medium"/>
+                                             Size="Small"/>
 
                         </StackPanel>
 

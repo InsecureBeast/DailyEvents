@@ -21,7 +21,7 @@ namespace KudaGo.Client.Views
     public enum AdvSize
     {
         Big,
-        Medium
+        Small
     }
 
     public sealed partial class AdvControl : UserControl
@@ -53,8 +53,8 @@ namespace KudaGo.Client.Views
                 case AdvSize.Big:
                     control.AdvPresenter.Content = CreateBigBanner();
                     break;
-                case AdvSize.Medium:
-                    control.AdvPresenter.Content = CreateMediumBanner();
+                case AdvSize.Small:
+                    control.AdvPresenter.Content = CreateSmallBanner();
                     break;
                 default:
                     break;
@@ -83,7 +83,7 @@ namespace KudaGo.Client.Views
             return adControl;
         }
 
-        private static AdControl CreateMediumBanner()
+        private static AdControl CreateSmallBanner()
         {
             // Programatically create an ad control. This must be done from the UI thread.
             var adControl = new AdControl();
@@ -92,11 +92,11 @@ namespace KudaGo.Client.Views
             // The application id and ad unit id can be obtained from Dev Center.
             // See "Monetize with Ads" at https://msdn.microsoft.com/en-us/library/windows/apps/mt170658.aspx
             adControl.ApplicationId = "3f83fe91-d6be-434d-a0ae-7351c5a997f1";
-            adControl.AdUnitId = "10865272";
+            adControl.AdUnitId = "10865270";
 
             // Set the dimensions
-            adControl.Width = 480;
-            adControl.Height = 80;
+            adControl.Width = 320;
+            adControl.Height = 50;
 
             // Add event handlers if you want
             adControl.ErrorOccurred += OnErrorOccurred;
