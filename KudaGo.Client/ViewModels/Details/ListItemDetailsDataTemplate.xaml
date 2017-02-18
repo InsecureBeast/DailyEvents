@@ -4,7 +4,8 @@
     xmlns:local="using:KudaGo.Client.ViewModels.Details"
     xmlns:controls="using:KudaGo.Client.Controls"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
-    xmlns:behaviors="using:KudaGo.Client.Behaviors">
+    xmlns:behaviors="using:KudaGo.Client.Behaviors"
+    xmlns:view="using:KudaGo.Client.Views">
 
     <DataTemplate x:Key="ListItemDetailsDataTemplate" >
         <ScrollViewer VerticalScrollBarVisibility="Auto">
@@ -28,14 +29,18 @@
                                        Style="{StaticResource NormalTextBlockStyle}"
                                        FontWeight="SemiBold"/>
 
-                            <RichTextBlock TextAlignment="Justify"
+                            <RichTextBlock TextAlignment="DetectFromContent"
                                            Style="{StaticResource NormalRichTextBlockStyle}"
                                            Margin="{StaticResource DoubleTextBlockMargin}">
                                 <Paragraph>
                                     <Run Text="{Binding BodyText}" />
                                 </Paragraph>
                             </RichTextBlock>
-                        </StackPanel>
+
+                            <view:AdvControl Margin="-15,0,-15,0"
+                                             Size="Medium"/>
+
+                    </StackPanel>
                     <!--</StackPanel>-->
                 </Grid>
             </Grid>

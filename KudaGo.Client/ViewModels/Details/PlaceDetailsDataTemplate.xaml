@@ -6,7 +6,8 @@
     xmlns:common="using:KudaGo.Client.Common"
     xmlns:converters="using:KudaGo.Client.Converters"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
-    xmlns:behaviors="using:KudaGo.Client.Behaviors">
+    xmlns:behaviors="using:KudaGo.Client.Behaviors"
+    xmlns:view="using:KudaGo.Client.Views">
 
     <converters:LocationConverter x:Key="LocationConverter" />
 
@@ -47,7 +48,7 @@
                                            Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
                             </Grid>
 
-                            <RichTextBlock TextAlignment="Justify"
+                            <RichTextBlock TextAlignment="DetectFromContent"
                                            Style="{StaticResource NormalRichTextBlockStyle}"
                                            Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"
                                            Margin="{StaticResource DoubleTextBlockMargin}">
@@ -116,7 +117,7 @@
                                     Style="{StaticResource NormalTextBlockStyle}"
                                     FontWeight="SemiBold"/>
 
-                        <RichTextBlock TextAlignment="Justify"
+                        <RichTextBlock TextAlignment="DetectFromContent"
                                        Style="{StaticResource NormalRichTextBlockStyle}"
                                        Margin="{StaticResource DoubleTextBlockMargin}">
                             <Paragraph>
@@ -157,6 +158,10 @@
                                        Style="{StaticResource NormalTextBlockStyle}"/>
                             </StackPanel>
                         </Grid>
+                        
+                        <view:AdvControl Margin="-15,12,-15,0"
+                                         Size="Medium"/>
+
                     </StackPanel>
 
                     <StackPanel Grid.Row="5"

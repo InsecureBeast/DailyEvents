@@ -6,7 +6,8 @@
     xmlns:common="using:KudaGo.Client.Common"
     xmlns:converters="using:KudaGo.Client.Converters"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
-    xmlns:behaviors="using:KudaGo.Client.Behaviors">
+    xmlns:behaviors="using:KudaGo.Client.Behaviors"
+    xmlns:view="using:KudaGo.Client.Views">
 
     <converters:LocationConverter x:Key="LocationConverter" />
 
@@ -16,9 +17,9 @@
                 <Grid MaxWidth="800"
                       Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto" x:Name="ImagesAndTitle"/>
+                        <RowDefinition Height="Auto" x:Name="Place"/>
+                        <RowDefinition Height="Auto" x:Name="Description"/>
                         <RowDefinition Height="Auto" x:Name="Comments"/>
                     </Grid.RowDefinitions>
                         
@@ -72,7 +73,7 @@
                                             Style="{StaticResource NormalTextBlockStyle}"/>
                             </Grid>
 
-                            <RichTextBlock TextAlignment="Justify"
+                            <RichTextBlock TextAlignment="DetectFromContent"
                                            Style="{StaticResource NormalRichTextBlockStyle}"
                                            Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"
                                            Margin="{StaticResource DoubleTextBlockMargin}">
@@ -139,14 +140,17 @@
                                     Style="{StaticResource NormalTextBlockStyle}"
                                     FontWeight="SemiBold"/>
 
-                        <RichTextBlock TextAlignment="Justify"
+                        <RichTextBlock TextAlignment="DetectFromContent"
                                        Style="{StaticResource NormalRichTextBlockStyle}"
                                        Margin="{StaticResource DoubleTextBlockMargin}">
                             <Paragraph>
                                 <Run Text="{Binding BodyText}" />
                             </Paragraph>
                         </RichTextBlock>
-                        
+
+                        <view:AdvControl Margin="-15,0,-15,0"
+                                         Size="Medium"/>
+
                     </StackPanel>
 
                     <StackPanel Grid.Row="3"

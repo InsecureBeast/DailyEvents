@@ -5,7 +5,8 @@
     xmlns:controls="using:KudaGo.Client.Controls"
     xmlns:converters="using:KudaGo.Client.Converters"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
-    xmlns:behaviors="using:KudaGo.Client.Behaviors">
+    xmlns:behaviors="using:KudaGo.Client.Behaviors"
+    xmlns:view="using:KudaGo.Client.Views">
 
     <DataTemplate x:Key="MovieDetailsDataTemplate" >
         <ScrollViewer VerticalScrollBarVisibility="Auto">
@@ -51,7 +52,7 @@
                                 </Paragraph>
                             </RichTextBlock>-->
 
-                            <RichTextBlock TextAlignment="Justify"
+                            <RichTextBlock TextAlignment="DetectFromContent"
                                            Style="{StaticResource NormalRichTextBlockStyle}"
                                            Margin="{StaticResource DoubleTextBlockMargin}">
                                 <Paragraph>
@@ -103,6 +104,10 @@
                                        Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}">
                                 <Hyperlink NavigateUri="{Binding Url}"><Run Text="{Binding Url}"/></Hyperlink>
                             </TextBlock>
+                            
+                            <view:AdvControl Margin="-15,0,-15,0"
+                                             Size="Medium"/>
+
                         </StackPanel>
 
                         <StackPanel Grid.Row="3"

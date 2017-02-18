@@ -28,9 +28,12 @@
                 <TextBlock Text="{Binding UserName}"
                            FontWeight="SemiBold"
                            TextTrimming="CharacterEllipsis"/>
-                <TextBlock Text="{Binding Text}"
-                           TextAlignment="DetectFromContent"
-                           TextWrapping="Wrap"/>
+                <RichTextBlock TextAlignment="DetectFromContent"
+                                TextWrapping="Wrap">
+                    <Paragraph>
+                        <Run Text="{Binding Text}" />
+                    </Paragraph>
+                </RichTextBlock>
             </StackPanel>
         </Grid>
     </DataTemplate>

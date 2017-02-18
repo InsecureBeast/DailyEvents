@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Advertising.WinRT.UI;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -17,11 +18,99 @@ using Windows.UI.Xaml.Navigation;
 
 namespace KudaGo.Client.Views
 {
+    public enum AdvSize
+    {
+        Big,
+        Medium
+    }
+
     public sealed partial class AdvControl : UserControl
     {
+        public static readonly DependencyProperty SizeProperty =
+           DependencyProperty.Register("Size", typeof(AdvSize), typeof(GridViewControl), new PropertyMetadata(AdvSize.Big, OnSizePropertyChanged));
+
         public AdvControl()
         {
             this.InitializeComponent();
+            AdvPresenter.Content = CreateBigBanner();
+        }
+
+        public AdvSize Size
+        {
+            get { return (AdvSize)GetValue(SizeProperty); }
+            set { SetValue(SizeProperty, value); }
+        }
+
+        private static void OnSizePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var control = d as AdvControl;
+            if (control == null)
+                return;
+
+            var value = (AdvSize)e.NewValue;
+            switch (value)
+            {
+                case AdvSize.Big:
+                    control.AdvPresenter.Content = CreateBigBanner();
+                    break;
+                case AdvSize.Medium:
+                    control.AdvPresenter.Content = CreateMediumBanner();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private static AdControl CreateBigBanner()
+        {
+            // Programatically create an ad control. This must be done from the UI thread.
+            var adControl = new AdControl();
+
+            // Set the application id and ad unit id
+            // The application id and ad unit id can be obtained from Dev Center.
+            // See "Monetize with Ads" at https://msdn.microsoft.com/en-us/library/windows/apps/mt170658.aspx
+            adControl.ApplicationId = "d25517cb-12d4-4699-8bdc-52040c712cab";
+            adControl.AdUnitId = "10043121";
+
+            // Set the dimensions
+            adControl.Width = 300;
+            adControl.Height = 250;
+
+            // Add event handlers if you want
+            adControl.ErrorOccurred += OnErrorOccurred;
+            adControl.AdRefreshed += OnAdRefreshed;
+
+            return adControl;
+        }
+
+        private static AdControl CreateMediumBanner()
+        {
+            // Programatically create an ad control. This must be done from the UI thread.
+            var adControl = new AdControl();
+
+            // Set the application id and ad unit id
+            // The application id and ad unit id can be obtained from Dev Center.
+            // See "Monetize with Ads" at https://msdn.microsoft.com/en-us/library/windows/apps/mt170658.aspx
+            adControl.ApplicationId = "3f83fe91-d6be-434d-a0ae-7351c5a997f1";
+            adControl.AdUnitId = "10865272";
+
+            // Set the dimensions
+            adControl.Width = 480;
+            adControl.Height = 80;
+
+            // Add event handlers if you want
+            adControl.ErrorOccurred += OnErrorOccurred;
+            adControl.AdRefreshed += OnAdRefreshed;
+
+            return adControl;
+        }
+
+        private static void OnAdRefreshed(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private static void OnErrorOccurred(object sender, AdErrorEventArgs e)
+        {
         }
     }
 }

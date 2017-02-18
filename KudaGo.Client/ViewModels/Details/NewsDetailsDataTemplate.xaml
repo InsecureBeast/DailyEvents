@@ -3,7 +3,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="using:KudaGo.Client.Controls"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
-    xmlns:behaviors="using:KudaGo.Client.Behaviors">
+    xmlns:behaviors="using:KudaGo.Client.Behaviors"
+    xmlns:view="using:KudaGo.Client.Views">
 
     <DataTemplate x:Key="NewsDetailsDataTemplate" >
         <ScrollViewer VerticalScrollBarVisibility="Auto">
@@ -56,7 +57,7 @@
                                             Style="{StaticResource BodyTextBlockStyle}"/>
                             </Grid>-->
 
-                            <RichTextBlock TextAlignment="Justify"
+                            <RichTextBlock TextAlignment="DetectFromContent"
                                            Style="{StaticResource NormalRichTextBlockStyle}"
                                            Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"
                                            Margin="{StaticResource DoubleTextBlockMargin}">
@@ -65,7 +66,7 @@
                                 </Paragraph>
                             </RichTextBlock>
 
-                            <RichTextBlock TextAlignment="Justify"
+                            <RichTextBlock TextAlignment="DetectFromContent"
                                            Style="{StaticResource NormalRichTextBlockStyle}">
                                 <Paragraph>
                                     <Run Text="{Binding BodyText}" />
@@ -89,6 +90,9 @@
                                        Style="{StaticResource NormalTextBlockStyle}"/>
                             
                         </StackPanel>
+
+                        <view:AdvControl Margin="-15,0,-15,0"
+                                         Size="Medium"/>
                     </StackPanel>
                     
                     <!--<StackPanel Margin="15"

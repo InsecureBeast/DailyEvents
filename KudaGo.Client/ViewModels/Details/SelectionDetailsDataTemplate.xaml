@@ -7,7 +7,8 @@
     xmlns:converters="using:KudaGo.Client.Converters"
     xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
-    xmlns:behaviors="using:KudaGo.Client.Behaviors">
+    xmlns:behaviors="using:KudaGo.Client.Behaviors"
+    xmlns:view="using:KudaGo.Client.Views">
 
     <converters:StringToGridColumnSpanConverter x:Key="StringToGridColumnSpanConverter"/>
     <converters:StringToGridColumnConverter x:Key="StringToGridColumnConverter"/>
@@ -75,7 +76,7 @@
                                        Style="{StaticResource TitleTextBlockStyle}"
                                        FontWeight="SemiBold"/>
 
-                            <RichTextBlock TextAlignment="Justify"
+                            <RichTextBlock TextAlignment="DetectFromContent"
                                            TextWrapping="Wrap"
                                            Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"
                                            Margin="{StaticResource DoubleTextBlockMargin}">
@@ -109,6 +110,10 @@
                             </ListView>
 
                         </StackPanel>
+                        
+                        <view:AdvControl Margin="-15,0,-15,0"
+                                         Size="Medium"/>
+
                     </StackPanel>
 
                     <StackPanel Grid.Row="3"
