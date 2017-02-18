@@ -1,4 +1,5 @@
-﻿using KudaGo.Client.ViewModels.Search;
+﻿using KudaGo.Client.ViewModels.Nodes;
+using KudaGo.Client.ViewModels.Search;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace KudaGo.Client.Common
         public DataTemplate PlaceTemplate { get; set; }
         public DataTemplate NewsTemplate { get; set; }
         public DataTemplate SelectionTemplate { get; set; }
+        public DataTemplate AdvTemplate { get; set; }
 
         protected override DataTemplate SelectTemplateCore(object item)
         {
@@ -23,6 +25,9 @@ namespace KudaGo.Client.Common
 
         protected override DataTemplate SelectTemplateCore(object item, DependencyObject container)
         {
+            if (item is AdvNodeViewModel)
+                return AdvTemplate;
+
             var vm = item as SearchNodeViewModel;
             if (vm == null)
                 return base.SelectTemplateCore(item, container);

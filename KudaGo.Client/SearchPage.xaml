@@ -15,7 +15,8 @@
                                            NewsTemplate="{StaticResource NewsItemDataTemplate}"
                                            EventTemplate="{StaticResource EventItemDataTemplate}"
                                            PlaceTemplate="{StaticResource PlaceItemDataTemplate}"
-                                           SelectionTemplate="{StaticResource SearchSelectionItemDataTemplate}"/>
+                                           SelectionTemplate="{StaticResource SearchSelectionItemDataTemplate}"
+                                           AdvTemplate="{StaticResource AdvItemDataTemplate}"/>
     </Page.Resources>
     
     <views:NavigationControl Title="{Binding NavigationViewModel.SearchString}">

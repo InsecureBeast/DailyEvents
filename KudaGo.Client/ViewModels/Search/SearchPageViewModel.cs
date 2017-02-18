@@ -1,4 +1,6 @@
-﻿using KudaGo.Client.Model;
+﻿using KudaGo.Client.Helpers;
+using KudaGo.Client.Model;
+using KudaGo.Client.ViewModels.Nodes;
 using KudaGo.Client.ViewModels.Search;
 using KudaGo.Core.Data;
 using KudaGo.Core.Search;
@@ -42,6 +44,8 @@ namespace KudaGo.Client.ViewModels
             foreach (var result in res.Results)
             {
                 Items.Add(new SearchNodeViewModel(result));
+                if (Items.Count == AdvHelper.GetAdvItemIndex())
+                    Items.Add(new AdvNodeViewModel());
             }
 
             base.AddData(response);
