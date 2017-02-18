@@ -96,9 +96,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\KudaGo.Core\KudaGo.Core.csproj">
+    <ProjectReference Include="..\KudaGo.Core\WhereToGo.Core.csproj">
       <Project>{2a26290d-d6a5-44fb-a829-45a6b8e5fa12}</Project>
-      <Name>KudaGo.Core</Name>
+      <Name>WhereToGo.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

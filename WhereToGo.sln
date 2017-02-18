@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KudaGo.Tests", "KudaGo.Tests\KudaGo.Tests.csproj", "{3BE988F8-3182-460E-8D68-FECD5EDA99E4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhereToGo.Tests", "KudaGo.Tests\WhereToGo.Tests.csproj", "{3BE988F8-3182-460E-8D68-FECD5EDA99E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KudaGo.Core", "KudaGo.Core\KudaGo.Core.csproj", "{2A26290D-D6A5-44FB-A829-45A6B8E5FA12}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhereToGo.Core", "KudaGo.Core\WhereToGo.Core.csproj", "{2A26290D-D6A5-44FB-A829-45A6B8E5FA12}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KudaGo.Client.Test", "KudaGo.Client.Test\KudaGo.Client.Test.csproj", "{140A67C8-C1EE-4D37-A80D-0743858DB575}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhereToGo.Client.Test", "KudaGo.Client.Test\WhereToGo.Client.Test.csproj", "{140A67C8-C1EE-4D37-A80D-0743858DB575}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KudaGo.Client", "KudaGo.Client\KudaGo.Client.csproj", "{614B7F53-AD2A-42FC-AA30-227EE33E5A5C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhereToGo.Client", "KudaGo.Client\WhereToGo.Client.csproj", "{614B7F53-AD2A-42FC-AA30-227EE33E5A5C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

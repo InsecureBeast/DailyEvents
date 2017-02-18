@@ -11,3 +11,4 @@ KudaGo.Core/bin/*
 KudaGo.Client/project.lock.json
 .vs/*
 KudaGo.Client/KudaGo.Client.csproj.user
+KudaGo.Client/WhereToGo.Client.csproj.user
