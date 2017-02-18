@@ -126,6 +126,7 @@
     </Compile>
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\WebViewExtensions.cs" />
+    <Compile Include="Helpers\AdvHelper.cs" />
     <Compile Include="Helpers\DeviceTypeHelper.cs" />
     <Compile Include="Common\ImageLoader.cs" />
     <Compile Include="Helpers\LayoutHelper.cs" />
@@ -167,6 +168,7 @@
     <Compile Include="ViewModels\MapPageViewModel.cs" />
     <Compile Include="ViewModels\MoviesViewModel.cs" />
     <Compile Include="ViewModels\NavigationViewModel.cs" />
+    <Compile Include="ViewModels\Nodes\AdvNodeViewModel.cs" />
     <Compile Include="ViewModels\Nodes\CategoryNodeViewModel.cs" />
     <Compile Include="ViewModels\Nodes\CommentNodeViewModel.cs" />
     <Compile Include="ViewModels\Nodes\EventfTheDayNodeViewModel.cs" />
@@ -183,6 +185,9 @@
     <Compile Include="ViewModels\PropertyChangedBase.cs" />
     <Compile Include="ViewModels\SelectionsViewModel.cs" />
     <Compile Include="ViewModels\SettingsPageViewModel.cs" />
+    <Compile Include="Views\AdvControl.xaml.cs">
+      <DependentUpon>AdvControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\GridViewControl.xaml.cs">
       <DependentUpon>GridViewControl.xaml</DependentUpon>
     </Compile>
@@ -294,6 +299,10 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
+    <Page Include="Views\AdvControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\CommentsDataTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -334,6 +343,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <SDKReference Include="Microsoft.AdMediator.Universal, Version=1.0">
+      <Name>Microsoft Advertising Universal SDK</Name>
+    </SDKReference>
+    <SDKReference Include="Microsoft.Advertising.Xaml, Version=10.0">
+      <Name>Microsoft Advertising SDK for XAML</Name>
+    </SDKReference>
+    <SDKReference Include="Microsoft.VCLibs, Version=14.0">
+      <Name>Visual C++ 2015 Runtime for Universal Windows Platform Apps</Name>
+    </SDKReference>
     <SDKReference Include="WindowsMobile, Version=10.0.10586.0">
       <Name>Windows Mobile Extensions for the UWP %28WindowsMobile, Version=10.0.10586.0%29</Name>
     </SDKReference>

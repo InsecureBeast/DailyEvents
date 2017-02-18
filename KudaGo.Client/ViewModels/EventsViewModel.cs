@@ -60,6 +60,8 @@ namespace KudaGo.Client.ViewModels
             foreach (var result in res.Results)
             {
                 Items.Add(new EventNodeViewModel(result, _categoryNameProvider));
+                if (Items.Count == AdvHelper.GetAdvItemIndex())
+                    Items.Add(new AdvNodeViewModel());
             }
 
             base.AddData(response);

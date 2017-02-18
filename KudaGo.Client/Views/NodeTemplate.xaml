@@ -351,4 +351,12 @@
         </Grid>
     </DataTemplate>
 
+    <DataTemplate x:Key="AdvItemDataTemplate">
+        <Grid Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}"
+              Margin="7,7,7,7"
+              Height="{StaticResource ItemHeight}">
+            <local:AdvControl/>
+        </Grid>
+    </DataTemplate>
+
 </ResourceDictionary>

@@ -12,7 +12,7 @@ namespace KudaGo.Client.Common
     public class EventItemTemplateSelector : DataTemplateSelector
     {
         public DataTemplate EventTemplate { get; set; }
-        public DataTemplate EventOfTheDayTemplate { get; set; }
+        public DataTemplate AdvTemplate { get; set; }
 
         protected override DataTemplate SelectTemplateCore(object item)
         {
@@ -25,10 +25,10 @@ namespace KudaGo.Client.Common
                 return EventTemplate;
 
             var uiElement = container as UIElement;
-            if (item is EventOfTheDayNodeViewModel)
+            if (item is AdvNodeViewModel)
             {
                 //VariableSizedWrapGrid.SetColumnSpan(uiElement, 2);
-                return EventOfTheDayTemplate;
+                return AdvTemplate;
             }
 
             return base.SelectTemplateCore(item, container);

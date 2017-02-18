@@ -98,6 +98,9 @@ namespace KudaGo.Client.Views
             if (parent == null)
                 return;
 
+            if (AdvHelper.IsAdvItem(e.ClickedItem))
+                return;
+
             parent.Frame.Navigate(typeof(DetailsPage), e.ClickedItem);
         }
 
