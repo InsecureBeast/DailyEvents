@@ -55,6 +55,7 @@ namespace KudaGo.Client.Controls
 
         public IAsyncOperation<LoadMoreItemsResult> LoadMoreItemsAsync(uint count)
         {
+            _hasMoreItems = count >= 0;
             return LoadDataAsync().AsAsyncOperation<LoadMoreItemsResult>();
         }
 

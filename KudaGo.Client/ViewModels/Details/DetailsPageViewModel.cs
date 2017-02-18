@@ -8,6 +8,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using KudaGo.Client.ViewModels.Comments;
+using System.Net.NetworkInformation;
+using System.Net.Http;
+using System.Net;
+using KudaGo.Client.Command;
+using System.Windows.Input;
 
 namespace KudaGo.Client.ViewModels.Details
 {
@@ -16,6 +21,7 @@ namespace KudaGo.Client.ViewModels.Details
         protected readonly IDataSource _dataSource;
         private readonly NavigationViewModel _navigationViewModel;
         private readonly CommentsViewModel _commentsViewModel;
+        private readonly DelegateCommand _repeatCommand;
         protected ObservableCollection<string> _images;
         protected readonly long _id;
         private string _title;
@@ -30,17 +36,13 @@ namespace KudaGo.Client.ViewModels.Details
             _images = new ObservableCollection<string>();
             _navigationViewModel = new NavigationViewModel(dataSource);
             _commentsViewModel = CreateCommentsViewModel();
+            _repeatCommand = new DelegateCommand(Repeat);
+
             IsBusy = true;
             Task.Run(async () =>
             {
-                await LoadDetails(id);
-                LayoutHelper.InvokeFromUiThread(() => IsBusy = false);
+                await Load();
             });
-        }
-
-        protected virtual CommentsViewModel CreateCommentsViewModel()
-        {
-            return new CommentsViewModel(_id, _dataSource);
         }
 
         public bool IsBusy
@@ -50,7 +52,13 @@ namespace KudaGo.Client.ViewModels.Details
             {
                 _isBusy = value;
                 NotifyOfPropertyChanged(() => IsBusy);
+                NotifyOfPropertyChanged(() => IsLoading);
             }
+        }
+
+        public bool IsLoading
+        {
+            get { return !_isBusy && IsConnected; }
         }
 
         public string Title
@@ -83,6 +91,14 @@ namespace KudaGo.Client.ViewModels.Details
             }
         }
 
+        public bool IsConnected
+        {
+            get
+            {
+                return NetworkInterface.GetIsNetworkAvailable();
+            }
+        }
+
         public ObservableCollection<string> Images
         {
             get { return _images; }
@@ -98,8 +114,50 @@ namespace KudaGo.Client.ViewModels.Details
             get { return _commentsViewModel; }
         }
 
+        public ICommand RepeatCommand
+        {
+            get { return _repeatCommand; }
+        }
+
+        protected virtual CommentsViewModel CreateCommentsViewModel()
+        {
+            return new CommentsViewModel(_id, _dataSource);
+        }
+
         protected virtual async Task LoadDetails(long id)
         {
+        }
+
+        private void UpdateFields()
+        {
+            LayoutHelper.InvokeFromUiThread(() =>
+            {
+                NotifyOfPropertyChanged(() => IsConnected);
+                IsBusy = false;
+            });
+        }
+
+        private async Task Load()
+        {
+            try
+            {
+                await LoadDetails(_id);
+            }
+            catch (HttpRequestException)
+            {
+            }
+            catch (WebException)
+            {
+            }
+            finally
+            {
+                UpdateFields();
+            }
+        }
+
+        private async void Repeat(object obj)
+        {
+            await Load();
         }
     }
 }

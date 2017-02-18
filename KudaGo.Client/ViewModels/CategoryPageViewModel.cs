@@ -36,22 +36,6 @@ namespace KudaGo.Client.ViewModels
 
             _items = new ObservableCollection<CategoryNodeViewModel>();
             _navigationViewModel = new NavigationViewModel(dataSource);
-
-            LayoutHelper.InvokeFromUiThread(async () =>
-            {
-                try
-                {
-                    await Load();
-                }
-                catch (HttpRequestException)
-                {
-                    IsBusy = false;
-                }
-                catch (WebException)
-                {
-                    IsBusy = false;
-                }
-            });
         }
 
         public NavigationViewModel NavigationViewModel
@@ -158,7 +142,36 @@ namespace KudaGo.Client.ViewModels
             get { return GetFilterDefinition(); }
         }
 
-        public async Task Load()
+        public void Load()
+        {
+            LayoutHelper.InvokeFromUiThread(async () =>
+            {
+                try
+                {
+                    await LoadData();
+                }
+                catch (HttpRequestException)
+                {
+                    IsBusy = false;
+                }
+                catch (WebException)
+                {
+                    IsBusy = false;
+                }
+            });
+        }
+
+        public string GetName(string slug)
+        {
+            var items = Items.Skip(1);
+            var first = items.FirstOrDefault(i => i.Slug.Contains(slug));
+            if (first == null)
+                return string.Empty;
+
+            return first.Name;
+        }
+
+        private async Task LoadData()
         {
             if (Items.Any())
                 return;
@@ -181,16 +194,6 @@ namespace KudaGo.Client.ViewModels
             }
 
             IsBusy = false;
-        }
-
-        public string GetName(string slug)
-        {
-            var items = Items.Skip(1);
-            var first = items.FirstOrDefault(i => i.Slug.Contains(slug));
-            if (first == null)
-                return string.Empty;
-
-            return first.Name;
         }
 
         private DateTime GetToday()

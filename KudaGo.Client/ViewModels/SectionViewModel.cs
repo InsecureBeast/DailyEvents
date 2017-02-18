@@ -112,9 +112,10 @@ namespace KudaGo.Client.ViewModels
         private void IsBusyChanged(object sender, IsBusyEventArgs e)
         {
             IsBusy = e.IsBusy;
+            NotifyOfPropertyChanged(() => IsConnected);
         }
 
-        private async void Repeat(object obj)
+        protected virtual async void Repeat(object obj)
         {
             await Load();
         }

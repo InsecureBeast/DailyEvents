@@ -82,6 +82,12 @@ namespace KudaGo.Client.ViewModels
             await base.Update();
         }
 
+        protected override void Repeat(object obj)
+        {
+            base.Repeat(obj);
+            LoadEventOfDay();
+        }
+
         private void LoadEventOfDay()
         {
             LayoutHelper.InvokeFromUiThread(async () =>

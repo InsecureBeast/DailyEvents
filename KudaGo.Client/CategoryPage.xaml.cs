@@ -52,7 +52,9 @@ namespace KudaGo.Client
                 SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
             }
 
-            DataContext = e.Parameter as CategoryPageViewModel;
+            var vm = e.Parameter as CategoryPageViewModel;
+            DataContext = vm;
+            vm.Load();
         }
 
         private void ListView_OnItemClick(object sender, ItemClickEventArgs e)

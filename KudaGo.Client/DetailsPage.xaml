@@ -34,7 +34,7 @@
             <Grid>
                 <ContentPresenter x:Name="contentPresenter"
                                   Content="{Binding}"
-                                  Visibility="{Binding IsBusy, Converter={StaticResource InverseBooleanToVisibilityConverter}}"/>
+                                  Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}"/>
                 <ProgressRing IsActive="True" 
                               Width="50"
                               Height="50"
@@ -42,6 +42,12 @@
                               VerticalAlignment="Center"
                               Foreground="{StaticResource InkToolbarAccentColorThemeBrush}"
                               Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
+                <ContentPresenter ContentTemplate="{StaticResource ConnectionFailedTemplate}"
+                                  Visibility="{Binding IsConnected, Converter={StaticResource InverseBooleanToVisibilityConverter}}"
+                                  VerticalAlignment="Center"
+                                  HorizontalAlignment="Center"
+                                  Margin="10"/>
             </Grid>
         </views:NavigationControl.ViewContent>
     </views:NavigationControl>
