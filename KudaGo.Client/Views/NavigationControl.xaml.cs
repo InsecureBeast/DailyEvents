@@ -115,7 +115,7 @@ namespace KudaGo.Client.Views
             var emailMessage = new EmailMessage();
             emailMessage.To.Add(new EmailRecipient("pe.dmitriev@gmail.com"));
             emailMessage.Body = "";
-            emailMessage.Subject = "KudaGo Client feedback";
+            emailMessage.Subject = "Where to go feedback";
             await EmailManager.ShowComposeNewEmailAsync(emailMessage);
         }
 
