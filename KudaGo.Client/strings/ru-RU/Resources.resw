@@ -222,4 +222,7 @@
   <data name="PlacesTbk.Text" xml:space="preserve">
     <value>Места</value>
   </data>
+  <data name="RepeatButton.Content" xml:space="preserve">
+    <value>Повторить</value>
+  </data>
 </root>

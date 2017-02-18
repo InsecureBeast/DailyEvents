@@ -6,6 +6,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Net;
 
 namespace KudaGo.Client.ViewModels
 {
@@ -37,7 +39,18 @@ namespace KudaGo.Client.ViewModels
 
             LayoutHelper.InvokeFromUiThread(async () =>
             {
-                await Load();
+                try
+                {
+                    await Load();
+                }
+                catch (HttpRequestException)
+                {
+                    IsBusy = false;
+                }
+                catch (WebException)
+                {
+                    IsBusy = false;
+                }
             });
         }
 

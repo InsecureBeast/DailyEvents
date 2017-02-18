@@ -104,8 +104,8 @@
                                        Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}">
                                 <Hyperlink NavigateUri="{Binding Url}"><Run Text="{Binding Url}"/></Hyperlink>
                             </TextBlock>
-                            
-                            <view:AdvControl Margin="-15,0,-15,0"
+
+                            <view:AdvControl Margin="-15,12,-15,0"
                                              Size="Small"/>
 
                         </StackPanel>

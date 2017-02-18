@@ -22,7 +22,7 @@ namespace KudaGo.Client.ViewModels.Comments
         {
             _id = id;
             _dataSource = dataSource;
-            _items = new IncrementalObservableCollection<CommentNodeViewModel>(GetComments, AddComments);
+            _items = new IncrementalObservableCollection<CommentNodeViewModel>(GetComments, AddComments, LoadCommentFailed);
         }
 
         public IncrementalObservableCollection<CommentNodeViewModel> Items
@@ -68,6 +68,11 @@ namespace KudaGo.Client.ViewModels.Comments
         protected virtual Task<IResponse> GetComments(string next)
         {
             return null;
+        }
+
+        private void LoadCommentFailed(Exception e)
+        {
+
         }
     }
 }

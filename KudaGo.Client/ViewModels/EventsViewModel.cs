@@ -21,14 +21,11 @@ namespace KudaGo.Client.ViewModels
         private readonly IDataSource _dataSource;
         private ICategoryNameProvider _categoryNameProvider;
         private EventOfTheDayNodeViewModel _eventOfTheDay;
-        private GetDataDelegate _getData;
-        private string _filter;
         private FilterDefinition _filterDefinition;
 
         public EventsViewModel(IDataSource dataSource)
         {
             _dataSource = dataSource;
-            _getData = GetEventData;
             _filterDefinition = new FilterDefinition();
             LoadEventOfDay();
         }
@@ -69,13 +66,12 @@ namespace KudaGo.Client.ViewModels
 
         protected override async Task<IResponse> GetData(string next)
         {
-            return await _getData(next);
+            return await _dataSource.GetEvents(next, _filterDefinition);
         }
 
         public async void Update(CategoryPageViewModel categoryViewModel)
         {
             _filterDefinition = categoryViewModel.FilterDefinition;
-            _getData = GetEventData;
             Items.Clear();
             await Load();
         }
@@ -86,18 +82,20 @@ namespace KudaGo.Client.ViewModels
             await base.Update();
         }
 
-        protected async Task<IResponse> GetEventData(string next)
-        {
-            return await _dataSource.GetEvents(next, _filterDefinition);
-        }
-
         private void LoadEventOfDay()
         {
             LayoutHelper.InvokeFromUiThread(async () =>
             {
-                var events = await _dataSource.GetEventOfTheDay(null);
-                var eventOfTheDay = events.Results.FirstOrDefault();
-                EventOfTheDay = new EventOfTheDayNodeViewModel(eventOfTheDay);
+                try
+                {
+                    var events = await _dataSource.GetEventOfTheDay(null);
+                    var eventOfTheDay = events.Results.FirstOrDefault();
+                    EventOfTheDay = new EventOfTheDayNodeViewModel(eventOfTheDay);
+                }
+                catch (Exception e)
+                {
+                    LoadFailed(e);
+                }
             });
         }
     }

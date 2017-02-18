@@ -125,6 +125,12 @@
                    Style="{StaticResource SubtitleTextBlockStyle}"
                    Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"
                    Visibility="{Binding IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-        
+
+        <ContentPresenter ContentTemplate="{StaticResource ConnectionFailedTemplate}"
+                          Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
+                          Visibility="{Binding IsConnected, Converter={StaticResource InverseBooleanToVisibilityConverter}}"
+                          VerticalAlignment="Center"
+                          HorizontalAlignment="Center"
+                          Margin="10"/>
     </Grid>
 </UserControl>

@@ -1,0 +1,21 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WhereToGo.Client.Views">
+
+    <DataTemplate x:Key="ConnectionFailedTemplate">
+        <StackPanel Orientation="Vertical">
+            
+            <TextBlock Text="Ошибка загрузки данных. Пожалуйста проверьте Интернет-соединение."
+                       x:Uid="NothingSuitable."
+                       Style="{StaticResource SubtitleTextBlockStyle}"
+                       Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
+
+            <Button Content="Repeat"
+                    x:Uid="RepeatButton"
+                    Margin="{StaticResource DefaultControlMargin}"
+                    Command="{Binding RepeatCommand}"/>
+        </StackPanel>
+    </DataTemplate>
+
+</ResourceDictionary>

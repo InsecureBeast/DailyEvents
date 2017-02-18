@@ -34,4 +34,22 @@ namespace KudaGo.Core.Data
         public int FavoritesCount { get; private set; }
         public int CommentsCount { get; private set; }
     }
+
+    public class EmptyResponce : IResponse
+    {
+        public int Count
+        {
+            get { return 0; }
+        }
+
+        public string Next
+        {
+            get { return string.Empty; }
+        }
+
+        public string Previous
+        {
+            get { return string.Empty; }
+        }
+    }
 }

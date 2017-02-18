@@ -222,4 +222,7 @@
   <data name="PlacesTbk.Text" xml:space="preserve">
     <value>Places</value>
   </data>
+  <data name="RepeatButton.Content" xml:space="preserve">
+    <value>Repeat</value>
+  </data>
 </root>

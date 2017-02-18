@@ -9,8 +9,6 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Windows.Foundation;
-using Windows.UI.Core;
-using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
 
 namespace KudaGo.Client.Controls
@@ -20,8 +18,9 @@ namespace KudaGo.Client.Controls
 
     class IncrementalObservableCollection<T> : ObservableCollection<T>, ISupportIncrementalLoading
     {
-        private GetDataDelegate _getData;
-        private AddDataDelegate _addData;
+        private readonly GetDataDelegate _getData;
+        private readonly AddDataDelegate _addData;
+        private readonly Action<Exception> _failed;
         private bool _hasMoreItems = true;
         private string _next;
         private int _count;
@@ -29,10 +28,11 @@ namespace KudaGo.Client.Controls
 
         public event EventHandler<IsBusyEventArgs> IsBusyChanged;
 
-        public IncrementalObservableCollection(GetDataDelegate getData, AddDataDelegate addData)
+        public IncrementalObservableCollection(GetDataDelegate getData, AddDataDelegate addData, Action<Exception> failed)
         {
             _getData = getData;
             _addData = addData;
+            _failed = failed;
         }
 
         public bool HasMoreItems
@@ -67,24 +67,34 @@ namespace KudaGo.Client.Controls
 
         private async Task<LoadMoreItemsResult> LoadDataAsync()
         {
-            if (Busy)
-                return new LoadMoreItemsResult { Count = (uint)Count };
-
-            Busy = true;
-            var result = await _getData(_next);
-            if (_hasMoreItems)
+            try
             {
-                _next = result.Next;
-                _count = result.Count;
-                LayoutHelper.InvokeFromUiThread(() => 
+                if (Busy)
+                    return new LoadMoreItemsResult { Count = (uint)Count };
+
+                Busy = true;
+                var result = await _getData(_next);
+                if (_hasMoreItems)
                 {
-                    _addData(result);
+                    _next = result.Next;
+                    _count = result.Count;
+                    LayoutHelper.InvokeFromUiThread(() =>
+                    {
+                        _addData(result);
+                    });
+                    _hasMoreItems = !string.IsNullOrEmpty(result.Next);
+                }
+            }
+            catch (Exception e)
+            {
+                LayoutHelper.InvokeFromUiThread(() =>
+                {
+                    _failed(e);
                 });
-                _hasMoreItems = !string.IsNullOrEmpty(result.Next);
+                _hasMoreItems = false;
             }
             Busy = false;
-
-            return new LoadMoreItemsResult { Count = (uint)_count }; ;
+            return new LoadMoreItemsResult { Count = (uint)_count };
         }
     }
 
