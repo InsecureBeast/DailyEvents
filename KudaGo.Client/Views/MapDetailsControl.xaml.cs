@@ -31,9 +31,14 @@ namespace DailyEvents.Client.Views
         public static readonly DependencyProperty IsReadOnlyProperty =
             DependencyProperty.Register("IsReadOnly", typeof(bool), typeof(MapDetailsControl), new PropertyMetadata(false, new PropertyChangedCallback(OnReadOnlyChanged)));
 
+        private MapIcon _mapCurrentLocationIcon;
+
         public MapDetailsControl()
         {
             this.InitializeComponent();
+
+            _mapCurrentLocationIcon = new MapIcon();
+            _mapCurrentLocationIcon.Image = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/Icons/curlocation-marker.png"));
         }
 
         public ICoordinates Coordinates
@@ -67,17 +72,11 @@ namespace DailyEvents.Client.Views
                         Geopoint snPoint = pos.Coordinate.Point;//new Geopoint(pos);
 
                         // Create a Current location icon.
-                        MapIcon mapIcon1 = new MapIcon();
-                        mapIcon1.Title = "Текущее положение";
-                        mapIcon1.Image = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/Icons/map-marker.png"));
-                        mapIcon1.Location = snPoint;
-                        mapIcon1.NormalizedAnchorPoint = new Point(0.5, 1.0);
-                        //mapIcon1.ZIndex = 0;
-
+                        _mapCurrentLocationIcon.Location = snPoint;
+                        
                         // Add the Current location icon to the map.
-                        var elements = map.MapElements.ToList();
-                        if (!elements.Exists(e => MapIconExists(e)))
-                            map.MapElements.Add(mapIcon1);
+                        if (!map.MapElements.Contains(_mapCurrentLocationIcon))
+                            map.MapElements.Add(_mapCurrentLocationIcon);
 
                         // Center the map over the POI.
                         await map.TrySetViewAsync(snPoint);
