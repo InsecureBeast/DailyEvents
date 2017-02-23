@@ -49,6 +49,16 @@ namespace DailyEvents.Client
                 SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
             }
 
+            var id = e.Parameter as long?;
+            if (id != null)
+            {
+                var viewModel = new PlaceDetailsPageViewModel(id.Value, App.DataSource);
+                DataContext = viewModel;
+                var template = Resources["PlaceDetailsDataTemplate"] as DataTemplate;
+                contentPresenter.ContentTemplate = template;
+                return;
+            }
+
             SetTemplate(e.Parameter as NodeViewModel);
         }
 

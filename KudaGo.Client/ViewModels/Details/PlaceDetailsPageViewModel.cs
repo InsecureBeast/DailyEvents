@@ -152,7 +152,7 @@ namespace DailyEvents.Client.ViewModels.Details
             if (frame == null)
                 return;
 
-            frame.Navigate(typeof(MapPage), new MapPageViewModel(Location, Title, _dataSource));
+            frame.Navigate(typeof(MapPage), new MapPageViewModel(Location, Title, Metro, _id, _dataSource));
         }
 
         private void Call(object obj)

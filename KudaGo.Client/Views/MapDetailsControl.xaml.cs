@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Devices.Geolocation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -47,6 +48,70 @@ namespace DailyEvents.Client.Views
             set { SetValue(IsReadOnlyProperty, value); }
         }
 
+        private async Task GoToCurrentLocation()
+        {
+            try
+            {
+                // Request permission to access location
+                var accessStatus = await Geolocator.RequestAccessAsync();
+
+                switch (accessStatus)
+                {
+                    case GeolocationAccessStatus.Allowed:
+
+                        // If DesiredAccuracy or DesiredAccuracyInMeters are not set (or value is 0), DesiredAccuracy.Default is used.
+                        Geolocator geolocator = new Geolocator();// { DesiredAccuracyInMeters = _desireAccuracyInMetersValue };
+
+                        // Carry out the operation
+                        Geoposition pos = await geolocator.GetGeopositionAsync().AsTask();//token);
+                        Geopoint snPoint = pos.Coordinate.Point;//new Geopoint(pos);
+
+                        // Create a Current location icon.
+                        MapIcon mapIcon1 = new MapIcon();
+                        mapIcon1.Title = "Текущее положение";
+                        mapIcon1.Image = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/Icons/map-marker.png"));
+                        mapIcon1.Location = snPoint;
+                        mapIcon1.NormalizedAnchorPoint = new Point(0.5, 1.0);
+                        //mapIcon1.ZIndex = 0;
+
+                        // Add the Current location icon to the map.
+                        var elements = map.MapElements.ToList();
+                        if (!elements.Exists(e => MapIconExists(e)))
+                            map.MapElements.Add(mapIcon1);
+
+                        // Center the map over the POI.
+                        await map.TrySetViewAsync(snPoint);
+                        break;
+
+                    case GeolocationAccessStatus.Denied:
+                        break;
+
+                    case GeolocationAccessStatus.Unspecified:
+                        break;
+                }
+            }
+            catch (TaskCanceledException)
+            {
+                //_rootPage.NotifyUser("Canceled.", NotifyType.StatusMessage);
+            }
+            catch (Exception ex)
+            {
+                //_rootPage.NotifyUser(ex.ToString(), NotifyType.ErrorMessage);
+            }
+            finally
+            {
+                //_cts = null;
+            }
+        }
+
+        private static bool MapIconExists(MapElement element)
+        {
+            var el = element as MapIcon;
+            if (el != null && el.Title == "Текущее положение") //TODO 
+                return true;
+            return false;
+        }
+
         private static void OnPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var control = d as MapDetailsControl;
@@ -66,7 +131,7 @@ namespace DailyEvents.Client.Views
             mapIcon1.Image = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/Icons/map-marker.png"));
             mapIcon1.Location = snPoint;
             mapIcon1.NormalizedAnchorPoint = new Point(0.5, 1.0);
-            mapIcon1.ZIndex = 0;
+            //mapIcon1.ZIndex = 0;
 
             // Add the MapIcon to the map.
             control.map.MapElements.Add(mapIcon1);
@@ -86,10 +151,32 @@ namespace DailyEvents.Client.Views
 
             var isReadOnly = (bool)e.NewValue;
             if (isReadOnly)
+            {
                 control.BlockBorder.Visibility = Visibility.Visible;
+                control.Controls.Visibility = Visibility.Collapsed;
+            }
             else
+            {
                 control.BlockBorder.Visibility = Visibility.Collapsed;
+                control.Controls.Visibility = Visibility.Visible;
+            }
         }
 
+        private async void ZoomIn_Click(object sender, RoutedEventArgs e)
+        {
+            await map.TryZoomInAsync();
+        }
+
+        private async void ZoomOut_Click(object sender, RoutedEventArgs e)
+        {
+            await map.TryZoomOutAsync();
+        }
+
+        private async void CurrentLocation_Click(object sender, RoutedEventArgs e)
+        {
+            CurrentLocation1.IsEnabled = false;
+            await GoToCurrentLocation();
+            CurrentLocation1.IsEnabled = true;
+        }
     }
 }

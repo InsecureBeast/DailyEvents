@@ -6,17 +6,63 @@
     xmlns:maps="using:Windows.UI.Xaml.Controls.Maps"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
 
     <Grid>
         <maps:MapControl x:Name="map" 
-                         IsEnabled="False"
+                         LandmarksVisible="True"
+                         BusinessLandmarksVisible="True"
                          MapServiceToken="SK6xmPUHHCeExe4OFbbr~AJ9f8FNFQfU9WCGgDgh1Ug~AmtrjFfAAsJxk2qXoOkZBiH4s291xzc_GRqaQ-iDpkgl9lrKnR8cDdTJXGnNy5l0"/>
         <Border Background="White"
                 x:Name="BlockBorder"
                 Visibility="Collapsed"
                 Opacity="0.01"/>
+
+        
+        <StackPanel Orientation="Vertical"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    x:Name="Controls"
+                    Margin="10">
+            
+            <Button Background="White"
+                    Name="ZoomIn"
+                    Template="{StaticResource CircleMapButtonTemplate}"
+                    Margin="10"
+                    Click="ZoomIn_Click">
+                <TextBlock Text="&#xE710;"
+                            Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"
+                            FontSize="20"
+                            FontFamily="Segoe MDL2 Assets"/>
+            </Button>
+            
+            <Button Name="ZoomOut"
+                    Background="White"
+                    Template="{StaticResource CircleMapButtonTemplate}"
+                    Margin="10"
+                    Click="ZoomOut_Click">
+                <TextBlock Text="&#xE738;"
+                            Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"
+                            FontSize="20"
+                            FontFamily="Segoe MDL2 Assets"/>
+            </Button>
+
+            <Button Name="CurrentLocation1"
+                    Background="White"
+                    Template="{StaticResource CircleMapButtonTemplate}"
+                    Margin="10"
+                    Click="CurrentLocation_Click">
+                <TextBlock Text="&#xE81D;"
+                            Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"
+                            FontSize="25"
+                            FontFamily="Segoe MDL2 Assets"
+                            FontWeight="ExtraLight"
+                            Margin="1,1,0,0"/>
+            </Button>
+
+        </StackPanel>
     </Grid>
 </UserControl>

@@ -118,6 +118,8 @@ namespace DailyEvents.Client.ViewModels.Details
             get { return _mapCommand; }
         }
 
+        public long _placeId { get; private set; }
+
         protected override async Task LoadDetails(long id)
         {
             var rs = await _dataSource.GetEventDetails(id);
@@ -143,6 +145,7 @@ namespace DailyEvents.Client.ViewModels.Details
                     Place = rs.Place.Title.GetNormalString();
                     Metro = rs.Place.Subway;
                     Location = rs.Place.Coords;
+                    _placeId = rs.Place.Id;
                 }
 
                 var dates = rs.Dates;
@@ -167,7 +170,7 @@ namespace DailyEvents.Client.ViewModels.Details
             if (frame == null)
                 return;
 
-            frame.Navigate(typeof(MapPage), new MapPageViewModel(Location, Place, _dataSource));
+            frame.Navigate(typeof(MapPage), new MapPageViewModel(Location, Place, Metro, _placeId, _dataSource));
         }
     }
 }
