@@ -1,5 +1,5 @@
-﻿using KudaGo.Client.Helpers;
-using KudaGo.Client.ViewModels;
+﻿using DailyEvents.Client.Helpers;
+using DailyEvents.Client.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -19,7 +19,7 @@ using Windows.UI.Xaml.Navigation;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
-namespace KudaGo.Client.Views
+namespace DailyEvents.Client.Views
 {
     public sealed partial class NavigationControl : UserControl
     {
@@ -115,7 +115,7 @@ namespace KudaGo.Client.Views
             var emailMessage = new EmailMessage();
             emailMessage.To.Add(new EmailRecipient("pe.dmitriev@gmail.com"));
             emailMessage.Body = "";
-            emailMessage.Subject = "Where to go feedback";
+            emailMessage.Subject = "Daily Events feedback";
             await EmailManager.ShowComposeNewEmailAsync(emailMessage);
         }
 

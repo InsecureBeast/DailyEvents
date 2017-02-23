@@ -58,9 +58,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\KudaGo.Core\WhereToGo.Core.csproj">
+    <ProjectReference Include="..\KudaGo.Core\DailyEvents.Core.csproj">
       <Project>{2a26290d-d6a5-44fb-a829-45a6b8e5fa12}</Project>
-      <Name>WhereToGo.Core</Name>
+      <Name>DailyEvents.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

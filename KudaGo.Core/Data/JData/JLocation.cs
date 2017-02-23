@@ -1,4 +1,4 @@
-﻿namespace KudaGo.Core.Data.JData
+﻿namespace DailyEvents.Core.Data.JData
 {
     internal class JLocation
     {

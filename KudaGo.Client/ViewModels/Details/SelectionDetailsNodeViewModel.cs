@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using KudaGo.Core.Selections;
-using KudaGo.Client.Extensions;
-using KudaGo.Client.Model;
-using KudaGo.Client.Common;
-using KudaGo.Client.Helpers;
-using KudaGo.Client.ViewModels.Nodes;
-using KudaGo.Core.Search;
-using KudaGo.Core;
+using DailyEvents.Core.Selections;
+using DailyEvents.Client.Extensions;
+using DailyEvents.Client.Model;
+using DailyEvents.Client.Common;
+using DailyEvents.Client.Helpers;
+using DailyEvents.Client.ViewModels.Nodes;
+using DailyEvents.Core.Search;
+using DailyEvents.Core;
 
-namespace KudaGo.Client.ViewModels.Details
+namespace DailyEvents.Client.ViewModels.Details
 {
     class SelectionDetailsNodeViewModel : NodeViewModel
     {

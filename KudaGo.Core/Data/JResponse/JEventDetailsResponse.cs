@@ -1,4 +1,4 @@
-﻿namespace KudaGo.Core.Data.JResponse
+﻿namespace DailyEvents.Core.Data.JResponse
 {
     internal class JEventDetailsResponse : JEventListResult
     {

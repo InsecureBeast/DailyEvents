@@ -7,7 +7,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 
-namespace KudaGo.Client.Helpers
+namespace DailyEvents.Client.Helpers
 {
     internal class VisualHelper
     {

@@ -1,15 +1,15 @@
-﻿using KudaGo.Client.ViewModels.Nodes;
+﻿using DailyEvents.Client.ViewModels.Nodes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using KudaGo.Core.Search;
-using KudaGo.Client.Common;
-using KudaGo.Client.Extensions;
+using DailyEvents.Core.Search;
+using DailyEvents.Client.Common;
+using DailyEvents.Client.Extensions;
 using HtmlAgilityPack;
 
-namespace KudaGo.Client.ViewModels.Search
+namespace DailyEvents.Client.ViewModels.Search
 {
     class SearchNodeViewModel : NodeViewModel
     {

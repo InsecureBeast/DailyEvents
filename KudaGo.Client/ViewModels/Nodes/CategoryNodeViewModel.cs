@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using KudaGo.Core.Categories;
+using DailyEvents.Core.Categories;
 
-namespace KudaGo.Client.ViewModels.Nodes
+namespace DailyEvents.Client.ViewModels.Nodes
 {
     class CategoryNodeViewModel : PropertyChangedBase
     {

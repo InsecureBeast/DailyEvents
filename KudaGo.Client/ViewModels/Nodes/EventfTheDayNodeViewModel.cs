@@ -1,13 +1,13 @@
-﻿using KudaGo.Client.Extensions;
-using KudaGo.Client.Helpers;
-using KudaGo.Core.Events;
+﻿using DailyEvents.Client.Extensions;
+using DailyEvents.Client.Helpers;
+using DailyEvents.Core.Events;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KudaGo.Client.ViewModels.Nodes
+namespace DailyEvents.Client.ViewModels.Nodes
 {
     class EventOfTheDayNodeViewModel : EventBaseNodeViewModel
     {

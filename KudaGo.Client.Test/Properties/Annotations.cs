@@ -8,7 +8,7 @@
 // ReSharper disable MemberCanBeProtected.Global
 // ReSharper disable InconsistentNaming
 
-namespace KudaGo.Client.Test.Annotations
+namespace DailyEvents.Client.Test.Annotations
 {
   /// <summary>
   /// Indicates that the value of the marked element could be <c>null</c> sometimes,

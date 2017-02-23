@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using KudaGo.Core;
-using KudaGo.Core.Search;
+using DailyEvents.Core;
+using DailyEvents.Core.Search;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTestProject1

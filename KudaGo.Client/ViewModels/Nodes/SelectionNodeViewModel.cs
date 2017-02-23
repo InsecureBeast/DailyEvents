@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using KudaGo.Core.Selections;
-using KudaGo.Client.Extensions;
-using KudaGo.Client.Model;
-using KudaGo.Client.Helpers;
+using DailyEvents.Core.Selections;
+using DailyEvents.Client.Extensions;
+using DailyEvents.Client.Model;
+using DailyEvents.Client.Helpers;
 
-namespace KudaGo.Client.ViewModels.Nodes
+namespace DailyEvents.Client.ViewModels.Nodes
 {
     internal class SelectionNodeViewModel : NodeViewModel
     {

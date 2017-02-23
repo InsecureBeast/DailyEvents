@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace KudaGo.Client.Test
+namespace DailyEvents.Client.Test
 {
     /// <summary>
     /// Interaction logic for App.xaml

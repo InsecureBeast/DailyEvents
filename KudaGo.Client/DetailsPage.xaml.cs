@@ -1,8 +1,8 @@
-﻿using KudaGo.Client.ViewModels;
-using KudaGo.Client.ViewModels.Details;
-using KudaGo.Client.ViewModels.Nodes;
-using KudaGo.Client.ViewModels.Search;
-using KudaGo.Core.Search;
+﻿using DailyEvents.Client.ViewModels;
+using DailyEvents.Client.ViewModels.Details;
+using DailyEvents.Client.ViewModels.Nodes;
+using DailyEvents.Client.ViewModels.Search;
+using DailyEvents.Core.Search;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -22,7 +22,7 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace KudaGo.Client
+namespace DailyEvents.Client
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.

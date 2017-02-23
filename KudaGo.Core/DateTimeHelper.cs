@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KudaGo.Core
+namespace DailyEvents.Core
 {
     class DateTimeHelper
     {

@@ -16,7 +16,7 @@
 using System;
 using System.Windows.Input;
 
-namespace KudaGo.Client.Command
+namespace DailyEvents.Client.Command
 {
     class DelegateCommand : ICommand
     {

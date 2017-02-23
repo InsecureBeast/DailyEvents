@@ -1,15 +1,15 @@
-﻿using KudaGo.Client.Common;
-using KudaGo.Client.Controls;
-using KudaGo.Client.Helpers;
-using KudaGo.Client.Model;
-using KudaGo.Client.ViewModels.Nodes;
-using KudaGo.Core.Data;
-using KudaGo.Core.Events;
+﻿using DailyEvents.Client.Common;
+using DailyEvents.Client.Controls;
+using DailyEvents.Client.Helpers;
+using DailyEvents.Client.Model;
+using DailyEvents.Client.ViewModels.Nodes;
+using DailyEvents.Core.Data;
+using DailyEvents.Core.Events;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace KudaGo.Client.ViewModels
+namespace DailyEvents.Client.ViewModels
 {
     interface ICategoryNameProvider
     {

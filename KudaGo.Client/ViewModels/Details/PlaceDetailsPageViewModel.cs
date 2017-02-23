@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using KudaGo.Client.Model;
-using KudaGo.Client.Helpers;
-using KudaGo.Client.Extensions;
-using KudaGo.Core.Data;
-using KudaGo.Client.Command;
-using KudaGo.Client.ViewModels.Comments;
+using DailyEvents.Client.Model;
+using DailyEvents.Client.Helpers;
+using DailyEvents.Client.Extensions;
+using DailyEvents.Core.Data;
+using DailyEvents.Client.Command;
+using DailyEvents.Client.ViewModels.Comments;
 using System.Windows.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-namespace KudaGo.Client.ViewModels.Details
+namespace DailyEvents.Client.ViewModels.Details
 {
     class PlaceDetailsPageViewModel : DetailsPageViewModel
     {

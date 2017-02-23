@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using KudaGo.Core;
-using KudaGo.Core.Movies;
+using DailyEvents.Core;
+using DailyEvents.Core.Movies;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using KudaGo.Core.Search;
+using DailyEvents.Core.Search;
 
 namespace UnitTestProject1
 {

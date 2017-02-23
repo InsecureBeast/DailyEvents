@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Windows.ApplicationModel.Core;
 using Windows.UI.Core;
 
-namespace KudaGo.Client.Helpers
+namespace DailyEvents.Client.Helpers
 {
     public static class LayoutHelper
     {

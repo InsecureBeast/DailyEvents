@@ -1,9 +1,9 @@
-﻿using KudaGo.Client.Extensions;
-using KudaGo.Client.Helpers;
-using KudaGo.Core.News;
+﻿using DailyEvents.Client.Extensions;
+using DailyEvents.Client.Helpers;
+using DailyEvents.Core.News;
 using System.Linq;
 
-namespace KudaGo.Client.ViewModels.Nodes
+namespace DailyEvents.Client.ViewModels.Nodes
 {
     internal class NewsNodeViewModel : NodeViewModel
     {

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using KudaGo.Core.Data.JData;
+using DailyEvents.Core.Data.JData;
 
-namespace KudaGo.Core.Data
+namespace DailyEvents.Core.Data
 {
     public interface IParticipant
     {

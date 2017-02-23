@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Text;
-using KudaGo.Core.Search;
+using DailyEvents.Core.Search;
 
-namespace KudaGo.Core
+namespace DailyEvents.Core
 {
     public static class Extensions
     {

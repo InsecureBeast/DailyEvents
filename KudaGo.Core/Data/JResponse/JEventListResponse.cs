@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace KudaGo.Core.Data.JResponse
+namespace DailyEvents.Core.Data.JResponse
 {
     class JEventListResponse
     {

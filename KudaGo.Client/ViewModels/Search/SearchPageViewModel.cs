@@ -1,16 +1,16 @@
-﻿using KudaGo.Client.Helpers;
-using KudaGo.Client.Model;
-using KudaGo.Client.ViewModels.Nodes;
-using KudaGo.Client.ViewModels.Search;
-using KudaGo.Core.Data;
-using KudaGo.Core.Search;
+﻿using DailyEvents.Client.Helpers;
+using DailyEvents.Client.Model;
+using DailyEvents.Client.ViewModels.Nodes;
+using DailyEvents.Client.ViewModels.Search;
+using DailyEvents.Core.Data;
+using DailyEvents.Core.Search;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KudaGo.Client.ViewModels
+namespace DailyEvents.Client.ViewModels
 {
     class SearchPageViewModel : SectionViewModel
     {

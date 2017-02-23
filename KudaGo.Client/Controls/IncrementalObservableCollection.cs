@@ -1,5 +1,5 @@
-﻿using KudaGo.Client.Helpers;
-using KudaGo.Core.Data;
+﻿using DailyEvents.Client.Helpers;
+using DailyEvents.Core.Data;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.UI.Xaml.Data;
 
-namespace KudaGo.Client.Controls
+namespace DailyEvents.Client.Controls
 {
     public delegate Task<IResponse> GetDataDelegate(string next);
     public delegate void AddDataDelegate(IResponse response);

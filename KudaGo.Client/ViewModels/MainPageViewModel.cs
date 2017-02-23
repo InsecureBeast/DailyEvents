@@ -1,7 +1,7 @@
-﻿using KudaGo.Client.Command;
-using KudaGo.Client.Common;
-using KudaGo.Client.Helpers;
-using KudaGo.Client.Model;
+﻿using DailyEvents.Client.Command;
+using DailyEvents.Client.Common;
+using DailyEvents.Client.Helpers;
+using DailyEvents.Client.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace KudaGo.Client.ViewModels
+namespace DailyEvents.Client.ViewModels
 {
     internal class MainPageViewModel : PropertyChangedBase, ISettingsChangeListener
     {

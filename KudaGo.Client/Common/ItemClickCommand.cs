@@ -7,7 +7,7 @@ using System.Windows.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-namespace KudaGo.Client.Common
+namespace DailyEvents.Client.Common
 {
     public static class ItemClickCommand
     {

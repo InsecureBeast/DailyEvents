@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-namespace KudaGo.Client.Extensions
+namespace DailyEvents.Client.Extensions
 {
     class WebViewExtensions
     {

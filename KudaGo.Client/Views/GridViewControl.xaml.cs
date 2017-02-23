@@ -1,6 +1,6 @@
-﻿using KudaGo.Client.Helpers;
-using KudaGo.Client.ViewModels;
-using KudaGo.Client.ViewModels.Nodes;
+﻿using DailyEvents.Client.Helpers;
+using DailyEvents.Client.ViewModels;
+using DailyEvents.Client.ViewModels.Nodes;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -18,7 +18,7 @@ using Windows.UI.Xaml.Navigation;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
-namespace KudaGo.Client.Views
+namespace DailyEvents.Client.Views
 {
     public sealed partial class GridViewControl : UserControl
     {

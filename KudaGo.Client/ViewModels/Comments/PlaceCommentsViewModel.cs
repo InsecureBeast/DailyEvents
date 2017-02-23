@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using KudaGo.Client.Model;
-using KudaGo.Core.Data;
+using DailyEvents.Client.Model;
+using DailyEvents.Core.Data;
 
-namespace KudaGo.Client.ViewModels.Comments
+namespace DailyEvents.Client.ViewModels.Comments
 {
     class PlaceCommentsViewModel : CommentsViewModel
     {

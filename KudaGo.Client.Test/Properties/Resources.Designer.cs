@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KudaGo.Client.Test.Properties
+namespace DailyEvents.Client.Test.Properties
 {
 
 

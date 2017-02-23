@@ -1,20 +1,20 @@
-﻿using KudaGo.Core;
-using KudaGo.Core.Events;
-using KudaGo.Core.Search;
+﻿using DailyEvents.Core;
+using DailyEvents.Core.Events;
+using DailyEvents.Core.Search;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using KudaGo.Core.Data;
-using KudaGo.Core.News;
-using KudaGo.Core.Selections;
-using KudaGo.Core.Movies;
-using KudaGo.Core.Comments;
-using KudaGo.Core.Places;
-using KudaGo.Core.Categories;
+using DailyEvents.Core.Data;
+using DailyEvents.Core.News;
+using DailyEvents.Core.Selections;
+using DailyEvents.Core.Movies;
+using DailyEvents.Core.Comments;
+using DailyEvents.Core.Places;
+using DailyEvents.Core.Categories;
 
-namespace KudaGo.Client.Model
+namespace DailyEvents.Client.Model
 {
     public interface IDataSource
     {

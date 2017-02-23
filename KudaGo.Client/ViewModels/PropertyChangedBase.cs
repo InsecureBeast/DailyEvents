@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq.Expressions;
 
-namespace KudaGo.Client.ViewModels
+namespace DailyEvents.Client.ViewModels
 {
     public class PropertyChangedBase : INotifyPropertyChanged
     {

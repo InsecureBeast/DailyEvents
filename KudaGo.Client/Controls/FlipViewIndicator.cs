@@ -7,7 +7,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
 
-namespace KudaGo.Client.Controls
+namespace DailyEvents.Client.Controls
 {
     public sealed class FlipViewIndicator : ListBox
     {

@@ -1,12 +1,12 @@
-﻿using KudaGo.Client.Model;
-using KudaGo.Core.Data;
+﻿using DailyEvents.Client.Model;
+using DailyEvents.Core.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KudaGo.Client.ViewModels
+namespace DailyEvents.Client.ViewModels
 {
     class MapPageViewModel : PropertyChangedBase
     {

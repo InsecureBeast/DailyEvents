@@ -4,9 +4,9 @@ using Windows.UI.Composition;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Hosting;
-using KudaGo.Client.Helpers;
+using DailyEvents.Client.Helpers;
 
-namespace KudaGo.Client.Behaviors
+namespace DailyEvents.Client.Behaviors
 {
     public class StretchyHeaderBehavior : Behavior<FrameworkElement>
     {

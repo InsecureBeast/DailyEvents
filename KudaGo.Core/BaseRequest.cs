@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Text;
 using System.Threading.Tasks;
-using KudaGo.Core.Search;
+using DailyEvents.Core.Search;
 
-namespace KudaGo.Core
+namespace DailyEvents.Core
 {
     public abstract class BaseRequest<TResponse>
     {

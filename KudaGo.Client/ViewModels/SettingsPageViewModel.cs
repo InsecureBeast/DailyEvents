@@ -1,15 +1,15 @@
-﻿using KudaGo.Client.Command;
-using KudaGo.Client.Common;
-using KudaGo.Client.Model;
-using KudaGo.Core.Search;
+﻿using DailyEvents.Client.Command;
+using DailyEvents.Client.Common;
+using DailyEvents.Client.Model;
+using DailyEvents.Core.Search;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using KudaGo.Client.Helpers;
+using DailyEvents.Client.Helpers;
 
-namespace KudaGo.Client.ViewModels
+namespace DailyEvents.Client.ViewModels
 {
     class SettingsPageViewModel : PropertyChangedBase
     {

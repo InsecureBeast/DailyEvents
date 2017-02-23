@@ -2,10 +2,10 @@
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using KudaGo.Core.Data;
+using DailyEvents.Core.Data;
 using Newtonsoft.Json;
 
-namespace KudaGo.Core
+namespace DailyEvents.Core
 {
     public class ClientServiceRequest<TResponse>
     {

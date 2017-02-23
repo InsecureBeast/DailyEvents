@@ -1,4 +1,4 @@
-﻿using KudaGo.Client.Helpers;
+﻿using DailyEvents.Client.Helpers;
 using Microsoft.Xaml.Interactivity;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Hosting;
 
-namespace KudaGo.Client.Behaviors
+namespace DailyEvents.Client.Behaviors
 {
     public class ParallaxBehavior : Behavior<FrameworkElement>
     {

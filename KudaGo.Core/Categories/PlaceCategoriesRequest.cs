@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KudaGo.Core.Categories
+namespace DailyEvents.Core.Categories
 {
     public class PlaceCategoriesRequest : EventCategoriesRequest
     {

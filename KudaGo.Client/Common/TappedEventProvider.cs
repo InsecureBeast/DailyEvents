@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Windows.UI.Xaml;
 
-namespace KudaGo.Client.Common
+namespace DailyEvents.Client.Common
 {
     public class TappedEventProvider
     {

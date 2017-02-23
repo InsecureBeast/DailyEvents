@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
-using KudaGo.Core.Data.JResponse;
+using DailyEvents.Core.Data.JResponse;
 
-namespace KudaGo.Core.Search
+namespace DailyEvents.Core.Search
 {
     public enum Location
     {

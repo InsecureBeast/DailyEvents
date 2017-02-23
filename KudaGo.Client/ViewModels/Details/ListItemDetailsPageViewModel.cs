@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using KudaGo.Client.Model;
+using DailyEvents.Client.Model;
 using System.Collections.ObjectModel;
-using KudaGo.Client.Extensions;
+using DailyEvents.Client.Extensions;
 
-namespace KudaGo.Client.ViewModels.Details
+namespace DailyEvents.Client.ViewModels.Details
 {
     class ListItemDetailsPageViewModel : PropertyChangedBase
     {

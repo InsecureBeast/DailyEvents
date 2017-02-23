@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using KudaGo.Core.Data.JResponse;
+using DailyEvents.Core.Data.JResponse;
 
-namespace KudaGo.Core.News
+namespace DailyEvents.Core.News
 {
     public interface INewsDetailsResponse : INewsListResult
     {

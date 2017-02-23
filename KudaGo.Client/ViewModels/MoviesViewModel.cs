@@ -1,14 +1,14 @@
-﻿using KudaGo.Client.Model;
-using KudaGo.Client.ViewModels.Nodes;
-using KudaGo.Core.Data;
-using KudaGo.Core.Movies;
+﻿using DailyEvents.Client.Model;
+using DailyEvents.Client.ViewModels.Nodes;
+using DailyEvents.Core.Data;
+using DailyEvents.Core.Movies;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KudaGo.Client.ViewModels
+namespace DailyEvents.Client.ViewModels
 {
     class MoviesViewModel : SectionViewModel
     {

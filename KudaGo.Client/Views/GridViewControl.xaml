@@ -1,9 +1,9 @@
 ﻿<UserControl
-    x:Class="KudaGo.Client.Views.GridViewControl"
+    x:Class="DailyEvents.Client.Views.GridViewControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:KudaGo.Client.Views"
-    xmlns:behaviors="using:KudaGo.Client.Behaviors"
+    xmlns:local="using:DailyEvents.Client.Views"
+    xmlns:behaviors="using:DailyEvents.Client.Behaviors"
     xmlns:behaviors1="using:Microsoft.Toolkit.Uwp.UI.Animations.Behaviors"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"

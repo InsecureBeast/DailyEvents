@@ -1,15 +1,15 @@
-﻿using KudaGo.Client.Controls;
-using KudaGo.Client.ViewModels.Nodes;
+﻿using DailyEvents.Client.Controls;
+using DailyEvents.Client.ViewModels.Nodes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using KudaGo.Core.Data;
-using KudaGo.Core.Comments;
-using KudaGo.Client.Model;
+using DailyEvents.Core.Data;
+using DailyEvents.Core.Comments;
+using DailyEvents.Client.Model;
 
-namespace KudaGo.Client.ViewModels.Comments
+namespace DailyEvents.Client.ViewModels.Comments
 {
     class CommentsViewModel : PropertyChangedBase
     {

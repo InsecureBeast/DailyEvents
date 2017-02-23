@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Windows.System.Profile;
 using Windows.UI.ViewManagement;
 
-namespace KudaGo.Client.Helpers
+namespace DailyEvents.Client.Helpers
 {
     internal enum DeviceFormFactorType
     {

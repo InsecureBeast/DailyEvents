@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using KudaGo.Core.Data.JData;
+using DailyEvents.Core.Data.JData;
 
-namespace KudaGo.Core.Data.JResponse
+namespace DailyEvents.Core.Data.JResponse
 {
     class JNewsListResponse
     {

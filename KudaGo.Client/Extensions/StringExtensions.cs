@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KudaGo.Client.Extensions
+namespace DailyEvents.Client.Extensions
 {
     static class StringExtensions
     {

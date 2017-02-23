@@ -1,11 +1,11 @@
-﻿using KudaGo.Core.Data.JResponse;
+﻿using DailyEvents.Core.Data.JResponse;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KudaGo.Core.Movies
+namespace DailyEvents.Core.Movies
 {
     public interface IMovieDetailsResponse : IMovieListResult
     {

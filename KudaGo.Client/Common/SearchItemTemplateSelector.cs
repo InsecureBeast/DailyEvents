@@ -1,5 +1,5 @@
-﻿using KudaGo.Client.ViewModels.Nodes;
-using KudaGo.Client.ViewModels.Search;
+﻿using DailyEvents.Client.ViewModels.Nodes;
+using DailyEvents.Client.ViewModels.Search;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-namespace KudaGo.Client.Common
+namespace DailyEvents.Client.Common
 {
     public class SearchItemTemplateSelector : DataTemplateSelector
     {

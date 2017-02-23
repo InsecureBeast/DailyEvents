@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Data;
 
-namespace KudaGo.Client.Converters
+namespace DailyEvents.Client.Converters
 {
     class LocationConverter : IValueConverter
     {

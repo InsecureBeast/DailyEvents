@@ -1,6 +1,6 @@
-﻿using KudaGo.Client.Helpers;
-using KudaGo.Client.Model;
-using KudaGo.Client.ViewModels.Nodes;
+﻿using DailyEvents.Client.Helpers;
+using DailyEvents.Client.Model;
+using DailyEvents.Client.ViewModels.Nodes;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net;
 
-namespace KudaGo.Client.ViewModels
+namespace DailyEvents.Client.ViewModels
 {
     interface IFilterListener
     {
@@ -36,6 +36,7 @@ namespace KudaGo.Client.ViewModels
 
             _items = new ObservableCollection<CategoryNodeViewModel>();
             _navigationViewModel = new NavigationViewModel(dataSource);
+            Load();
         }
 
         public NavigationViewModel NavigationViewModel

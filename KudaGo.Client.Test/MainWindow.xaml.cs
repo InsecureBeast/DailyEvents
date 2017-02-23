@@ -15,13 +15,13 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using KudaGo.Client.Test.Annotations;
-using KudaGo.Core;
-using KudaGo.Core.Data;
-using KudaGo.Core.Events;
-using KudaGo.Core.Search;
+using DailyEvents.Client.Test.Annotations;
+using DailyEvents.Core;
+using DailyEvents.Core.Data;
+using DailyEvents.Core.Events;
+using DailyEvents.Core.Search;
 
-namespace KudaGo.Client.Test
+namespace DailyEvents.Client.Test
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

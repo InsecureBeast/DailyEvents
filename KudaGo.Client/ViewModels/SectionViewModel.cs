@@ -1,9 +1,9 @@
-﻿using KudaGo.Client.Command;
-using KudaGo.Client.Controls;
-using KudaGo.Client.Model;
-using KudaGo.Client.ViewModels.Nodes;
-using KudaGo.Core.Data;
-using KudaGo.Core.Events;
+﻿using DailyEvents.Client.Command;
+using DailyEvents.Client.Controls;
+using DailyEvents.Client.Model;
+using DailyEvents.Client.ViewModels.Nodes;
+using DailyEvents.Core.Data;
+using DailyEvents.Core.Events;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,7 +15,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace KudaGo.Client.ViewModels
+namespace DailyEvents.Client.ViewModels
 {
     class SectionViewModel : PropertyChangedBase
     {

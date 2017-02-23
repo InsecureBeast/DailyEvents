@@ -1,5 +1,5 @@
-﻿using KudaGo.Client.Common;
-using KudaGo.Client.Model;
+﻿using DailyEvents.Client.Common;
+using DailyEvents.Client.Model;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -25,7 +25,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace KudaGo.Client
+namespace DailyEvents.Client
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.

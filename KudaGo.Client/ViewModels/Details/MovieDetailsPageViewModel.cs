@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using KudaGo.Client.Model;
-using KudaGo.Client.Helpers;
-using KudaGo.Client.Extensions;
-using KudaGo.Client.ViewModels.Comments;
+using DailyEvents.Client.Model;
+using DailyEvents.Client.Helpers;
+using DailyEvents.Client.Extensions;
+using DailyEvents.Client.ViewModels.Comments;
 
-namespace KudaGo.Client.ViewModels.Details
+namespace DailyEvents.Client.ViewModels.Details
 {
     class MovieDetailsPageViewModel : DetailsPageViewModel
     {

@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:KudaGo.Client.Views"
+    xmlns:local="using:DailyEvents.Client.Views"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls">
 
     <x:Double x:Key="ItemHeight">400</x:Double>

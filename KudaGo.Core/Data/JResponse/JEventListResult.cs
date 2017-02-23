@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using KudaGo.Core.Data.JData;
+using DailyEvents.Core.Data.JData;
 
-namespace KudaGo.Core.Data.JResponse
+namespace DailyEvents.Core.Data.JResponse
 {
     internal class JEventListResult : JResult
     {

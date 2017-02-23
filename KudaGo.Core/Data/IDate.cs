@@ -1,7 +1,7 @@
-﻿using KudaGo.Core.Data.JData;
+﻿using DailyEvents.Core.Data.JData;
 using System;
 
-namespace KudaGo.Core.Data
+namespace DailyEvents.Core.Data
 {
     public interface IDate
     {

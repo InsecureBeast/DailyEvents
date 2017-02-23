@@ -7,8 +7,8 @@
     <ProjectGuid>{614B7F53-AD2A-42FC-AA30-227EE33E5A5C}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WhereToGo.Client</RootNamespace>
-    <AssemblyName>WhereToGo.Client</AssemblyName>
+    <RootNamespace>DailyEvents.Client</RootNamespace>
+    <AssemblyName>DailyEvents.Client</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.14393.0</TargetPlatformVersion>
@@ -342,9 +342,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\KudaGo.Core\WhereToGo.Core.csproj">
+    <ProjectReference Include="..\KudaGo.Core\DailyEvents.Core.csproj">
       <Project>{2a26290d-d6a5-44fb-a829-45a6b8e5fa12}</Project>
-      <Name>WhereToGo.Core</Name>
+      <Name>DailyEvents.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using KudaGo.Core.Search;
+using DailyEvents.Core.Search;
 
-namespace KudaGo.Client.Helpers
+namespace DailyEvents.Client.Helpers
 {
     class LocationHelper
     {

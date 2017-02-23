@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using KudaGo.Core.Data;
-using KudaGo.Core.Data.JData;
-using KudaGo.Core.Data.JResponse;
+using DailyEvents.Core.Data;
+using DailyEvents.Core.Data.JData;
+using DailyEvents.Core.Data.JResponse;
 
-namespace KudaGo.Core.Search
+namespace DailyEvents.Core.Search
 {
     public interface ISearchResponse : IResponse
     {

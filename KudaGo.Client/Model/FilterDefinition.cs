@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KudaGo.Client.Model
+namespace DailyEvents.Client.Model
 {
     public class FilterDefinition
     {

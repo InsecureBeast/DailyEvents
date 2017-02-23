@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using KudaGo.Core.Comments;
-using KudaGo.Core.Data;
-using KudaGo.Core.Data.JResponse;
+using DailyEvents.Core.Comments;
+using DailyEvents.Core.Data;
+using DailyEvents.Core.Data.JResponse;
 
-namespace KudaGo.Core.Events
+namespace DailyEvents.Core.Events
 {
     public class EventCommentsRequest : BaseRequest<ICommentsResponse>
     {

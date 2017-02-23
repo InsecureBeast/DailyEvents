@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using KudaGo.Core.Data.JResponse;
+using DailyEvents.Core.Data.JResponse;
 
-namespace KudaGo.Core.Places
+namespace DailyEvents.Core.Places
 {
     public class PlaceDetailsRequest : BaseRequest<IPlaceDetailsResponse>
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KudaGo.Core.Data.JResponse
+namespace DailyEvents.Core.Data.JResponse
 {
     internal class JMovieDetailsResponse : JMovieListResult
     {

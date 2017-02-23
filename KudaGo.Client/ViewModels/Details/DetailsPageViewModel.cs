@@ -1,20 +1,20 @@
-﻿using KudaGo.Client.Helpers;
-using KudaGo.Client.Model;
-using KudaGo.Client.ViewModels.Nodes;
+﻿using DailyEvents.Client.Helpers;
+using DailyEvents.Client.Model;
+using DailyEvents.Client.ViewModels.Nodes;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using KudaGo.Client.ViewModels.Comments;
+using DailyEvents.Client.ViewModels.Comments;
 using System.Net.NetworkInformation;
 using System.Net.Http;
 using System.Net;
-using KudaGo.Client.Command;
+using DailyEvents.Client.Command;
 using System.Windows.Input;
 
-namespace KudaGo.Client.ViewModels.Details
+namespace DailyEvents.Client.ViewModels.Details
 {
     class DetailsPageViewModel : PropertyChangedBase
     {

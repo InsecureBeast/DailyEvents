@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using KudaGo.Core.Comments;
-using KudaGo.Core.Data;
-using KudaGo.Core.Data.JResponse;
+using DailyEvents.Core.Comments;
+using DailyEvents.Core.Data;
+using DailyEvents.Core.Data.JResponse;
 
-namespace KudaGo.Core.Movies
+namespace DailyEvents.Core.Movies
 {
     public class MovieCommentsRequest : BaseRequest<ICommentsResponse>
     {

@@ -1,5 +1,5 @@
-﻿using KudaGo.Core;
-using KudaGo.Core.Search;
+﻿using DailyEvents.Core;
+using DailyEvents.Core.Search;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
 
-namespace KudaGo.Client.Common
+namespace DailyEvents.Client.Common
 {
     interface ISettingsProvider
     {

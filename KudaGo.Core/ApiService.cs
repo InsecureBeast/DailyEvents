@@ -1,4 +1,4 @@
-﻿namespace KudaGo.Core
+﻿namespace DailyEvents.Core
 {
     public class ApiService
     {

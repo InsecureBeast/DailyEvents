@@ -10,7 +10,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Hosting;
 
-namespace KudaGo.Client.Behaviors
+namespace DailyEvents.Client.Behaviors
 {
     /// <summary>
     /// Performs an fade animation on a ListView or GridView Header using composition.

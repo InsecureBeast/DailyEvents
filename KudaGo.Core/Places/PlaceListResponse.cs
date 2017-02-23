@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using KudaGo.Core.Data;
-using KudaGo.Core.Data.JResponse;
+using DailyEvents.Core.Data;
+using DailyEvents.Core.Data.JResponse;
 
-namespace KudaGo.Core.Places
+namespace DailyEvents.Core.Places
 {
     public interface IPlaceListResponse : IResponse
     {

@@ -1,6 +1,6 @@
-﻿using KudaGo.Client.Command;
-using KudaGo.Client.Helpers;
-using KudaGo.Client.Model;
+﻿using DailyEvents.Client.Command;
+using DailyEvents.Client.Helpers;
+using DailyEvents.Client.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace KudaGo.Client.ViewModels
+namespace DailyEvents.Client.ViewModels
 {
     class NavigationViewModel : PropertyChangedBase
     {

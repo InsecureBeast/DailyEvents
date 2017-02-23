@@ -4,7 +4,7 @@ using System.Globalization;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
 
-namespace KudaGo.Client.Converters
+namespace DailyEvents.Client.Converters
 {
     public class BooleanToVisibilityConverter : IValueConverter
     {
