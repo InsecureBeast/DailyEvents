@@ -12,21 +12,10 @@ namespace DailyEvents.Client.ViewModels.Details
 {
     class NewsDetailsPageViewModel : DetailsPageViewModel
     {
-        private Uri _source;
         private string _date;
 
         public NewsDetailsPageViewModel(long id, IDataSource dataSource) : base(id, dataSource)
         {
-        }
-
-        public Uri Source
-        {
-            get { return _source; }
-            private set
-            {
-                _source = value;
-                NotifyOfPropertyChanged(() => Source);
-            }
         }
 
         public string Date

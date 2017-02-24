@@ -129,6 +129,9 @@ namespace DailyEvents.Client.ViewModels.Details
                 Timetable = rs.Timetable;
                 IsClosed = rs.IsClosed;
 
+                if (!string.IsNullOrEmpty(rs.SiteUrl))
+                    Source = new Uri(rs.SiteUrl);
+
                 foreach (var image in rs.Images)
                 {
                     _images.Add(image.Image);

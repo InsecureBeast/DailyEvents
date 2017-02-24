@@ -158,8 +158,20 @@
                                        Style="{StaticResource NormalTextBlockStyle}"/>
                             </StackPanel>
                         </Grid>
+
+                        <TextBlock Text="ADDITIONAL INFO"
+                                   x:Uid="additionalInfo"
+                                   Style="{StaticResource NormalTextBlockStyle}"
+                                   Margin="{StaticResource DoubleTextBlockMargin}"
+                                   FontWeight="SemiBold"/>
+
+                        <TextBlock Style="{StaticResource NormalTextBlockStyle}"
+                                       Margin="{StaticResource DefaultControlMargin}"
+                                       Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}">
+                                    <Run Text="Source" x:Uid="source"/><Run Text=" "/><Hyperlink NavigateUri="{Binding Source}"><Run Text="{Binding Source}"/></Hyperlink>
+                        </TextBlock>
                         
-                        <view:AdvControl Margin="-15,12,-15,0"
+                        <view:AdvControl Margin="-15,15,-15,0"
                                          Size="Small"/>
 
                     </StackPanel>

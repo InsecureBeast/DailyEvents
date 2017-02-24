@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DailyEvents.Client.Model;
 using System.Collections.ObjectModel;
 using DailyEvents.Client.Extensions;
+using System.Net.NetworkInformation;
 
 namespace DailyEvents.Client.ViewModels.Details
 {
@@ -13,6 +14,7 @@ namespace DailyEvents.Client.ViewModels.Details
     {
         private string _title;
         private string _bodyText;
+        private Uri _source;
         private readonly NavigationViewModel _navigationViewModel;
         private ObservableCollection<string> _images = new ObservableCollection<string>();
 
@@ -20,6 +22,8 @@ namespace DailyEvents.Client.ViewModels.Details
         {
             Title = node.Title.GetNormalString();
             BodyText = node.Description.GetNormalString();
+            if (!string.IsNullOrEmpty(node.Source))
+                Source = new Uri(node.Source);
             _images.Add(node.Image);
             _navigationViewModel = new NavigationViewModel(dataSource);
         }
@@ -52,6 +56,24 @@ namespace DailyEvents.Client.ViewModels.Details
         public bool IsBusy
         {
             get { return false; }
+        }
+
+        public Uri Source
+        {
+            get { return _source; }
+            protected set
+            {
+                _source = value;
+                NotifyOfPropertyChanged(() => Source);
+            }
+        }
+
+        public bool IsConnected
+        {
+            get
+            {
+                return NetworkInterface.GetIsNetworkAvailable();
+            }
         }
 
         public NavigationViewModel NavigationViewModel

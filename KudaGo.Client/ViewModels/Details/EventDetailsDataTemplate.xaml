@@ -148,14 +148,24 @@
                             </Paragraph>
                         </RichTextBlock>
 
-                        <view:AdvControl Margin="-15,0,-15,0"
+                        <TextBlock Text="ADDITIONAL INFO"
+                                       x:Uid="additionalInfo"
+                                       Style="{StaticResource NormalTextBlockStyle}"
+                                       FontWeight="SemiBold"/>
+
+                        <TextBlock Style="{StaticResource NormalTextBlockStyle}"
+                                       Margin="{StaticResource DefaultControlMargin}"
+                                       Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}">
+                                <Run Text="Source" x:Uid="source"/><Run Text=" "/><Hyperlink NavigateUri="{Binding Source}"><Run Text="{Binding Source}"/></Hyperlink>
+                        </TextBlock>
+                        
+                        <view:AdvControl Margin="-15,15,0,0"
                                          Size="Small"/>
 
                     </StackPanel>
 
                     <StackPanel Grid.Row="3"
                                 Padding="15"
-                                Margin="{StaticResource DoubleTextBlockMargin}"
                                 Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}">
 
                         <TextBlock Text="COMMENTS"

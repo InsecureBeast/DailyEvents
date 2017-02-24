@@ -134,6 +134,8 @@ namespace DailyEvents.Client.ViewModels.Details
                 Age = rs.AgeRestriction;
                 IsFree = rs.IsFree;
                 Price = rs.Price;
+                if (!string.IsNullOrEmpty(rs.SiteUrl))
+                    Source = new Uri(rs.SiteUrl);
 
                 foreach (var image in rs.Images)
                 {

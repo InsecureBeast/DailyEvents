@@ -33,6 +33,7 @@ namespace DailyEvents.Client.ViewModels.Details
             Description = item.Description.StripHtmlTags();
             Type = item.CType.GetCType();
             Id = item.Id;
+            Source = item.ItemUrl;
         }
 
         public string Image
@@ -50,6 +51,7 @@ namespace DailyEvents.Client.ViewModels.Details
         public string Place { get; private set; }
         public CType Type { get; private set; }
         public override long Id { get; protected set; }
+        public string Source { get; private set; }
 
         private async void LoadImage(string itemUrl)
         {

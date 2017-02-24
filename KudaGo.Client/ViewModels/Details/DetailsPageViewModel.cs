@@ -28,6 +28,7 @@ namespace DailyEvents.Client.ViewModels.Details
         private string _bodyText;
         private bool _isBusy;
         private string _description;
+        private Uri _source;
 
         public DetailsPageViewModel(long id, IDataSource dataSource)
         {
@@ -88,6 +89,16 @@ namespace DailyEvents.Client.ViewModels.Details
             {
                 _description = value;
                 NotifyOfPropertyChanged(() => Description);
+            }
+        }
+
+        public Uri Source
+        {
+            get { return _source; }
+            protected set
+            {
+                _source = value;
+                NotifyOfPropertyChanged(() => Source);
             }
         }
 

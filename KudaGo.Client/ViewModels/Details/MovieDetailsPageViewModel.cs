@@ -128,6 +128,9 @@ namespace DailyEvents.Client.ViewModels.Details
                 Description = rs.Description.GetNormalString();
                 BodyText = rs.BodyText.GetNormalString();
 
+                if (!string.IsNullOrEmpty(rs.SiteUrl))
+                    Source = new Uri(rs.SiteUrl);
+
                 foreach (var image in rs.Images)
                 {
                     _images.Add(image.Image);
