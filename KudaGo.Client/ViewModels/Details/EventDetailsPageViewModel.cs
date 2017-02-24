@@ -13,6 +13,7 @@ using DailyEvents.Client.Command;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using DailyEvents.Client.ViewModels.Nodes;
+using DailyEvents.Client.Views;
 
 namespace DailyEvents.Client.ViewModels.Details
 {
@@ -28,7 +29,7 @@ namespace DailyEvents.Client.ViewModels.Details
         private ICoordinates _location;
         private readonly DelegateCommand _mapCommand;
 
-        public EventDetailsPageViewModel(long eventId, IDataSource dataSource) : base(eventId, dataSource)
+        public EventDetailsPageViewModel(long eventId, IDataSource dataSource, Common.INavigationProvider provider) : base(eventId, dataSource, provider)
         {
             _mapCommand = new DelegateCommand(MapOpen);
         }
@@ -168,11 +169,11 @@ namespace DailyEvents.Client.ViewModels.Details
 
         private void MapOpen(object obj)
         {
-            var frame = Window.Current.Content as Frame;
-            if (frame == null)
+            NavigationPage navPage = Window.Current.Content as NavigationPage;
+            if (navPage == null)
                 return;
 
-            frame.Navigate(typeof(MapPage), new MapPageViewModel(Location, Place, Metro, _placeId, _dataSource));
+            navPage.AppFrame.Navigate(typeof(MapPage), new MapPageViewModel(Location, Place, Metro, _placeId, _dataSource, _provider));
         }
     }
 }

@@ -15,7 +15,6 @@ namespace DailyEvents.Client.ViewModels.Details
         private string _title;
         private string _bodyText;
         private Uri _source;
-        private readonly NavigationViewModel _navigationViewModel;
         private ObservableCollection<string> _images = new ObservableCollection<string>();
 
         public ListItemDetailsPageViewModel(SelectionDetailsNodeViewModel node, IDataSource dataSource)
@@ -25,7 +24,6 @@ namespace DailyEvents.Client.ViewModels.Details
             if (!string.IsNullOrEmpty(node.Source))
                 Source = new Uri(node.Source);
             _images.Add(node.Image);
-            _navigationViewModel = new NavigationViewModel(dataSource);
         }
 
         public ObservableCollection<string> Images
@@ -74,11 +72,6 @@ namespace DailyEvents.Client.ViewModels.Details
             {
                 return NetworkInterface.GetIsNetworkAvailable();
             }
-        }
-
-        public NavigationViewModel NavigationViewModel
-        {
-            get { return _navigationViewModel; }
         }
     }
 }

@@ -19,19 +19,15 @@
                                            AdvTemplate="{StaticResource AdvItemDataTemplate}"/>
     </Page.Resources>
     
-    <views:NavigationControl Title="{Binding NavigationViewModel.SearchString}">
-        <views:NavigationControl.ViewContent>
-            <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
-                <views:GridViewControl Items="{Binding Items}"
-                                       Grid.Row="1" 
-                                       ItemTemplateSelector="{StaticResource ItemTemplateSelector}"/>
+        <views:GridViewControl Items="{Binding Items}"
+                                Grid.Row="1" 
+                                ItemTemplateSelector="{StaticResource ItemTemplateSelector}"/>
 
-            </Grid>
-        </views:NavigationControl.ViewContent>
-    </views:NavigationControl>
+    </Grid>
 </Page>

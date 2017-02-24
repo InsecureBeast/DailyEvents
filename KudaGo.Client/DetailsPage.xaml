@@ -29,8 +29,8 @@
         </ResourceDictionary>
     </Page.Resources>
     
-    <views:NavigationControl Title="{Binding Title}">
-        <views:NavigationControl.ViewContent>
+    <!--<views:NavigationPage Title="{Binding Title}">
+        <views:NavigationPage.ViewContent>-->
             <Grid>
                 <ContentPresenter x:Name="contentPresenter"
                                   Content="{Binding}"
@@ -49,6 +49,6 @@
                                   HorizontalAlignment="Center"
                                   Margin="10"/>
             </Grid>
-        </views:NavigationControl.ViewContent>
-    </views:NavigationControl>
+        <!--</views:NavigationPage.ViewContent>
+    </views:NavigationPage>-->
 </Page>

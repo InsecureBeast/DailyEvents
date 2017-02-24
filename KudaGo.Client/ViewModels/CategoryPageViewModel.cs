@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net;
+using DailyEvents.Client.Common;
 
 namespace DailyEvents.Client.ViewModels
 {
@@ -19,7 +20,6 @@ namespace DailyEvents.Client.ViewModels
     class CategoryPageViewModel : PropertyChangedBase, ICategoryNameProvider
     {
         private readonly ObservableCollection<CategoryNodeViewModel> _items;
-        private readonly NavigationViewModel _navigationViewModel;
         private readonly IDataSource _dataSource;
         private readonly IFilterListener _filterListeer;
         private bool _isBusy;
@@ -29,19 +29,15 @@ namespace DailyEvents.Client.ViewModels
         private bool _isWeekend;
         private bool _isTomorrow;
 
-        public CategoryPageViewModel(IDataSource dataSource, IFilterListener filterListeer)
+        public CategoryPageViewModel(IDataSource dataSource, IFilterListener filterListeer, INavigationProvider provider)
         {
             _dataSource = dataSource;
             _filterListeer = filterListeer;
 
             _items = new ObservableCollection<CategoryNodeViewModel>();
-            _navigationViewModel = new NavigationViewModel(dataSource);
             Load();
-        }
 
-        public NavigationViewModel NavigationViewModel
-        {
-            get { return _navigationViewModel; }
+            provider.SetTitle(Title);
         }
 
         public ObservableCollection<CategoryNodeViewModel> Items
@@ -141,6 +137,14 @@ namespace DailyEvents.Client.ViewModels
         public FilterDefinition FilterDefinition
         {
             get { return GetFilterDefinition(); }
+        }
+
+        public string Title
+        {
+            get
+            {
+                return ResourcesHelper.GetLocalizationString("FilterPageTitle");
+            }
         }
 
         public void Load()

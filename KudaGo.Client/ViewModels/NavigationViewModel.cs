@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using DailyEvents.Client.Common;
 
 namespace DailyEvents.Client.ViewModels
 {
@@ -14,12 +15,14 @@ namespace DailyEvents.Client.ViewModels
     {
         private readonly IDataSource _dataSource;
         private readonly DelegateCommand _searchCommand;
+        private readonly INavigationProvider _provider;
         private bool _inSearchMode = false;
         private string _searchString;
 
-        public NavigationViewModel(IDataSource dataSource)
+        public NavigationViewModel(IDataSource dataSource, INavigationProvider provider)
         {
             _dataSource = dataSource;
+            _provider = provider;
             _searchCommand = new DelegateCommand(Search);
         }
 
@@ -55,7 +58,7 @@ namespace DailyEvents.Client.ViewModels
                 if (string.IsNullOrEmpty(SearchString))
                     return;
 
-                NavigationHelper.NavigateTo(typeof(SearchPage), new SearchPageViewModel(_dataSource, SearchString));
+                NavigationHelper.NavigateTo(typeof(SearchPage), new SearchPageViewModel(_dataSource, SearchString, this));
                 return;
             }
 

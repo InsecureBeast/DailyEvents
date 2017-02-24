@@ -36,7 +36,7 @@ namespace DailyEvents.Core
                 throw new Exception(error.Detail);
             }
             
-            var deserializeObject1 = JsonConvert.DeserializeObject<object>(content);
+            //var deserializeObject1 = JsonConvert.DeserializeObject<object>(content);
             var deserializeObject = JsonConvert.DeserializeObject<TResponse>(content);
             return (TResponse) deserializeObject;
         }

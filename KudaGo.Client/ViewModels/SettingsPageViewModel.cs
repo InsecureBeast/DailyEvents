@@ -19,7 +19,7 @@ namespace DailyEvents.Client.ViewModels
         private readonly ISettingsProvider _settingsProvider;
         private LocationItem _selectedLocation;
 
-        public SettingsPageViewModel(IDataSource dataSource, ISettingsChangeNotifier notifier, ISettingsProvider settingsProvider)
+        public SettingsPageViewModel(IDataSource dataSource, ISettingsChangeNotifier notifier, ISettingsProvider settingsProvider, INavigationProvider provider)
         {
             _dataSource = dataSource;
             _notifier = notifier;
@@ -32,6 +32,7 @@ namespace DailyEvents.Client.ViewModels
             var savedLocation = _settingsProvider.GetLocation();
             var selected = _locations.FirstOrDefault(l => l.Location == savedLocation);
             SelectedLocation = selected;
+            provider.SetTitle(Title);
         }
 
         public IEnumerable<LocationItem> Locations => _locations;
@@ -43,6 +44,14 @@ namespace DailyEvents.Client.ViewModels
                 _selectedLocation = value;
                 NotifyOfPropertyChanged(() => SelectedLocation);
                 Save();
+            }
+        }
+
+        public string Title
+        {
+            get
+            {
+                return ResourcesHelper.GetLocalizationString("SettingsTbk");
             }
         }
 

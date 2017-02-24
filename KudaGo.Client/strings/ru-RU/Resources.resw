@@ -120,7 +120,7 @@
   <data name="eventsItem.Header" xml:space="preserve">
     <value>События</value>
   </data>
-  <data name="mainNavControl.Title" xml:space="preserve">
+  <data name="MainTitle" xml:space="preserve">
     <value>Главная</value>
   </data>
   <data name="newsItem.Header" xml:space="preserve">
@@ -198,7 +198,7 @@
   <data name="NothingSuitable.Text" xml:space="preserve">
     <value>К сожалению, пока нет ничего подходящего.</value>
   </data>
-  <data name="FilterPage.Title" xml:space="preserve">
+  <data name="FilterPageTitle" xml:space="preserve">
     <value>Фильтр</value>
   </data>
   <data name="TodayButton.Content" xml:space="preserve">
@@ -224,5 +224,8 @@
   </data>
   <data name="RepeatButton.Content" xml:space="preserve">
     <value>Повторить</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Поиск</value>
   </data>
 </root>

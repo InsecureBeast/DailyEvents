@@ -1,5 +1,8 @@
 ﻿using DailyEvents.Client.Common;
+using DailyEvents.Client.Helpers;
 using DailyEvents.Client.Model;
+using DailyEvents.Client.ViewModels;
+using DailyEvents.Client.Views;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -88,15 +91,20 @@ namespace DailyEvents.Client
                 this.DebugSettings.EnableFrameRateCounter = true;
             }
 #endif
-            Frame rootFrame = Window.Current.Content as Frame;
+            NavigationPage navPage = Window.Current.Content as NavigationPage;
 
             // Do not repeat app initialization when the Window already has content,
             // just ensure that the window is active
-            if (rootFrame == null)
+            if (navPage == null)
             {
                 // Create a Frame to act as the navigation context and navigate to the first page
-                rootFrame = new Frame();
-                rootFrame.NavigationFailed += OnNavigationFailed;
+                navPage = new NavigationPage();
+                var vm = new NavigationViewModel(_dataSource, navPage);
+                navPage.DataContext = vm;
+                var mainVm = new MainPageViewModel(navPage);
+                navPage.AppFrame.Navigate(typeof(MainPage), mainVm);
+
+                navPage.AppFrame.NavigationFailed += OnNavigationFailed;
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
@@ -104,17 +112,17 @@ namespace DailyEvents.Client
                 }
 
                 // Place the frame in the current Window
-                Window.Current.Content = rootFrame;
+                Window.Current.Content = navPage;
             }
 
             if (e.PrelaunchActivated == false)
             {
-                if (rootFrame.Content == null)
+                if (navPage.Content == null)
                 {
                     // When the navigation stack isn't restored navigate to the first page,
                     // configuring the new page by passing required information as a navigation
                     // parameter
-                    rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                    navPage.AppFrame.Navigate(typeof(MainPage), e.Arguments);
                 }
                 // Ensure the current window is active
                 Window.Current.Activate();
@@ -178,15 +186,15 @@ namespace DailyEvents.Client
         /// <param name="e"></param>
         private void App_BackRequested(object sender, BackRequestedEventArgs e)
         {
-            Frame rootFrame = Window.Current.Content as Frame;
-            if (rootFrame == null)
+            NavigationPage navPage = Window.Current.Content as NavigationPage;
+            if (navPage.AppFrame == null)
                 return;
 
             // If we can go back and the event has not already been handled, do so.
-            if (rootFrame.CanGoBack && e.Handled == false)
+            if (navPage.AppFrame.CanGoBack && e.Handled == false)
             {
                 e.Handled = true;
-                rootFrame.GoBack();
+                navPage.AppFrame.GoBack();
             }
         }
 
@@ -214,17 +222,23 @@ namespace DailyEvents.Client
             deferral.Complete();
         }
 
-        private async void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
+        private void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            e.Handled = true;
-            var dialog = new MessageDialog(e.Message);
-            await dialog.ShowAsync();
+            LayoutHelper.InvokeFromUiThread(async () =>
+            {
+                e.Handled = true;
+                var dialog = new MessageDialog(e.Message);
+                await dialog.ShowAsync();
+            });
         }
 
-        private async void TaskScheduler_UnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e)
+        private void TaskScheduler_UnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e)
         {
-            var dialog = new MessageDialog(e.Exception.Message);
-            await dialog.ShowAsync();
+            LayoutHelper.InvokeFromUiThread(async () =>
+            {
+                var dialog = new MessageDialog(e.Exception.Message);
+                await dialog.ShowAsync();
+            });
         }
     }
 }

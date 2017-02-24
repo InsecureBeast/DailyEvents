@@ -1,4 +1,5 @@
 ﻿using DailyEvents.Client.ViewModels;
+using DailyEvents.Client.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,34 +14,35 @@ namespace DailyEvents.Client.Helpers
     {
         public static void NavigateTo(Type pageType, object viewModel)
         {
-            var frame = Window.Current.Content as Frame;
-            if (frame == null)
+            NavigationPage navPage = Window.Current.Content as NavigationPage;
+            if (navPage == null)
                 return;
 
-            frame.Navigate(pageType, viewModel);
+            navPage.AppFrame.Navigate(pageType, viewModel);
         }
 
         public static void NavigateToSettings()
         {
-            NavigateTo(typeof(SettingsPage), new SettingsPageViewModel(App.DataSource, App.SettingsNotifier, App.SettingsProvider));
+            NavigationPage navPage = Window.Current.Content as NavigationPage;
+            NavigateTo(typeof(SettingsPage), new SettingsPageViewModel(App.DataSource, App.SettingsNotifier, App.SettingsProvider, navPage));
         }
 
         internal static void GoBack()
         {
-            Frame rootFrame = Window.Current.Content as Frame;
-            if (rootFrame == null)
+            NavigationPage navPage = Window.Current.Content as NavigationPage;
+            if (navPage == null)
                 return;
 
-            rootFrame.GoBack();
+            navPage.AppFrame.GoBack();
         }
 
         internal static void GoHome()
         {
-            Frame rootFrame = Window.Current.Content as Frame;
-            if (rootFrame == null)
+            NavigationPage navPage = Window.Current.Content as NavigationPage;
+            if (navPage == null)
                 return;
 
-            rootFrame.Navigate(typeof(MainPage));
+            navPage.AppFrame.Navigate(typeof(MainPage));
         }
     }
 }

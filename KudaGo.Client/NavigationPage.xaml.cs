@@ -9,6 +9,7 @@ using Windows.ApplicationModel.Email;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -21,56 +22,36 @@ using Windows.UI.Xaml.Navigation;
 
 namespace DailyEvents.Client.Views
 {
-    public sealed partial class NavigationControl : UserControl
+    public partial class NavigationPage : Page, Common.INavigationProvider
     {
-        public static readonly DependencyProperty ViewContentProperty = 
-            DependencyProperty.Register("ViewContent", typeof(object), typeof(NavigationControl), new PropertyMetadata(null));
-
-        public static readonly DependencyProperty TitleProperty =
-            DependencyProperty.Register("Title", typeof(string), typeof(NavigationControl), new PropertyMetadata(null, TitleChanged));
-
-        public NavigationControl()
+        public NavigationPage()
         {
             InitializeComponent();
             var device = DeviceTypeHelper.GetDeviceFormFactorType();
             if (device == DeviceFormFactorType.Phone || device == DeviceFormFactorType.IoT || device == DeviceFormFactorType.Other)
                 splitView.CompactPaneLength = 0;
 
-            Loaded += NavigationControl_Loaded;
+            //Loaded += NavigationControl_Loaded;
+            RootFrame.Navigated += Frame_Navigated;
+        }
+
+        private void Frame_Navigated(object sender, NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+        }
+
+        public Frame AppFrame
+        {
+            get { return RootFrame; }
         }
 
         private void NavigationControl_Loaded(object sender, RoutedEventArgs e)
         {
-            contentPresenter.SetBinding(ContentPresenter.ContentProperty, new Binding() { Path = new PropertyPath("ViewContent"), Source = this });
-
-            if (Title != null)
-                title.Text = Title;
-        }
-
-        public object ViewContent
-        {
-            get { return GetValue(ViewContentProperty); }
-            set { SetValue(ViewContentProperty, value); }
-        }
-
-        public string Title
-        {
-            get { return (string)GetValue(TitleProperty); }
-            set { SetValue(TitleProperty, value); }
         }
 
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {
             splitView.IsPaneOpen = !splitView.IsPaneOpen;
-        }
-
-        private static void TitleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var control = d as NavigationControl;
-            if (control == null)
-                return;
-
-            control.title.Text = e.NewValue.ToString();
         }
 
         private void SearchBox_LostFocus(object sender, RoutedEventArgs e)
@@ -80,12 +61,8 @@ namespace DailyEvents.Client.Views
 
         private void AppBarButton_Tapped(object sender, TappedRoutedEventArgs e)
         {
+            //SetTitle(string.Empty);
             SearchBox.Focus(FocusState.Programmatic);
-        }
-
-        private void CommandBar_Opened(object sender, object e)
-        {
-
         }
 
         private void SearchBox_KeyDown(object sender, KeyRoutedEventArgs e)
@@ -100,11 +77,6 @@ namespace DailyEvents.Client.Views
         {
             NavigationHelper.NavigateToSettings();
             splitView.IsPaneOpen = false;
-        }
-
-        private void SplitView_PaneClosed(SplitView sender, object args)
-        {
-            throw new NotImplementedException();
         }
 
         private void HomeButton_OnClick(object sender, RoutedEventArgs e)
@@ -126,6 +98,35 @@ namespace DailyEvents.Client.Views
         private void PlacesButton_OnClick(object sender, RoutedEventArgs e)
         {
             splitView.IsPaneOpen = false;
+        }
+
+        private void SystemNavigationManager_BackRequested(object sender, BackRequestedEventArgs e)
+        {
+            bool handled = e.Handled;
+            BackRequested(ref handled);
+            e.Handled = handled;
+        }
+
+        private void BackRequested(ref bool handled)
+        {
+            // Get a hold of the current frame so that we can inspect the app back stack.
+            if (AppFrame == null)
+                return;
+
+            // Check to see if this is the top-most page on the app back stack.
+            if (AppFrame.CanGoBack && !handled)
+            {
+                // If not, set the event to handled and go back to the previous page in the app.
+                handled = true;
+                AppFrame.GoBack();
+            }
+        }
+
+        public void SetTitle(string title)
+        {
+            var vm = DataContext as NavigationViewModel;
+            vm.SearchString = title;
+            //this.title.Text = title;
         }
     }
 }

@@ -10,39 +10,27 @@
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d">
 
-    <Page.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Page.Resources>
+    <Grid>
+        <views:MapDetailsControl x:Name="MapControl" 
+                                    Coordinates="{Binding Location}"/>
 
-    <views:NavigationControl Title="{Binding Title}">
-        <views:NavigationControl.ViewContent>
-            <Grid>
-                <views:MapDetailsControl x:Name="MapControl" 
-                                         Coordinates="{Binding Location}"/>
-
-                <controls:DropShadowPanel BlurRadius="4"
-                                          ShadowOpacity="0.5"
-                                          OffsetX="0"
-                                          OffsetY="0"
-                                          Color="Black"
-                                          VerticalAlignment="Bottom"
-                                          HorizontalAlignment="Stretch"
-                                          Margin="10">
-                    <StackPanel Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}"
-                                common:TappedEventProvider.Command="{Binding MapCommand}"
-                                Padding="15">
-                        <TextBlock Text="{Binding Title}"
-                                   Style="{StaticResource BodyTextBlockStyle}"/>
-                        <TextBlock Text="{Binding Metro}"
-                                   Style="{StaticResource BodyTextBlockStyle}"
-                                   Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
-                    </StackPanel>
-                </controls:DropShadowPanel>
-            </Grid>
-        </views:NavigationControl.ViewContent>
-    </views:NavigationControl>
+        <controls:DropShadowPanel BlurRadius="4"
+                                    ShadowOpacity="0.5"
+                                    OffsetX="0"
+                                    OffsetY="0"
+                                    Color="Black"
+                                    VerticalAlignment="Bottom"
+                                    HorizontalAlignment="Stretch"
+                                    Margin="10">
+            <StackPanel Background="{StaticResource ApplicationPageBackgroundSecondThemeBrush}"
+                        common:TappedEventProvider.Command="{Binding MapCommand}"
+                        Padding="15">
+                <TextBlock Text="{Binding Title}"
+                            Style="{StaticResource BodyTextBlockStyle}"/>
+                <TextBlock Text="{Binding Metro}"
+                            Style="{StaticResource BodyTextBlockStyle}"
+                            Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
+            </StackPanel>
+        </controls:DropShadowPanel>
+    </Grid>
 </Page>

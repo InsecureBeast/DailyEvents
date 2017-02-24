@@ -10,10 +10,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Page.DataContext>
-        <vm:MainPageViewModel/>
-    </Page.DataContext>
-    
     <Page.Resources>
         <common:EventItemTemplateSelector x:Key="EventItemTemplateSelector"
                                           AdvTemplate="{StaticResource AdvItemDataTemplate}"
@@ -21,9 +17,9 @@
     </Page.Resources>
 
     <Grid>
-        <views:NavigationControl Title="Today" 
+        <!--<views:NavigationPage Title="Today" 
                                  x:Uid="mainNavControl">
-            <views:NavigationControl.ViewContent>
+            <views:NavigationPage.ViewContent>-->
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
@@ -75,8 +71,8 @@
                                Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
                     
                 </Grid>
-            </views:NavigationControl.ViewContent>
-        </views:NavigationControl>
+            <!--</views:NavigationPage.ViewContent>
+        </views:NavigationPage>-->
 
         
     </Grid>

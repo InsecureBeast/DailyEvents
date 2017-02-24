@@ -3,6 +3,7 @@ using DailyEvents.Client.ViewModels;
 using DailyEvents.Client.ViewModels.Nodes;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -23,7 +24,7 @@ namespace DailyEvents.Client.Views
     public sealed partial class GridViewControl : UserControl
     {
         public static readonly DependencyProperty ItemsProperty =
-            DependencyProperty.Register("Items", typeof(object), typeof(GridViewControl), new PropertyMetadata(null));
+            DependencyProperty.Register("Items", typeof(ObservableCollection<object>), typeof(GridViewControl), new PropertyMetadata(null));
 
         public static readonly DependencyProperty ItemTemplateProperty =
             DependencyProperty.Register("ItemTemplate", typeof(DataTemplate), typeof(GridViewControl), new PropertyMetadata(null));
@@ -60,9 +61,9 @@ namespace DailyEvents.Client.Views
                 gridView.ScrollIntoView(gridView.SelectedItem);
         }
 
-        public object Items
+        public ObservableCollection<object> Items
         {
-            get { return GetValue(ItemsProperty); }
+            get { return (ObservableCollection<object>)GetValue(ItemsProperty); }
             set { SetValue(ItemsProperty, value); }
         }
 

@@ -14,7 +14,7 @@ namespace DailyEvents.Client.ViewModels.Details
     {
         private string _date;
 
-        public NewsDetailsPageViewModel(long id, IDataSource dataSource) : base(id, dataSource)
+        public NewsDetailsPageViewModel(long id, IDataSource dataSource, Common.INavigationProvider provider) : base(id, dataSource, provider)
         {
         }
 

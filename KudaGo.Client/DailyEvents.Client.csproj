@@ -107,10 +107,10 @@
     </Compile>
     <Compile Include="Behaviors\FadeHeaderBehavior.cs" />
     <Compile Include="Behaviors\ParallaxBehavior.cs" />
-    <Compile Include="Behaviors\StretchyHeaderBehavior.cs" />
     <Compile Include="CategoryPage.xaml.cs">
       <DependentUpon>CategoryPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Common\INavigationProvider.cs" />
     <Compile Include="Common\ItemClickCommand.cs" />
     <Compile Include="Common\SearchItemTemplateSelector.cs" />
     <Compile Include="Common\SettingsChangeNotifier.cs" />
@@ -202,8 +202,8 @@
     <Compile Include="Views\MapDetailsControl.xaml.cs">
       <DependentUpon>MapDetailsControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\NavigationControl.xaml.cs">
-      <DependentUpon>NavigationControl.xaml</DependentUpon>
+    <Compile Include="NavigationPage.xaml.cs">
+      <DependentUpon>NavigationPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -341,7 +341,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\NavigationControl.xaml">
+    <Page Include="NavigationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

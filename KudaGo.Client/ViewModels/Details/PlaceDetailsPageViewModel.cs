@@ -12,6 +12,7 @@ using DailyEvents.Client.ViewModels.Comments;
 using System.Windows.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using DailyEvents.Client.Views;
 
 namespace DailyEvents.Client.ViewModels.Details
 {
@@ -26,7 +27,7 @@ namespace DailyEvents.Client.ViewModels.Details
         private readonly DelegateCommand _mapCommand;
         private readonly DelegateCommand _callCommand;
 
-        public PlaceDetailsPageViewModel(long id, IDataSource dataSource) : base(id, dataSource)
+        public PlaceDetailsPageViewModel(long id, IDataSource dataSource, Common.INavigationProvider provider) : base(id, dataSource, provider)
         {
             _mapCommand = new DelegateCommand(MapOpen);
             _callCommand = new DelegateCommand(Call);
@@ -140,11 +141,11 @@ namespace DailyEvents.Client.ViewModels.Details
 
         private void MapOpen(object obj)
         {
-            var frame = Window.Current.Content as Frame;
-            if (frame == null)
+            NavigationPage navPage = Window.Current.Content as NavigationPage;
+            if (navPage == null)
                 return;
 
-            frame.Navigate(typeof(MapPage), new MapPageViewModel(Location, Title, Metro, _id, _dataSource));
+            navPage.AppFrame.Navigate(typeof(MapPage), new MapPageViewModel(Location, Title, Metro, _id, _dataSource, _provider));
         }
 
         private void Call(object obj)

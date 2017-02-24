@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DailyEvents.Client.Common;
 
 namespace DailyEvents.Client.ViewModels
 {
@@ -17,10 +18,10 @@ namespace DailyEvents.Client.ViewModels
         private readonly IDataSource _dataSource;
         private readonly NavigationViewModel _navigationViewModel;
 
-        public SearchPageViewModel(IDataSource dataSource, string q)
+        public SearchPageViewModel(IDataSource dataSource, string q, NavigationViewModel navigationViewModel)
         {
             _dataSource = dataSource;
-            _navigationViewModel = new NavigationViewModel(dataSource);
+            _navigationViewModel = navigationViewModel;
             _navigationViewModel.InSearchMode = true;
             _navigationViewModel.SearchString = q;
 

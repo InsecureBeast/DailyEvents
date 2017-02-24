@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using DailyEvents.Client.ViewModels.Nodes;
+using DailyEvents.Client.Views;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -39,9 +40,8 @@ namespace DailyEvents.Client
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            Frame rootFrame = Window.Current.Content as Frame;
-
-            if (rootFrame.CanGoBack)
+            NavigationPage navPage = Window.Current.Content as NavigationPage;
+            if (navPage.AppFrame.CanGoBack)
             {
                 // If we have pages in our in-app backstack and have opted in to showing back, do so
                 SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
@@ -55,6 +55,8 @@ namespace DailyEvents.Client
             var vm = e.Parameter as CategoryPageViewModel;
             DataContext = vm;
             vm.Load();
+
+            base.OnNavigatedTo(e);
         }
 
         private void ListView_OnItemClick(object sender, ItemClickEventArgs e)
