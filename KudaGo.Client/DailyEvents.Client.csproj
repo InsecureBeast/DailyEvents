@@ -94,6 +94,9 @@
     <PRIResource Include="strings\en-us\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\KudaGo.Core\Properties\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>

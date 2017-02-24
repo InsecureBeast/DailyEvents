@@ -8,8 +8,8 @@
     <ProjectGuid>{2A26290D-D6A5-44FB-A829-45A6B8E5FA12}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WhereToGo.Core</RootNamespace>
-    <AssemblyName>WhereToGo.Core</AssemblyName>
+    <RootNamespace>DailyEvents.Core</RootNamespace>
+    <AssemblyName>DailyEvents.Core</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -86,6 +86,7 @@
     <Compile Include="Events\EventsOfTheDayResponse.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="FieldsBuilder.cs" />
+    <Compile Include="Properties\GlobalAssemblyInfo.cs" />
     <Compile Include="Movies\MovieCommentsRequest.cs" />
     <Compile Include="Movies\MovieDetailsRequest.cs" />
     <Compile Include="Movies\MovieListResponce.cs" />
@@ -117,10 +118,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\AssemblyInfo.cs.tmpl" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>cd "$(ProjectDir)" 
+cscript.exe "$(ProjectDir)\hgVersion.jse"</PreBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
