@@ -109,9 +109,6 @@ namespace DailyEvents.Client.ViewModels
 
         public void UpdateSettings()
         {
-            EventsViewModel = new EventsViewModel(_dataSource);
-            EventsViewModel.SetCategoryNameProvider(_categoryPageViewModel);
-
             NewsViewModel = new NewsViewModel(_dataSource);
             MoviesViewModel = new MoviesViewModel(_dataSource);
             SelectionsViewModel = new SelectionsViewModel(_dataSource);

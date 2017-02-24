@@ -80,8 +80,8 @@ namespace DailyEvents.Client.ViewModels
             if (SelectedItem == null)
                 return;
 
-            NavigationHelper.GoBack();
             _filterListeer.Update(this);
+            NavigationHelper.GoHome();
         }
 
         public bool IsToday

@@ -24,7 +24,7 @@ namespace DailyEvents.Client.Views
     public sealed partial class GridViewControl : UserControl
     {
         public static readonly DependencyProperty ItemsProperty =
-            DependencyProperty.Register("Items", typeof(ObservableCollection<object>), typeof(GridViewControl), new PropertyMetadata(null));
+            DependencyProperty.Register("Items", typeof(object), typeof(GridViewControl), new PropertyMetadata(null));
 
         public static readonly DependencyProperty ItemTemplateProperty =
             DependencyProperty.Register("ItemTemplate", typeof(DataTemplate), typeof(GridViewControl), new PropertyMetadata(null));
@@ -61,9 +61,9 @@ namespace DailyEvents.Client.Views
                 gridView.ScrollIntoView(gridView.SelectedItem);
         }
 
-        public ObservableCollection<object> Items
+        public object Items
         {
-            get { return (ObservableCollection<object>)GetValue(ItemsProperty); }
+            get { return (object)GetValue(ItemsProperty); }
             set { SetValue(ItemsProperty, value); }
         }
 

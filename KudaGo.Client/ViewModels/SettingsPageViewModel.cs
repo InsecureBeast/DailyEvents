@@ -51,7 +51,7 @@ namespace DailyEvents.Client.ViewModels
         {
             get
             {
-                return ResourcesHelper.GetLocalizationString("SettingsTbk");
+                return ResourcesHelper.GetLocalizationString("Settings");
             }
         }
 

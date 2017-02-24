@@ -23,7 +23,6 @@ namespace DailyEvents.Client.Helpers
 
         public static void NavigateToSettings()
         {
-            NavigationPage navPage = Window.Current.Content as NavigationPage;
             NavigateTo(typeof(SettingsPage), new SettingsPageViewModel(App.DataSource, App.SettingsNotifier, App.SettingsProvider));
         }
 

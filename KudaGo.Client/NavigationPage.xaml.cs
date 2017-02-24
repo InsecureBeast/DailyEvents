@@ -32,22 +32,11 @@ namespace DailyEvents.Client.Views
             if (device == DeviceFormFactorType.Phone || device == DeviceFormFactorType.IoT || device == DeviceFormFactorType.Other)
                 splitView.CompactPaneLength = 0;
 
-            //Loaded += NavigationControl_Loaded;
-            RootFrame.Navigated += Frame_Navigated;
-        }
-
-        private void Frame_Navigated(object sender, NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
         }
 
         public FrameControl AppFrame
         {
             get { return RootFrame; }
-        }
-
-        private void NavigationControl_Loaded(object sender, RoutedEventArgs e)
-        {
         }
 
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
@@ -78,8 +67,8 @@ namespace DailyEvents.Client.Views
 
         private void SettingsButton_OnClick(object sender, RoutedEventArgs e)
         {
-            NavigationHelper.NavigateToSettings();
             splitView.IsPaneOpen = false;
+            NavigationHelper.NavigateToSettings();
         }
 
         private void HomeButton_OnClick(object sender, RoutedEventArgs e)
@@ -101,28 +90,6 @@ namespace DailyEvents.Client.Views
         private void PlacesButton_OnClick(object sender, RoutedEventArgs e)
         {
             splitView.IsPaneOpen = false;
-        }
-
-        private void SystemNavigationManager_BackRequested(object sender, BackRequestedEventArgs e)
-        {
-            bool handled = e.Handled;
-            BackRequested(ref handled);
-            e.Handled = handled;
-        }
-
-        private void BackRequested(ref bool handled)
-        {
-            // Get a hold of the current frame so that we can inspect the app back stack.
-            if (AppFrame == null)
-                return;
-
-            // Check to see if this is the top-most page on the app back stack.
-            if (AppFrame.CanGoBack && !handled)
-            {
-                // If not, set the event to handled and go back to the previous page in the app.
-                handled = true;
-                AppFrame.GoBack();
-            }
         }
     }
 }
