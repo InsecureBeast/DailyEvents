@@ -45,6 +45,7 @@ namespace DailyEvents.Client
             this.InitializeComponent();
             this.Suspending += OnSuspending;
             this.UnhandledException += OnUnhandledException;
+            TaskScheduler.UnobservedTaskException += TaskScheduler_UnobservedTaskException;
 
             //todo
             var lang = Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride;
@@ -217,6 +218,12 @@ namespace DailyEvents.Client
         {
             e.Handled = true;
             var dialog = new MessageDialog(e.Message);
+            await dialog.ShowAsync();
+        }
+
+        private async void TaskScheduler_UnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e)
+        {
+            var dialog = new MessageDialog(e.Exception.Message);
             await dialog.ShowAsync();
         }
     }

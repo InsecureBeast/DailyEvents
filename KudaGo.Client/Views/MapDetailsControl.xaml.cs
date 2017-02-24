@@ -99,7 +99,7 @@ namespace DailyEvents.Client.Views
             {
                 //_rootPage.NotifyUser("Canceled.", NotifyType.StatusMessage);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //_rootPage.NotifyUser(ex.ToString(), NotifyType.ErrorMessage);
             }

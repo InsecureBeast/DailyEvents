@@ -14,3 +14,7 @@ KudaGo.Client/KudaGo.Client.csproj.user
 KudaGo.Client/WhereToGo.Client.csproj.user
 KudaGo.Client/DailyEvents.Client.csproj.user
 KudaGo.Core/Properties/GlobalAssemblyInfo.cs
+KudaGo.Client/_language-ru.appx
+KudaGo.Client/AppPackages/*
+KudaGo.Client/BundleArtifacts/*
+KudaGo.Client/_pkginfo.txt

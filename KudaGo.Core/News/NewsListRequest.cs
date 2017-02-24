@@ -21,7 +21,6 @@ namespace DailyEvents.Core.News
         public string Fields { get; set; }
         public string Expand { get; set; }
         public OrderByEnum? OrederBy { get; set; }
-        public TextFormatEnum? TextFormat { get; set; }
         public string Ids { get; set; }
         public string Tags { get; set; }
         public long? PlaceId { get; set; }

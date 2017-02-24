@@ -12,7 +12,6 @@ namespace DailyEvents.Core.News
         public long NewsId { get; set; }
         public string Fields { get; set; }
         public string Expand { get; set; }
-        public TextFormatEnum? TextFormat { get; set; }
 
         public override async Task<INewsDetailsResponse> ExecuteAsync()
         {

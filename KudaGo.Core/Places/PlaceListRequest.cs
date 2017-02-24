@@ -22,7 +22,6 @@ namespace DailyEvents.Core.Places
         public string Fields { get; set; }
         public string Expand { get; set; }
         public OrderByEnum? OrederBy { get; set; }
-        public TextFormatEnum? TextFormat { get; set; }
         public string Ids { get; set; }
         public string HasShowings { get; set; }
         public DateTime? ShowingSince { get; set; }

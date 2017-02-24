@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="e2cd8953-9612-4135-bbf2-1b766b810245" Publisher="CN=Local" Version="1.0.0.0" />
+  <Identity Name="431942A1E79CE.DailyEvents" Publisher="CN=C0AA424B-F412-4BA9-ACD7-E493FDF61DE4" Version="1.1.0.0" />
   <mp:PhoneIdentity PhoneProductId="e2cd8953-9612-4135-bbf2-1b766b810245" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Daily Events</DisplayName>
-    <PublisherDisplayName>Local</PublisherDisplayName>
+    <PublisherDisplayName>Павел Дмитриев</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>

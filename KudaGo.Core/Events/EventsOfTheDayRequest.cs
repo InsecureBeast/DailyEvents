@@ -7,7 +7,6 @@ namespace DailyEvents.Core.Events
     public class EventsOfTheDayRequest : BaseRequest<IEventsOfTheDayResponse>
     {
         public string Fields { get; set; }
-        public TextFormatEnum? TextFormat { get; set; }
         public DateTime? Date { get; set; }
         
         public override async Task<IEventsOfTheDayResponse> ExecuteAsync()

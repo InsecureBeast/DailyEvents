@@ -17,7 +17,6 @@ namespace DailyEvents.Client.ViewModels.Details
 {
     class PlaceDetailsPageViewModel : DetailsPageViewModel
     {
-        private Uri _source;
         private string _metro;
         private ICoordinates _location;
         private string _adress;
@@ -31,16 +30,6 @@ namespace DailyEvents.Client.ViewModels.Details
         {
             _mapCommand = new DelegateCommand(MapOpen);
             _callCommand = new DelegateCommand(Call);
-        }
-
-        public Uri Source
-        {
-            get { return _source; }
-            private set
-            {
-                _source = value;
-                NotifyOfPropertyChanged(() => Source);
-            }
         }
 
         public string Metro
