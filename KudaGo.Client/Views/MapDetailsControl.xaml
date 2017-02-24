@@ -26,7 +26,7 @@
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center"
                     x:Name="Controls"
-                    Margin="10">
+                    Margin="10,10,10,60">
             
             <Button Background="White"
                     Name="ZoomIn"
@@ -50,12 +50,26 @@
                             FontFamily="Segoe MDL2 Assets"/>
             </Button>
 
-            <Button Name="CurrentLocation1"
+            <Button Name="CurrentLocation"
                     Background="White"
                     Template="{StaticResource CircleMapButtonTemplate}"
                     Margin="10"
                     Click="CurrentLocation_Click">
                 <TextBlock Text="&#xE81D;"
+                            Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"
+                            FontSize="25"
+                            FontFamily="Segoe MDL2 Assets"
+                            FontWeight="ExtraLight"
+                            Margin="0,0,0,0"/>
+            </Button>
+
+            <Button Name="TargetLocation"
+                    Background="White"
+                    Template="{StaticResource CircleMapButtonTemplate}"
+                    Margin="10"
+                    Visibility="Collapsed"
+                    Click="TargetLocation_Click">
+                <TextBlock Text="&#xE707;"
                             Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"
                             FontSize="25"
                             FontFamily="Segoe MDL2 Assets"

@@ -32,6 +32,7 @@ namespace DailyEvents.Client.Views
             DependencyProperty.Register("IsReadOnly", typeof(bool), typeof(MapDetailsControl), new PropertyMetadata(false, new PropertyChangedCallback(OnReadOnlyChanged)));
 
         private MapIcon _mapCurrentLocationIcon;
+        private static Geopoint _targetPoint;
 
         public MapDetailsControl()
         {
@@ -123,12 +124,12 @@ namespace DailyEvents.Client.Views
 
             // Specify a known location.
             BasicGeoposition snPosition = new BasicGeoposition() { Latitude = coords.Lat, Longitude = coords.Lon };
-            Geopoint snPoint = new Geopoint(snPosition);
+            _targetPoint = new Geopoint(snPosition);
 
             // Create a MapIcon.
             MapIcon mapIcon1 = new MapIcon();
             mapIcon1.Image = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/Icons/map-marker.png"));
-            mapIcon1.Location = snPoint;
+            mapIcon1.Location = _targetPoint;
             mapIcon1.NormalizedAnchorPoint = new Point(0.5, 1.0);
             //mapIcon1.ZIndex = 0;
 
@@ -173,9 +174,20 @@ namespace DailyEvents.Client.Views
 
         private async void CurrentLocation_Click(object sender, RoutedEventArgs e)
         {
-            CurrentLocation1.IsEnabled = false;
+            CurrentLocation.IsEnabled = false;
             await GoToCurrentLocation();
-            CurrentLocation1.IsEnabled = true;
+            CurrentLocation.IsEnabled = true;
+            CurrentLocation.Visibility = Visibility.Collapsed;
+            TargetLocation.Visibility = Visibility.Visible;
+        }
+
+        private async void TargetLocation_Click(object sender, RoutedEventArgs e)
+        {
+            TargetLocation.IsEnabled = false;
+            await map.TrySetViewAsync(_targetPoint);
+            TargetLocation.IsEnabled = true;
+            CurrentLocation.Visibility = Visibility.Visible;
+            TargetLocation.Visibility = Visibility.Collapsed;
         }
     }
 }
