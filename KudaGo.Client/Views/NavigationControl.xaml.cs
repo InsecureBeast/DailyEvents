@@ -94,13 +94,17 @@ namespace DailyEvents.Client.Views
             {
                 SearchButton.Command.Execute(null);
             }
-                
         }
 
         private void SettingsButton_OnClick(object sender, RoutedEventArgs e)
         {
-            splitView.IsPaneOpen = false;
             NavigationHelper.NavigateToSettings();
+            splitView.IsPaneOpen = false;
+        }
+
+        private void SplitView_PaneClosed(SplitView sender, object args)
+        {
+            throw new NotImplementedException();
         }
 
         private void HomeButton_OnClick(object sender, RoutedEventArgs e)
