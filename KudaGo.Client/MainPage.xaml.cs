@@ -41,10 +41,6 @@ namespace DailyEvents.Client
             // Once it is reached there is no further back so we can always disable the title bar back UI when navigated here.
             // If you want to you can always to the Frame.CanGoBack check for all your pages and act accordingly.
             SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
-
-            var vm = e.Parameter as MainPageViewModel;
-            DataContext = vm;
-            vm.UpdateTitle();
             base.OnNavigatedTo(e);
         }
 

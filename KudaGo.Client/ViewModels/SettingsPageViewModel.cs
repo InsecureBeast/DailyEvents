@@ -1,5 +1,6 @@
 ﻿using DailyEvents.Client.Command;
 using DailyEvents.Client.Common;
+using DailyEvents.Client.Controls;
 using DailyEvents.Client.Model;
 using DailyEvents.Core.Search;
 using System;
@@ -11,7 +12,7 @@ using DailyEvents.Client.Helpers;
 
 namespace DailyEvents.Client.ViewModels
 {
-    class SettingsPageViewModel : PropertyChangedBase
+    class SettingsPageViewModel : PropertyChangedBase, ITitleProvider
     {
         private readonly IDataSource _dataSource;
         private readonly List<LocationItem> _locations;
@@ -19,7 +20,7 @@ namespace DailyEvents.Client.ViewModels
         private readonly ISettingsProvider _settingsProvider;
         private LocationItem _selectedLocation;
 
-        public SettingsPageViewModel(IDataSource dataSource, ISettingsChangeNotifier notifier, ISettingsProvider settingsProvider, INavigationProvider provider)
+        public SettingsPageViewModel(IDataSource dataSource, ISettingsChangeNotifier notifier, ISettingsProvider settingsProvider)
         {
             _dataSource = dataSource;
             _notifier = notifier;
@@ -32,7 +33,6 @@ namespace DailyEvents.Client.ViewModels
             var savedLocation = _settingsProvider.GetLocation();
             var selected = _locations.FirstOrDefault(l => l.Location == savedLocation);
             SelectedLocation = selected;
-            provider.SetTitle(Title);
         }
 
         public IEnumerable<LocationItem> Locations => _locations;

@@ -22,7 +22,7 @@ namespace DailyEvents.Client.ViewModels.Details
         private string _url;
         private string _director;
 
-        public MovieDetailsPageViewModel(long id, IDataSource dataSource, Common.INavigationProvider provider) : base(id, dataSource, provider)
+        public MovieDetailsPageViewModel(long id, string title, IDataSource dataSource) : base(id, title, dataSource)
         {
         }
 

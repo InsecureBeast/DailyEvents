@@ -18,7 +18,7 @@ namespace DailyEvents.Client.ViewModels.Details
         private readonly ObservableCollection<SelectionDetailsNodeViewModel> _selections;
         private readonly DelegateCommand _selectCommand;
 
-        public SelectionDetailsPageViewModel(long selectionId, IDataSource dataSource, Common.INavigationProvider provider) : base(selectionId, dataSource, provider)
+        public SelectionDetailsPageViewModel(long selectionId, string title, IDataSource dataSource) : base(selectionId, title, dataSource)
         {
             _selections = new ObservableCollection<SelectionDetailsNodeViewModel>();
             _selectCommand = new DelegateCommand(Select);

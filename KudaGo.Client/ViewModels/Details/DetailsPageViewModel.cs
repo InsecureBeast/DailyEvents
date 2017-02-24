@@ -13,46 +13,37 @@ using System.Net.Http;
 using System.Net;
 using DailyEvents.Client.Command;
 using System.Windows.Input;
-using DailyEvents.Client.Common;
+using DailyEvents.Client.Controls;
 
 namespace DailyEvents.Client.ViewModels.Details
 {
-    class DetailsPageViewModel : PropertyChangedBase
+    class DetailsPageViewModel : PropertyChangedBase, ITitleProvider
     {
         protected readonly IDataSource _dataSource;
         private readonly CommentsViewModel _commentsViewModel;
         private readonly DelegateCommand _repeatCommand;
         protected ObservableCollection<string> _images;
-        protected readonly INavigationProvider _provider;
         protected readonly long _id;
         private string _title;
         private string _bodyText;
         private bool _isBusy;
         private string _description;
         private Uri _source;
-        private long id;
-        private IDataSource dataSource;
 
-        public DetailsPageViewModel(long id, IDataSource dataSource, INavigationProvider provider)
+        public DetailsPageViewModel(long id, string title, IDataSource dataSource)
         {
             _id = id;
             _dataSource = dataSource;
-            _provider = provider;
             _images = new ObservableCollection<string>();
             _commentsViewModel = CreateCommentsViewModel();
             _repeatCommand = new DelegateCommand(Repeat);
 
+            Title = title;
             IsBusy = true;
             Task.Run(async () =>
             {
                 await Load();
             });
-        }
-
-        public DetailsPageViewModel(long id, IDataSource dataSource)
-        {
-            this.id = id;
-            this.dataSource = dataSource;
         }
 
         public bool IsBusy
@@ -77,8 +68,7 @@ namespace DailyEvents.Client.ViewModels.Details
             protected set
             {
                 _title = value;
-                //NotifyOfPropertyChanged(() => Title);
-                _provider.SetTitle(Title);
+                NotifyOfPropertyChanged(() => Title);
             }
         }
 

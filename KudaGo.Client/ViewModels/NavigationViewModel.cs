@@ -15,14 +15,12 @@ namespace DailyEvents.Client.ViewModels
     {
         private readonly IDataSource _dataSource;
         private readonly DelegateCommand _searchCommand;
-        private readonly INavigationProvider _provider;
         private bool _inSearchMode = false;
         private string _searchString;
 
-        public NavigationViewModel(IDataSource dataSource, INavigationProvider provider)
+        public NavigationViewModel(IDataSource dataSource)
         {
             _dataSource = dataSource;
-            _provider = provider;
             _searchCommand = new DelegateCommand(Search);
         }
 

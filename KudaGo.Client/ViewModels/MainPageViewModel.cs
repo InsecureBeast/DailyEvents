@@ -2,6 +2,7 @@
 using DailyEvents.Client.Common;
 using DailyEvents.Client.Helpers;
 using DailyEvents.Client.Model;
+using DailyEvents.Client.Controls;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,7 +13,7 @@ using System.Windows.Input;
 
 namespace DailyEvents.Client.ViewModels
 {
-    internal class MainPageViewModel : PropertyChangedBase, ISettingsChangeListener
+    internal class MainPageViewModel : PropertyChangedBase, ISettingsChangeListener, ITitleProvider
     {
         private NewsViewModel _newsViewModel;
         private EventsViewModel _eventsViewModel;
@@ -23,19 +24,17 @@ namespace DailyEvents.Client.ViewModels
         private readonly IDataSource _dataSource;
         private string _city;
         private readonly ISettingsProvider _settings;
-        private readonly INavigationProvider _provider;
 
-        public MainPageViewModel(INavigationProvider provider)
+        public MainPageViewModel()
         {
             _dataSource = App.DataSource;
             _settings = App.SettingsProvider;
             var notifier = App.SettingsNotifier;
             notifier.Subscribe(this);
-            _provider = provider;
 
             _newsViewModel = new NewsViewModel(_dataSource);
             _eventsViewModel = new EventsViewModel(_dataSource);
-            _categoryPageViewModel = new CategoryPageViewModel(_dataSource, _eventsViewModel, provider);
+            _categoryPageViewModel = new CategoryPageViewModel(_dataSource, _eventsViewModel);
             _eventsViewModel.SetCategoryNameProvider(_categoryPageViewModel);
 
             _selectionsViewModel = new SelectionsViewModel(_dataSource);
@@ -100,9 +99,12 @@ namespace DailyEvents.Client.ViewModels
             }
         }
 
-        public void UpdateTitle()
+        public string Title
         {
-            _provider.SetTitle(ResourcesHelper.GetLocalizationString("MainTitle"));
+            get
+            {
+                return ResourcesHelper.GetLocalizationString("MainTitle");
+            }
         }
 
         public void UpdateSettings()

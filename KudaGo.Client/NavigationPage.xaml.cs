@@ -17,12 +17,13 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using DailyEvents.Client.Controls;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
 namespace DailyEvents.Client.Views
 {
-    public partial class NavigationPage : Page, Common.INavigationProvider
+    public partial class NavigationPage : Page
     {
         public NavigationPage()
         {
@@ -40,7 +41,7 @@ namespace DailyEvents.Client.Views
             base.OnNavigatedTo(e);
         }
 
-        public Frame AppFrame
+        public FrameControl AppFrame
         {
             get { return RootFrame; }
         }
@@ -61,7 +62,9 @@ namespace DailyEvents.Client.Views
 
         private void AppBarButton_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            //SetTitle(string.Empty);
+            SearchBoxLayout.Visibility = Visibility.Visible;
+            var vm = DataContext as NavigationViewModel;
+            vm.SearchString = string.Empty;
             SearchBox.Focus(FocusState.Programmatic);
         }
 
@@ -69,7 +72,7 @@ namespace DailyEvents.Client.Views
         {
             if (e.Key == Windows.System.VirtualKey.Enter)
             {
-                SearchButton.Command.Execute(null);
+                //SearchButton.Command.Execute(null);
             }
         }
 
@@ -120,13 +123,6 @@ namespace DailyEvents.Client.Views
                 handled = true;
                 AppFrame.GoBack();
             }
-        }
-
-        public void SetTitle(string title)
-        {
-            var vm = DataContext as NavigationViewModel;
-            vm.SearchString = title;
-            //this.title.Text = title;
         }
     }
 }

@@ -9,14 +9,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DailyEvents.Client.Common;
+using DailyEvents.Client.Controls;
 
 namespace DailyEvents.Client.ViewModels
 {
-    class SearchPageViewModel : SectionViewModel
+    class SearchPageViewModel : SectionViewModel, ITitleProvider
     {
         private readonly IDataSource _dataSource;
         private readonly NavigationViewModel _navigationViewModel;
+        private string _title;
 
         public SearchPageViewModel(IDataSource dataSource, string q, NavigationViewModel navigationViewModel)
         {
@@ -24,6 +25,7 @@ namespace DailyEvents.Client.ViewModels
             _navigationViewModel = navigationViewModel;
             _navigationViewModel.InSearchMode = true;
             _navigationViewModel.SearchString = q;
+            Title = q;
 
             Task.Factory.StartNew(async () =>
             {
@@ -34,6 +36,16 @@ namespace DailyEvents.Client.ViewModels
         public NavigationViewModel NavigationViewModel
         {
             get { return _navigationViewModel; }
+        }
+
+        public string Title
+        {
+            get { return _title; }
+            private set
+            {
+                _title = value;
+                NotifyOfPropertyChanged(() => Title);
+            }
         }
 
         protected override void AddData(IResponse response)

@@ -8,7 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net;
-using DailyEvents.Client.Common;
+using DailyEvents.Client.Controls;
 
 namespace DailyEvents.Client.ViewModels
 {
@@ -17,7 +17,7 @@ namespace DailyEvents.Client.ViewModels
         void Update(CategoryPageViewModel categoryViewModel);
     }
 
-    class CategoryPageViewModel : PropertyChangedBase, ICategoryNameProvider
+    class CategoryPageViewModel : PropertyChangedBase, ICategoryNameProvider, ITitleProvider
     {
         private readonly ObservableCollection<CategoryNodeViewModel> _items;
         private readonly IDataSource _dataSource;
@@ -29,15 +29,13 @@ namespace DailyEvents.Client.ViewModels
         private bool _isWeekend;
         private bool _isTomorrow;
 
-        public CategoryPageViewModel(IDataSource dataSource, IFilterListener filterListeer, INavigationProvider provider)
+        public CategoryPageViewModel(IDataSource dataSource, IFilterListener filterListeer)
         {
             _dataSource = dataSource;
             _filterListeer = filterListeer;
 
             _items = new ObservableCollection<CategoryNodeViewModel>();
             Load();
-
-            provider.SetTitle(Title);
         }
 
         public ObservableCollection<CategoryNodeViewModel> Items

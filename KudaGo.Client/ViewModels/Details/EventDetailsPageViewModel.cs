@@ -29,7 +29,7 @@ namespace DailyEvents.Client.ViewModels.Details
         private ICoordinates _location;
         private readonly DelegateCommand _mapCommand;
 
-        public EventDetailsPageViewModel(long eventId, IDataSource dataSource, Common.INavigationProvider provider) : base(eventId, dataSource, provider)
+        public EventDetailsPageViewModel(long eventId, string title, IDataSource dataSource) : base(eventId, title, dataSource)
         {
             _mapCommand = new DelegateCommand(MapOpen);
         }
@@ -173,7 +173,7 @@ namespace DailyEvents.Client.ViewModels.Details
             if (navPage == null)
                 return;
 
-            navPage.AppFrame.Navigate(typeof(MapPage), new MapPageViewModel(Location, Place, Metro, _placeId, _dataSource, _provider));
+            navPage.AppFrame.Navigate(typeof(MapPage), new MapPageViewModel(Location, Place, Metro, _placeId, _dataSource));
         }
     }
 }

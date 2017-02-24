@@ -27,7 +27,7 @@ namespace DailyEvents.Client.ViewModels.Details
         private readonly DelegateCommand _mapCommand;
         private readonly DelegateCommand _callCommand;
 
-        public PlaceDetailsPageViewModel(long id, IDataSource dataSource, Common.INavigationProvider provider) : base(id, dataSource, provider)
+        public PlaceDetailsPageViewModel(long id, string title, IDataSource dataSource) : base(id, title, dataSource)
         {
             _mapCommand = new DelegateCommand(MapOpen);
             _callCommand = new DelegateCommand(Call);
@@ -145,7 +145,7 @@ namespace DailyEvents.Client.ViewModels.Details
             if (navPage == null)
                 return;
 
-            navPage.AppFrame.Navigate(typeof(MapPage), new MapPageViewModel(Location, Title, Metro, _id, _dataSource, _provider));
+            navPage.AppFrame.Navigate(typeof(MapPage), new MapPageViewModel(Location, Title, Metro, _id, _dataSource));
         }
 
         private void Call(object obj)

@@ -110,7 +110,6 @@
     <Compile Include="CategoryPage.xaml.cs">
       <DependentUpon>CategoryPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Common\INavigationProvider.cs" />
     <Compile Include="Common\ItemClickCommand.cs" />
     <Compile Include="Common\SearchItemTemplateSelector.cs" />
     <Compile Include="Common\SettingsChangeNotifier.cs" />
@@ -123,6 +122,9 @@
       <DependentUpon>FlipViewControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\FlipViewIndicator.cs" />
+    <Compile Include="Controls\FrameControl.xaml.cs">
+      <DependentUpon>FrameControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\IncrementalObservableCollection.cs" />
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\LocationConverter.cs" />
@@ -243,6 +245,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Controls\FrameControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DetailsPage.xaml">
       <SubType>Designer</SubType>

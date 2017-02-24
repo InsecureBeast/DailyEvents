@@ -49,10 +49,10 @@ namespace DailyEvents.Client
                 SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
             }
 
-            var id = e.Parameter as long?;
-            if (id != null)
+            var navObj = e.Parameter as PlaceNavObject;
+            if (navObj != null)
             {
-                var viewModel = new PlaceDetailsPageViewModel(id.Value, App.DataSource, navPage);
+                var viewModel = new PlaceDetailsPageViewModel(navObj.Id, navObj.Title, App.DataSource);
                 DataContext = viewModel;
                 var template = Resources["PlaceDetailsDataTemplate"] as DataTemplate;
                 contentPresenter.ContentTemplate = template;
@@ -98,35 +98,34 @@ namespace DailyEvents.Client
 
         private void SetTemplate(CType type, NodeViewModel vm)
         {
-            NavigationPage navPage = Window.Current.Content as NavigationPage;
             DataTemplate template = null;
             if (type == CType.Event)
             {
-                var detailsViewModel = new EventDetailsPageViewModel(vm.Id, App.DataSource, navPage);
+                var detailsViewModel = new EventDetailsPageViewModel(vm.Id, vm.Title, App.DataSource);
                 DataContext = detailsViewModel;
                 template = Resources["EventDetailsDataTemplate"] as DataTemplate;
             }
             if (type == CType.News)
             {
-                var newsViewModel = new NewsDetailsPageViewModel(vm.Id, App.DataSource, navPage);
+                var newsViewModel = new NewsDetailsPageViewModel(vm.Id, vm.Title, App.DataSource);
                 DataContext = newsViewModel;
                 template = Resources["NewsDetailsDataTemplate"] as DataTemplate;
             }
             if (type == CType.List)
             {
-                var viewModel = new SelectionDetailsPageViewModel(vm.Id, App.DataSource, navPage);
+                var viewModel = new SelectionDetailsPageViewModel(vm.Id, vm.Title, App.DataSource);
                 DataContext = viewModel;
                 template = Resources["SelectionDetailsDataTemplate"] as DataTemplate;
             }
             if (type == CType.Place)
             {
-                var viewModel = new PlaceDetailsPageViewModel(vm.Id, App.DataSource, navPage);
+                var viewModel = new PlaceDetailsPageViewModel(vm.Id, vm.Title, App.DataSource);
                 DataContext = viewModel;
                 template = Resources["PlaceDetailsDataTemplate"] as DataTemplate;
             }
             if (type == CType.Movie)
             {
-                var viewModel = new MovieDetailsPageViewModel(vm.Id, App.DataSource, navPage);
+                var viewModel = new MovieDetailsPageViewModel(vm.Id, vm.Title, App.DataSource);
                 DataContext = viewModel;
                 template = Resources["MovieDetailsDataTemplate"] as DataTemplate;
             }

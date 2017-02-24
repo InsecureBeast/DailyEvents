@@ -99,10 +99,9 @@ namespace DailyEvents.Client
             {
                 // Create a Frame to act as the navigation context and navigate to the first page
                 navPage = new NavigationPage();
-                var vm = new NavigationViewModel(_dataSource, navPage);
+                var vm = new NavigationViewModel(_dataSource);
                 navPage.DataContext = vm;
-                var mainVm = new MainPageViewModel(navPage);
-                navPage.AppFrame.Navigate(typeof(MainPage), mainVm);
+                navPage.AppFrame.Navigate(typeof(MainPage));
 
                 navPage.AppFrame.NavigationFailed += OnNavigationFailed;
 
@@ -234,11 +233,11 @@ namespace DailyEvents.Client
 
         private void TaskScheduler_UnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e)
         {
-            LayoutHelper.InvokeFromUiThread(async () =>
-            {
-                var dialog = new MessageDialog(e.Exception.Message);
-                await dialog.ShowAsync();
-            });
+            //LayoutHelper.InvokeFromUiThread(async () =>
+            //{
+            //    var dialog = new MessageDialog(e.Exception.Message);
+            //    await dialog.ShowAsync();
+            //});
         }
     }
 }

@@ -5,6 +5,7 @@
     xmlns:local="using:DailyEvents.Client.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:DailyEvents.Client.Controls"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
@@ -44,17 +45,19 @@
                     </AppBarButton>
                 </CommandBar.Content>
                 
+                <!-- Красная кнопка -->
                 <AppBarButton Icon="Find"
                               Width="48"
                               Foreground="White"
                               Label="Search"
-                              x:Uid="searchAppBarButton"
                               Tapped="AppBarButton_Tapped"
-                              Command="{Binding SearchCommand}"/>
+                              Visibility="{Binding InSearchMode, Converter={StaticResource InverseBooleanToVisibilityConverter}}"
+                              x:Uid="searchAppBarButton"/>
             </CommandBar>
 
             <TextBlock x:Name="title"
-                       Text="{Binding SearchString}"
+                       DataContext="{Binding ElementName=RootFrame}"
+                       Text="{Binding Path=Title}"
                        Grid.Column="1"
                        VerticalAlignment="Center"
                        TextWrapping="NoWrap"
@@ -82,21 +85,9 @@
                      Padding="8"
                      PlaceholderText="Search"
                      x:Uid="SearchTextBox"
+                     Style="{StaticResource SearchTextBoxStyle}"
                      LostFocus="SearchBox_LostFocus"
                      KeyDown="SearchBox_KeyDown"/>
-
-            <Button Width="48"
-                    VerticalAlignment="Stretch"
-                    BorderThickness="0"
-                    x:Name="SearchButton"
-                    Grid.Column="1"
-                    Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
-                    Tapped="AppBarButton_Tapped"
-                    Command="{Binding SearchCommand}">
-                <SymbolIcon x:Name="play" 
-                            Symbol="Find"/>
-            </Button>
-
         </Grid>
 
         <SplitView x:Name="splitView" 
@@ -198,7 +189,7 @@
             </SplitView.Pane>
 
             <SplitView.Content>
-                <Frame x:Name="RootFrame"/>
+                <controls:FrameControl x:Name="RootFrame"/>
             </SplitView.Content>
         </SplitView>
     </Grid>

@@ -10,18 +10,16 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using DailyEvents.Client.Common;
+using DailyEvents.Client.Controls;
 
 namespace DailyEvents.Client.ViewModels
 {
-    class MapPageViewModel : PropertyChangedBase
+    class MapPageViewModel : PropertyChangedBase, ITitleProvider
     {
         private long _id;
         private readonly DelegateCommand _mapCommand;
 
-        public event EventHandler<TitleChangedEventArgs> TitleChanged;
-
-        public MapPageViewModel(ICoordinates coords, string title, string metro, long id, IDataSource dataSource, INavigationProvider provider)
+        public MapPageViewModel(ICoordinates coords, string title, string metro, long id, IDataSource dataSource)
         {
             _mapCommand = new DelegateCommand(PlaceOpen);
 
@@ -29,7 +27,6 @@ namespace DailyEvents.Client.ViewModels
             Title = title;
             Metro = metro;
             _id = id;
-            provider.SetTitle(Title);
         }
 
         public ICoordinates Location
@@ -57,7 +54,20 @@ namespace DailyEvents.Client.ViewModels
 
         private void PlaceOpen(object obj)
         {
-            NavigationHelper.NavigateTo(typeof(DetailsPage), _id);
+            var navObj = new PlaceNavObject(Title, _id);
+            NavigationHelper.NavigateTo(typeof(DetailsPage), navObj);
         }
+    }
+
+    class PlaceNavObject
+    {
+        public PlaceNavObject(string title, long id)
+        {
+            Title = title;
+            Id = id;
+        }
+
+        public string Title { get; private set; }
+        public long Id { get; private set; }
     }
 }
