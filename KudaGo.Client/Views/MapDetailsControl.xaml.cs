@@ -1,4 +1,5 @@
-﻿using DailyEvents.Client.ViewModels.Details;
+﻿using DailyEvents.Client.Helpers;
+using DailyEvents.Client.ViewModels.Details;
 using DailyEvents.Core.Data;
 using System;
 using System.Collections.Generic;
@@ -37,6 +38,10 @@ namespace DailyEvents.Client.Views
         public MapDetailsControl()
         {
             this.InitializeComponent();
+
+            if (DeviceTypeHelper.GetDeviceFormFactorType() != DeviceFormFactorType.Phone &&
+                DeviceTypeHelper.GetDeviceFormFactorType() != DeviceFormFactorType.Tablet)
+                CurrentLocation.Visibility = Visibility.Collapsed; 
 
             _mapCurrentLocationIcon = new MapIcon();
             _mapCurrentLocationIcon.Image = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/Icons/curlocation-marker.png"));
