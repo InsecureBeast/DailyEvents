@@ -10,11 +10,11 @@
     d:DesignWidth="400">
 
     <Grid>
-        <TextBlock Text="Рекламный блок"
+        <!--<TextBlock Text="Рекламный блок"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"
                    Style="{StaticResource SubtitleTextBlockStyle}"
-                   Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
+                   Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>-->
 
         <ContentPresenter x:Name="AdvPresenter"
                           HorizontalAlignment="Center"

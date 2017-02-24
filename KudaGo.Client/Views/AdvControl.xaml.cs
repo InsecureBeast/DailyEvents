@@ -69,10 +69,10 @@ namespace DailyEvents.Client.Views
             // Set the application id and ad unit id
             // The application id and ad unit id can be obtained from Dev Center.
             // See "Monetize with Ads" at https://msdn.microsoft.com/en-us/library/windows/apps/mt170658.aspx
-            adControl.ApplicationId = "d25517cb-12d4-4699-8bdc-52040c712cab";
-            adControl.AdUnitId = "10043121";
-            //adControl.ApplicationId = "d0d564f3-1868-4420-92a3-20e95e0ff118";
-            //adControl.AdUnitId = "11671507";
+            //adControl.ApplicationId = "d25517cb-12d4-4699-8bdc-52040c712cab";
+            //adControl.AdUnitId = "10043121";
+            adControl.ApplicationId = "d0d564f3-1868-4420-92a3-20e95e0ff118";
+            adControl.AdUnitId = "11671507";
 
             // Set the dimensions
             adControl.Width = 300;
@@ -93,10 +93,10 @@ namespace DailyEvents.Client.Views
             // Set the application id and ad unit id
             // The application id and ad unit id can be obtained from Dev Center.
             // See "Monetize with Ads" at https://msdn.microsoft.com/en-us/library/windows/apps/mt170658.aspx
-            adControl.ApplicationId = "3f83fe91-d6be-434d-a0ae-7351c5a997f1";
-            adControl.AdUnitId = "10865270";
-            //adControl.ApplicationId = "d0d564f3-1868-4420-92a3-20e95e0ff118";
-            //adControl.AdUnitId = "11671510";
+            //adControl.ApplicationId = "3f83fe91-d6be-434d-a0ae-7351c5a997f1";
+            //adControl.AdUnitId = "10865270";
+            adControl.ApplicationId = "d0d564f3-1868-4420-92a3-20e95e0ff118";
+            adControl.AdUnitId = "11671510";
 
             // Set the dimensions
             adControl.Width = 320;
