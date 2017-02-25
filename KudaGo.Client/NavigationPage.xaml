@@ -48,6 +48,7 @@
                 <!-- Красная кнопка -->
                 <AppBarButton Icon="Find"
                               Width="48"
+                              x:Name="SearchButton"
                               Foreground="White"
                               Label="Search"
                               Tapped="AppBarButton_Tapped"

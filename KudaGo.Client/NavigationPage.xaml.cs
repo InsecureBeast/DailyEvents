@@ -61,7 +61,9 @@ namespace DailyEvents.Client.Views
         {
             if (e.Key == Windows.System.VirtualKey.Enter)
             {
-                //SearchButton.Command.Execute(null);
+                SearchButton.Focus(FocusState.Programmatic);
+                var vm = DataContext as NavigationViewModel;
+                vm.SearchCommand.Execute(null);
             }
         }
 

@@ -28,10 +28,8 @@
 
         </ResourceDictionary>
     </Page.Resources>
-    
-    <!--<views:NavigationPage Title="{Binding Title}">
-        <views:NavigationPage.ViewContent>-->
-            <Grid>
+    <Grid>
+        <Grid Visibility="{Binding IsNotFound, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
                 <ContentPresenter x:Name="contentPresenter"
                                   Content="{Binding}"
                                   Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}"/>
@@ -48,7 +46,17 @@
                                   VerticalAlignment="Center"
                                   HorizontalAlignment="Center"
                                   Margin="10"/>
-            </Grid>
-        <!--</views:NavigationPage.ViewContent>
-    </views:NavigationPage>-->
+
+        
+        </Grid>
+
+        <TextBlock Text="К сожалению, пока нет ничего подходящего."
+                   x:Uid="NothingSuitable."
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   Style="{StaticResource SubtitleTextBlockStyle}"
+                   Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"
+                   Visibility="{Binding IsNotFound, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
+    </Grid>
 </Page>

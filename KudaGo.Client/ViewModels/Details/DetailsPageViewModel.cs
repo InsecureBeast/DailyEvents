@@ -1,6 +1,7 @@
 ﻿using DailyEvents.Client.Helpers;
 using DailyEvents.Client.Model;
 using DailyEvents.Client.ViewModels.Nodes;
+using DailyEvents.Core;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -29,6 +30,7 @@ namespace DailyEvents.Client.ViewModels.Details
         private bool _isBusy;
         private string _description;
         private Uri _source;
+        private bool _isNotFound = false;
 
         public DetailsPageViewModel(long id, string title, IDataSource dataSource)
         {
@@ -92,6 +94,16 @@ namespace DailyEvents.Client.ViewModels.Details
             }
         }
 
+        public bool IsNotFound
+        {
+            get { return _isNotFound; }
+            protected set
+            {
+                _isNotFound = value;
+                NotifyOfPropertyChanged(() => IsNotFound);
+            }
+        }
+
         public Uri Source
         {
             get { return _source; }
@@ -148,15 +160,22 @@ namespace DailyEvents.Client.ViewModels.Details
             try
             {
                 await LoadDetails(_id);
+                UpdateFields();
             }
             catch (HttpRequestException)
             {
+                UpdateFields();
             }
             catch (WebException)
             {
+                UpdateFields();
             }
-            finally
+            catch (DailyEventsNotFoundException)
             {
+                LayoutHelper.InvokeFromUiThread(() =>
+                {
+                    IsNotFound = true;
+                });
                 UpdateFields();
             }
         }

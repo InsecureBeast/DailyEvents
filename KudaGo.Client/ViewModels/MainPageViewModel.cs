@@ -107,13 +107,15 @@ namespace DailyEvents.Client.ViewModels
             }
         }
 
-        public void UpdateSettings()
+        public async void UpdateSettings()
         {
             NewsViewModel = new NewsViewModel(_dataSource);
             MoviesViewModel = new MoviesViewModel(_dataSource);
             SelectionsViewModel = new SelectionsViewModel(_dataSource);
 
             UpdateCity();
+
+            await _eventsViewModel.Update();
         }
 
         private void Filter(object obj)

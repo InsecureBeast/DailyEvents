@@ -33,7 +33,7 @@ namespace DailyEvents.Core
             if (response.StatusCode == HttpStatusCode.NotFound)
             {
                 var error = JsonConvert.DeserializeObject<JError>(content);
-                throw new Exception(error.Detail);
+                throw new DailyEventsNotFoundException(error.Detail);
             }
             
             //var deserializeObject1 = JsonConvert.DeserializeObject<object>(content);

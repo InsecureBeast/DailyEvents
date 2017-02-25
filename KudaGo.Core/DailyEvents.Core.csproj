@@ -42,6 +42,7 @@
     <Compile Include="ClientServiceRequest.cs" />
     <Compile Include="Comments\ICommentsResponse.cs" />
     <Compile Include="Comments\CommentOrderBy.cs" />
+    <Compile Include="DailyEventsNotFoundException.cs" />
     <Compile Include="Data\IGenre.cs" />
     <Compile Include="Data\IPoster.cs" />
     <Compile Include="Data\IResponse.cs" />

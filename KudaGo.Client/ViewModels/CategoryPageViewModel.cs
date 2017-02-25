@@ -81,7 +81,7 @@ namespace DailyEvents.Client.ViewModels
                 return;
 
             _filterListeer.Update(this);
-            NavigationHelper.GoHome();
+            NavigationHelper.GoBack();
         }
 
         public bool IsToday
