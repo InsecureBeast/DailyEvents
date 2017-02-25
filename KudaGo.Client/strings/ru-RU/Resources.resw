@@ -231,4 +231,7 @@
   <data name="Settings" xml:space="preserve">
     <value>Параметры</value>
   </data>
+  <data name="FilterTbl.Text" xml:space="preserve">
+    <value>Фильтр</value>
+  </data>
 </root>

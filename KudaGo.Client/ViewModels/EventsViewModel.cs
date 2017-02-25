@@ -22,6 +22,7 @@ namespace DailyEvents.Client.ViewModels
         private ICategoryNameProvider _categoryNameProvider;
         private EventOfTheDayNodeViewModel _eventOfTheDay;
         private FilterDefinition _filterDefinition;
+        private string _filterName;
 
         public EventsViewModel(IDataSource dataSource)
         {
@@ -43,6 +44,16 @@ namespace DailyEvents.Client.ViewModels
         public void SetCategoryNameProvider(ICategoryNameProvider provider)
         {
             _categoryNameProvider = provider;
+        }
+
+        public string FilterName
+        {
+            get { return _filterName; }
+            set
+            {
+                _filterName = value;
+                NotifyOfPropertyChanged(() => FilterName);
+            }
         }
 
         protected override void AddData(IResponse response)
@@ -72,6 +83,7 @@ namespace DailyEvents.Client.ViewModels
         public async void Update(CategoryPageViewModel categoryViewModel)
         {
             _filterDefinition = categoryViewModel.FilterDefinition;
+            FilterName = _categoryNameProvider.GetName(_filterDefinition.Categories);
             Items.Clear();
             await Load();
         }

@@ -21,63 +21,70 @@
     </Page.Resources>
 
     <Grid>
-        <!--<views:NavigationPage Title="Today" 
-                                 x:Uid="mainNavControl">
-            <views:NavigationPage.ViewContent>-->
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
                     
-                    <Pivot SelectionChanged="Pivot_SelectionChanged"
-                           x:Name="pivot">
-                        <PivotItem Header="Events" x:Uid="eventsItem">
-                            <views:GridViewControl Items="{Binding Items}"
-                                                   DataContext="{Binding EventsViewModel}"
-                                                   ItemTemplateSelector="{StaticResource EventItemTemplateSelector}"
-                                                   HeaderVisibility="{Binding EventOfTheDay.Image, Converter={StaticResource StringToVisibilityConverter}}"/>
-                        </PivotItem>
+            <Pivot SelectionChanged="Pivot_SelectionChanged"
+                    x:Name="pivot">
+                <PivotItem Header="Events" x:Uid="eventsItem">
+                    <views:GridViewControl Items="{Binding Items}"
+                                            DataContext="{Binding EventsViewModel}"
+                                            ItemTemplateSelector="{StaticResource EventItemTemplateSelector}"
+                                            HeaderVisibility="{Binding EventOfTheDay.Image, Converter={StaticResource StringToVisibilityConverter}}"/>
+                </PivotItem>
 
-                        <PivotItem Header="News" x:Uid="newsItem">
-                            <views:GridViewControl Items="{Binding Items}"
-                                                   DataContext="{Binding NewsViewModel}"
-                                                   ItemTemplate="{StaticResource NewsItemDataTemplate}"/>
-                        </PivotItem>
+                <PivotItem Header="News" x:Uid="newsItem">
+                    <views:GridViewControl Items="{Binding Items}"
+                                            DataContext="{Binding NewsViewModel}"
+                                            ItemTemplate="{StaticResource NewsItemDataTemplate}"/>
+                </PivotItem>
 
-                        <PivotItem Header="Movies" x:Uid="moviesItem">
-                            <views:GridViewControl Items="{Binding Items}"
-                                                   DataContext="{Binding MoviesViewModel}"
-                                                   ItemTemplate="{StaticResource MovieItemDataTemplate}"/>
-                        </PivotItem>
+                <PivotItem Header="Movies" x:Uid="moviesItem">
+                    <views:GridViewControl Items="{Binding Items}"
+                                            DataContext="{Binding MoviesViewModel}"
+                                            ItemTemplate="{StaticResource MovieItemDataTemplate}"/>
+                </PivotItem>
                     
-                        <PivotItem Header="Selections" x:Uid="selectionsItem">
-                            <views:GridViewControl Items="{Binding Items}"
-                                                   DataContext="{Binding SelectionsViewModel}"
-                                                   ItemTemplate="{StaticResource SelectionItemDataTemplate}"/>
-                        </PivotItem>
-                    </Pivot>
+                <PivotItem Header="Selections" x:Uid="selectionsItem">
+                    <views:GridViewControl Items="{Binding Items}"
+                                            DataContext="{Binding SelectionsViewModel}"
+                                            ItemTemplate="{StaticResource SelectionItemDataTemplate}"/>
+                </PivotItem>
+            </Pivot>
 
-                    <CommandBar x:Name="BottomCommandBar" 
-                                Grid.Row="1"
-                                Background="{StaticResource NavigationBackgroundThemeBrush}">
-                        <AppBarButton Label="Filter" 
-                              x:Uid="Filter"
-                              Icon="Filter"  
-                              Command="{Binding EventFilterCommand}"/>
-                    </CommandBar>
-                    
-                    <TextBlock Text="{Binding City}"
-                               Name="CityTextBlock"
-                               Grid.Row="1"
-                               HorizontalAlignment="Left"
-                               Margin="10,12,0,0"
-                               Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
-                    
-                </Grid>
-            <!--</views:NavigationPage.ViewContent>
-        </views:NavigationPage>-->
+            <CommandBar x:Name="BottomCommandBar" 
+                        Grid.Row="1"
+                        Background="{StaticResource NavigationBackgroundThemeBrush}">
+                <AppBarButton Label="Filter" 
+                        x:Uid="Filter"
+                        Icon="Filter"  
+                        Command="{Binding EventFilterCommand}"/>
+            </CommandBar>
+            
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Left"
+                        Margin="10,12,0,0"
+                         Grid.Row="1">
+                <TextBlock Text="Filter"
+                           Name="FilterTbl"
+                           x:Uid="FilterTbl"/>
 
+                <TextBlock Text="{Binding City}"
+                           Name="CityTextBlock"
+                           Margin="4,0,0,0"
+                           Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
+                
+                <TextBlock Text="{Binding EventsViewModel.FilterName}"
+                           Name="FilterTextBlock"
+                           Margin="4,0,0,0"
+                           Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
+
+            </StackPanel>
+
+        </Grid>
         
     </Grid>
 

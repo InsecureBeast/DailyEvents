@@ -23,6 +23,7 @@ namespace DailyEvents.Client.ViewModels
         private readonly DelegateCommand _eventFilterCommand;
         private readonly IDataSource _dataSource;
         private string _city;
+        private string _filterName;
         private readonly ISettingsProvider _settings;
 
         public MainPageViewModel()

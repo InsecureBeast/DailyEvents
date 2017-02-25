@@ -29,10 +29,10 @@ namespace DailyEvents.Client.ViewModels
         private bool _isWeekend;
         private bool _isTomorrow;
 
-        public CategoryPageViewModel(IDataSource dataSource, IFilterListener filterListeer)
+        public CategoryPageViewModel(IDataSource dataSource, IFilterListener filterListener)
         {
             _dataSource = dataSource;
-            _filterListeer = filterListeer;
+            _filterListeer = filterListener;
 
             _items = new ObservableCollection<CategoryNodeViewModel>();
             Load();
