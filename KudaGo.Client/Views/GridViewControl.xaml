@@ -115,7 +115,7 @@
         <ProgressRing IsActive="True" 
                       Width="50"
                       Height="50"
-                      Foreground="{StaticResource InkToolbarAccentColorThemeBrush}"
+                      Foreground="{StaticResource ApplicationAccentBrush}"
                       Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
         <TextBlock Text="К сожалению, пока нет ничего подходящего."
