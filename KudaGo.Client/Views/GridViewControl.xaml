@@ -58,7 +58,7 @@
                         </Border.Background>
                     </Border>
 
-                    <Border Background="Black"
+                    <Border Background="#DD000000"
                             Visibility="{Binding Categories, Converter={StaticResource StringToVisibilityConverter}}"
                             VerticalAlignment="Top"
                             HorizontalAlignment="Left"
@@ -115,7 +115,7 @@
         <ProgressRing IsActive="True" 
                       Width="50"
                       Height="50"
-                      Foreground="{StaticResource InkToolbarAccentColorThemeBrush}"
+                      Foreground="{StaticResource ApplicationAccentBrush}"
                       Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
         <TextBlock Text="К сожалению, пока нет ничего подходящего."

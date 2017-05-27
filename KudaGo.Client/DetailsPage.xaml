@@ -38,7 +38,7 @@
                               Height="50"
                               HorizontalAlignment="Center"
                               VerticalAlignment="Center"
-                              Foreground="{StaticResource InkToolbarAccentColorThemeBrush}"
+                              Foreground="{StaticResource ApplicationAccentBrush}"
                               Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
                 <ContentPresenter ContentTemplate="{StaticResource ConnectionFailedTemplate}"

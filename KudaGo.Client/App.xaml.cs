@@ -101,9 +101,8 @@ namespace DailyEvents.Client
                 navPage = new NavigationPage();
                 var vm = new NavigationViewModel(_dataSource);
                 navPage.DataContext = vm;
-                navPage.AppFrame.Navigate(typeof(MainPage));
-
                 navPage.AppFrame.NavigationFailed += OnNavigationFailed;
+                navPage.AppFrame.Navigate(typeof(MainPage));
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
@@ -157,6 +156,7 @@ namespace DailyEvents.Client
                     titleBar.ForegroundColor = Colors.White;
                     titleBar.InactiveBackgroundColor = accentBrush.Color;
                     titleBar.InactiveForegroundColor = Colors.White;
+                    titleBar.ButtonInactiveForegroundColor = Colors.White;
                     titleBar.ButtonInactiveBackgroundColor = accentBrush.Color;
                 }
             }

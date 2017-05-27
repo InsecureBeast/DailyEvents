@@ -73,5 +73,10 @@ namespace DailyEvents.Client.ViewModels.Details
                 return NetworkInterface.GetIsNetworkAvailable();
             }
         }
+
+        public bool IsNotFound
+        {
+            get { return false; }
+        }
     }
 }

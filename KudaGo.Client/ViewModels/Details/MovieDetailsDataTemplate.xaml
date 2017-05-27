@@ -106,9 +106,10 @@
                             </TextBlock>
 
                             <TextBlock Text="ADDITIONAL INFO"
-                                   x:Uid="additionalInfo"
-                                   Style="{StaticResource NormalTextBlockStyle}"
-                                   FontWeight="SemiBold"/>
+                                       x:Uid="additionalInfo"
+                                       Margin="{StaticResource DoubleTextBlockMargin}"
+                                       Style="{StaticResource NormalTextBlockStyle}"
+                                       FontWeight="SemiBold"/>
 
                             <TextBlock Style="{StaticResource NormalTextBlockStyle}"
                                        Margin="{StaticResource DefaultControlMargin}"

@@ -26,7 +26,7 @@
                                   HorizontalAlignment="Center"
                                   Stretch="UniformToFill"/>
                 
-                <Border Background="Black"
+                <Border Background="#DD000000"
                         Visibility="{Binding Categories, Converter={StaticResource StringToVisibilityConverter}}"
                         VerticalAlignment="Top"
                         HorizontalAlignment="Left"

@@ -157,33 +157,6 @@
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
 
-            <!--Set 1-->
-            <!--
-            <SolidColorBrush x:Key="ApplicationDarkAccentBrush3" Color="#FF750B1C" />
-            <SolidColorBrush x:Key="ApplicationDarkAccentBrush2" Color="#FFA80000" />
-            <SolidColorBrush x:Key="ApplicationDarkAccentBrush1" Color="#FFC50F1F" />
-            <SolidColorBrush x:Key="ApplicationAccentBrush" Color="#FFE81123" />
-            <SolidColorBrush x:Key="ApplicationLightAccentBrush1" Color="#FFE74856" />
-            <SolidColorBrush x:Key="ApplicationLightAccentBrush2" Color="#FFE6808A" />
-            <SolidColorBrush x:Key="ApplicationLightAccentBrush3" Color="#FFF4ABBA" />
-            -->
-
-            <Color x:Key="DarkAccentColor3">#FF761721</Color>
-            <Color x:Key="DarkAccentColor2">#FFA4262C</Color>
-            <Color x:Key="DarkAccentColor1">#FFD13438</Color>
-            <Color x:Key="AccentColor">#FFFF4343</Color>
-            <Color x:Key="LightAccentColor1">#FFFF6767</Color>
-            <Color x:Key="LightAccentColor2">#FFFF8C8C</Color>
-            <Color x:Key="LightAccentColor3">#FFFFC0C0</Color>
-            <!--Set 2-->
-            <SolidColorBrush x:Key="ApplicationDarkAccentBrush3" Color="{StaticResource DarkAccentColor3}" />
-            <SolidColorBrush x:Key="ApplicationDarkAccentBrush2" Color="{StaticResource DarkAccentColor2}" />
-            <SolidColorBrush x:Key="ApplicationDarkAccentBrush1" Color="{StaticResource DarkAccentColor1}" />
-            <SolidColorBrush x:Key="ApplicationAccentBrush" Color="{StaticResource AccentColor}" />
-            <SolidColorBrush x:Key="ApplicationLightAccentBrush1" Color="{StaticResource LightAccentColor1}" />
-            <SolidColorBrush x:Key="ApplicationLightAccentBrush2" Color="{StaticResource LightAccentColor2}" />
-            <SolidColorBrush x:Key="ApplicationLightAccentBrush3" Color="{StaticResource LightAccentColor3}" />
-
             <Thickness x:Key="DefaultControlMargin">0,8,0,0</Thickness>
             <Thickness x:Key="PivotItemMargin">0,0,0,0</Thickness>
             <Thickness x:Key="DoubleTextBlockMargin">0,24,0,0</Thickness>
